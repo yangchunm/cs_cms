@@ -1,0 +1,71 @@
+#set(pageTitle="系统管理菜单")
+#set(btnBar = {"add":1,"mod":1,"del":1})
+#set(currCont = "menu")
+#@adminLayout()
+#define main()
+#include("/_view/_admin/common/_button_bar.html")
+	 <table class="table table-condensed .table-hover menuTree">
+	 	<thead>
+	 		<tr>
+	 			<th>名称</th><th>顺序(调整)</th><th>图标</th><th>地址</th>
+	 		</tr>
+	 	</thead>
+	 	<tbody>
+	 		#set(iCount = 1)
+	 		#for(x : keMenuList)
+	 			<tr id="node-#(x.id)" class="treegrid-#(x.id)">	         		
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" />#(iCount) #(x.menuName)</td>
+	         		<td>#(x.menuOrder)
+	         		#if(for.index < for.size-1)
+	         		&nbsp;&nbsp;
+	         		<span class="glyphicon glyphicon-triangle-bottom" value="#(x.id)-#(x.menuOrder)" title="调整顺序"></span>
+	         		#else
+		         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	         		#end
+	         		#if(for.index >0)
+	         		&nbsp;&nbsp;
+	         		<span class="glyphicon glyphicon-triangle-top"  value="#(x.id)-#(x.menuOrder)" title="调整顺序"></span></td>
+	         		#end
+	         		<td><span class="#(x.menuIcon)"></span> #(x.menuIcon)</td><td>#(x.menuUrl)</td>
+         		</tr>
+	         	#set(subCount = 1)
+		 		#for(y : x.subMenuL)
+	         		<tr id="node-#(y.menuParentId)-#(y.id)" class="treegrid-#(y.id) treegrid-parent-#(y.menuParentId)">
+	         			<td>
+	         				<input value="#(y.id)" type="checkbox" id="check-#(y.menuParentId)-#(y.id)" />
+	         				#(iCount).#(subCount) #(y.menuName)
+	         			</td>
+	         			<td>#(y.menuOrder)
+	         			#if(for.index < for.size-1)
+		         		&nbsp;&nbsp;
+		         		<span class="glyphicon glyphicon-triangle-bottom"  value="#(y.id)-#(y.menuOrder)" title="调整顺序"></span>
+		         		#else
+		         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		         		#end
+		         		#if(for.index >0)
+		         		&nbsp;&nbsp;
+		         		<span class="glyphicon glyphicon-triangle-top"  value="#(y.id)-#(y.menuOrder)" title="调整顺序"></span></td>
+		         		#end
+	         			</td>
+	         			<td><span class="#(y.menuIcon)"></span> #(y.menuIcon)</td><td>#(y.menuUrl)</td>
+         			</tr>
+	         		#set(subCount = subCount +1)
+	         	#end
+	         	
+   				#set(iCount = iCount +1)      		
+         	#end
+        </tbody>       
+     </table>
+     
+    #include("/_view/_admin/menu/_add_form.html") 
+#end
+
+#define css()
+	<link rel="stylesheet" type="text/css" href="/assets/treegrid/jquery.treegrid.css">
+#end
+
+#define js()
+	<script type="text/javascript" src="/assets/treegrid/jquery.treegrid.min.js"></script>
+	<script type="text/javascript" src="/assets/treegrid/jquery.treegrid.bootstrap3.js"></script>
+	<script type="text/javascript" src="/assets/js/ke.menu.js"></script>
+#end

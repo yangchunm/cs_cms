@@ -1,0 +1,64 @@
+<div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-title">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> 新增</h4>
+      </div>
+      <div class="modal-body">
+     	<form class="form-horizontal" id="add-form" action="#(mandir)/#(currCont)/save" method="post">
+			<div class="form-group">
+				<label for="role_name" class="col-sm-2 control-label">名称</label>
+				<div class="col-sm-4">
+					<input type="text" name="role_name" id="frm_role_name" class="form-control"
+					 placeholder="角色名称">
+					 <input type="hidden"name="id" value="0" id="frm_id">
+				</div>
+				<div class="col-sm-5">
+					<span class="small text-danger" id="roleNameMsg">*</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="orga_desc" class="col-sm-2 control-label">描述</label>
+				<div class="col-sm-6">
+					<input type="text" name="role_desc" id="frm_role_desc" class="form-control"
+					 placeholder="角色描述">
+				</div>
+				<div class="col-sm-4">
+					<span class="small text-danger" id="roleNameMsg">*</span>
+				</div>
+			</div>
+			
+			<table class="table table-condensed .table-hover tree">
+			 	<thead>
+			 		<tr>
+			 			<th>功能菜单
+			 				<span class="small text-danger" id="roleMenuMsg">*</span>
+			 			</th>
+			 		</tr>
+			 	</thead>
+			 	<tbody>
+			 		#for(x : keMenuList)
+			 			<tr id="node-#(x.id)" class="treegrid-#(x.id)">	         		
+			         		<td><input name="role_menu" value="#(x.id)" type="checkbox" id="frm-check-#(x.id)" />#(for.index+1) #(x.menuName)</td>
+		         		</tr>
+				 		#for(y : x.subMenuL)
+			         		<tr id="node-#(y.menuParentId)-#(y.id)" class="treegrid-#(y.id) treegrid-parent-#(y.menuParentId)">
+			         			<td>
+			         				<input name="role_menu" value="#(y.id)" type="checkbox" id="frm-check-#(y.menuParentId)-#(y.id)" />
+			         				#(for.outer.index+1).#(for.index+1) #(y.menuName)
+			         			</td>
+		         			</tr>
+			         	#end
+		         	#end
+		        </tbody>       
+		     </table>
+			
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> 关闭</button>
+	        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save-file"></span> 保存</button>
+	      </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

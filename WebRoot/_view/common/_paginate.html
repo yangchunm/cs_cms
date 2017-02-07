@@ -1,0 +1,87 @@
+### 分页模板函数，三个参数含义分别为：当前页、总页数，分页前方的链接
+#define paginate(currentPage, totalPage, totalRow, link)
+#if(totalPage < 2 || currentPage > totalPage)
+	#return
+#end
+
+#setLocal(startPage = currentPage - 5)
+#if(startPage < 2)
+	#setLocal(startPage = 1)
+#end
+
+#setLocal(endPage = currentPage + 5)
+#if(endPage > totalPage)
+	#setLocal(endPage = totalPage)
+#end
+<ul class="pagination">
+<li class="disabled"><a>共有#(totalRow)条</a></li>
+<li class="disabled"><a>共#(totalPage)页</a></li>
+#if(currentPage > 1)
+	<li><a href="#" aria-label="Previous" value="1"><span aria-hidden="true">&laquo;</span></a></li>
+#end
+
+#for(i : [startPage..endPage])
+#if(currentPage == i)
+	<li class="active"><a href="#" value="#(i)">#(i)</a></li>
+#else
+	<li><a href="#" value="#(i)">#(i)</a></li>
+#end
+#end
+
+#if(currentPage < totalPage)
+	<li><a href="#" aria-label="Next" value="#(totalPage)"><span aria-hidden="true">&raquo;</span></a></li>
+#end
+</ul>
+#end
+
+### 机构树显示函数
+#define orga_tree_grid(treeObj,pre)
+	#for(y : treeObj)
+      	<tr id="node-#(y.orgaParentId)-#(y.id)" class="treegrid-#(y.id) treegrid-parent-#(y.orgaParentId)">
+      		<td>
+      			<input value="#(y.id)" type="checkbox" id="check-#(y.orgaParentId)-#(y.id)" />
+      			#(pre).#(for.index+1) #(y.orgaName)
+      		</td>
+     	</tr>
+     	 #@orga_tree_grid(y.subOrgaL,pre + "."+(for.index+1))
+	#end
+#end
+
+### 机构树显示函数select
+#define orga_tree_list(treeObj,pre)
+	#setLocal(pre = pre + "&nbsp;&nbsp;")
+	#for(y : treeObj)
+		#if(y.id == currId)
+			<option value="#(y.id)" selected>#(pre)#(y.orgaName)</option>
+		#else
+			<option value="#(y.id)">#(pre)#(y.orgaName)</option>
+		#end
+     	 #@orga_tree_list(y.subOrgaL,pre+ "&nbsp;&nbsp;")
+	#end
+#end
+
+### 知识树显示函数
+#define kntr_tree_grid(treeObj,pre)
+	#for(y : treeObj)
+      	<tr id="node-#(y.kntrParentId)-#(y.id)" class="treegrid-#(y.id) treegrid-parent-#(y.kntrParentId)">
+      		<td>
+      			<input value="#(y.id)" type="checkbox" id="check-#(y.kntrParentId)-#(y.id)" />
+      			#(pre).#(for.index+1) #(y.kntrName)
+      		</td>
+     	</tr>
+     	 #@kntr_tree_grid(y.knTreeL,pre + "."+(for.index+1))
+	#end
+#end
+
+### 知识树显示函数select
+#define kntr_tree_list(treeObj,pre,currId)
+	#setLocal(pre = pre + "&nbsp;&nbsp;")
+	#for(y : treeObj)
+		#if(y.id == currId)
+		<option value="#(y.id)" selected>#(pre)#(y.kntrName)</option>
+		#else
+		<option value="#(y.id)" >#(pre)#(y.kntrName)</option>
+		#end
+     	 #@kntr_tree_list(y.knTreeL,pre+ "&nbsp;&nbsp;",currId)
+	#end
+#end

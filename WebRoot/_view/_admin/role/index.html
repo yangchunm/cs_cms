@@ -1,0 +1,52 @@
+#set(pageTitle="角色设置")
+#set(btnBar = {"add":1,"mod":1,"del":1})
+#set(currCont = "role")
+#@adminLayout()
+#define main()
+#include("/_view/_admin/common/_button_bar.html")
+	 <table class="table table-condensed .table-hover">
+	 	<thead>
+	 		<tr>
+	 			<th>序</th><th>角色名称</th><th>角色描述</th><th>功能菜单</th><th>用户</th>
+	 		</tr>
+	 	</thead>
+	 	<tbody>
+	 		#for(x : keRoleList)
+	 			<tr>	         		
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1)</td>
+	         		<td>#(x.roleName)</td>
+	         		<td>#(x.roleDesc)</td>
+	         		<td>
+	         			#for(y : x.menuL)
+	         				#(y.menuName)
+	         				#for(z : y.subMenuL)
+	         					#(for.first ? "(" : "")
+	         					#(z.menuName)
+	         					#if(for.index == 0)
+	         						...)
+	         						#break
+	         					#end
+	         				#end
+	         				#(for.last ? "" : "，")
+	         			#end
+	         		</td>
+	         		<td>
+         				#(x.userCount)
+	         		</td>
+         		</tr>
+         	#end
+        </tbody>       
+     </table>
+     
+    #include("/_view/_admin/role/_add_form.html") 
+#end
+
+#define css()
+	<link rel="stylesheet" type="text/css" href="/assets/treegrid/jquery.treegrid.css">
+#end
+
+#define js()
+	<script type="text/javascript" src="/assets/treegrid/jquery.treegrid.min.js"></script>
+	<script type="text/javascript" src="/assets/treegrid/jquery.treegrid.bootstrap3.js"></script>
+	<script type="text/javascript" src="/assets/js/ke.role.js"></script>
+#end

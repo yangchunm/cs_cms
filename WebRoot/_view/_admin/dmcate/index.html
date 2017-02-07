@@ -1,0 +1,31 @@
+#set(pageTitle="算法分类设置")
+#set(btnBar = {"add":1,"mod":1,"del":1})
+#set(currCont = "dmcate")
+#@adminLayout()
+#define main()
+#include("/_view/_admin/common/_button_bar.html")
+	 <table class="table table-condensed .table-hover">
+	 	<thead>
+	 		<tr>
+	 			<th>序</th><th>名称</th><th>描述</th><th>算法数</th>
+	 		</tr>
+	 	</thead>
+	 	<tbody>
+	 		#for(x : dmAlgoCateL)
+	 			<tr>	         		
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1)</td>
+	         		<td>#(x.dmacName)</td>
+	         		<td>#(x.dmacDesc)</td>
+	         		<td>#(x.alCount)</td>
+         		</tr>
+         	#end
+        </tbody>       
+     </table>
+     
+    #include("/_view/_admin/dmcate/_add_form.html") 
+#end
+
+
+#define js()
+	<script type="text/javascript" src="/assets/js/dm.algocate.js"></script>
+#end

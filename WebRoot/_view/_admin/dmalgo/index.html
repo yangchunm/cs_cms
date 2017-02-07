@@ -1,0 +1,82 @@
+#set(pageTitle="挖掘算法管理")
+#set(btnBar = {"add":1,"mod":1,"del":1})
+#set(currCont = "dmalgo")
+#@adminLayout()
+#define main()
+#include("/_view/_admin/common/_button_bar.html")
+	<form class="form-inline" id="search-form" name="search-form" method="post" action="#(mandir)/#(currCont)">
+		<div class="form-group">
+    		<label for="s.dmal_name">算法</label>
+    		<input type="text" class="form-control" name="s.dmal_name" id="s.dmal_name" value="#(sAlgo.dmalName)" placeholder="算法名称">
+    		<input type="hidden" id="page" name="comm.page" value="#(comQ.page ?? "1")">
+  		</div>
+  		<div class="form-group">
+    		<label for="comm.keyWord">用户</label>
+    		<input type="text" class="form-control" name="comm.keyWord" id="comm.keyWord" value="#(comQ.keyWord)" placeholder="添加用户">
+  		</div>
+  		<select id="s.dmal_dmac_id" name="s.dmal_dmac_id" class="form-control">
+			   	<option value="0">类别</option>
+			   	#for(x : dmAlgoCateL)
+			   		#if(x.id == sAlgo.dmalDamcId)
+				   		<option value="#(x.id)" selected>#(x.dmacName)</option>
+				   	#else
+				   		<option value="#(x.id)">#(x.dmacName)</option>
+				   	#end
+				#end			    	
+			 </select>
+			    <button type="submit" id="btn-search" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> 搜索</button>
+
+			    每页
+			    <select id="comm.pageSize" name="comm.pageSize" class="form-control">
+			    	<option value="#(comQ.pageSize)">#(comQ.pageSize)</option>
+			    	<option value="1">1</option>
+			    	<option value="20">20</option>
+			    	<option value="50">50</option>
+			    	<option value="100">100</option>
+			    </select>
+			    条
+			
+		</form>
+		
+	 <table class="table table-condensed .table-hover">
+	 	<thead>
+	 		<tr>
+	 			<th>序</th><th>名称</th><th>类别</th><th>调用路径</th><th>使用次数</th><th>添加用户</th><th>时间</th><th>可用</th>
+	 		</tr>
+	 	</thead>
+	 	<tbody>
+	 		#for(x : dmALgoP.list)
+	 			<tr>	         		
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1)</td>
+	         		<td>#(x.dmalName)</td>
+	         		<td>#(x.dmacName)</td>
+	         		<td>#(x.dmalCmdPath)</td>
+	         		<td>#(x.useCount)</td>
+	         		<td>#(x.userRealName)</td>
+	         		<td>#date(x.dmalTime, "yyyy-MM-dd HH:mm")</td>
+	         		<td>
+	         		#(x.dmalStatus ? "是" : "否")
+	         		<a href="#" onClick="setStatus(#(x.id),#(x.dmalStatus))" title="设置为相反"><span class="glyphicon glyphicon-transfer"></span></a>
+	         		</td>
+         		</tr>
+         	#end
+        </tbody>       
+     </table>
+     
+     #if(dmALgoP.totalRow == 0)
+		<div class="alert alert-warning" role="alert">
+		<span class="glyphicon glyphicon-info-sign"></span> 
+		   没有满足条件的记录！
+		</div>
+	#end
+    #set(pageUrl=mandir+"/"+currCont+"/")
+    #@paginate(dmALgoP.pageNumber, dmALgoP.totalPage,dmALgoP.totalRow, pageUrl)
+    #include("/_view/_admin/dmalgo/_add_form.html")
+#end
+
+#define css()
+#end
+
+#define js()
+	<script type="text/javascript" src="/assets/js/dm.algo.js"></script>
+#end

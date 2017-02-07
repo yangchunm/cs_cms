@@ -1,0 +1,128 @@
+#set(seoTitle="用户登录")
+#@layout()
+#define main()
+<!-- 容器-->
+<div class="col-xs-6 col-md-4"></div>
+<div class="col-xs-6 col-md-4">
+	<div class="panel panel-default">
+		<div class="panel-heading">用户登录</div>
+			<div class="panel-body">
+				<form class="form-horizontal" id="login_form" action="/login/doLogin?returnUrl=#(returnUrl)" method="post">
+					<div class="form-group">
+						<label for="userName" class="col-sm-2 control-label">邮箱</label>
+						<div class="col-sm-7">
+							<input type="text" name="userName" id="userName" class="form-control" placeholder="邮箱">
+						</div>
+						<div class="col-sm-3">
+							<span class="small text-danger" id="userNameMsg"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="userPasswd" class="col-sm-2 control-label">密码</label>
+						<div class="col-sm-7">
+							<input type="password" name="userPasswd" id="userPasswd" class="form-control" placeholder="密码">
+						</div>
+						<div class="col-sm-3">
+							<span class="small text-danger" id="passwordMsg"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="captchaInput" class="col-sm-2 control-label">验证</label>
+						<div class="col-sm-3">
+							<input type="text" name="captcha" id="captchaInput" class="form-control" placeholder="验证码">
+						</div>
+						<div class="col-sm-4">
+							<img title="点击刷新" class="captcha" src="/login/captcha" onclick="updateCaptcha();">
+						</div>
+						<div class="col-sm-3">
+							<span class="small text-danger" id="captchaMsg"></span>
+						</div>
+					</div>
+					<div class="form-group">
+    					<div class="col-sm-offset-2 col-sm-10">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" id="keepLogin" name="keepLogin" value="1" checked="checked"/>&nbsp;
+									保持登陆
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+    					<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-default">登陆</button>
+						</div>
+					</div>
+	
+					没有账号&nbsp;<a href="/reg" onclick="appendReturnUrl(this)">现在注册</a>，
+					<a href="/login/forgetPassword">忘记密码？</a>&nbsp;
+					<a href="/reg/notActivated">还未激活？</a>
+	
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+#end
+
+#define js()
+	<script type="text/javascript" src="/assets/jquery_form/jquery.form.min.js"></script>
+	<script type="text/javascript" src="/assets/layer/layer.js"></script>
+	<script type="text/javascript" src="/assets/js/common.md5.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#login_form").ajaxForm({
+				dataType: "json"
+				, beforeSubmit: function(formData, jqForm, options) {      
+					$("#login_form span").text("");
+					tmp_userPasswd = $("#userPasswd").val();
+					formData[1].value = hex_md5(tmp_userPasswd);
+				}
+				, success: function(ret) {
+					if(ret.isOk) {
+						location.href = ret.returnUrl;
+						return ;
+					}
+					if (ret.isFail) {
+						layer.msg(ret.msg, {
+									shift: 6
+									, shade: 0.3
+									, time: 5000
+									, offset: "165px"
+									, closeBtn: 1
+									, shadeClose: true
+								} , function() {
+									updateCaptcha();
+								}
+						);
+						return ;
+					}
+					
+					if (ret.userNameMsg) {
+						updateCaptcha();
+						$("#userNameMsg").text(ret.userNameMsg);
+					}
+					if (ret.passwordMsg) {
+						updateCaptcha();
+						$("#passwordMsg").text(ret.passwordMsg);
+					}
+					if (ret.captchaMsg) {
+						updateCaptcha();    
+						$("#captchaMsg").text(ret.captchaMsg);
+					}
+				}
+				, error: function(ret) { }             
+				, complete: function(ret) { }       
+			});
+		});
+
+		function updateCaptcha() {
+			$(".captcha").attr("src", "/login/captcha?v=" + Math.random());
+			$("#captchaInput").val("");
+			$("#userPasswd").val("");
+		}
+	</script>
+#end

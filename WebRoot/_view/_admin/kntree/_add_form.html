@@ -1,0 +1,44 @@
+<div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-title">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> 新增</h4>
+      </div>
+      <div class="modal-body">
+     	<form class="form-horizontal" id="add-form" action="#(mandir)/#(currCont)/save" method="post">
+			<div class="form-group">
+				<label for="kntr_name" class="col-sm-2 control-label">名称</label>
+				<div class="col-sm-4">
+					<input type="text" name="kntr_name" id="frm_kntr_name" class="form-control"
+					 placeholder="名称">
+					 <input type="hidden"name="id" value="0" id="frm_id">
+				</div>
+				<div class="col-sm-5">
+					<span class="small text-danger" id="kntrNameMsg">*</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="kntr_parent_id" class="col-sm-2 control-label">上级名称</label>
+				<div class="col-sm-4">
+					<select class="form-control" name="kntr_parent_id" id="frm_kntr_parent_id">
+						<option value="0">无</option>
+				 		#for(x : knTreeL)
+				 			<option value="#(x.id)">#(x.kntrName)</option>
+				 			#@kntr_tree_list(x.knTreeL,"&nbsp;&nbsp")
+				        #end
+					</select>
+				</div>
+				<div class="col-sm-5">
+					<span class="small text-danger" id="kntrParentIdMsg">*</span>
+				</div>
+			</div>			
+		
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> 关闭</button>
+	        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save-file"></span> 保存</button>
+	      </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,16 @@
+#set(pageTitle="知识库公式管理 / 公式编辑")
+#set(currCont = "knform")
+#set(btnBar = {"add":0,"mod":0,"del":0})
+#@adminLayout()
+#define main()
+	#include("/_view/_admin/common/_button_bar.html")
+    #include("/_view/_admin/knform/_add_form.html")
+#end
+
+#define css()
+#end
+
+#define js()
+	<script type="text/javascript" src="/assets/js/kn.form.js"></script>
+	#include("/_view/_admin/knform/_form_editor_js.html")
+#end

@@ -1,0 +1,34 @@
+#set(pageTitle="机构设置")
+#set(btnBar = {"add":1,"mod":1,"del":1})
+#set(currCont = "organ")
+#@adminLayout()
+#define main()
+#include("/_view/_admin/common/_button_bar.html")
+	 <table class="table table-condensed .table-hover tree">
+	 	<thead>
+	 		<tr>
+	 			<th>名称</th>
+	 		</tr>
+	 	</thead>
+	 	<tbody>
+	 		#for(x : keOrgaList)
+	 			<tr id="node-#(x.id)" class="treegrid-#(x.id)">	         		
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" />#(for.index+1) #(x.orgaName)</td>
+         		</tr>
+		 		#@orga_tree_grid(x.subOrgaL,for.index+1)
+         	#end
+        </tbody>       
+     </table>
+     
+    #include("/_view/_admin/organ/_add_form.html") 
+#end
+
+#define css()
+	<link rel="stylesheet" type="text/css" href="/assets/treegrid/jquery.treegrid.css">
+#end
+
+#define js()
+	<script type="text/javascript" src="/assets/treegrid/jquery.treegrid.min.js"></script>
+	<script type="text/javascript" src="/assets/treegrid/jquery.treegrid.bootstrap3.js"></script>
+	<script type="text/javascript" src="/assets/js/ke.organ.js"></script>
+#end

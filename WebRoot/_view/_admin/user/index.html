@@ -1,0 +1,110 @@
+#set(pageTitle="用户管理")
+#set(btnBar = {"add":1,"mod":1,"del":1})
+#set(currCont = "user")
+#@adminLayout()
+#define main()
+#include("/_view/_admin/common/_button_bar.html")
+	<form class="form-inline" id="search-form" name="search-form" method="post" action="#(mandir)/#(currCont)">
+		<div class="form-group">
+    		<label for="s.user_name">邮箱</label>
+    		<input type="text" class="form-control" name="s.user_name" id="s.user_name" value="#(sUser.userName)" placeholder="邮箱">
+    		<input type="hidden" id="page" name="page" value="#(comQ.page ?? "1")">
+  		</div>
+  		<div class="form-group">
+    		<label for="s.user_real_name">姓名</label>
+    		<input type="text" class="form-control" name="s.user_real_name" id="s.user_real_name" value="#(sUser.userRealName)" placeholder="姓名">
+  		</div>
+			<select id="s.user_role_id" name="s.user_role_id" class="form-control">
+			   	<option value="0">角色</option>
+			   	#for(x : keRoleL)
+			   		#if(x.id == sUser.userRoleId)
+				   		<option value="#(x.id)" selected>#(x.roleName)</option>
+				   	#else
+				   		<option value="#(x.id)">#(x.roleName)</option>
+				   	#end
+				#end			    	
+			 </select>
+			 <select id="s.user_orga_id" name="s.user_orga_id" class="form-control">
+			   	<option value="0">部门</option>
+			   	#for(x : keOrgaL)
+					<optgroup label="#(x.orgaName)"></optgroup>
+					#for(y : x.subOrgaL)
+						#if(y.id == sUser.userOrgaId)
+						<option value="#(y.id)" selected>&nbsp;&nbsp;#(y.orgaName)</option>
+						#else
+						<option value="#(y.id)" >&nbsp;&nbsp;#(y.orgaName)</option>
+						#end
+					#end
+				#end			    	
+			 </select>
+			 <select name="s.user_security_id" id="s.user_security_id" class="form-control">
+					<option value="0">密级</option>
+					#for(x : keSecuL)
+						#if(x.id == sUser.userSecurityId)
+						<option value="#(x.id)" selected>#(x.secuName)</option>
+						#else
+						<option value="#(x.id)">#(x.secuName)</option>
+						#end
+					#end
+				</select>
+			 
+			    <button type="submit" id="btn-search" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> 搜索</button>
+
+			    每页
+			    <select id="pageSize" name="pageSize" class="form-control">
+			    	<option value="#(comQ.pageSize)">#(comQ.pageSize)</option>
+			    	<option value="1">1</option>
+			    	<option value="20">20</option>
+			    	<option value="50">50</option>
+			    	<option value="100">100</option>
+			    </select>
+			    条
+			
+		</form>
+		
+	 <table class="table table-condensed .table-hover">
+	 	<thead>
+	 		<tr>
+	 			<th>序</th><th>用户名</th><th>真实姓名</th><th>角色</th><th>部门</th><th>密级</th><th>加入时间</th>
+	 			<th>最后登录</th><th>有效</th><th>后台</th>
+	 		</tr>
+	 	</thead>
+	 	<tbody>
+	 		#for(x : keUserP.list)
+	 			<tr>	         		
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1)</td>
+	         		<td>#(x.userName)</td>
+	         		<td>#(x.userRealName)</td>
+	         		<td>#(x.roleName)</td>
+	         		<td>#(x.orgaName)</td>
+	         		<td>#(x.secuName)</td>
+	         		<td>#date(x.userRegTime, "yyyy-MM-dd HH:mm")</td>
+	         		<td title="登录#(x.userLoginCount)次">#date(x.userLastLoginTime, "yyyy-MM-dd HH:mm")</td>
+	         		<td>#(x.userIsenable ? "是" : "否") 
+	         			<a href="javascript:void(0);" onClick="setIsEnable(#(x.id),#(x.userIsenable))" title="设置为相反"><span class="glyphicon glyphicon-transfer"></span></a>
+	         		</td>
+	         		<td>#(x.userIsSuper ? "是" : "否")  
+	         			<a href="javascript:void(0);" onClick="setIsSuper(#(x.id),#(x.userIsSuper))" title="设置为相反"><span class="glyphicon glyphicon-transfer"></span></a>
+	         		</td>
+         		</tr>
+         	#end
+        </tbody>       
+     </table>
+     #if(keUserP.totalRow == 0)
+		<div class="alert alert-warning" role="alert">
+		<span class="glyphicon glyphicon-info-sign"></span> 
+		   没有满足条件的记录！
+		</div>
+	#end
+    #set(pageUrl=mandir+"/"+currCont+"/")
+    #@paginate(keUserP.pageNumber, keUserP.totalPage,keUserP.totalRow, pageUrl)
+    #include("/_view/_admin/user/_add_form.html") 
+#end
+
+#define css()
+#end
+
+#define js()
+	<script type="text/javascript" src="/assets/js/common.md5.js"></script>
+	<script type="text/javascript" src="/assets/js/ke.user.js"></script>
+#end

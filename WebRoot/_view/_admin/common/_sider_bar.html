@@ -1,0 +1,21 @@
+<div class="panel-group" role="tablist">
+#for(x : menuL)
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="collapseListGroupHeading1">
+        <h4 class="panel-title">
+          <a class="" role="button" data-toggle="collapse" href="#collapseListGroup1" aria-expanded="true" aria-controls="collapseListGroup1">
+            #(x.menuName)
+          </a>
+        </h4>
+      </div>
+      <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading1" aria-expanded="true">
+        <ul class="list-group">
+        #for(y : x.subMenuL)
+          <li class="list-group-item">#(y.menuName)</li>
+        #end
+        </ul>
+        <div class="panel-footer">Footer</div>
+      </div>
+    </div>
+#end
+</div>
