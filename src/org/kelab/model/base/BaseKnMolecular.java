@@ -80,5 +80,19 @@ public abstract class BaseKnMolecular<M extends BaseKnMolecular<M>> extends Mode
 	public java.lang.String getKnmoTag() {
 		return get("knmo_tag");
 	}
+	public void setKnmoFileType(java.lang.String knmoFileType) {
+		set("knmo_file_type", knmoFileType);
+	}
+
+	public java.lang.String getKnmoFileType() {
+		return get("knmo_file_type");
+	}
+	public void setKnmoPng(java.lang.String knmoPng) {
+		set("knmo_png", knmoPng);
+	}
+
+	public java.lang.String getKnmoPng() {
+		return get("knmo_png");
+	}
 
 }

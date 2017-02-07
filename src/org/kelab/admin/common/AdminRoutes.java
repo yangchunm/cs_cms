@@ -11,6 +11,7 @@ import org.kelab.admin.ke.user.UserAdminController;
 import org.kelab.admin.ke.userlog.UserLogAdminController;
 import org.kelab.admin.kn.file.FileAdminController;
 import org.kelab.admin.kn.formula.FormulaAdminController;
+import org.kelab.admin.kn.molecular.MolecularAdminController;
 import org.kelab.admin.kn.tree.TreeAdminController;
 import org.kelab.common.interceptor.AdminAuthInterceptor;
 
@@ -42,6 +43,7 @@ public class AdminRoutes extends Routes {
 		add("/admin/kntree", TreeAdminController.class, "/kntree");
 		add("/admin/knfile", FileAdminController.class, "/knfile");
 		add("/admin/knform", FormulaAdminController.class, "/knform");
+		add("/admin/knmole", MolecularAdminController.class, "/knmole");
 		
 		add("/admin/dmcate", AlgoCateAdminController.class, "/dmcate");
 		add("/admin/dmalgo", AlgorithmAdminController.class, "/dmalgo");
