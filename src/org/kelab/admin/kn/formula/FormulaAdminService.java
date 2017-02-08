@@ -68,7 +68,9 @@ public class FormulaAdminService {
 		}else if(latexL.size() > 0)
 			knForm.setKnfoLatex(latexL.get(0));
 		//转为png
-		String filename = System.currentTimeMillis()+".png";
+		String filename = knForm.getKnfoPng();
+		if(filename == null || filename == "")
+			filename = System.currentTimeMillis()+".png";
 		String filePath = PathKit.getWebRootPath()+"/"+p.get("baseUploadPath")+p.get("knFormPath")+filename;
 		Base64Utils.GenerateImage(StringUtils.extBase64Str(knForm.getKnfoText()), filePath);
 		knForm.setKnfoPng(filename);

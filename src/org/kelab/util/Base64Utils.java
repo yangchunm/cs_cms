@@ -18,7 +18,6 @@ public class Base64Utils {
 	 * @return
 	 */
 	public static boolean GenerateImage(String imgStr, String imgFilePath) {
-        System.out.println("EEE"+imgFilePath);;
 		if (imgStr == null) // 图像数据为空
             return false;
         BASE64Decoder decoder = new BASE64Decoder();
@@ -37,6 +36,7 @@ public class Base64Utils {
             out.close();
             return true;
         } catch (Exception e) {
+        	e.printStackTrace();
             return false;
         }
 	}
