@@ -111,4 +111,11 @@ public abstract class BaseKnFormula<M extends BaseKnFormula<M>> extends Model<M>
 	public java.lang.String getKnfoLatex() {
 		return get("knfo_latex");
 	}
+	public void setKnfoPng(java.lang.String knfoPng) {
+		set("knfo_png", knfoPng);
+	}
+
+	public java.lang.String getKnfoPng() {
+		return get("knfo_png");
+	}
 }

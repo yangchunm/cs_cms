@@ -179,6 +179,31 @@ public class StringUtils {
 		return strLatex;
 	}
 	
+	/**
+	 * 从img标签中获取Base64编码
+	 * @param imgHtml
+	 * @return
+	 */
+	public static String extBase64Str(String imgHtml){
+		Document doc = Jsoup.parseBodyFragment(imgHtml);
+		Elements imgs = doc.getElementsByTag("img");
+		String basestr = "";
+		for(Element img : imgs) {
+			basestr = img.attr("src");
+			break;
+			}
+		if(basestr != "")
+			return basestr.split(",")[1];
+		else			
+			return basestr;
+	}
+	
+	/**
+	 * 只需要img标签的内容
+	 * @param formHtml
+	 * @return
+	 */
+	
 	public static String onlyimg(String formHtml){
 		String retStr = "";
 		Document doc = Jsoup.parseBodyFragment(formHtml);

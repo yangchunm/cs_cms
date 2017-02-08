@@ -6,8 +6,12 @@ import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
 import org.kelab.model.KnFormula;
+import org.kelab.util.Base64Utils;
 import org.kelab.util.StringUtils;
 
+import com.jfinal.kit.PathKit;
+import com.jfinal.kit.Prop;
+import com.jfinal.kit.PropKit;
 import com.jfinal.kit.Ret;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
@@ -19,6 +23,7 @@ public class FormulaAdminService {
 	public static TagAdminService tagSrv = new TagAdminService();
 	final static KnFormula dao = new KnFormula().dao();
 	final String cacheName = "knFormula";
+	Prop p = PropKit.use("config.properties");
 	
 	/**
 	 * 加载
@@ -62,6 +67,11 @@ public class FormulaAdminService {
 			return Ret.fail("msg","只能添加一个公式！");
 		}else if(latexL.size() > 0)
 			knForm.setKnfoLatex(latexL.get(0));
+		//转为png
+		String filename = System.currentTimeMillis()+".png";
+		String filePath = PathKit.getWebRootPath()+"/"+p.get("baseUploadPath")+p.get("knFormPath")+filename;
+		Base64Utils.GenerateImage(StringUtils.extBase64Str(knForm.getKnfoText()), filePath);
+		knForm.setKnfoPng(filename);
 		knForm.setKnfoText(StringUtils.onlyimg(knForm.getKnfoText()));
 		knForm.setKnfoTag(knForm.getKnfoTag().replace("，", ",").replace(" ",","));
 		if(currId == 0){	//新增

@@ -5,7 +5,6 @@ import java.io.File;
 import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
-import org.kelab.model.KnFile;
 import org.kelab.model.KnMolecular;
 
 import com.jfinal.kit.PathKit;

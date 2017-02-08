@@ -6,7 +6,6 @@ import java.util.Date;
 
 import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
-import org.kelab.model.KnFile;
 import org.kelab.model.KnMolecular;
 import org.kelab.util.FileUtils;
 import org.kelab.common.controller.BaseController;
@@ -38,7 +37,6 @@ public class MolecularAdminController extends BaseController{
 		Ret ret = new Ret();
 		KnMolecular knMole = new KnMolecular();
 		String filestr = System.currentTimeMillis()+"";
-		long fileSize = 0;
 		
 		UploadFile uf = null;
 		try {
@@ -53,7 +51,6 @@ public class MolecularAdminController extends BaseController{
 				System.out.println(uf.getUploadPath()+filestr);
 				File f = new File(uf.getUploadPath()+filestr);
 				uf.getFile().renameTo(f);
-				fileSize = f.length()/1024;//kb
 				knMole.setKnmoFile(filestr);
 				knMole.setKnmoFileType(FileUtils.getSuffix(uf.getFileName()));
 			}

@@ -1,8 +1,6 @@
 package org.kelab.admin.kn.formula;
 
 import com.jfinal.core.Controller;
-import com.jfinal.kit.Ret;
-import com.jfinal.kit.StrKit;
 import com.jfinal.validate.Validator;
 /**
  * 参数验证

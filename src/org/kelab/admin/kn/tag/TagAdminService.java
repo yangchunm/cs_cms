@@ -2,7 +2,6 @@ package org.kelab.admin.kn.tag;
 
 import java.util.List;
 
-import org.kelab.model.KnLang;
 import org.kelab.model.KnTag;
 import org.kelab.util.StringUtils;
 
