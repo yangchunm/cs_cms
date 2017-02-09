@@ -8,6 +8,7 @@ import com.jfinal.kit.Ret;
 import org.kelab.model.KeUser;
 import org.joda.time.DateTime;
 import java.io.File;
+import java.util.Date;
 
 /**
  * 上传业务
@@ -89,8 +90,9 @@ public class UploadService {
 	 * 目录中已经包含了模块名了，这里的 meta 只需要体现 accountId 与时间就可以了
 	 */
 	private String generateFileName(Integer accountId, String extName) {
-		DateTime dt = DateTime.now();
-		return accountId + "_" + dt.toString("yyyyMMddHHmmss") + extName;
+		//DateTime dt = DateTime.now();
+		Date dt = new Date();
+		return accountId + "_" + dt.toString() + extName;
 	}
 
 	/**

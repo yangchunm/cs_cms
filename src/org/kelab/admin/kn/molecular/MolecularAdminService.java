@@ -1,13 +1,17 @@
 package org.kelab.admin.kn.molecular;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
 import org.kelab.model.KnMolecular;
+import org.kelab.util.FileUtils;
+import org.kelab.util.FormularUtils;
 
 import com.jfinal.kit.PathKit;
+import com.jfinal.kit.PropKit;
 import com.jfinal.kit.Ret;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
@@ -48,13 +52,24 @@ public class MolecularAdminService {
 	 * 保存信息
 	 * @param KnMolecular对象
 	 * @return 结果信息
+	 * @throws IOException 
 	 */
-	public Ret save(KnMolecular knMole){
+	public Ret save(KnMolecular knMole) throws IOException{
 		int currId = 0;
 		if(knMole.getId() != null && knMole.getId() > 0)
 			currId = knMole.getId();
 		if (isExists(knMole,currId)) {
 			return Ret.fail("msg", "该名称已经存在");
+		}
+		//svg及png转换
+		String fileType = FileUtils.getSuffix(knMole.getKnmoFile());
+		String molfile = PathKit.getWebRootPath()+"/"+PropKit.get("baseUploadPath")+PropKit.get("knMolePath")+knMole.getKnmoFile();
+		System.out.println(fileType+"##"+ molfile+"$$"+fileType.substring(1));
+		//FormularUtils.convertSvg(fileType.substring(1),molfile);
+		if(FormularUtils.convertSvg(fileType.substring(1),molfile)){
+			String svgPath = molfile.replace(fileType,".svg");
+			FormularUtils.convSvgtoPng(svgPath);
+			knMole.setKnmoPng(fileType.replace(fileType, ".png"));
 		}
 		knMole.setKnmoTag(knMole.getKnmoTag().replace("，", ",").replace(" ",","));
 		if(currId == 0){	//新增

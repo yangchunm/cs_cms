@@ -8,6 +8,7 @@ import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
 import org.kelab.model.KnMolecular;
 import org.kelab.util.FileUtils;
+import org.kelab.util.FormularUtils;
 import org.kelab.common.controller.BaseController;
 
 import com.jfinal.kit.Prop;
@@ -36,7 +37,7 @@ public class MolecularAdminController extends BaseController{
 	public void save() throws IOException{
 		Ret ret = new Ret();
 		KnMolecular knMole = new KnMolecular();
-		String filestr = System.currentTimeMillis()+"";
+		String molfile = System.currentTimeMillis()+"";
 		
 		UploadFile uf = null;
 		try {
@@ -47,12 +48,13 @@ public class MolecularAdminController extends BaseController{
 				return;
 			}
 			if(uf != null){
-				filestr =filestr + FileUtils.getSuffix(uf.getFileName());
-				System.out.println(uf.getUploadPath()+filestr);
-				File f = new File(uf.getUploadPath()+filestr);
+				String molType = FileUtils.getSuffix(uf.getFileName());
+				molfile =molfile + molType;
+				File f = new File(uf.getUploadPath()+molfile);
 				uf.getFile().renameTo(f);
-				knMole.setKnmoFile(filestr);
-				knMole.setKnmoFileType(FileUtils.getSuffix(uf.getFileName()));
+				knMole.setKnmoFile(molfile);
+				knMole.setKnmoFileType(molType);
+				
 			}
 		} catch (Exception e) {
 			if (e instanceof com.oreilly.servlet.multipart.ExceededSizeException) {
