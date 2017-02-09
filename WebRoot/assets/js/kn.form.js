@@ -29,7 +29,8 @@ $(document).ready(function() {
 			if(ret.isOk) {
 				$.messager.confirm("提示","<strong>保存成功！！</strong><strong>确定</strong>返回上一页，<strong>取消</strong>继续添加？"
 					,function(){
-						window.location.href="/admin/knform";
+					 	fromurl = document.referrer;
+						window.location.href=fromurl;
 						return ; 
 				});
 				//window.location.reload();

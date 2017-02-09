@@ -1,6 +1,10 @@
 package org.kelab.common;
 
 import org.kelab.model._MappingKit;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.kelab.admin.common.AdminRoutes;
 import org.kelab.common.FrontRoutes;
 import org.kelab.common.interceptor.LoginSessionInterceptor;
@@ -39,6 +43,7 @@ public class MainConfig extends JFinalConfig {
 		me.setError404View("error_404.html");
 		me.setError500View("error_500.html");
 		me.setError403View("error_403.html");
+		
 	}
 	
 	private static Prop loadConfig() {
@@ -60,6 +65,10 @@ public class MainConfig extends JFinalConfig {
 
 	}
 	
+	public void configFilePaht(){
+		
+	}
+	
 	/**
      * 配置模板引擎，通常情况只需配置共享的模板函数
      */
@@ -67,6 +76,13 @@ public class MainConfig extends JFinalConfig {
     	me.addSharedFunction("/_view/common/__layout.html");
     	me.addSharedFunction("/_view/common/_paginate.html");
 	    me.addSharedFunction("/_view/_admin/common/__admin_layout.html");
+	    me.addSharedObject("CONST", new Constants());
+	    Map<String, String> pathMap = new HashMap<String, String>();
+	    pathMap.put("knFilePath", p.get("knFilePath"));
+	    pathMap.put("knFormPath", p.get("knFormPath"));
+	    pathMap.put("knMolePath", p.get("knMolePath"));
+	    pathMap.put("dmAlgoPath", p.get("dmAlgoPath"));
+	    me.addSharedObject("FILEPATH", pathMap);
     }
 	/**
 	 * 配置JFinal插件
