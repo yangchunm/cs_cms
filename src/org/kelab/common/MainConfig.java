@@ -12,6 +12,7 @@ import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.core.JFinal;
+import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
@@ -34,10 +35,10 @@ public class MainConfig extends JFinalConfig {
 		//me.setMaxPostSize(1024*1024*10);
 		//me.setBaseDownloadPath("");
 		//me.setViewType(ViewType.JSP);
+		
 		me.setError404View("error_404.html");
 		me.setError500View("error_500.html");
 		me.setError403View("error_403.html");
-				
 	}
 	
 	private static Prop loadConfig() {
@@ -103,6 +104,7 @@ public class MainConfig extends JFinalConfig {
 	 */
 	@Override
 	public void configHandler(Handlers me) {
+		me.add(new ContextPathHandler("BASE_PATH"));
 
 	}
 	public static void main(String[] args) {

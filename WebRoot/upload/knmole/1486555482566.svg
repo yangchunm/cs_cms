@@ -1,62 +1,72 @@
-<?xml version="1.0"?>
-<svg version="1.1" id="topsvg"
-xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-xmlns:cml="http://www.xml-cml.org/schema" x="0" y="0" width="200px" height="200px" viewBox="0 0 100 100">
-<title>310f - Open Babel Depiction</title>
-<rect x="0" y="0" width="100" height="100" fill="white"/>
-<g transform="translate(0,0)">
-<svg width="100" height="100" x="0" y="0" viewBox="0 0 293.205 260"
-font-family="sans-serif" stroke="rgb(0,0,0)" stroke-width="2"  stroke-linecap="round">
-<line x1="149.3" y1="180.0" x2="149.3" y2="207.0" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<polygon points="114.641016 160.000000 93.431535 176.864102 89.431535 169.935898 " stroke-width="2.000000" fill="rgb(0,0,0)"  stroke="rgb(0,0,0)" />
-<line x1="107.3" y1="116.7" x2="108.1" y2="115.3" stroke="rgb(0,0,0)"  stroke-width="1.0"/>
-<line x1="101.5" y1="114.0" x2="102.9" y2="111.6" stroke="rgb(0,0,0)"  stroke-width="1.0"/>
-<line x1="95.6" y1="111.4" x2="97.7" y2="107.8" stroke="rgb(0,0,0)"  stroke-width="1.0"/>
-<line x1="89.7" y1="108.8" x2="92.4" y2="104.0" stroke="rgb(0,0,0)"  stroke-width="1.0"/>
-<line x1="83.9" y1="106.1" x2="87.2" y2="100.3" stroke="rgb(0,0,0)"  stroke-width="1.0"/>
-<line x1="78.0" y1="103.5" x2="82.0" y2="96.5" stroke="rgb(0,0,0)"  stroke-width="1.0"/>
-<polygon points="149.282032 100.000000 145.282032 73.200000 153.282032 73.200000 " stroke-width="2.000000" fill="rgb(0,0,0)"  stroke="rgb(0,0,0)" />
-<line x1="183.9" y1="120.0" x2="207.3" y2="106.5" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="183.9" y1="160.0" x2="207.3" y2="173.5" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="80.0" y1="100.0" x2="53.0" y2="100.0" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="80.0" y1="100.0" x2="66.5" y2="123.4" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="80.0" y1="100.0" x2="80.0" y2="73.0" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="67.2" y1="176.1" x2="55.1" y2="169.1" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="70.2" y1="170.9" x2="58.1" y2="163.9" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="83.0" y1="193.0" x2="83.0" y2="207.0" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="77.0" y1="193.0" x2="77.0" y2="207.0" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="159.0" y1="50.9" x2="171.2" y2="43.9" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="162.0" y1="56.1" x2="174.2" y2="49.1" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="136.5" y1="56.1" x2="124.4" y2="49.1" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="139.5" y1="50.9" x2="127.4" y2="43.9" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="221.6" y1="193.0" x2="221.6" y2="207.0" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="215.6" y1="193.0" x2="215.6" y2="207.0" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="228.3" y1="170.9" x2="240.4" y2="163.9" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="231.3" y1="176.1" x2="243.4" y2="169.1" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="114.6" y1="160.0" x2="149.3" y2="180.0" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="149.3" y1="180.0" x2="183.9" y2="160.0" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="150.9" y1="170.8" x2="175.1" y2="156.8" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="183.9" y1="160.0" x2="183.9" y2="120.0" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="176.7" y1="154.0" x2="176.7" y2="126.0" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="183.9" y1="120.0" x2="149.3" y2="100.0" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="149.3" y1="100.0" x2="114.6" y2="120.0" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<line x1="114.6" y1="120.0" x2="114.6" y2="160.0" stroke="rgb(0,0,0)"  stroke-width="2.0"/>
-<text x="143.282032" y="228.000000" fill="rgb(191,191,191)"  stroke="rgb(191,191,191)" stroke-width="1" font-size="16" >H</text>
-<text x="212.564065" y="108.000000" fill="rgb(191,191,191)"  stroke="rgb(191,191,191)" stroke-width="1" font-size="16" >H</text>
-<text x="34.000000" y="108.000000" fill="rgb(191,191,191)"  stroke="rgb(191,191,191)" stroke-width="1" font-size="16" >H</text>
-<text x="54.000000" y="142.641016" fill="rgb(191,191,191)"  stroke="rgb(191,191,191)" stroke-width="1" font-size="16" >H</text>
-<text x="74.000000" y="68.000000" fill="rgb(191,191,191)"  stroke="rgb(191,191,191)" stroke-width="1" font-size="16" >H</text>
-<text x="74.000000" y="188.000000" fill="rgb(12,12,255)"  stroke="rgb(12,12,255)" stroke-width="1" font-size="16" >N</text>
-<text x="39.358984" y="168.000000" fill="rgb(255,12,12)"  stroke="rgb(255,12,12)" stroke-width="1" font-size="16" >O</text>
-<text x="74.000000" y="228.000000" fill="rgb(255,12,12)"  stroke="rgb(255,12,12)" stroke-width="1" font-size="16" >O</text>
-<text x="143.282032" y="68.000000" fill="rgb(12,12,255)"  stroke="rgb(12,12,255)" stroke-width="1" font-size="16" >N</text>
-<text x="177.923048" y="48.000000" fill="rgb(255,12,12)"  stroke="rgb(255,12,12)" stroke-width="1" font-size="16" >O</text>
-<text x="108.641016" y="48.000000" fill="rgb(255,12,12)"  stroke="rgb(255,12,12)" stroke-width="1" font-size="16" >O</text>
-<text x="212.564065" y="188.000000" fill="rgb(12,12,255)"  stroke="rgb(12,12,255)" stroke-width="1" font-size="16" >N</text>
-<text x="212.564065" y="228.000000" fill="rgb(255,12,12)"  stroke="rgb(255,12,12)" stroke-width="1" font-size="16" >O</text>
-<text x="247.205081" y="168.000000" fill="rgb(255,12,12)"  stroke="rgb(255,12,12)" stroke-width="1" font-size="16" >O</text>
-</svg>
-</g>
-<text font-size="18.000000" fill ="black" font-family="sans-serif"
-x="10.000000" y="20.000000" >310f</text>
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version='1.2' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='48.14mm' height='72.02mm' viewBox='0 0 48.14 72.02'>
+  <desc>Generated by the Chemistry Development Kit (http://github.com/cdk)</desc>
+  <g stroke-linecap='round' stroke-linejoin='round' stroke='#000000' stroke-width='.19' fill='#FF0D0D'>
+    <rect x='.0' y='.0' width='49.0' height='73.0' fill='#FFFFFF' stroke='none'/>
+    <g id='mol1' class='mol'>
+      <line id='mol1bnd1' class='bond' x1='19.67' y1='21.1' x2='19.67' y2='26.18'/>
+      <g id='mol1bnd2' class='bond'>
+        <line x1='24.07' y1='18.56' x2='19.67' y2='21.1'/>
+        <line x1='24.07' y1='19.61' x2='20.58' y2='21.62'/>
+      </g>
+      <line id='mol1bnd3' class='bond' x1='19.67' y1='21.1' x2='16.31' y2='19.16'/>
+      <line id='mol1bnd4' class='bond' x1='19.67' y1='26.18' x2='24.07' y2='28.72'/>
+      <line id='mol1bnd5' class='bond' x1='19.67' y1='26.18' x2='16.32' y2='28.11'/>
+      <line id='mol1bnd6' class='bond' x1='24.07' y1='28.72' x2='28.47' y2='26.18'/>
+      <line id='mol1bnd7' class='bond' x1='24.07' y1='28.72' x2='24.07' y2='33.8'/>
+      <line id='mol1bnd8' class='bond' x1='28.47' y1='26.18' x2='28.47' y2='21.1'/>
+      <line id='mol1bnd9' class='bond' x1='28.47' y1='26.18' x2='31.82' y2='28.11'/>
+      <g id='mol1bnd10' class='bond'>
+        <line x1='28.47' y1='21.1' x2='24.07' y2='18.56'/>
+        <line x1='27.56' y1='21.62' x2='24.07' y2='19.61'/>
+      </g>
+      <line id='mol1bnd11' class='bond' x1='28.47' y1='21.1' x2='31.82' y2='19.16'/>
+      <line id='mol1bnd12' class='bond' x1='24.07' y1='18.56' x2='24.07' y2='14.77'/>
+      <line id='mol1bnd13' class='bond' x1='24.07' y1='33.8' x2='27.42' y2='35.73'/>
+      <line id='mol1bnd14' class='bond' x1='24.07' y1='33.8' x2='20.16' y2='33.11'/>
+      <line id='mol1bnd15' class='bond' x1='24.07' y1='33.8' x2='22.79' y2='37.3'/>
+      <g id='mol1bnd16' class='bond'>
+        <line x1='13.99' y1='28.51' x2='11.76' y2='27.22'/>
+        <line x1='14.44' y1='27.71' x2='12.21' y2='26.43'/>
+      </g>
+      <g id='mol1bnd17' class='bond'>
+        <line x1='15.72' y1='30.01' x2='15.72' y2='32.47'/>
+        <line x1='14.81' y1='30.01' x2='14.81' y2='32.47'/>
+      </g>
+      <g id='mol1bnd18' class='bond'>
+        <line x1='33.69' y1='27.71' x2='35.93' y2='26.42'/>
+        <line x1='34.15' y1='28.51' x2='36.38' y2='27.22'/>
+      </g>
+      <g id='mol1bnd19' class='bond'>
+        <line x1='33.33' y1='30.01' x2='33.33' y2='32.47'/>
+        <line x1='32.41' y1='30.01' x2='32.41' y2='32.47'/>
+      </g>
+      <g id='mol1bnd20' class='bond'>
+        <line x1='24.89' y1='12.47' x2='27.13' y2='11.18'/>
+        <line x1='25.35' y1='13.27' x2='27.58' y2='11.98'/>
+      </g>
+      <g id='mol1bnd21' class='bond'>
+        <line x1='22.79' y1='13.27' x2='20.56' y2='11.98'/>
+        <line x1='23.25' y1='12.47' x2='21.01' y2='11.19'/>
+      </g>
+      <path id='mol1atm7' class='atom' d='M14.56 19.46v-1.81h.24v.75h.94v-.75h.24v1.81h-.24v-.85h-.94v.85h-.24z' stroke='none' fill='#000000'/>
+      <path id='mol1atm8' class='atom' d='M32.16 19.46v-1.81h.24v.75h.94v-.75h.24v1.81h-.24v-.85h-.94v.85h-.24z' stroke='none' fill='#000000'/>
+      <path id='mol1atm10' class='atom' d='M27.76 37.24v-1.81h.24v.75h.94v-.75h.24v1.81h-.24v-.85h-.94v.85h-.24z' stroke='none' fill='#000000'/>
+      <path id='mol1atm11' class='atom' d='M18.36 33.82v-1.81h.24v.75h.94v-.75h.24v1.81h-.24v-.85h-.94v.85h-.24z' stroke='none' fill='#000000'/>
+      <path id='mol1atm12' class='atom' d='M21.62 39.48v-1.81h.24v.75h.94v-.75h.24v1.81h-.24v-.85h-.94v.85h-.24z' stroke='none' fill='#000000'/>
+      <path id='mol1atm13' class='atom' d='M14.55 29.62v-1.81h.25l.95 1.42v-1.42h.23v1.81h-.25l-.95 -1.42v1.42h-.23z' stroke='none' fill='#3050F8'/>
+      <path id='mol1atm14' class='atom' d='M10.0 26.2q.0 -.45 .24 -.71q.24 -.26 .62 -.26q.25 .0 .45 .12q.2 .12 .31 .33q.11 .21 .11 .49q.0 .28 -.11 .49q-.11 .22 -.31 .33q-.2 .11 -.44 .11q-.26 .0 -.46 -.12q-.2 -.12 -.31 -.34q-.1 -.21 -.1 -.45zM10.25 26.21q.0 .33 .18 .52q.18 .19 .44 .19q.27 .0 .45 -.19q.17 -.19 .17 -.54q.0 -.22 -.08 -.39q-.08 -.17 -.22 -.26q-.14 -.09 -.32 -.09q-.26 .0 -.44 .17q-.18 .17 -.18 .58z' stroke='none'/>
+      <path id='mol1atm15' class='atom' d='M14.4 33.82q.0 -.45 .24 -.71q.24 -.26 .62 -.26q.25 .0 .45 .12q.2 .12 .31 .33q.11 .21 .11 .49q.0 .28 -.11 .49q-.11 .22 -.31 .33q-.2 .11 -.44 .11q-.26 .0 -.46 -.12q-.2 -.12 -.31 -.34q-.1 -.21 -.1 -.45zM14.65 33.82q.0 .33 .18 .52q.18 .19 .44 .19q.27 .0 .45 -.19q.17 -.19 .17 -.54q.0 -.22 -.08 -.39q-.08 -.17 -.22 -.26q-.14 -.09 -.32 -.09q-.26 .0 -.44 .17q-.18 .17 -.18 .58z' stroke='none'/>
+      <path id='mol1atm16' class='atom' d='M32.16 29.62v-1.81h.25l.95 1.42v-1.42h.23v1.81h-.25l-.95 -1.42v1.42h-.23z' stroke='none' fill='#3050F8'/>
+      <path id='mol1atm17' class='atom' d='M36.4 26.2q.0 -.45 .24 -.71q.24 -.26 .62 -.26q.25 .0 .45 .12q.2 .12 .31 .33q.11 .21 .11 .49q.0 .28 -.11 .49q-.11 .22 -.31 .33q-.2 .11 -.44 .11q-.26 .0 -.46 -.12q-.2 -.12 -.31 -.34q-.1 -.21 -.1 -.45zM36.65 26.21q.0 .33 .18 .52q.18 .19 .44 .19q.27 .0 .45 -.19q.17 -.19 .17 -.54q.0 -.22 -.08 -.39q-.08 -.17 -.22 -.26q-.14 -.09 -.32 -.09q-.26 .0 -.44 .17q-.18 .17 -.18 .58z' stroke='none'/>
+      <path id='mol1atm18' class='atom' d='M32.0 33.82q.0 -.45 .24 -.71q.24 -.26 .62 -.26q.25 .0 .45 .12q.2 .12 .31 .33q.11 .21 .11 .49q.0 .28 -.11 .49q-.11 .22 -.31 .33q-.2 .11 -.44 .11q-.26 .0 -.46 -.12q-.2 -.12 -.31 -.34q-.1 -.21 -.1 -.45zM32.25 33.82q.0 .33 .18 .52q.18 .19 .44 .19q.27 .0 .45 -.19q.17 -.19 .17 -.54q.0 -.22 -.08 -.39q-.08 -.17 -.22 -.26q-.14 -.09 -.32 -.09q-.26 .0 -.44 .17q-.18 .17 -.18 .58z' stroke='none'/>
+      <path id='mol1atm19' class='atom' d='M23.35 14.38v-1.81h.25l.95 1.42v-1.42h.23v1.81h-.25l-.95 -1.42v1.42h-.23z' stroke='none' fill='#3050F8'/>
+      <path id='mol1atm20' class='atom' d='M27.6 10.96q.0 -.45 .24 -.71q.24 -.26 .62 -.26q.25 .0 .45 .12q.2 .12 .31 .33q.11 .21 .11 .49q.0 .28 -.11 .49q-.11 .22 -.31 .33q-.2 .11 -.44 .11q-.26 .0 -.46 -.12q-.2 -.12 -.31 -.34q-.1 -.21 -.1 -.45zM27.85 10.96q.0 .33 .18 .52q.18 .19 .44 .19q.27 .0 .45 -.19q.17 -.19 .17 -.54q.0 -.22 -.08 -.39q-.08 -.17 -.22 -.26q-.14 -.09 -.32 -.09q-.26 .0 -.44 .17q-.18 .17 -.18 .58z' stroke='none'/>
+      <path id='mol1atm21' class='atom' d='M18.8 10.96q.0 -.45 .24 -.71q.24 -.26 .62 -.26q.25 .0 .45 .12q.2 .12 .31 .33q.11 .21 .11 .49q.0 .28 -.11 .49q-.11 .22 -.31 .33q-.2 .11 -.44 .11q-.26 .0 -.46 -.12q-.2 -.12 -.31 -.34q-.1 -.21 -.1 -.45zM19.05 10.96q.0 .33 .18 .52q.18 .19 .44 .19q.27 .0 .45 -.19q.17 -.19 .17 -.54q.0 -.22 -.08 -.39q-.08 -.17 -.22 -.26q-.14 -.09 -.32 -.09q-.26 .0 -.44 .17q-.18 .17 -.18 .58z' stroke='none'/>
+    </g>
+    <g class='title'>
+      <path d='M22.15 61.13l.18 -.02q.03 .15 .1 .22q.07 .07 .18 .07q.12 .0 .21 -.09q.09 -.09 .09 -.22q.0 -.12 -.08 -.2q-.08 -.08 -.2 -.08q-.05 .0 -.13 .02l.02 -.16q.02 .0 .03 .0q.11 .0 .21 -.06q.09 -.06 .09 -.18q.0 -.1 -.07 -.16q-.07 -.06 -.17 -.06q-.1 .0 -.17 .07q-.07 .07 -.09 .19l-.18 -.03q.03 -.18 .15 -.28q.12 -.1 .29 -.1q.12 .0 .22 .05q.1 .05 .15 .14q.05 .09 .05 .19q.0 .09 -.05 .17q-.05 .08 -.15 .12q.13 .03 .2 .12q.07 .09 .07 .23q.0 .19 -.14 .32q-.14 .13 -.35 .13q-.19 .0 -.32 -.11q-.13 -.11 -.14 -.29zM23.94 61.51h-.18v-1.13q-.07 .06 -.17 .12q-.1 .06 -.19 .09v-.17q.15 -.07 .26 -.17q.11 -.1 .16 -.19h.11v1.45zM24.4 60.8q.0 -.26 .05 -.41q.05 -.16 .16 -.24q.1 -.09 .26 -.09q.12 .0 .2 .05q.09 .05 .14 .14q.06 .09 .09 .22q.03 .13 .03 .34q.0 .26 -.05 .41q-.05 .16 -.16 .24q-.1 .09 -.26 .09q-.21 .0 -.33 -.15q-.14 -.18 -.14 -.59zM24.58 60.8q.0 .36 .08 .48q.08 .12 .21 .12q.12 .0 .21 -.12q.08 -.12 .08 -.48q.0 -.36 -.08 -.47q-.08 -.12 -.21 -.12q-.12 .0 -.2 .1q-.09 .13 -.09 .49zM25.62 61.51v-.91h-.16v-.14h.16v-.11q.0 -.11 .02 -.16q.03 -.07 .09 -.11q.06 -.04 .18 -.04q.08 .0 .17 .02l-.03 .15q-.06 -.01 -.1 -.01q-.08 .0 -.11 .04q-.03 .04 -.03 .13v.1h.2v.14h-.2v.91h-.18z' stroke='none' fill='#FF0000'/>
+    </g>
+  </g>
 </svg>

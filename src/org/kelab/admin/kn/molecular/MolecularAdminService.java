@@ -9,6 +9,7 @@ import org.kelab.bean.CommQuery;
 import org.kelab.model.KnMolecular;
 import org.kelab.util.FileUtils;
 import org.kelab.util.FormularUtils;
+import org.openscience.cdk.exception.CDKException;
 
 import com.jfinal.kit.PathKit;
 import com.jfinal.kit.PropKit;
@@ -65,12 +66,15 @@ public class MolecularAdminService {
 		String fileType = FileUtils.getSuffix(knMole.getKnmoFile());
 		String molfile = PathKit.getWebRootPath()+"/"+PropKit.get("baseUploadPath")+PropKit.get("knMolePath")+knMole.getKnmoFile();
 		System.out.println(fileType+"##"+ molfile+"$$"+fileType.substring(1));
-		//FormularUtils.convertSvg(fileType.substring(1),molfile);
-		if(FormularUtils.convertSvg(fileType.substring(1),molfile)){
-			String svgPath = molfile.replace(fileType,".svg");
-			FormularUtils.convSvgtoPng(svgPath);
-			knMole.setKnmoPng(fileType.replace(fileType, ".png"));
+		try {
+			FormularUtils.writePNGSVG(molfile);
+		} catch (CDKException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Ret.fail("msg","mol文件转换为Png、svg错误");
 		}
+		knMole.setKnmoPng(knMole.getKnmoFile().replace(fileType, ".png"));
+		
 		knMole.setKnmoTag(knMole.getKnmoTag().replace("，", ",").replace(" ",","));
 		if(currId == 0){	//新增
 			knMole.save();

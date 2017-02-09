@@ -20,7 +20,6 @@ import com.jfinal.upload.UploadFile;
 public class MolecularAdminController extends BaseController{
 	static TreeAdminService treeSrv = TreeAdminService.me;
 	static MolecularAdminService srv = MolecularAdminService.me;
-	Prop p = PropKit.use("config.properties");
 	
 	public void index() {
 		CommQuery comQ = getBean(CommQuery.class,"comm");
@@ -41,7 +40,7 @@ public class MolecularAdminController extends BaseController{
 		
 		UploadFile uf = null;
 		try {
-			uf = getFile("knmo_file",p.get("knMolePath"));
+			uf = getFile("knmo_file",PropKit.get("knMolePath"));
 			knMole = getModel(KnMolecular.class,"mole");
 			if (knMole.getId() == 0 && uf == null) {
 				renderJson(Ret.fail("msg", "请先选择上传文件"));
@@ -89,7 +88,7 @@ public class MolecularAdminController extends BaseController{
 	public void fileDown(){
 		int id = getParaToInt(0);
 		KnMolecular f =KnMolecular.dao.findById(id);
-		String fileStr = "/"+p.get("baseUploadPath")+p.get("knMolePath")+f.getKnmoFile();
+		String fileStr = "/"+PropKit.get("baseUploadPath")+PropKit.get("knMolePath")+f.getKnmoFile();
 		renderJson(srv.fileDown(fileStr));
 	}
 }
