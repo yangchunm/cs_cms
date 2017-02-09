@@ -7,7 +7,7 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">用户登录</div>
 			<div class="panel-body">
-				<form class="form-horizontal" id="login_form" action="/login/doLogin?returnUrl=#(returnUrl)" method="post">
+				<form class="form-horizontal" id="login_form" action="#(BASE_PATH)/login/doLogin?returnUrl=#(returnUrl)" method="post">
 					<div class="form-group">
 						<label for="userName" class="col-sm-2 control-label">邮箱</label>
 						<div class="col-sm-7">
@@ -54,9 +54,9 @@
 						</div>
 					</div>
 	
-					没有账号&nbsp;<a href="/reg" onclick="appendReturnUrl(this)">现在注册</a>，
-					<a href="/login/forgetPassword">忘记密码？</a>&nbsp;
-					<a href="/reg/notActivated">还未激活？</a>
+					没有账号&nbsp;<a href="#(BASE_PATH)/reg" onclick="appendReturnUrl(this)">现在注册</a>，
+					<a href="#(BASE_PATH)/login/forgetPassword">忘记密码？</a>&nbsp;
+					<a href="#(BASE_PATH)/reg/notActivated">还未激活？</a>
 	
 					</form>
 				</div>
@@ -68,9 +68,9 @@
 #end
 
 #define js()
-	<script type="text/javascript" src="/assets/jquery_form/jquery.form.min.js"></script>
-	<script type="text/javascript" src="/assets/layer/layer.js"></script>
-	<script type="text/javascript" src="/assets/js/common.md5.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/jquery_form/jquery.form.min.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/layer/layer.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/common.md5.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -120,7 +120,7 @@
 		});
 
 		function updateCaptcha() {
-			$(".captcha").attr("src", "/login/captcha?v=" + Math.random());
+			$(".captcha").attr("src", "#(BASE_PATH)/login/captcha?v=" + Math.random());
 			$("#captchaInput").val("");
 			$("#userPasswd").val("");
 		}

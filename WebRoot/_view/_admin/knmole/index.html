@@ -4,7 +4,7 @@
 #@adminLayout()
 #define main()
 #include("/_view/_admin/common/_button_bar.html")
-	<form class="form-inline" id="search-form" name="search-form" method="post" action="#(mandir)/#(currCont)">
+	<form class="form-inline" id="search-form" name="search-form" method="post" action="#(BASE_PATH)#(mandir)/#(currCont)">
 		<div class="form-group">
     		<label for="comm.keyWord">关键词</label>
     		<input type="text" class="form-control" name="comm.keyWord" id="comm.keyWord" value="#(comQ.keyWord)" placeholder="分子名/标签/知识点">
@@ -57,7 +57,10 @@
 	         		<td>#(x.kntrName)</td>
 	         		<td>#(x.knmoFileType)</td>
 	         		<td>#(x.knmoTag)</td>
-	         		<td>#(x.knmoPng)</td>
+	         		<td>
+	         			<a class="fancybox" rel="group" title="#(x.knmoName)" 
+	         		href="#(x.knmoPng)">#(x.knmoPng)</a>
+	         		</td>
 	         		<td title="#(x.userName)">#(x.userRealName)</td>
 	         		<td>#date(x.knmoTime, "yyyy-MM-dd HH:mm")</td>
 	         		<td><span class="glyphicon glyphicon-save-file knmo-down" value="#(x.id)"></span></td>
@@ -78,12 +81,12 @@
 #end
 
 #define css()
-<link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="#(BASE_PATH)/assets/css/bootstrap-datetimepicker.min.css" type="text/css" media="screen" />
 #end
 
 #define js()
-	<script type="text/javascript" src="/assets/js/kn.mole.js"></script>
-	<script src="/assets/bootstrap/moment-with-locales.js" type="text/javascript"></script>
-    <script src="/assets/bootstrap/bootstrap-datetimepicker.js" type="text/javascript"></script>
-    <script src="/assets/bootstrap/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/kn.mole.js"></script>
+	<script src="#(BASE_PATH)/assets/bootstrap/moment-with-locales.js" type="text/javascript"></script>
+    <script src="#(BASE_PATH)/assets/bootstrap/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <script src="#(BASE_PATH)/assets/bootstrap/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
 #end

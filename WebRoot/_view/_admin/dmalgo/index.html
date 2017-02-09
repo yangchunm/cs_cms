@@ -4,7 +4,7 @@
 #@adminLayout()
 #define main()
 #include("/_view/_admin/common/_button_bar.html")
-	<form class="form-inline" id="search-form" name="search-form" method="post" action="#(mandir)/#(currCont)">
+	<form class="form-inline" id="search-form" name="search-form" method="post" action="#(BASE_PATH)#(mandir)/#(currCont)">
 		<div class="form-group">
     		<label for="s.dmal_name">算法</label>
     		<input type="text" class="form-control" name="s.dmal_name" id="s.dmal_name" value="#(sAlgo.dmalName)" placeholder="算法名称">
@@ -78,5 +78,5 @@
 #end
 
 #define js()
-	<script type="text/javascript" src="/assets/js/dm.algo.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/dm.algo.js"></script>
 #end

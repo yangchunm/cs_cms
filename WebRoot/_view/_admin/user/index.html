@@ -4,7 +4,7 @@
 #@adminLayout()
 #define main()
 #include("/_view/_admin/common/_button_bar.html")
-	<form class="form-inline" id="search-form" name="search-form" method="post" action="#(mandir)/#(currCont)">
+	<form class="form-inline" id="search-form" name="search-form" method="post" action="#(BASE_PATH)#(mandir)/#(currCont)">
 		<div class="form-group">
     		<label for="s.user_name">邮箱</label>
     		<input type="text" class="form-control" name="s.user_name" id="s.user_name" value="#(sUser.userName)" placeholder="邮箱">
@@ -105,6 +105,6 @@
 #end
 
 #define js()
-	<script type="text/javascript" src="/assets/js/common.md5.js"></script>
-	<script type="text/javascript" src="/assets/js/ke.user.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/common.md5.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/ke.user.js"></script>
 #end

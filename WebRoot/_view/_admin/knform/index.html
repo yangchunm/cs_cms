@@ -4,7 +4,7 @@
 #@adminLayout()
 #define main()
 #include("/_view/_admin/common/_button_bar.html")
-	<form class="form-inline" id="search-form" name="search-form" method="post" action="#(mandir)/#(currCont)">
+	<form class="form-inline" id="search-form" name="search-form" method="post" action="#(BASE_PATH)#(mandir)/#(currCont)">
 		<div class="form-group">
     		<label for="comm.keyWord">关键词</label>
     		<input type="text" class="form-control" name="comm.keyWord" id="comm.keyWord" value="#(comQ.keyWord)" placeholder="文件名/标签/知识点">
@@ -53,11 +53,11 @@
 	 		#for(x : knFormP.list)
 	 			<tr>	         		
 	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1)</td>
-	         		<td><a href="#(mandir)/#(currCont)/edit/#(x.id)">#(x.knfoName)</a></td>
+	         		<td><a href="#(BASE_PATH)#(mandir)/#(currCont)/edit/#(x.id)">#(x.knfoName)</a></td>
 	         		<td>#(x.kntrName)</td>
 	         		<td>
 	         		<a class="fancybox" rel="group" title="#(x.knfoName)" 
-	         		href="#(mandir)/#(currCont)/getFormImgById/#(x.id)">#(x.knfoText)</a>
+	         		href="#(BASE_PATH)#(mandir)/#(currCont)/getFormImgById/#(x.id)">#(x.knfoText)</a>
 	         		
 	         		</td>
 	         		<td>#(x.knfoTag)</td>
@@ -80,16 +80,16 @@
 #end
 
 #define css()
-<link rel="stylesheet" href="/assets/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="#(BASE_PATH)/assets/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="#(BASE_PATH)/assets/css/bootstrap-datetimepicker.min.css" type="text/css" media="screen" />
 #end
 
 #define js()
-	<script type="text/javascript" src="/assets/js/kn.form.js"></script>
-	<script src="/assets/bootstrap/moment-with-locales.js" type="text/javascript"></script>
-    <script src="/assets/bootstrap/bootstrap-datetimepicker.js" type="text/javascript"></script>
-    <script src="/assets/bootstrap/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/assets/fancybox/jquery.fancybox.pack.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/kn.form.js"></script>
+	<script src="#(BASE_PATH)/assets/bootstrap/moment-with-locales.js" type="text/javascript"></script>
+    <script src="#(BASE_PATH)/assets/bootstrap/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <script src="#(BASE_PATH)/assets/bootstrap/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
+    <script type="text/javascript" src="#(BASE_PATH)/assets/fancybox/jquery.fancybox.pack.js"></script>
     <<script type="text/javascript">
 	    $(document).ready(function() {
 	    	$(".datepick").datetimepicker({
