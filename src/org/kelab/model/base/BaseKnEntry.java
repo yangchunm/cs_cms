@@ -65,12 +65,12 @@ public abstract class BaseKnEntry<M extends BaseKnEntry<M>> extends Model<M> imp
 		return get("knen_status");
 	}
 
-	public void setKnenKeywords(java.lang.String knenKeywords) {
-		set("knen_keywords", knenKeywords);
+	public void setKnenTag(java.lang.String knenTag) {
+		set("knen_tag", knenTag);
 	}
 
-	public java.lang.String getKnenKeywords() {
-		return get("knen_keywords");
+	public java.lang.String getKnenTag() {
+		return get("knen_tag");
 	}
 
 	public void setKnenCreaUserId(java.lang.Integer knenCreaUserId) {
@@ -127,6 +127,13 @@ public abstract class BaseKnEntry<M extends BaseKnEntry<M>> extends Model<M> imp
 
 	public java.lang.Integer getKnenSecuId() {
 		return get("knen_secu_id");
+	}
+	public void setKnenTextType(java.lang.String knenTextType) {
+		set("knen_text_type", knenTextType);
+	}
+
+	public java.lang.String getKnenTextType() {
+		return get("knen_text_type");
 	}
 
 }

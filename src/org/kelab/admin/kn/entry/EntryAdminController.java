@@ -1,4 +1,4 @@
-package org.kelab.admin.kn.formula;
+package org.kelab.admin.kn.entry;
 
 import java.util.Date;
 
@@ -11,9 +11,9 @@ import org.kelab.common.controller.BaseController;
 import com.jfinal.aop.Before;
 import com.jfinal.kit.Ret;
 
-public class FormulaAdminController extends BaseController{
+public class EntryAdminController extends BaseController{
 	static TreeAdminService treeSrv = TreeAdminService.me;
-	static FormulaAdminService srv = FormulaAdminService.me;
+	static EntryAdminService srv = EntryAdminService.me;
 	static LangAdminService langSrv = LangAdminService.me;
 	
 	public void index() {
@@ -23,8 +23,7 @@ public class FormulaAdminController extends BaseController{
 		if(comQ.getPageSize() == 0)
 			comQ.setPageSize(10);
 		setAttr("comQ",comQ);
-		setAttr("langMap",langSrv.findAllKnLangMap());
-		setAttr("knFormP",srv.findAllForm(comQ));
+		setAttr("knEntryP",srv.findAllEntry(comQ));
 		render("index.html");
 	}
 	
@@ -42,7 +41,7 @@ public class FormulaAdminController extends BaseController{
 		render("edit.html");
 	}
 	
-	@Before(FormulaAdminValidator.class)
+	@Before(EntryAdminValidator.class)
 	public void save(){
 		Ret ret = new Ret();
 		KnFormula knForm = getModel(KnFormula.class,"");

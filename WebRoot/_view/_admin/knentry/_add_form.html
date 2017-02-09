@@ -1,0 +1,54 @@
+     <div class="row">
+     	<form class="" id="add-form" action="#(BASE_PATH)#(mandir)/#(currCont)/save" method="post">
+     		<div class="col-md-8">
+			<div class="form-group">
+				<label for="knen_name">词条名称   <span class="small text-danger" id="knen_name_msg">*（主题或术语，简短）</span></label>
+				<input type="text" name="knen_name" id="frm_knen_name" class="form-control"
+					 value="#(knEntr.knenName??)" placeholder="词条名称或主题">
+				 <input type="hidden" name="id" value="#(knEntr.id ?? '0')" id="frm_id">
+			</div>
+			
+			<div class="form-group">
+				<label for="knen_text_type">编辑词条语法   <span class="small text-danger" id="knen_text_type_msg">*（支持HTML、Wiki和Markdown语法编辑）</span></label>
+				<select name="knen_text_type" id="frm_knen_text_type"  class="form-control">
+					<option value="HTML">在线编辑器（HTML）</option>
+					<option value="Wiki">Wiki语法</option>
+					<option value="Markdown">Markdown语法</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="knen_text">描述   <span class="small text-danger" id="knen_text_type_msg">*（词条或主题的详细内容）</span></label>
+					<script id="frm_knen_text" name="knen_text" style="line-height: 20px;"  type="text/plain">#(knForm.knfoDesc ??)</script>
+			</div>
+			
+	      <div class="form-group">
+	       	<label for="button" class="control-label"></label>
+	        	<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save-file"></span> 保存</button>
+	         	<button type="reset" class="btn btn-default"><span class="glyphicon glyphicon-remove-circle"></span> 重置</button>
+	         	<a href="javascript:history.go(-1)" class="btn btn-success"><span class="glyphicon glyphicon-circle-arrow-left"></span> 返回</a>
+	     </div>
+	     </div>
+     
+      <!--  end of left mian body -->
+      <div class="col-md-4">
+      		<div class="form-group">
+				<label for="knen_kntr_id" >知识点 <span class="small text-danger" id="knen_kntr_id_msg">*（属于知识结构树的那一部分）</span></label>
+				<select name="knen_kntr_id" id="frm_knen_kntr_id" class="form-control">
+				 		#for(x : knTreeL)
+				 			#if(x.id == knEntr.knenKntrId ?? "0")
+				 				<option value="#(x.id)" selected>#(x.kntrName)</option>
+				 			#else
+				 				<option value="#(x.id)">#(x.kntrName)</option>
+				 			#end
+				 			#@kntr_tree_list(x.knTreeL,"&nbsp;&nbsp",knEntr.knenKntrId ?? "0")
+				        #end
+				 </select>
+			</div>
+			<div class="form-group">
+				<label for="knen_tag">标签   <span class="small text-danger" id="knen_tag_msg">*（3~5个关于本词条的关键词）</span></label>
+					<input type="text" name="knen_tag" id="frm_knen_tag" class="form-control"
+					value="#(knEntr.knenTag ??)" placeholder="标签，逗号隔开">
+			</div>
+      </div>
+       </form>
+	</div>

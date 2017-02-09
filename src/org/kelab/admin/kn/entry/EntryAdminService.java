@@ -1,10 +1,11 @@
-package org.kelab.admin.kn.formula;
+package org.kelab.admin.kn.entry;
 
 import java.util.List;
 
 import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
+import org.kelab.model.KnEntry;
 import org.kelab.model.KnFormula;
 import org.kelab.util.Base64Utils;
 import org.kelab.util.StringUtils;
@@ -17,11 +18,11 @@ import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
 
-public class FormulaAdminService {
-	public static final FormulaAdminService me = new FormulaAdminService();
+public class EntryAdminService {
+	public static final EntryAdminService me = new EntryAdminService();
 	public static TreeAdminService treeSrv = new TreeAdminService();
 	public static TagAdminService tagSrv = new TagAdminService();
-	final static KnFormula dao = new KnFormula().dao();
+	final static KnEntry dao = new KnEntry().dao();
 	final String cacheName = "knFormula";
 	Prop p = PropKit.use("config.properties");
 	
@@ -30,23 +31,24 @@ public class FormulaAdminService {
 	 * @param 
 	 * @return 则返回所有
 	 */
-	public Page<KnFormula> findAllForm(CommQuery comQ){
-		String strSele = "select knfo.*,kntr.kntr_name as kntrName,keus.user_real_name as userRealName,"
-				+ "keus.user_name as userName";
-		String strFrom = "from kn_formula knfo, kn_tree kntr, ke_user keus";
-		String strWhere = " where keus.id = knfo.knfo_user_id and knfo.knfo_kntr_id = kntr.id";
+	public Page<KnEntry> findAllEntry(CommQuery comQ){
+		String strSele = "select knen.*,kntr.kntr_name as kntrName,keus.user_real_name as userRealName,"
+				+ "keus.user_name as userName,kese.secu_name as secuName";
+		String strFrom = "from kn_entry knen, kn_tree kntr, ke_user keus, ke_security kese";
+		String strWhere = " where keus.id = knen.knen_crea_user_id and knen.knen_kntr_id = kntr.id "
+				+ "and kese.id = knen.knen_secu_id";
 		if(comQ.getKeyWord() != null && comQ.getKeyWord() != "")
-			strWhere = strWhere + " and (knfo.knfo_name like '%"+comQ.getKeyWord()+"%' "
-					+ " or knfo.knfo_tag like '%"+comQ.getKeyWord()+"%' "
+			strWhere = strWhere + " and (knen.knen_name like '%"+comQ.getKeyWord()+"%' "
+					+ " or knen.knen_tag like '%"+comQ.getKeyWord()+"%' "
 					+ " or kntr.kntr_name like '%"+comQ.getKeyWord()+"%')";
 		if(comQ.getOther() != null && comQ.getOther() != "")
 			strWhere = strWhere + " and (keus.user_real_name like '%"+comQ.getOther()+"%' "
 					+ "or keus.user_name like '%"+comQ.getOther()+"%') ";
 		if(comQ.getStart() != null && comQ.getEnd() != null)
-			strWhere = strWhere + " and knfo.knfo_time between '"+comQ.getStart()+"' and '"+comQ.getEnd()+"'";
-		Page<KnFormula> formP = dao.paginate(comQ.getPage(), comQ.getPageSize(), strSele, strFrom
-				+  strWhere+" order by knfo.id desc");
-		return formP;
+			strWhere = strWhere + " and knen.knen_time between '"+comQ.getStart()+"' and '"+comQ.getEnd()+"'";
+		Page<KnEntry> entryP = dao.paginate(comQ.getPage(), comQ.getPageSize(), strSele, strFrom
+				+  strWhere+" order by knen.id desc");
+		return entryP;
 	}
 	
 	/**
@@ -83,7 +85,7 @@ public class FormulaAdminService {
 			knForm.update();
 			tagSrv.saveMutil(knForm.getKnfoTag());
 		}
-		FormulaAdminService.me.clearCache();    // 清缓存
+		EntryAdminService.me.clearCache();    // 清缓存
 		return Ret.ok();
 	}
 	
