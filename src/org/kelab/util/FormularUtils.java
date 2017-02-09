@@ -11,11 +11,11 @@ import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.PNGTranscoder;
 import org.apache.batik.util.XMLResourceDescriptor;
-import org.openbabel.OBConversion;
-import org.openbabel.OBMol;
 import org.openscience.cdk.io.MDLReader;
 import org.openscience.cdk.silent.AtomContainer;
 import org.w3c.dom.Document;
+import org.openscience.cdk.depict.Depiction;
+import org.openscience.cdk.depict.DepictionGenerator;
 import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.interfaces.IAtomContainer;
 
@@ -32,14 +32,15 @@ public class FormularUtils {
 	 */
 	@SuppressWarnings("finally")
 	public static boolean convertSvg(String molFormat, String srcPath){
-		//try{
+		return false;
+	/*	//try{
 		//	System.loadLibrary("openbabel_java");
 		//}catch(Exception e){
 		//	e.printStackTrace();
 		//}finally{
 			System.out.println(molFormat+"%%%"+srcPath);
-			OBConversion conv = new OBConversion();
-			OBMol mol = new OBMol();
+			//OBConversion conv = new OBConversion();
+			//OBMol mol = new OBMol();
 			String target = srcPath.replace("."+molFormat, ".svg");
 			conv.SetInFormat(molFormat);
 			conv.ReadFile(mol,srcPath);
@@ -52,7 +53,7 @@ public class FormularUtils {
 				return true;
 			else
 				return false;
-		//}
+		//}*/
 	}
 	
 	/**
@@ -91,12 +92,18 @@ public class FormularUtils {
 	
 	public static void writePNG(String molPath) throws CDKException, IOException{
 		MDLReader mdlReader = new MDLReader(new FileReader(molPath));
+		//System.out.println(mol.toString());
 		IAtomContainer mol = (IAtomContainer)mdlReader.read(new AtomContainer());
-		ImageKit.writeSVG(mol, 300, 300, molPath.replace(".mol", ".svg"));
+		//ImageKit.writeSVG(mol, 300, 300, molPath.replace(".mol", ".svg"));
+		//Depiction depiction = new DepictionGenerator().withAtomColors().depict(mol);
+		Depiction depiction = new DepictionGenerator().withMargin(10)
+				.withAtomColors().withMolTitle().depict(mol);
+		depiction.writeTo(molPath.replace(".mol", ".png"));
+		depiction.writeTo(molPath.replace(".mol", ".svg"));
 	}
 	
 	public static void main(String[] args) throws IOException, CDKException{
-		String path = "D:\\work\\SourceCode\\structure-cdk-0.1.2\\molfiles\\caffeine.mol";
+		String path = "C:\\Users\\MrYang\\git\\emgen\\WebRoot\\upload\\knmole\\1486468845280.mol";
 		writePNG(path);
 		//convSvgtoPng(path);
 	}
