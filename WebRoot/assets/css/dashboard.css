@@ -119,6 +119,14 @@ body {
 	right:10px;
 }
 
+.panel{
+	margin-bottom:10px;	
+}
+
+.panel-body{
+	padding-bottom:0px;
+}
+
 .kfformula{
 	width:80px;
 	height:30px;
