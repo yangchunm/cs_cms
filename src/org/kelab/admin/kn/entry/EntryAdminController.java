@@ -2,7 +2,10 @@ package org.kelab.admin.kn.entry;
 
 import java.util.Date;
 
+import org.kelab.admin.kn.file.FileAdminService;
+import org.kelab.admin.kn.formula.FormulaAdminService;
 import org.kelab.admin.kn.lang.LangAdminService;
+import org.kelab.admin.kn.molecular.MolecularAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
 import org.kelab.model.KnFormula;
@@ -15,6 +18,9 @@ public class EntryAdminController extends BaseController{
 	static TreeAdminService treeSrv = TreeAdminService.me;
 	static EntryAdminService srv = EntryAdminService.me;
 	static LangAdminService langSrv = LangAdminService.me;
+	static FileAdminService fileSrv = FileAdminService.me;
+	static FormulaAdminService formSrv = FormulaAdminService.me;
+	static MolecularAdminService moleSrv = MolecularAdminService.me;
 	
 	public void index() {
 		CommQuery comQ = getBean(CommQuery.class,"comm");
@@ -39,6 +45,30 @@ public class EntryAdminController extends BaseController{
 		setAttr("knTreeL",treeSrv.findAllKnTree(0));
 		setAttr("knLangL",langSrv.findAllKnLang());
 		render("edit.html");
+	}
+	
+	public void findRelaFile(){
+		int kntrId = getParaToInt("kntrId",0);
+		String enTags = getPara("enTags");
+		int page = getParaToInt("page",1);
+		int pageSize = getParaToInt("pageSize",5);
+		renderJson(fileSrv.findFileByWords(kntrId, enTags, page, pageSize));
+	}
+	
+	public void findRelaForm(){
+		int kntrId = getParaToInt("kntrId",0);
+		String enTags = getPara("enTags");
+		int page = getParaToInt("page",1);
+		int pageSize = getParaToInt("pageSize",5);
+		renderJson(formSrv.findFileByWords(kntrId, enTags, page, pageSize));
+	}
+	
+	public void findRelaMole(){
+		int kntrId = getParaToInt("kntrId",0);
+		String enTags = getPara("enTags");
+		int page = getParaToInt("page",1);
+		int pageSize = getParaToInt("pageSize",5);
+		renderJson(moleSrv.findFileByWords(kntrId, enTags, page, pageSize));
 	}
 	
 	@Before(EntryAdminValidator.class)

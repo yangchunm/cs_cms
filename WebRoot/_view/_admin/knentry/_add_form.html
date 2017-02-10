@@ -3,22 +3,22 @@
      		<div class="col-md-8">
 				<div class="form-group">
 					<label for="knen_name">词条名称   <span class="small text-danger" id="knen_name_msg">*（主题或术语，简短）</span></label>
-						<input type="text" name="knen_name" id="frm_knen_name" class="form-control"
+						<input type="text" name="en.knen_name" id="frm_knen_name" class="form-control"
 							 value="#(knEntr.knenName??)" placeholder="词条名称或主题">
 						 <input type="hidden" name="id" value="#(knEntr.id ?? '0')" id="frm_id">
 				</div>
 				
 				<div class="form-group">
 					<label for="knen_text_type">编辑词条语法   <span class="small text-danger" id="knen_text_type_msg">*（支持HTML、Wiki和Markdown语法编辑）</span></label>
-					<select name="knen_text_type" id="frm_knen_text_type"  class="form-control">
+					<select name="en.knen_text_type" id="frm_knen_text_type"  class="form-control">
 						<option value="HTML">在线编辑器（HTML）</option>
 						<option value="Wiki">Wiki语法</option>
 						<option value="Markdown">Markdown语法</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="knen_text">描述   <span class="small text-danger" id="knen_text_type_msg">*（词条或主题的详细内容）</span></label>
-						<script id="frm_knen_text" name="knen_text" style="line-height: 20px;"  type="text/plain">#(knForm.knfoDesc ??)</script>
+					<label for="knen_text">词条正文  <span class="small text-danger" id="knen_text_type_msg">*（词条或主题的详细内容）</span></label>
+						<script id="frm_knen_text" name="en.knen_text" style="line-height: 20px;"  type="text/plain">#(knForm.knfoDesc ??)</script>
 				</div>
 			
 		      <div class="form-group">
@@ -38,7 +38,7 @@
 		  <div class="panel-body">
     		<div class="form-group">
 				<label for="knen_kntr_id" >知识点 <span class="small text-danger" id="knen_kntr_id_msg">*（属于知识结构树的那一部分）</span></label>
-				<select name="knen_kntr_id" id="frm_knen_kntr_id" class="form-control">
+				<select name="en.knen_kntr_id" id="frm_knen_kntr_id" class="form-control">
 				 		#for(x : knTreeL)
 				 			#if(x.id == knEntr.knenKntrId ?? "0")
 				 				<option value="#(x.id)" selected>#(x.kntrName)</option>
@@ -51,7 +51,7 @@
 			</div>
 			<div class="form-group">
 				<label for="knen_tag">标签   <span class="small text-danger" id="knen_tag_msg">*（3~5个关于本词条的关键词）</span></label>
-					<input type="text" name="knen_tag" id="frm_knen_tag" class="form-control"
+					<input type="text" name="en.knen_tag" id="frm_knen_tag" class="form-control"
 					value="#(knEntr.knenTag ??)" placeholder="标签，逗号隔开">
 			</div>
 		  </div>
@@ -59,27 +59,34 @@
 		
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title"><span class="glyphicon glyphicon-paperclip"></span>  词条相关文件    <span class="glyphicon glyphicon-upload"></span>  上传</h3>
+		    <h3 class="panel-title"><span class="glyphicon glyphicon-paperclip"></span>  词条相关文件    
+		    	<span class="glyphicon glyphicon-upload"></span>  上传
+		    	<a href="#"  class="rela-file-check" value="file"><span class="glyphicon glyphicon-check">选择</span></a>
+		    </h3>
 		  </div>
-		  <div class="panel-body">
+		  <div class="panel-body" id="knen_file_list">
     		
 		  </div>
 		</div><!-- end entry file panel -->	
 		
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title"><span class="glyphicon glyphicon-euro"></span>  词条相关公式    <span class="glyphicon glyphicon-plus-sign"></span>  添加</h3>
+		    <h3 class="panel-title"><span class="glyphicon glyphicon-euro"></span>  词条相关公式    
+		    <span class="glyphicon glyphicon-plus-sign"></span>  添加
+		    <a href="#"  class="rela-file-check" value="form"><span class="glyphicon glyphicon-check">选择</span></a></h3>
 		  </div>
-		  <div class="panel-body">
+		  <div class="panel-body" id="knen_form_list">
     		
 		  </div>
 		</div><!-- end entry file panel -->	
 		
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title"><span class="glyphicon glyphicon-filter"></span>  词条相关分子式    <span class="glyphicon glyphicon-plus-sign"></span>  添加</h3>
+		    <h3 class="panel-title"><span class="glyphicon glyphicon-filter"></span>  词条相关分子式   
+		     <span class="glyphicon glyphicon-plus-sign"></span>  添加
+		     <a href="#"  class="rela-file-check" value="mole"><span class="glyphicon glyphicon-check">选择</span></a></h3>
 		  </div>
-		  <div class="panel-body">
+		  <div class="panel-body" id="knen_mole_list">
     		
 		  </div>
 		</div><!-- end entry file panel -->	

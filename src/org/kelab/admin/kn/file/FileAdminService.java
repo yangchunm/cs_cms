@@ -6,6 +6,7 @@ import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
 import org.kelab.model.KnFile;
+import org.kelab.util.StringUtils;
 
 import com.jfinal.kit.PathKit;
 import com.jfinal.kit.Ret;
@@ -109,6 +110,12 @@ public class FileAdminService {
 			return Ret.fail("msg", msg);
 	}
 	
+	/**
+	 * 检查文件是否存在
+	 * @param filePath
+	 * @return
+	 */
+	
 	public Ret fileDown(String filePath){
 		String file = PathKit.getWebRootPath()+filePath;
 		File f = new File(file);
@@ -116,6 +123,37 @@ public class FileAdminService {
 			return Ret.ok("msg",filePath);
 		}else
 			return Ret.fail("msg","该文件不存在！");
+	}
+	
+	/**
+	 * 根据选择的知识点和填入的标签，自动匹配相关的文件
+	 * @param knTreeId
+	 * @param enTags
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 */
+	public Page<KnFile> findFileByWords(int knTreeId, String enTags,int page, int pageSize){
+		String strSele = "select knfi.*";
+		String strFrom = "from kn_file knfi, kn_tree kntr";
+		String strWhere = " where knfi.knfi_kntr_id = kntr.id";
+		if(knTreeId > 0)
+			strWhere = strWhere + " and kntr.id ="+knTreeId;
+		if(enTags != null && enTags != ""){
+			String[] arrTags = StringUtils.splitTags(enTags);
+			strWhere += " and ( ";
+			int i = 1;
+			for(String tag: arrTags){
+				strWhere += "knfi.knfi_tag like '%"+tag+"%' or knfi.knfi_ename like '%"+tag+"%'";
+				if(arrTags.length > 1 && i < (arrTags.length))
+					strWhere += " or ";
+				i++;
+			}
+			strWhere += " )";
+		}
+		Page<KnFile> fileP = dao.paginate(page, pageSize, strSele, strFrom
+				+  strWhere+" order by knfi.id desc");
+		return fileP;
 	}
 	
 	public void clearCache() {

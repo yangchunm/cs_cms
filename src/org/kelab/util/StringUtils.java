@@ -160,7 +160,7 @@ public class StringUtils {
 		else if(srcTags.indexOf(" ")>0)
 			return srcTags.split(" ");
 		else
-			return srcTags.split("");
+			return srcTags.split(" ");
 					
 	}
 	

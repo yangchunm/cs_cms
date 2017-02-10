@@ -173,7 +173,7 @@ function doSave(obj){
 }
 
 /**
- * 调整顺粗
+ * 调整顺序
  * @param id
  * @param way
  * @param order
@@ -209,6 +209,25 @@ function postPage(){
 		$("#page").val($(this).attr("value"));
 		$("#search-form").submit();
 	});
+}
+
+/**
+ * 对话框中的分页
+ * @param totalRow
+ * @param totalPage
+ * @param page
+ * @param url
+ */
+function miniPaginate(totalRow,totalPage,page,url,objId){
+	var html = "<nav aria-label=\"...\">" +
+			"<ul class=\"pager\">" +
+			"<li>共计"+totalRow+"条，"+totalPage+"页，当前第"+page+"页</li>";
+	if(totalPage >1 && page > 1)
+		html +="<li><a href=\"#\" id=\"pagePre\" value=\""+(page-1)+"\">上一页</a></li>";
+	if(totalPage != page && totalPage > 0)
+		html += "<li><a href=\"#\" id=\"pageNext\" value=\""+(page+1)+"\">下一页</a></li>" ;
+	html +="</ul></nav>";
+	$(objId).empty().html(html);
 }
 
 /**

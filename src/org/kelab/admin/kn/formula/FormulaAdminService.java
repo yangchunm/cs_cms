@@ -5,6 +5,7 @@ import java.util.List;
 import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
+import org.kelab.model.KnFile;
 import org.kelab.model.KnFormula;
 import org.kelab.util.Base64Utils;
 import org.kelab.util.StringUtils;
@@ -126,6 +127,37 @@ public class FormulaAdminService {
 			return Ret.ok();
 		else
 			return Ret.fail("msg", msg);
+	}
+	
+	/**
+	 * 根据选择的知识点和填入的标签，自动匹配相关的公式
+	 * @param knTreeId
+	 * @param enTags
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 */
+	public Page<KnFormula> findFileByWords(int knTreeId, String enTags,int page, int pageSize){
+		String strSele = "select knfo.*";
+		String strFrom = "from kn_formula knfo, kn_tree kntr";
+		String strWhere = " where knfo.knfo_kntr_id = kntr.id";
+		if(knTreeId > 0)
+			strWhere = strWhere + " and kntr.id ="+knTreeId;
+		if(enTags != null && enTags != ""){
+			String[] arrTags = StringUtils.splitTags(enTags);
+			strWhere += " and ( ";
+			int i = 1;
+			for(String tag: arrTags){
+				strWhere += "knfo.knfo_tag like '%"+tag+"%' or knfo.knfo_name like '%"+tag+"%'";
+				if(arrTags.length > 1 && i < (arrTags.length))
+					strWhere += " or ";
+				i++;
+			}
+			strWhere += " )";
+		}
+		Page<KnFormula> fileP = dao.paginate(page, pageSize, strSele, strFrom
+				+  strWhere+" order by knfo.id desc");
+		return fileP;
 	}
 	
 	public void clearCache() {

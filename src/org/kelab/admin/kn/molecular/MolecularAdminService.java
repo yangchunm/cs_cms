@@ -6,9 +6,11 @@ import java.io.IOException;
 import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
+import org.kelab.model.KnFormula;
 import org.kelab.model.KnMolecular;
 import org.kelab.util.FileUtils;
 import org.kelab.util.FormularUtils;
+import org.kelab.util.StringUtils;
 import org.openscience.cdk.exception.CDKException;
 
 import com.jfinal.kit.PathKit;
@@ -135,6 +137,37 @@ public class MolecularAdminService {
 			return Ret.ok("msg",filePath);
 		}else
 			return Ret.fail("msg","该文件不存在！");
+	}
+	
+	/**
+	 * 根据选择的知识点和填入的标签，自动匹配相关的分子
+	 * @param knTreeId
+	 * @param enTags
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 */
+	public Page<KnMolecular> findFileByWords(int knTreeId, String enTags,int page, int pageSize){
+		String strSele = "select knmo.*";
+		String strFrom = "from kn_molecular knmo, kn_tree kntr";
+		String strWhere = " where knmo.knmo_kntr_id = kntr.id";
+		if(knTreeId > 0)
+			strWhere = strWhere + " and kntr.id ="+knTreeId;
+		if(enTags != null && enTags != ""){
+			String[] arrTags = StringUtils.splitTags(enTags);
+			strWhere += " and ( ";
+			int i = 1;
+			for(String tag: arrTags){
+				strWhere += "knmo.knmo_tag like '%"+tag+"%' or knmo.knmo_name like '%"+tag+"%'";
+				if(arrTags.length > 1 && i < (arrTags.length))
+					strWhere += " or ";
+				i++;
+			}
+			strWhere += " )";
+		}
+		Page<KnMolecular> fileP = dao.paginate(page, pageSize, strSele, strFrom
+				+  strWhere+" order by knmo.id desc");
+		return fileP;
 	}
 	
 	public void clearCache() {
