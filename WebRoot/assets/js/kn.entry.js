@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+	$("#frm_knen_text_plain").hide();
 	
 	//新增按钮
 	$("#btn-add").click(function(){
@@ -15,9 +15,26 @@ $(document).ready(function() {
 		}
 		window.location = "knentry/edit/"+ids;
 	 });
+	//修改页面加载附加文件信息
+	var entrId = $("#frm_id").val();
+	if(entrId > 0){
+		
+	}
 	
 	//删除
 	doDel("#btn-del","knentry/del");
+	
+	//编辑语法切换
+	$("#frm_knen_text_type").change(function(){
+		var textType =$("#frm_knen_text_type option:selected").val();
+		if(textType == "HTML"){
+			$("#frm_knen_text_plain").hide();
+			$("#frm_knen_text").show();
+		}else{
+			$("#frm_knen_text_plain").show();
+			$("#frm_knen_text").hide();
+		}
+	});
 	
 	//词条表单保存
 	$("#add-form").ajaxForm({
@@ -66,7 +83,7 @@ $(document).ready(function() {
 	//上传文件表单保存
 	$("#file-add-form").ajaxForm({
 		dataType: "json"
-		, beforeSubmit: function(formData, jqForm, options) {      
+		, beforeSubmit: function(formData, jqForm, options) { 
 			var flag = true;
 			$.each(formData,function(key,obj){
 				if(obj.name != "knfi_file" && obj.value == ""){
@@ -79,7 +96,8 @@ $(document).ready(function() {
 		}
 		, success: function(ret) {
 			if(ret.isOk) {
-				renderCheckList("file",ret.file)
+				renderCheckList("file",ret.file);
+				$("#form-modal-file-add").modal("hide");
 			}
 			if (ret.isFail) {
 				$.messager.alert("提示",ret.msg);
@@ -104,7 +122,8 @@ $(document).ready(function() {
 		}
 		, success: function(ret) {
 			if(ret.isOk) {
-				renderCheckList("mole",ret.file)
+				renderCheckList("mole",ret.file);
+				$("#form-modal-mole-add").modal("hide");
 			}
 			if (ret.isFail) {
 				$.messager.alert("提示",ret.msg);
@@ -158,13 +177,17 @@ $(document).ready(function() {
 });
 
 function checkType(type){
+	var enId = $("#frm_id").val();
+	var strPre = "";
+	if(enId >0)
+		strPre ="../";
 	var postUrl = "";
 	if(type == "file")
-		postUrl = "findRelaFile";
+		postUrl = strPre+"findRelaFile";
 	else if(type == "form")
-		postUrl = "findRelaForm";
+		postUrl = strPre+"findRelaForm";
 	else if(type == "mole")
-		postUrl = "findRelaMole";
+		postUrl = strPre+"findRelaMole";
 	return postUrl;
 }
 
@@ -201,10 +224,6 @@ function renderFileTable(rows){
                   ]]
 		,singleSelect:  false //false allow multi select
         ,selectedClass: 'danger' //default: 'success'
-        ,selectChange: function(selected, rowIndex, rowData, $row) {
-        	//alert(rowIndex+"##"+rowData+"@@"+$row);
-            //console.log(selected, rowIndex, rowData, $row);
-          }
     }).datagrid("loadData", {rows: rows});
 }
 
@@ -220,11 +239,6 @@ function renderFormTable(rows){
                   ]]
 		,singleSelect:  false //false allow multi select
         ,selectedClass: 'danger' //default: 'success'
-        ,selectChange: function(selected, rowIndex, rowData, $row) {
-        	//alert(rowIndex+"##"+rowData+"@@"+$row);
-            //console.log(selected, rowIndex, rowData, $row);
-          }
-
     }).datagrid("loadData", {rows: rows});
 }
 
@@ -240,10 +254,6 @@ function renderMoleTable(rows){
                   ]]
 		,singleSelect:  false //false allow multi select
         ,selectedClass: 'danger' //default: 'success'
-        ,selectChange: function(selected, rowIndex, rowData, $row) {
-        	//alert(rowIndex+"##"+rowData+"@@"+$row);
-            //console.log(selected, rowIndex, rowData, $row);
-        }
     }).datagrid("loadData", {rows: rows});
 }
 

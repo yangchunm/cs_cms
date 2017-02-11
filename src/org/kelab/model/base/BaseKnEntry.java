@@ -89,28 +89,28 @@ public abstract class BaseKnEntry<M extends BaseKnEntry<M>> extends Model<M> imp
 		return get("knen_last_user_id");
 	}
 
-	public void setKnenIsformula(java.lang.Boolean knenIsformula) {
-		set("knen_isformula", knenIsformula);
+	public void setKnenIsForm(java.lang.Boolean knenIsForm) {
+		set("knen_is_form", knenIsForm);
 	}
 
-	public java.lang.Boolean getKnenIsformula() {
-		return get("knen_isformula");
+	public java.lang.Boolean getKnenIsForm() {
+		return get("knen_is_form");
 	}
 
-	public void setKnenIsmolecular(java.lang.Boolean knenIsmolecular) {
-		set("knen_ismolecular", knenIsmolecular);
+	public void setKnenIsMole(java.lang.Boolean knenIsMole) {
+		set("knen_is_mole", knenIsMole);
 	}
 
-	public java.lang.Boolean getKnenIsmolecular() {
-		return get("knen_ismolecular");
+	public java.lang.Boolean getKnenIsMole() {
+		return get("knen_is_mole");
 	}
 
-	public void setKnenIsdata(java.lang.Boolean knenIsdata) {
-		set("knen_isdata", knenIsdata);
+	public void setKnenIsFile(java.lang.Boolean knenIsFile) {
+		set("knen_is_file", knenIsFile);
 	}
 
-	public java.lang.Boolean getKnenIsdata() {
-		return get("knen_isdata");
+	public java.lang.Boolean getKnenIsFile() {
+		return get("knen_is_file");
 	}
 
 	public void setKnenLastIp(java.lang.String knenLastIp) {

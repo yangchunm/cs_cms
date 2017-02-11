@@ -56,8 +56,8 @@
 	         		<td><a href="#(BASE_PATH)#(mandir)/#(currCont)/edit/#(x.id)">#(x.knenName)</a></td>
 	         		<td>#(x.kntrName)</td>
 	         		<td>#(x.knenTag)</td>
-	         		<td>#(x.knenStatus)</td>
-	         		<td>#(x.knenSecuName)</td>
+	         		<td>#((x.knenStatus < 9) ? "未发布" : "已发布")</td>
+	         		<td>#(x.secuName)</td>
 	         		<td title="#(x.userName)">#(x.userRealName)</td>
 	         		<td>#date(x.knenTime, "yyyy-MM-dd HH:mm")</td>
          		</tr>

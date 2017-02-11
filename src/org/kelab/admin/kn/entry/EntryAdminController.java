@@ -8,7 +8,10 @@ import org.kelab.admin.kn.lang.LangAdminService;
 import org.kelab.admin.kn.molecular.MolecularAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
+import org.kelab.model.KeSecurity;
+import org.kelab.model.KnEntry;
 import org.kelab.model.KnFormula;
+import org.kelab.util.IpKit;
 import org.kelab.common.controller.BaseController;
 
 import com.jfinal.aop.Before;
@@ -35,15 +38,18 @@ public class EntryAdminController extends BaseController{
 	
 	public void add(){
 		setAttr("knTreeL",treeSrv.findAllKnTree(0));
-		setAttr("knLangL",langSrv.findAllKnLang());
+		setAttr("keSecuL",KeSecurity.dao.findAll());
 		render("edit.html");
 	}
 	
 	public void edit(){
 		int id = getParaToInt(0,0);
-		setAttr("knForm",KnFormula.dao.findById(id));
+		setAttr("knEntr",KnEntry.dao.findById(id));
 		setAttr("knTreeL",treeSrv.findAllKnTree(0));
-		setAttr("knLangL",langSrv.findAllKnLang());
+		setAttr("keSecuL",KeSecurity.dao.findAll());
+		setAttr("knEntrFile",srv.findRelaFileByEnId(id));
+		setAttr("knEntrForm",srv.findRelaFormByEnId(id));
+		setAttr("knEntrMole",srv.findRelaMoleByEnId(id));
 		render("edit.html");
 	}
 	
@@ -74,10 +80,18 @@ public class EntryAdminController extends BaseController{
 	@Before(EntryAdminValidator.class)
 	public void save(){
 		Ret ret = new Ret();
-		KnFormula knForm = getModel(KnFormula.class,"");
-		knForm.setKnfoTime(new Date());
-		knForm.setKnfoUserId(getLoginUserId());
-		ret = srv.save(knForm);
+		KnEntry knEntr = getModel(KnEntry.class,"en");
+		String textPlan = getPara("knen_text_plain");
+		if(knEntr.getKnenText() == null || knEntr.getKnenText() == "")
+			knEntr.setKnenText(textPlan);
+		knEntr.setKnenCreaUserId(getLoginUserId());
+		knEntr.setKnenLastUserId(getLoginUserId());
+		knEntr.setKnenLastIp(IpKit.getRealIp(getRequest()));
+		
+		String[] knFileList = getParaValues("kn_file_list");
+		String[] knFormList = getParaValues("kn_form_list");
+		String[] knMoleList = getParaValues("kn_mole_list");
+		ret = srv.save(knEntr,knFileList,knFormList,knMoleList);
 		renderJson(ret);
 	}
 	
