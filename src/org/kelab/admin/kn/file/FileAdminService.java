@@ -1,6 +1,7 @@
 package org.kelab.admin.kn.file;
 
 import java.io.File;
+import java.util.List;
 
 import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
@@ -66,7 +67,7 @@ public class FileAdminService {
 			tagSrv.saveMutil(knFile.getKnfiTag());
 		}
 		FileAdminService.me.clearCache();    // 清缓存
-		return Ret.ok();
+		return Ret.ok("file",findByFileName(knFile.getKnfiPath()));
 	}
 	
 	
@@ -84,6 +85,15 @@ public class FileAdminService {
 		return Db.queryInt(sql , knFile.getKnfiEname()) != null;
 	}
 	
+	/**
+	 * 根据文件名查找文件
+	 * @param fileName
+	 * @return
+	 */
+	public List<KnFile> findByFileName(String fileName){
+		String sql = "select * from kn_file where knfi_path = ? limit 1";
+		return dao.find(sql,fileName);
+	}
 	
 	/**
 	 * 删除指定id的信息

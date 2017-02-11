@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	
 	
-	//新增
+	//新增按钮
 	$("#btn-add").click(function(){
 		window.location = "knentry/add";
 	});
@@ -16,11 +16,10 @@ $(document).ready(function() {
 		window.location = "knentry/edit/"+ids;
 	 });
 	
+	//删除
 	doDel("#btn-del","knentry/del");
 	
-	
-	
-	//保存
+	//词条表单保存
 	$("#add-form").ajaxForm({
 		dataType: "json"
 		, beforeSubmit: function(formData, jqForm, options) {   
@@ -50,11 +49,76 @@ $(document).ready(function() {
 		, complete: function(ret) { }       
 	});
 	
-	//以下为对话框事件
+	//以下为上传对话框事件
+	$("#modal-file-add").click(function(){
+		$("#frm_knfi_ename").val($("#frm_knen_name").val());
+		$("#frm_knfi_kntr_id").val($("#frm_knen_kntr_id").val());
+		$("#frm_knfi_tag").val($("#frm_knen_tag").val());
+		$("#form-modal-file-add").modal("show");
+	});
+	$("#modal-mole-add").click(function(){
+		$("#frm_knmo_ename").val($("#frm_knmo_name").val());
+		$("#frm_knmo_kntr_id").val($("#frm_knmo_kntr_id").val());
+		$("#frm_knmo_tag").val($("#frm_knmo_tag").val());
+		$("#form-modal-mole-add").modal("show");
+	});
+	
+	//上传文件表单保存
+	$("#file-add-form").ajaxForm({
+		dataType: "json"
+		, beforeSubmit: function(formData, jqForm, options) {      
+			var flag = true;
+			$.each(formData,function(key,obj){
+				if(obj.name != "knfi_file" && obj.value == ""){
+					flag = false;
+					$.messager.alert("提示","每一项必须填写！");
+					return false;
+				}
+			});
+			return flag;
+		}
+		, success: function(ret) {
+			if(ret.isOk) {
+				renderCheckList("file",ret.file)
+			}
+			if (ret.isFail) {
+				$.messager.alert("提示",ret.msg);
+				return ;
+			}
+		}
+	});
+	
+	//添加分子式表单保存
+	$("#mole-add-form").ajaxForm({
+		dataType: "json"
+		, beforeSubmit: function(formData, jqForm, options) {      
+			var flag = true;
+			$.each(formData,function(key,obj){
+				if(obj.name != "knmo_file" && obj.value == ""){
+					flag = false;
+					$.messager.alert("提示","每一项必须填写！");
+					return false;
+				}
+			});
+			return flag;
+		}
+		, success: function(ret) {
+			if(ret.isOk) {
+				renderCheckList("mole",ret.file)
+			}
+			if (ret.isFail) {
+				$.messager.alert("提示",ret.msg);
+				return ;
+			}
+		}
+	});
+	
+	//以下为选择对话框事件
 	//打开查找相关文件对话框
 	$(".rela-file-check").click(function(){
 		var type = $(this).attr("value");
 		$("#modal-type").val(type);
+		$("#frm_knfi_keyword").val($("#frm_knen_tag").val());
 		var postUrl = checkType(type);
 		findRelaFile("#frm_knen_tag",postUrl,1,5,type);
 		$("#file-list-modal").modal("show");
@@ -207,5 +271,5 @@ function renderCheckList(type,checkList){
 		html += valuestr + checkText;
 	});
 	var obj = "#knen_"+type+"_list";
-	$(obj).html(html);
+	$(obj).append(html);
 }

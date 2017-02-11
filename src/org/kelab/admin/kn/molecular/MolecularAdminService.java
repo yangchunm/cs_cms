@@ -2,10 +2,12 @@ package org.kelab.admin.kn.molecular;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
+import org.kelab.model.KnFile;
 import org.kelab.model.KnFormula;
 import org.kelab.model.KnMolecular;
 import org.kelab.util.FileUtils;
@@ -86,7 +88,7 @@ public class MolecularAdminService {
 			tagSrv.saveMutil(knMole.getKnmoTag());
 		}
 		MolecularAdminService.me.clearCache();    // 清缓存
-		return Ret.ok();
+		return Ret.ok("mole",findByMoleFileName(knMole.getKnmoFile()));
 	}
 	
 	
@@ -104,6 +106,15 @@ public class MolecularAdminService {
 		return Db.queryInt(sql , knMole.getKnmoName()) != null;
 	}
 	
+	/**
+	 * 根据文件名查找文件
+	 * @param fileName
+	 * @return
+	 */
+	public List<KnMolecular> findByMoleFileName(String fileName){
+		String sql = "select * from kn_molecular where knmo_file = ? limit 1";
+		return dao.find(sql,fileName);
+	}
 	
 	/**
 	 * 删除指定id的信息
