@@ -32,5 +32,19 @@ public abstract class BaseKnLang<M extends BaseKnLang<M>> extends Model<M> imple
 	public java.lang.String getExt() {
 		return get("ext");
 	}
+	
+	public void setCmd(java.lang.String cmd){
+		set("cmd",cmd);
+	}
+	public java.lang.String getCmd(){
+		return get("cmd");
+	}
+	
+	public void setArgu(java.lang.String argu){
+		set("argu",argu);
+	}
+	public java.lang.String getArgu(){
+		return get("argu");
+	}
 
 }

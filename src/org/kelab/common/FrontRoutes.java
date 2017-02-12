@@ -1,6 +1,5 @@
 package org.kelab.common;
 
-import org.kelab.common.upload.UploadController;
 import org.kelab.index.IndexController;
 import org.kelab.login.LoginController;
 
@@ -22,7 +21,6 @@ public class FrontRoutes extends Routes {
 		//add("/project", ProjectController.class);
 		
 		//add("/reg", RegController.class);
-		add("/upload", UploadController.class);
 		//add("/download", DownloadController.class);
         //add("/like", LikeController.class);
 		//add("/doc", DocumentController.class, "/document");

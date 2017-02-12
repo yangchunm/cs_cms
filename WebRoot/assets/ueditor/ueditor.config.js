@@ -20,7 +20,6 @@
      * window.UEDITOR_HOME_URL = "/xxxx/xxxx/";
      */
     var URL = window.UEDITOR_HOME_URL || getUEBasePath();
-	// james: 经确定 URL 的值是 "/assets/ueditor/"
 
     /**
      * 配置项主体。注意，此处所有涉及到路径的配置别遗漏URL变量。
@@ -31,49 +30,22 @@
         UEDITOR_HOME_URL: URL
 
         // 服务器统一请求接口路径
-        // , serverUrl: URL + "jsp/controller.jsp"
-	    , serverUrl: "/upload/ueditor"
-
-
+        , serverUrl: URL + "jsp/controller.jsp"
+        //, serverUrl: "/upload/ueditor"
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的从新定义
         , toolbars: [[
-            'fullscreen',
-		    'source',
-		    'insertcode',
-		    // 'undo', 'redo', '|',
-            'bold', 'italic', 'underline',
-		   //  'fontborder', // 字符边框
-		    // 'strikethrough',
-		    // 'removeformat', 'formatmatch',  // 清除格式，格式刷
-		    'blockquote',
-		    // 'pasteplain', '|',
-		    'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist',
-		    'justifyleft', 'justifycenter', 'justifyright',
-		    'link', 'unlink','simpleupload',
-		    'horizontal', 'inserttable',
-		    // '|',
-           //  'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
-            // 'customstyle',
-		    'paragraph', 'fontfamily', 'fontsize'
-		    // '|',
-           //  'directionalityltr', 'directionalityrtl', 'indent', '|',
-		    // 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
-
-
-		    // 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
-		    // 'insertimage', 'emotion', 'scrawl', 'insertvideo', 'music', 'attachment', 'map', 'gmap', 'insertframe',
-
-
-		    // 'webapp', 'pagebreak', 'template', 'background', '|',
-		    // 'date', 'time', 'spechars', 'snapscreen', 'wordimage', '|',
-
-		    // '|',
-		    // 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
-            // 'print',
-		    //  'searchreplace',
-		    //  'drafts',
-		    // 'help'
+            'fullscreen', 'source', '|', 'undo', 'redo', '|',
+            'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+            'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+            'directionalityltr', 'directionalityrtl', 'indent', '|',
+            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+            'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+            'simpleupload', 'insertimage', 'emotion', 'scrawl', 'insertvideo', 'music', 'attachment', 'map', 'gmap', 'insertframe', 'insertcode', 'webapp', 'pagebreak', 'template', 'background', '|',
+            'horizontal', 'date', 'time', 'spechars', 'snapscreen', 'wordimage', '|',
+            'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
+            'print', 'preview', 'searchreplace', 'help', 'drafts'
         ]]
         //当鼠标放在工具栏上时显示的tooltip提示,留空支持自动多语言配置，否则以配置值为准
         //,labelMap:{
@@ -111,7 +83,6 @@
 
         //如果自定义，最好给p标签如下的行高，要不输入中文时，会有跳动感
         //,initialStyle:'p{line-height:1em}'//编辑器层级的基数,可以用来改变字体等
-	    ,initialStyle:'p{font-size: 18px; font-family:微软雅黑; margin:0 0 22px 0;} li p{margin:0;line-height:30px;} pre{font-family: Consolas, Monaco, \'Courier New\', \'Microsoft Yahei\', 微软雅黑;font-size: 16px;line-height: 20px;}'
 
         //,iframeCssUrl: URL + '/themes/iframe.css' //给编辑器内部引入一个css文件
 
@@ -120,9 +91,7 @@
         //,indentValue:'2em'
 
         //,initialFrameWidth:1000  //初始化编辑器宽度,默认1000
-	    // ,initialFrameWidth:796
         //,initialFrameHeight:320  //初始化编辑器高度,默认320
-	    ,initialFrameHeight:320
 
         //,readonly : false //编辑器初始化结束后,编辑区域是否是只读的，默认是false
 
@@ -130,10 +99,8 @@
 
         //启用自动保存
         //,enableAutoSave: true
-	    ,enableAutoSave: false
         //自动保存间隔时间， 单位ms
         //,saveInterval: 500
-	    ,saveInterval: 99999
 
         //,fullscreen : false //是否开启初始化时即全屏，默认关闭
 
@@ -224,30 +191,14 @@
         //    { label:'',name:'impact',val:'impact,chicago'},
         //    { label:'',name:'timesNewRoman',val:'times new roman'}
         //]
-	    ,'fontfamily':[
-		    { label:'',name:'yahei',val:'微软雅黑,Microsoft YaHei'},
-		    { label:'',name:'songti',val:'宋体,SimSun'},
-	        { label:'',name:'kaiti',val:'楷体,楷体_GB2312, SimKai'},
-	        { label:'',name:'heiti',val:'黑体, SimHei'},
-	        { label:'',name:'lishu',val:'隶书, SimLi'},
-	        { label:'',name:'andaleMono',val:'andale mono'},
-	        { label:'',name:'arial',val:'arial, helvetica,sans-serif'},
-	        { label:'',name:'arialBlack',val:'arial black,avant garde'},
-	        { label:'',name:'comicSansMs',val:'comic sans ms'},
-	        { label:'',name:'impact',val:'impact,chicago'},
-	        { label:'',name:'timesNewRoman',val:'times new roman'}
-	    ]
 
         //fontsize
         //字号
         //,'fontsize':[10, 11, 12, 14, 16, 18, 20, 24, 36]
-	    ,'fontsize':[14, 16, 18, 20, 22, 24, 36]
 
         //paragraph
         //段落格式 值留空时支持多语言自动识别，若配置，则以配置值为准
         //,'paragraph':{'p':'', 'h1':'', 'h2':'', 'h3':'', 'h4':'', 'h5':'', 'h6':''}
-	    // james h1 必须唯一，且已被title使用，所以要禁用 h1
-	    ,'paragraph':{'p':'', 'h2':'h1', 'h3':'h2', 'h4':'h3', 'h5':'h4', 'h6':'h5'}
 
         //rowspacingtop
         //段间距 值和显示的名字相同
@@ -279,7 +230,6 @@
 
         //打开右键菜单功能
         //,enableContextMenu: true
-	    ,enableContextMenu: false
         //右键菜单的内容，可以参考plugins/contextmenu.js里边的默认菜单的例子，label留空支持国际化，否则以此配置为准
         //,contextMenu:[
         //    {
@@ -298,11 +248,10 @@
 
         //elementPathEnabled
         //是否启用元素路径，默认是显示
-        ,elementPathEnabled : false
+        //,elementPathEnabled : true
 
         //wordCount
         //,wordCount:true          //是否开启字数统计
-	    ,wordCount:false
         //,maximumWords:10000       //允许的最大字符数
         //字数统计提示，{#count}代表当前字数，{#leave}代表还可以输入多少字符数,留空支持多语言自动切换，否则按此配置显示
         //,wordCountMsg:''   //当前已输入 {#count} 个字符，您还可以输入{#leave} 个字符
@@ -334,15 +283,12 @@
         //scaleEnabled
         //是否可以拉伸长高,默认true(当开启时，自动长高失效)
         //,scaleEnabled:false
-	    ,scaleEnabled:false
         //,minFrameWidth:800    //编辑器拖动时最小宽度,默认800
         //,minFrameHeight:220  //编辑器拖动时最小高度,默认220
 
         //autoFloatEnabled
         //是否保持toolbar的位置不动,默认true
         //,autoFloatEnabled:true
-	    ,autoFloatEnabled:true
-
         //浮动时工具栏距离浏览器顶部的高度，用于某些具有固定头部的页面
         //,topOffset:30
         //编辑器底部距离工具栏高度(如果参数大于等于编辑器高度，则设置无效)
