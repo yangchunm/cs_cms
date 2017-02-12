@@ -8,10 +8,8 @@ import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
 import org.kelab.model.KnMolecular;
 import org.kelab.util.FileUtils;
-import org.kelab.util.FormularUtils;
 import org.kelab.common.controller.BaseController;
 
-import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
 import com.jfinal.kit.Ret;
 import com.jfinal.upload.UploadFile;

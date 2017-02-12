@@ -1,8 +1,11 @@
 package org.kelab.admin.kn.entry;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.kelab.admin.kn.formula.FormulaAdminService;
 import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
@@ -14,7 +17,6 @@ import org.kelab.model.KnFile;
 import org.kelab.model.KnFormula;
 import org.kelab.model.KnMolecular;
 import org.kelab.util.Base64Utils;
-import org.kelab.util.IpKit;
 import org.kelab.util.StringUtils;
 
 import com.jfinal.kit.PathKit;
@@ -29,6 +31,7 @@ public class EntryAdminService {
 	public static final EntryAdminService me = new EntryAdminService();
 	public static TreeAdminService treeSrv = new TreeAdminService();
 	public static TagAdminService tagSrv = new TagAdminService();
+	public static FormulaAdminService formSrv = new FormulaAdminService();
 	final static KnEntry dao = new KnEntry().dao();
 	final String cacheName = "knFormula";
 	Prop p = PropKit.use("config.properties");
@@ -63,6 +66,7 @@ public class EntryAdminService {
 	 * @param KnFormula对象
 	 * @return 结果信息
 	 */
+	@SuppressWarnings("null")
 	public Ret save(KnEntry knEntr,String[] fileL, String[] formL, String[] moleL){
 		int currId = 0;
 		if(knEntr.getId() != null && knEntr.getId() > 0)
@@ -72,33 +76,21 @@ public class EntryAdminService {
 		}
 		knEntr.setKnenTime(new Date());
 		knEntr.setKnenLastTime(new Date());
-		
-		
-		
-		/*//获取公式Latex文本
-		List<String> latexL = StringUtils.extrLatex(knEntr.getKnfoText());
-		if(latexL.size()>1){
-			return Ret.fail("msg","只能添加一个公式！");
-		}else if(latexL.size() > 0)
-			knEntr.setKnfoLatex(latexL.get(0));
-		//转为png
-		String filename = knEntr.getKnfoPng();
-		if(filename == null || filename == "")
-			filename = System.currentTimeMillis()+".png";
-		String filePath = PathKit.getWebRootPath()+"/"+p.get("baseUploadPath")+p.get("knEntrPath")+filename;
-		Base64Utils.GenerateImage(StringUtils.extBase64Str(knEntr.getKnfoText()), filePath);
-		knEntr.setKnfoPng(filename);
-		knEntr.setKnfoText(StringUtils.onlyimg(knEntr.getKnfoText()));*/
+		List<String> formT = saveFromText(knEntr);
+		if(formT != null && formL != null)
+			formT.addAll(Arrays.asList(formL));
+		else if(formT == null && formL != null)
+			formT.addAll(Arrays.asList(formL));
 		knEntr.setKnenTag(knEntr.getKnenTag().replace("，", ",").replace(" ",","));
 		if(currId == 0){	//新增
 			knEntr.save();
 			tagSrv.saveMutil(knEntr.getKnenTag());
 			int lastEnId = findLastOne().getId();
-			saveEntrFile(lastEnId,fileL,formL,moleL);
+			saveEntrFile(lastEnId,fileL,formT,moleL);
 		}else{	//修改
 			knEntr.update();
 			tagSrv.saveMutil(knEntr.getKnenTag());
-			saveEntrFile(currId,fileL,formL,moleL);
+			saveEntrFile(currId,fileL,formT,moleL);
 		}
 		EntryAdminService.me.clearCache();    // 清缓存
 		return Ret.ok();
@@ -117,6 +109,34 @@ public class EntryAdminService {
 			strWhere = " and id <>" + oldId;
 		String sql = "select id from kn_entry where knen_name=? "+strWhere+" limit 1";
 		return Db.queryInt(sql , knEntr.getKnenName()) != null;
+	}
+	
+	public List<String> saveFromText(KnEntry knEntr){
+		//获取公式Latex文本
+		List<String> latexL = StringUtils.extrLatex(knEntr.getKnenText());
+		List<String> formL = new ArrayList<String>();
+		int icount = 1;
+		for(String latex : latexL){
+			String filename = System.currentTimeMillis()+".png";
+			String filePath = PathKit.getWebRootPath()+"/"+PropKit.get("baseUploadPath")
+								+PropKit.get("knFormPath")+filename;
+			String base64Str = StringUtils.extBase64Str(knEntr.getKnenText());
+			Base64Utils.GenerateImage(base64Str, filePath);
+			String formName = knEntr.getKnenName();
+			if(icount > 1)
+				formName = formName + icount;
+			new KnFormula().set("knfo_kntr_id",knEntr.getKnenKntrId())
+							.set("knfo_text", StringUtils.onlyimg(knEntr.getKnenText()))
+							.set("knfo_user_id",knEntr.getKnenCreaUserId())
+							.set("knfo_name", formName)
+							.set("knfo_time",new Date())
+							.set("knfo_tag", knEntr.getKnenTag())
+							.set("knfo_latex",latex)
+							.set("knfo_png",filename).save();
+			formL.add(formSrv.findLastOne().getId().toString());
+			icount ++;
+		}
+		return formL;
 	}
 	
 	/**
@@ -139,7 +159,7 @@ public class EntryAdminService {
 	 * @param formIds
 	 * @param moleIds
 	 */
-	public void saveEntrFile(int enId, String[] fileIds, String[] formIds, String[] moleIds){
+	public void saveEntrFile(int enId, String[] fileIds, List<String> formIds, String[] moleIds){
 		//先删除，再添加
 		Db.update("delete from kn_entr_file where entr_id = ?",enId);
 		if(fileIds != null){

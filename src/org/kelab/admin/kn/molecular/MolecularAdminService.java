@@ -7,8 +7,6 @@ import java.util.List;
 import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
-import org.kelab.model.KnFile;
-import org.kelab.model.KnFormula;
 import org.kelab.model.KnMolecular;
 import org.kelab.util.FileUtils;
 import org.kelab.util.FormularUtils;

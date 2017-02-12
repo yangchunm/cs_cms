@@ -5,7 +5,6 @@ import java.util.List;
 import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
-import org.kelab.model.KnFile;
 import org.kelab.model.KnFormula;
 import org.kelab.util.Base64Utils;
 import org.kelab.util.StringUtils;
@@ -103,6 +102,14 @@ public class FormulaAdminService {
 		return Db.queryInt(sql , knForm.getKnfoName()) != null;
 	}
 	
+	public KnFormula findLastOne(){
+		String sql = "select * from kn_formula order by id desc limit 1";
+		List<KnFormula> fL = dao.find(sql);
+		if(fL.size()>0)
+			return fL.get(0);
+		else
+			return null;
+	}
 	
 	/**
 	 * 删除指定id的信息

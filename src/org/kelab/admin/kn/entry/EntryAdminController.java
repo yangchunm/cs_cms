@@ -1,7 +1,5 @@
 package org.kelab.admin.kn.entry;
 
-import java.util.Date;
-
 import org.kelab.admin.kn.file.FileAdminService;
 import org.kelab.admin.kn.formula.FormulaAdminService;
 import org.kelab.admin.kn.lang.LangAdminService;
