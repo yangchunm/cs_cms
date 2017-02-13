@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2017-02-09 21:31:21
+Date: 2017-02-13 20:41:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -529,12 +529,12 @@ CREATE TABLE `ke_session` (
 -- ----------------------------
 INSERT INTO `ke_session` VALUES ('160fdca4ae3a4e478649c7a1f56ad3d2', '5', '1580093912198');
 INSERT INTO `ke_session` VALUES ('1a9ee949cb6d47d29958174e9f89105c', '5', '1580259509646');
-INSERT INTO `ke_session` VALUES ('3562108f8b4a491bb5dace5a06ed55d2', '5', '1580263742888');
 INSERT INTO `ke_session` VALUES ('3f3899d4521245b5b46777f77c8c646a', '5', '1580094418986');
 INSERT INTO `ke_session` VALUES ('50ba1a4487cd4887968e65e06b9e3c9b', '5', '1580093992304');
 INSERT INTO `ke_session` VALUES ('88f8634be9784f48a0e0beafe9ee6f5d', '5', '1580094115643');
 INSERT INTO `ke_session` VALUES ('a35e632cb5964d3288a8261f0bff0eb3', '5', '1580094263706');
 INSERT INTO `ke_session` VALUES ('ca9b928f9d254b11b719b6aee6cebbcc', '5', '1580095648331');
+INSERT INTO `ke_session` VALUES ('d753fadad6a743c2bc17ceffd0e33dfd', '5', '1581595263870');
 INSERT INTO `ke_session` VALUES ('dbc9899c3acc4908a4f467f1e04163ee', '5', '1580093525552');
 INSERT INTO `ke_session` VALUES ('deef5aad3edd4e1092ca6dc19cfa58da', '5', '1580093354313');
 
@@ -568,7 +568,7 @@ CREATE TABLE `ke_user` (
 -- ----------------------------
 -- Records of ke_user
 -- ----------------------------
-INSERT INTO `ke_user` VALUES ('5', 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 'MrYang', '2017-01-27 09:53:48', '2017-02-09 21:29:07', '1', '3', '1', '3', '', null, '');
+INSERT INTO `ke_user` VALUES ('5', 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 'MrYang', '2017-01-27 09:53:48', '2017-02-13 20:24:53', '1', '3', '1', '3', '', null, '');
 INSERT INTO `ke_user` VALUES ('6', 'mryang@yahoo.cn', 'e10adc3949ba59abbe56e057f20f883e', '杨春明', '2017-02-02 13:37:06', null, null, '3', '2', '3', '', null, '');
 INSERT INTO `ke_user` VALUES ('8', 'test@test.com', 'e10adc3949ba59abbe56e057f20f883e', '测试账号', '2017-02-02 14:25:29', null, null, '2', '1', '1', '', null, '');
 INSERT INTO `ke_user` VALUES ('9', 'test@www.com', 'e10adc3949ba59abbe56e057f20f883e', '测试', '2017-02-02 14:25:54', null, null, '2', '1', '1', '', null, '');
@@ -594,7 +594,7 @@ CREATE TABLE `ke_user_log` (
   PRIMARY KEY (`id`),
   KEY `fk_log_user` (`log_user_id`),
   CONSTRAINT `fk_log_user` FOREIGN KEY (`log_user_id`) REFERENCES `ke_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3288 DEFAULT CHARSET=utf8 COMMENT='用户操作日志信息';
+) ENGINE=InnoDB AUTO_INCREMENT=4065 DEFAULT CHARSET=utf8 COMMENT='用户操作日志信息';
 
 -- ----------------------------
 -- Records of ke_user_log
@@ -3879,6 +3879,783 @@ INSERT INTO `ke_user_log` VALUES ('3284', '5', '/admin/knentry/add', '0:0:0:0:0:
 INSERT INTO `ke_user_log` VALUES ('3285', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-09 21:29:07', 'ke_user_log');
 INSERT INTO `ke_user_log` VALUES ('3286', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-09 21:29:07', 'add');
 INSERT INTO `ke_user_log` VALUES ('3287', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-09 21:29:28', 'add');
+INSERT INTO `ke_user_log` VALUES ('3288', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-09 21:31:33', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3289', '5', '/admin/kntree', '0:0:0:0:0:0:0:1', '2017-02-09 21:31:33', 'index');
+INSERT INTO `ke_user_log` VALUES ('3290', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 07:30:05', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3291', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-10 07:30:07', 'index');
+INSERT INTO `ke_user_log` VALUES ('3292', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 07:30:10', 'index');
+INSERT INTO `ke_user_log` VALUES ('3293', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:30:12', 'add');
+INSERT INTO `ke_user_log` VALUES ('3294', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:30:49', 'add');
+INSERT INTO `ke_user_log` VALUES ('3295', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:30:50', 'add');
+INSERT INTO `ke_user_log` VALUES ('3296', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:31:33', 'add');
+INSERT INTO `ke_user_log` VALUES ('3297', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 07:33:25', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3298', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:33:25', 'add');
+INSERT INTO `ke_user_log` VALUES ('3299', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:34:50', 'add');
+INSERT INTO `ke_user_log` VALUES ('3300', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 07:35:43', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3301', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:35:43', 'add');
+INSERT INTO `ke_user_log` VALUES ('3302', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 07:38:00', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3303', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:38:00', 'add');
+INSERT INTO `ke_user_log` VALUES ('3304', '5', '/admin/knfile', '0:0:0:0:0:0:0:1', '2017-02-10 07:39:42', 'index');
+INSERT INTO `ke_user_log` VALUES ('3305', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-02-10 07:39:54', 'index');
+INSERT INTO `ke_user_log` VALUES ('3306', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 07:40:04', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3307', '5', '/admin/knmole', '0:0:0:0:0:0:0:1', '2017-02-10 07:40:04', 'index');
+INSERT INTO `ke_user_log` VALUES ('3308', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-02-10 07:40:10', 'index');
+INSERT INTO `ke_user_log` VALUES ('3309', '5', '/admin/knfile', '0:0:0:0:0:0:0:1', '2017-02-10 07:40:11', 'index');
+INSERT INTO `ke_user_log` VALUES ('3310', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 07:40:12', 'index');
+INSERT INTO `ke_user_log` VALUES ('3311', '5', '/admin/kntree', '0:0:0:0:0:0:0:1', '2017-02-10 07:40:15', 'index');
+INSERT INTO `ke_user_log` VALUES ('3312', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 07:40:16', 'index');
+INSERT INTO `ke_user_log` VALUES ('3313', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:40:18', 'add');
+INSERT INTO `ke_user_log` VALUES ('3314', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 07:47:19', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3315', '5', '/admin/knmole', '0:0:0:0:0:0:0:1', '2017-02-10 07:47:19', 'index');
+INSERT INTO `ke_user_log` VALUES ('3316', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 07:47:45', 'index');
+INSERT INTO `ke_user_log` VALUES ('3317', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:47:47', 'add');
+INSERT INTO `ke_user_log` VALUES ('3318', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 07:52:36', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3319', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:52:36', 'add');
+INSERT INTO `ke_user_log` VALUES ('3320', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:53:04', 'add');
+INSERT INTO `ke_user_log` VALUES ('3321', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:54:31', 'add');
+INSERT INTO `ke_user_log` VALUES ('3322', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 07:54:58', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3323', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:56:02', 'add');
+INSERT INTO `ke_user_log` VALUES ('3324', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:56:55', 'add');
+INSERT INTO `ke_user_log` VALUES ('3325', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 07:57:43', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3326', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 07:57:43', 'add');
+INSERT INTO `ke_user_log` VALUES ('3327', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 08:00:01', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3328', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 08:01:58', 'add');
+INSERT INTO `ke_user_log` VALUES ('3329', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 08:03:53', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3330', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 08:23:40', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3331', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 08:23:40', 'add');
+INSERT INTO `ke_user_log` VALUES ('3332', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 08:24:29', 'add');
+INSERT INTO `ke_user_log` VALUES ('3333', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 08:25:29', 'add');
+INSERT INTO `ke_user_log` VALUES ('3334', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 08:26:19', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3335', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 08:26:19', 'add');
+INSERT INTO `ke_user_log` VALUES ('3336', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 08:26:41', 'add');
+INSERT INTO `ke_user_log` VALUES ('3337', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 08:30:08', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3338', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 08:30:08', 'add');
+INSERT INTO `ke_user_log` VALUES ('3339', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 08:31:14', 'add');
+INSERT INTO `ke_user_log` VALUES ('3340', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 08:31:19', 'add');
+INSERT INTO `ke_user_log` VALUES ('3341', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 11:51:08', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3342', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-10 11:51:10', 'index');
+INSERT INTO `ke_user_log` VALUES ('3343', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 11:51:12', 'index');
+INSERT INTO `ke_user_log` VALUES ('3344', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 11:51:13', 'add');
+INSERT INTO `ke_user_log` VALUES ('3345', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 11:51:16', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3346', '5', '/admin/knfile', '0:0:0:0:0:0:0:1', '2017-02-10 11:51:25', 'index');
+INSERT INTO `ke_user_log` VALUES ('3347', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-02-10 11:51:26', 'index');
+INSERT INTO `ke_user_log` VALUES ('3348', '5', '/admin/knmole', '0:0:0:0:0:0:0:1', '2017-02-10 11:51:28', 'index');
+INSERT INTO `ke_user_log` VALUES ('3349', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-02-10 11:51:31', 'index');
+INSERT INTO `ke_user_log` VALUES ('3350', '5', '/admin/knfile', '0:0:0:0:0:0:0:1', '2017-02-10 11:51:31', 'index');
+INSERT INTO `ke_user_log` VALUES ('3351', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 11:51:32', 'index');
+INSERT INTO `ke_user_log` VALUES ('3352', '5', '/admin/kntree', '0:0:0:0:0:0:0:1', '2017-02-10 11:51:32', 'index');
+INSERT INTO `ke_user_log` VALUES ('3353', '5', '/admin/userlog', '0:0:0:0:0:0:0:1', '2017-02-10 11:51:33', 'index');
+INSERT INTO `ke_user_log` VALUES ('3354', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-02-10 11:51:34', 'index');
+INSERT INTO `ke_user_log` VALUES ('3355', '5', '/admin/knmole', '0:0:0:0:0:0:0:1', '2017-02-10 11:51:35', 'index');
+INSERT INTO `ke_user_log` VALUES ('3356', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 13:23:03', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3357', '5', '/admin/knmole', '0:0:0:0:0:0:0:1', '2017-02-10 13:23:03', 'index');
+INSERT INTO `ke_user_log` VALUES ('3358', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-02-10 13:23:06', 'index');
+INSERT INTO `ke_user_log` VALUES ('3359', '5', '/admin/knfile', '0:0:0:0:0:0:0:1', '2017-02-10 13:23:07', 'index');
+INSERT INTO `ke_user_log` VALUES ('3360', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 13:23:08', 'index');
+INSERT INTO `ke_user_log` VALUES ('3361', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 13:23:09', 'add');
+INSERT INTO `ke_user_log` VALUES ('3362', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 13:23:14', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3363', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 13:35:18', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3364', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 13:35:18', 'add');
+INSERT INTO `ke_user_log` VALUES ('3365', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 13:35:20', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3366', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 13:35:38', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3367', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 13:37:30', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3368', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 13:37:30', 'add');
+INSERT INTO `ke_user_log` VALUES ('3369', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 13:37:31', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3370', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 13:39:10', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3371', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 13:40:35', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3372', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 13:40:35', 'add');
+INSERT INTO `ke_user_log` VALUES ('3373', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 13:40:37', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3374', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 13:43:13', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3375', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 13:43:13', 'add');
+INSERT INTO `ke_user_log` VALUES ('3376', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 13:43:17', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3377', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 13:43:44', 'add');
+INSERT INTO `ke_user_log` VALUES ('3378', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 13:43:45', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3379', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 13:45:23', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3380', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 13:45:23', 'add');
+INSERT INTO `ke_user_log` VALUES ('3381', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 13:45:25', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3382', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 13:47:40', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3383', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 13:47:40', 'add');
+INSERT INTO `ke_user_log` VALUES ('3384', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 13:47:42', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3385', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 13:51:17', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3386', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 13:51:17', 'add');
+INSERT INTO `ke_user_log` VALUES ('3387', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 13:51:20', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3388', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 13:51:58', 'add');
+INSERT INTO `ke_user_log` VALUES ('3389', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 13:52:00', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3390', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 13:54:25', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3391', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 13:54:25', 'add');
+INSERT INTO `ke_user_log` VALUES ('3392', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 13:54:27', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3393', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 14:03:58', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3394', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:03:58', 'add');
+INSERT INTO `ke_user_log` VALUES ('3395', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:04:00', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3396', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:04:11', 'add');
+INSERT INTO `ke_user_log` VALUES ('3397', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:04:13', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3398', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 14:06:16', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3399', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:06:16', 'add');
+INSERT INTO `ke_user_log` VALUES ('3400', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:06:18', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3401', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 14:08:40', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3402', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:08:40', 'add');
+INSERT INTO `ke_user_log` VALUES ('3403', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:08:42', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3404', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:09:07', 'add');
+INSERT INTO `ke_user_log` VALUES ('3405', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:09:10', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3406', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:09:25', 'add');
+INSERT INTO `ke_user_log` VALUES ('3407', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:09:27', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3408', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 14:10:45', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3409', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:10:45', 'add');
+INSERT INTO `ke_user_log` VALUES ('3410', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:10:47', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3411', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:11:27', 'add');
+INSERT INTO `ke_user_log` VALUES ('3412', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:11:30', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3413', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:11:35', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3414', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 14:13:14', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3415', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:13:14', 'add');
+INSERT INTO `ke_user_log` VALUES ('3416', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:13:15', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3417', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:13:33', 'add');
+INSERT INTO `ke_user_log` VALUES ('3418', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:13:35', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3419', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 14:15:30', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3420', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:15:30', 'add');
+INSERT INTO `ke_user_log` VALUES ('3421', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:15:32', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3422', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:15:57', 'add');
+INSERT INTO `ke_user_log` VALUES ('3423', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:15:59', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3424', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 14:17:59', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3425', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:17:59', 'add');
+INSERT INTO `ke_user_log` VALUES ('3426', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:18:00', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3427', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:19:21', 'add');
+INSERT INTO `ke_user_log` VALUES ('3428', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:19:22', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3429', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 14:20:18', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3430', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:20:18', 'add');
+INSERT INTO `ke_user_log` VALUES ('3431', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:20:20', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3432', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:21:03', 'add');
+INSERT INTO `ke_user_log` VALUES ('3433', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:21:05', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3434', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:21:10', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3435', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:21:23', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3436', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:21:44', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3437', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 14:22:39', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3438', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:22:39', 'add');
+INSERT INTO `ke_user_log` VALUES ('3439', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:22:41', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3440', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:22:46', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3441', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 14:23:46', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3442', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:23:46', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3443', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 14:26:21', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3444', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:26:21', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3445', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 14:41:05', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3446', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 14:41:05', 'add');
+INSERT INTO `ke_user_log` VALUES ('3447', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:41:07', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3448', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:41:15', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3449', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:41:36', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3450', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:41:54', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3451', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 14:42:40', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3452', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:42:40', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3453', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:43:13', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3454', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 14:45:03', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3455', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:45:03', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3456', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 14:45:30', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3457', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 15:01:00', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3458', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:01:00', 'add');
+INSERT INTO `ke_user_log` VALUES ('3459', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:01:02', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3460', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:01:23', 'add');
+INSERT INTO `ke_user_log` VALUES ('3461', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:01:24', 'add');
+INSERT INTO `ke_user_log` VALUES ('3462', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:01:26', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3463', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:01:41', 'add');
+INSERT INTO `ke_user_log` VALUES ('3464', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:01:43', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3465', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:01:57', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3466', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:02:23', 'add');
+INSERT INTO `ke_user_log` VALUES ('3467', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:02:25', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3468', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 15:03:01', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3469', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:03:01', 'add');
+INSERT INTO `ke_user_log` VALUES ('3470', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:03:03', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3471', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 15:05:49', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3472', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:05:49', 'add');
+INSERT INTO `ke_user_log` VALUES ('3473', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:05:50', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3474', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 15:13:38', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3475', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:13:38', 'add');
+INSERT INTO `ke_user_log` VALUES ('3476', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 15:13:40', 'index');
+INSERT INTO `ke_user_log` VALUES ('3477', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 15:13:53', 'index');
+INSERT INTO `ke_user_log` VALUES ('3478', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 15:14:03', 'index');
+INSERT INTO `ke_user_log` VALUES ('3479', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:15:23', 'add');
+INSERT INTO `ke_user_log` VALUES ('3480', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:15:24', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3481', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 15:17:10', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3482', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:17:10', 'add');
+INSERT INTO `ke_user_log` VALUES ('3483', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:17:11', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3484', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 15:26:12', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3485', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:26:12', 'add');
+INSERT INTO `ke_user_log` VALUES ('3486', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:27:04', 'add');
+INSERT INTO `ke_user_log` VALUES ('3487', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:27:06', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3488', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 15:30:35', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3489', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:30:35', 'add');
+INSERT INTO `ke_user_log` VALUES ('3490', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 15:30:38', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3491', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:31:28', 'add');
+INSERT INTO `ke_user_log` VALUES ('3492', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:31:29', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3493', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:31:32', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3494', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:32:26', 'add');
+INSERT INTO `ke_user_log` VALUES ('3495', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:32:28', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3496', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 15:32:36', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3497', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 15:32:36', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3498', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:32:41', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3499', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:32:57', 'add');
+INSERT INTO `ke_user_log` VALUES ('3500', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:32:59', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3501', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:34:27', 'add');
+INSERT INTO `ke_user_log` VALUES ('3502', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 15:34:36', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3503', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:34:36', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3504', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:34:39', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3505', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 15:34:41', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3506', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:34:59', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3507', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:34:59', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3508', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 15:34:59', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3509', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:35:01', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3510', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:35:04', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3511', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 15:35:07', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3512', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:35:37', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3513', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:35:39', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3514', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 15:35:41', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3515', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:35:45', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3516', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 15:35:48', 'index');
+INSERT INTO `ke_user_log` VALUES ('3517', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 15:36:01', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3518', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 15:36:01', 'index');
+INSERT INTO `ke_user_log` VALUES ('3519', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 15:36:09', 'index');
+INSERT INTO `ke_user_log` VALUES ('3520', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 15:36:46', 'index');
+INSERT INTO `ke_user_log` VALUES ('3521', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 15:36:50', 'index');
+INSERT INTO `ke_user_log` VALUES ('3522', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:36:54', 'add');
+INSERT INTO `ke_user_log` VALUES ('3523', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:37:00', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3524', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:37:04', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3525', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 15:37:06', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3526', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 15:37:08', 'index');
+INSERT INTO `ke_user_log` VALUES ('3527', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:37:13', 'add');
+INSERT INTO `ke_user_log` VALUES ('3528', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:37:21', 'add');
+INSERT INTO `ke_user_log` VALUES ('3529', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:37:26', 'add');
+INSERT INTO `ke_user_log` VALUES ('3530', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 15:37:46', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3531', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:37:48', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3532', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:37:50', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3533', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:37:57', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3534', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:37:59', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3535', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 15:38:02', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3536', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:38:02', 'add');
+INSERT INTO `ke_user_log` VALUES ('3537', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 15:39:24', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3538', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 15:39:24', 'index');
+INSERT INTO `ke_user_log` VALUES ('3539', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:39:25', 'add');
+INSERT INTO `ke_user_log` VALUES ('3540', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:39:36', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3541', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:39:36', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3542', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 15:39:36', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3543', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:39:37', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3544', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:39:39', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3545', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 15:39:44', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3546', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:39:57', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3547', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:40:03', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3548', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:40:41', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3549', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:40:45', 'add');
+INSERT INTO `ke_user_log` VALUES ('3550', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:40:50', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3551', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:40:50', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3552', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 15:40:50', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3553', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:40:50', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3554', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:41:05', 'add');
+INSERT INTO `ke_user_log` VALUES ('3555', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 15:41:08', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3556', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:41:08', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3557', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:41:08', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3558', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:41:08', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3559', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:41:13', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3560', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:41:22', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3561', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 15:41:29', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3562', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 15:41:29', 'add');
+INSERT INTO `ke_user_log` VALUES ('3563', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:41:30', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3564', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 15:41:34', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3565', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 15:42:08', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3566', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 19:22:27', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3567', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-10 19:22:29', 'index');
+INSERT INTO `ke_user_log` VALUES ('3568', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-10 19:22:30', 'index');
+INSERT INTO `ke_user_log` VALUES ('3569', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:22:32', 'add');
+INSERT INTO `ke_user_log` VALUES ('3570', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:22:43', 'add');
+INSERT INTO `ke_user_log` VALUES ('3571', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:23:00', 'add');
+INSERT INTO `ke_user_log` VALUES ('3572', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 19:23:02', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3573', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:23:05', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3574', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 19:23:11', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3575', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:23:31', 'add');
+INSERT INTO `ke_user_log` VALUES ('3576', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 19:23:32', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3577', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:23:35', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3578', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 19:23:47', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3579', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 19:24:48', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3580', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:24:48', 'add');
+INSERT INTO `ke_user_log` VALUES ('3581', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 19:24:50', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3582', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:24:53', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3583', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 19:24:58', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3584', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 19:25:14', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3585', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:25:18', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3586', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 19:25:21', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3587', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 19:26:45', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3588', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 19:26:51', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3589', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 19:26:51', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3590', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 19:29:09', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3591', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:29:09', 'add');
+INSERT INTO `ke_user_log` VALUES ('3592', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 19:29:11', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3593', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:29:26', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3594', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:29:51', 'add');
+INSERT INTO `ke_user_log` VALUES ('3595', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 19:29:53', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3596', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:29:57', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3597', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 19:30:00', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3598', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 19:31:26', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3599', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:31:26', 'add');
+INSERT INTO `ke_user_log` VALUES ('3600', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 19:31:28', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3601', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 19:31:34', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3602', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:31:38', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3603', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:31:41', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3604', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 19:31:45', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3605', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 19:31:47', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3606', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 19:35:53', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3607', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:35:53', 'add');
+INSERT INTO `ke_user_log` VALUES ('3608', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:37:19', 'add');
+INSERT INTO `ke_user_log` VALUES ('3609', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 19:38:41', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3610', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:38:41', 'add');
+INSERT INTO `ke_user_log` VALUES ('3611', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 19:38:43', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3612', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:38:45', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3613', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 19:38:49', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3614', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 19:39:52', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3615', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 19:40:46', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3616', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:40:46', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3617', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 19:43:14', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3618', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:43:14', 'add');
+INSERT INTO `ke_user_log` VALUES ('3619', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:43:16', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3620', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:43:55', 'add');
+INSERT INTO `ke_user_log` VALUES ('3621', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:43:56', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3622', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:44:14', 'add');
+INSERT INTO `ke_user_log` VALUES ('3623', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 19:44:15', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3624', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:44:19', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3625', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 19:44:21', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3626', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 19:47:34', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3627', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:47:34', 'add');
+INSERT INTO `ke_user_log` VALUES ('3628', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:47:35', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3629', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:48:06', 'add');
+INSERT INTO `ke_user_log` VALUES ('3630', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:48:07', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3631', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:49:07', 'add');
+INSERT INTO `ke_user_log` VALUES ('3632', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:49:10', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3633', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 19:51:56', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3634', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:51:56', 'add');
+INSERT INTO `ke_user_log` VALUES ('3635', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:51:57', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3636', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:52:09', 'add');
+INSERT INTO `ke_user_log` VALUES ('3637', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:52:11', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3638', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:52:43', 'add');
+INSERT INTO `ke_user_log` VALUES ('3639', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:52:44', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3640', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:53:22', 'add');
+INSERT INTO `ke_user_log` VALUES ('3641', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:53:23', 'add');
+INSERT INTO `ke_user_log` VALUES ('3642', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:53:25', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3643', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 19:58:30', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3644', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:58:30', 'add');
+INSERT INTO `ke_user_log` VALUES ('3645', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:58:31', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3646', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:58:53', 'add');
+INSERT INTO `ke_user_log` VALUES ('3647', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:58:55', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3648', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:58:58', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3649', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:00', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3650', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:07', 'add');
+INSERT INTO `ke_user_log` VALUES ('3651', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:09', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3652', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:10', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3653', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:12', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3654', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:13', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3655', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:14', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3656', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:15', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3657', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:19', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3658', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:21', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3659', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:45', 'add');
+INSERT INTO `ke_user_log` VALUES ('3660', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:47', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3661', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:48', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3662', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:50', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3663', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:50', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3664', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:51', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3665', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:51', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3666', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:51', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3667', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 19:59:51', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3668', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:03', 'add');
+INSERT INTO `ke_user_log` VALUES ('3669', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:04', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3670', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:05', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3671', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:06', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3672', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:06', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3673', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:06', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3674', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:06', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3675', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:07', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3676', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:07', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3677', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:09', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3678', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:12', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3679', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:13', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3680', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:13', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3681', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:14', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3682', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:14', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3683', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:15', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3684', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:15', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3685', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:16', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3686', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:16', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3687', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:17', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3688', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:17', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3689', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:17', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3690', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:18', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3691', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:18', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3692', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:18', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3693', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:18', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3694', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:40', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3695', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:40', 'add');
+INSERT INTO `ke_user_log` VALUES ('3696', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:42', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3697', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:44', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3698', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:45', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3699', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:46', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3700', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:47', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3701', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:00:56', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3702', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:01:02', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3703', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 20:14:46', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3704', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:14:46', 'add');
+INSERT INTO `ke_user_log` VALUES ('3705', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:14:48', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3706', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 20:18:13', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3707', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:18:14', 'add');
+INSERT INTO `ke_user_log` VALUES ('3708', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:19:30', 'add');
+INSERT INTO `ke_user_log` VALUES ('3709', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:19:32', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3710', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 20:20:14', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3711', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:20:14', 'add');
+INSERT INTO `ke_user_log` VALUES ('3712', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:20:16', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3713', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:20:44', 'add');
+INSERT INTO `ke_user_log` VALUES ('3714', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:20:46', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3715', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 20:24:45', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3716', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:24:45', 'add');
+INSERT INTO `ke_user_log` VALUES ('3717', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:24:47', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3718', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:26:30', 'add');
+INSERT INTO `ke_user_log` VALUES ('3719', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:26:31', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3720', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 20:27:45', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3721', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:27:45', 'add');
+INSERT INTO `ke_user_log` VALUES ('3722', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:27:46', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3723', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 20:37:00', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3724', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:37:00', 'add');
+INSERT INTO `ke_user_log` VALUES ('3725', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:37:02', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3726', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:37:20', 'add');
+INSERT INTO `ke_user_log` VALUES ('3727', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:37:22', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3728', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:37:32', 'add');
+INSERT INTO `ke_user_log` VALUES ('3729', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:37:34', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3730', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:38:45', 'add');
+INSERT INTO `ke_user_log` VALUES ('3731', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 20:38:46', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3732', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 20:49:58', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3733', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:49:58', 'add');
+INSERT INTO `ke_user_log` VALUES ('3734', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:50:15', 'add');
+INSERT INTO `ke_user_log` VALUES ('3735', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 20:50:17', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3736', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:50:51', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3737', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:51:16', 'add');
+INSERT INTO `ke_user_log` VALUES ('3738', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 20:51:18', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3739', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:51:41', 'add');
+INSERT INTO `ke_user_log` VALUES ('3740', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 20:51:42', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3741', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 20:52:09', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3742', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 20:52:09', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3743', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:52:30', 'add');
+INSERT INTO `ke_user_log` VALUES ('3744', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:52:31', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3745', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:52:51', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3746', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:53:22', 'add');
+INSERT INTO `ke_user_log` VALUES ('3747', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:53:24', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3748', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:53:51', 'add');
+INSERT INTO `ke_user_log` VALUES ('3749', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:53:53', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3750', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 20:54:51', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3751', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 20:54:51', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3752', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:55:25', 'add');
+INSERT INTO `ke_user_log` VALUES ('3753', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 20:55:27', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3754', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:56:43', 'add');
+INSERT INTO `ke_user_log` VALUES ('3755', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 20:56:44', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3756', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 20:57:23', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3757', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:57:23', 'add');
+INSERT INTO `ke_user_log` VALUES ('3758', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 20:57:25', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3759', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:59:14', 'add');
+INSERT INTO `ke_user_log` VALUES ('3760', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 20:59:15', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3761', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 20:59:33', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3762', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:59:33', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3763', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 20:59:40', 'add');
+INSERT INTO `ke_user_log` VALUES ('3764', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 20:59:42', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3765', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:59:46', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3766', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 20:59:49', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3767', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 20:59:54', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3768', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-10 21:00:35', 'save');
+INSERT INTO `ke_user_log` VALUES ('3769', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-10 21:02:02', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3770', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 21:02:02', 'add');
+INSERT INTO `ke_user_log` VALUES ('3771', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-10 21:02:04', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3772', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-10 21:02:08', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3773', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-10 21:02:11', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3774', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-10 21:02:15', 'save');
+INSERT INTO `ke_user_log` VALUES ('3775', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-10 21:02:48', 'add');
+INSERT INTO `ke_user_log` VALUES ('3776', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 11:30:10', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3777', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 11:33:18', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3778', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-11 11:33:18', 'index');
+INSERT INTO `ke_user_log` VALUES ('3779', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 11:33:20', 'index');
+INSERT INTO `ke_user_log` VALUES ('3780', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 11:33:21', 'add');
+INSERT INTO `ke_user_log` VALUES ('3781', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 11:39:48', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3782', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 11:39:48', 'add');
+INSERT INTO `ke_user_log` VALUES ('3783', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 11:40:40', 'add');
+INSERT INTO `ke_user_log` VALUES ('3784', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 11:40:57', 'add');
+INSERT INTO `ke_user_log` VALUES ('3785', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 12:05:09', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3786', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 12:05:09', 'add');
+INSERT INTO `ke_user_log` VALUES ('3787', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 12:06:17', 'add');
+INSERT INTO `ke_user_log` VALUES ('3788', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 12:06:18', 'add');
+INSERT INTO `ke_user_log` VALUES ('3789', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 12:09:09', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3790', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 12:09:09', 'add');
+INSERT INTO `ke_user_log` VALUES ('3791', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 12:12:09', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3792', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 12:12:09', 'add');
+INSERT INTO `ke_user_log` VALUES ('3793', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 12:12:35', 'add');
+INSERT INTO `ke_user_log` VALUES ('3794', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 12:16:02', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3795', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 12:16:02', 'add');
+INSERT INTO `ke_user_log` VALUES ('3796', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 12:16:24', 'add');
+INSERT INTO `ke_user_log` VALUES ('3797', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 12:16:35', 'add');
+INSERT INTO `ke_user_log` VALUES ('3798', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:00:12', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3799', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 13:00:12', 'add');
+INSERT INTO `ke_user_log` VALUES ('3800', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:06:08', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3801', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-11 13:06:08', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3802', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-11 13:06:15', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3803', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-11 13:06:20', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3804', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-11 13:06:23', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3805', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-11 13:06:26', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3806', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-11 13:06:28', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3807', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-11 13:06:33', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3808', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-11 13:06:36', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3809', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-11 13:06:47', 'save');
+INSERT INTO `ke_user_log` VALUES ('3810', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:07:41', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3811', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-11 13:07:42', 'save');
+INSERT INTO `ke_user_log` VALUES ('3812', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:09:06', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3813', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-11 13:09:06', 'save');
+INSERT INTO `ke_user_log` VALUES ('3814', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:09:51', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3815', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-11 13:09:51', 'save');
+INSERT INTO `ke_user_log` VALUES ('3816', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:13:17', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3817', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-11 13:13:17', 'save');
+INSERT INTO `ke_user_log` VALUES ('3818', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:15:44', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3819', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-11 13:15:44', 'save');
+INSERT INTO `ke_user_log` VALUES ('3820', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-11 13:15:59', 'save');
+INSERT INTO `ke_user_log` VALUES ('3821', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:18:05', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3822', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-11 13:18:05', 'save');
+INSERT INTO `ke_user_log` VALUES ('3823', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 13:18:08', 'index');
+INSERT INTO `ke_user_log` VALUES ('3824', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 13:18:12', 'index');
+INSERT INTO `ke_user_log` VALUES ('3825', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 13:18:22', 'index');
+INSERT INTO `ke_user_log` VALUES ('3826', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 13:20:02', 'index');
+INSERT INTO `ke_user_log` VALUES ('3827', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:20:40', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3828', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 13:20:40', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3829', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 13:20:53', 'index');
+INSERT INTO `ke_user_log` VALUES ('3830', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 13:20:56', 'add');
+INSERT INTO `ke_user_log` VALUES ('3831', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:24:49', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3832', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 13:24:49', 'add');
+INSERT INTO `ke_user_log` VALUES ('3833', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:27:53', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3834', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 13:27:53', 'index');
+INSERT INTO `ke_user_log` VALUES ('3835', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 13:28:01', 'index');
+INSERT INTO `ke_user_log` VALUES ('3836', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:31:12', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3837', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 13:31:12', 'index');
+INSERT INTO `ke_user_log` VALUES ('3838', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:32:23', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3839', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 13:32:23', 'index');
+INSERT INTO `ke_user_log` VALUES ('3840', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 13:32:26', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3841', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 13:32:37', 'index');
+INSERT INTO `ke_user_log` VALUES ('3842', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 13:32:39', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3843', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:33:05', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3844', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 13:33:05', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3845', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 13:33:44', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3846', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:35:18', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3847', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 13:35:18', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3848', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 13:35:40', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3849', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 13:42:03', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3850', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 13:42:04', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3851', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 19:52:45', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3852', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 19:52:45', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3853', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 19:52:56', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3854', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 19:53:38', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3855', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 19:54:49', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3856', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 19:54:49', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3857', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 19:54:53', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3858', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 19:54:59', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3859', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 19:56:57', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3860', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 19:56:57', 'index');
+INSERT INTO `ke_user_log` VALUES ('3861', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 19:56:59', 'add');
+INSERT INTO `ke_user_log` VALUES ('3862', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 19:57:08', 'index');
+INSERT INTO `ke_user_log` VALUES ('3863', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 19:57:10', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3864', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 19:57:17', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3865', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 20:01:05', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3866', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 20:01:05', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3867', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-11 20:01:08', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3868', '5', '/admin/knentry/findRelaFile', '0:0:0:0:0:0:0:1', '2017-02-11 20:01:17', 'findRelaFile');
+INSERT INTO `ke_user_log` VALUES ('3869', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-11 20:01:22', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3870', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-11 20:01:31', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3871', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-11 20:01:43', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3872', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-11 20:01:47', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3873', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-11 20:01:59', 'save');
+INSERT INTO `ke_user_log` VALUES ('3874', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 20:05:57', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3875', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 20:05:57', 'index');
+INSERT INTO `ke_user_log` VALUES ('3876', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 20:05:59', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3877', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-11 20:06:04', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3878', '5', '/admin/knentry/findRelaForm', '0:0:0:0:0:0:0:1', '2017-02-11 20:06:07', 'findRelaForm');
+INSERT INTO `ke_user_log` VALUES ('3879', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-11 20:06:13', 'save');
+INSERT INTO `ke_user_log` VALUES ('3880', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 20:07:28', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3881', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-11 20:07:28', 'save');
+INSERT INTO `ke_user_log` VALUES ('3882', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 20:07:30', 'index');
+INSERT INTO `ke_user_log` VALUES ('3883', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 20:07:48', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3884', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 20:10:20', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3885', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 20:10:20', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3886', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 20:11:02', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3887', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 20:11:14', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3888', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 20:11:27', 'index');
+INSERT INTO `ke_user_log` VALUES ('3889', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 20:11:29', 'add');
+INSERT INTO `ke_user_log` VALUES ('3890', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 20:12:14', 'add');
+INSERT INTO `ke_user_log` VALUES ('3891', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 20:12:23', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3892', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 20:12:23', 'index');
+INSERT INTO `ke_user_log` VALUES ('3893', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 20:12:24', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3894', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 20:14:34', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3895', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 20:14:34', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3896', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 20:14:35', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3897', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 20:14:37', 'index');
+INSERT INTO `ke_user_log` VALUES ('3898', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-11 20:14:39', 'add');
+INSERT INTO `ke_user_log` VALUES ('3899', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 20:24:08', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3900', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-11 20:24:08', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3901', '5', '/admin/knentry/findRelaMole', '0:0:0:0:0:0:0:1', '2017-02-11 20:24:13', 'findRelaMole');
+INSERT INTO `ke_user_log` VALUES ('3902', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-11 20:25:35', 'save');
+INSERT INTO `ke_user_log` VALUES ('3903', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-11 20:25:37', 'index');
+INSERT INTO `ke_user_log` VALUES ('3904', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-11 20:25:53', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3905', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 20:29:21', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3906', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-11 20:37:32', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3907', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 15:01:43', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3908', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-12 15:01:45', 'index');
+INSERT INTO `ke_user_log` VALUES ('3909', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-12 15:01:47', 'index');
+INSERT INTO `ke_user_log` VALUES ('3910', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 15:01:51', 'add');
+INSERT INTO `ke_user_log` VALUES ('3911', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 15:02:23', 'add');
+INSERT INTO `ke_user_log` VALUES ('3912', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 15:05:18', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3913', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 15:05:18', 'add');
+INSERT INTO `ke_user_log` VALUES ('3914', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 15:05:21', 'add');
+INSERT INTO `ke_user_log` VALUES ('3915', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 15:05:51', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3916', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 15:05:51', 'add');
+INSERT INTO `ke_user_log` VALUES ('3917', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 15:07:45', 'add');
+INSERT INTO `ke_user_log` VALUES ('3918', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 15:08:03', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3919', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 15:25:29', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3920', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 15:25:29', 'add');
+INSERT INTO `ke_user_log` VALUES ('3921', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 15:29:00', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3922', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 15:37:39', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3923', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 15:40:26', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3924', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 15:41:36', 'add');
+INSERT INTO `ke_user_log` VALUES ('3925', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 15:41:50', 'add');
+INSERT INTO `ke_user_log` VALUES ('3926', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 15:43:50', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3927', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 15:43:50', 'add');
+INSERT INTO `ke_user_log` VALUES ('3928', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 15:46:05', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3929', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 15:46:05', 'add');
+INSERT INTO `ke_user_log` VALUES ('3930', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 15:46:40', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3931', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 15:46:40', 'add');
+INSERT INTO `ke_user_log` VALUES ('3932', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 15:50:48', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3933', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 15:50:48', 'add');
+INSERT INTO `ke_user_log` VALUES ('3934', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 15:53:36', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3935', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 15:53:36', 'add');
+INSERT INTO `ke_user_log` VALUES ('3936', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 16:18:53', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3937', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 16:18:53', 'add');
+INSERT INTO `ke_user_log` VALUES ('3938', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 16:19:43', 'add');
+INSERT INTO `ke_user_log` VALUES ('3939', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 18:28:58', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3940', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-12 18:28:58', 'save');
+INSERT INTO `ke_user_log` VALUES ('3941', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 18:31:42', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3942', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-12 18:31:42', 'save');
+INSERT INTO `ke_user_log` VALUES ('3943', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-12 18:31:45', 'save');
+INSERT INTO `ke_user_log` VALUES ('3944', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-12 18:31:56', 'save');
+INSERT INTO `ke_user_log` VALUES ('3945', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 18:32:45', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3946', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-12 18:32:45', 'save');
+INSERT INTO `ke_user_log` VALUES ('3947', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 18:37:09', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3948', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-12 18:37:09', 'save');
+INSERT INTO `ke_user_log` VALUES ('3949', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-12 18:37:17', 'save');
+INSERT INTO `ke_user_log` VALUES ('3950', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 18:56:02', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3951', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-12 18:56:02', 'save');
+INSERT INTO `ke_user_log` VALUES ('3952', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 18:57:11', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3953', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-12 18:57:11', 'save');
+INSERT INTO `ke_user_log` VALUES ('3954', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 18:57:53', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3955', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-12 18:57:53', 'save');
+INSERT INTO `ke_user_log` VALUES ('3956', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 19:01:51', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3957', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-12 19:01:51', 'save');
+INSERT INTO `ke_user_log` VALUES ('3958', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 19:03:38', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3959', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-12 19:03:38', 'save');
+INSERT INTO `ke_user_log` VALUES ('3960', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-12 19:04:37', 'index');
+INSERT INTO `ke_user_log` VALUES ('3961', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-12 19:04:40', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3962', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-12 19:04:47', 'save');
+INSERT INTO `ke_user_log` VALUES ('3963', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-12 19:04:54', 'index');
+INSERT INTO `ke_user_log` VALUES ('3964', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-12 19:04:55', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3965', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-02-12 19:05:22', 'index');
+INSERT INTO `ke_user_log` VALUES ('3966', '5', '/admin/knform/edit', '0:0:0:0:0:0:0:1', '2017-02-12 19:05:24', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3967', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-02-12 19:05:29', 'index');
+INSERT INTO `ke_user_log` VALUES ('3968', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-12 19:05:35', 'index');
+INSERT INTO `ke_user_log` VALUES ('3969', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-12 19:05:37', 'add');
+INSERT INTO `ke_user_log` VALUES ('3970', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 19:07:38', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3971', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-02-12 19:07:38', 'save');
+INSERT INTO `ke_user_log` VALUES ('3972', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-12 19:07:40', 'index');
+INSERT INTO `ke_user_log` VALUES ('3973', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-12 19:07:42', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3974', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-12 19:09:50', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3975', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-02-12 19:09:51', 'index');
+INSERT INTO `ke_user_log` VALUES ('3976', '5', '/admin/knform/edit', '0:0:0:0:0:0:0:1', '2017-02-12 19:09:57', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3977', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-02-12 19:10:03', 'index');
+INSERT INTO `ke_user_log` VALUES ('3978', '5', '/admin/knform/getFormImgById', '0:0:0:0:0:0:0:1', '2017-02-12 19:10:14', 'getFormImgById');
+INSERT INTO `ke_user_log` VALUES ('3979', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-02-12 19:10:16', 'index');
+INSERT INTO `ke_user_log` VALUES ('3980', '5', '/admin/knform/getFormImgById', '0:0:0:0:0:0:0:1', '2017-02-12 19:10:17', 'getFormImgById');
+INSERT INTO `ke_user_log` VALUES ('3981', '5', '/admin/knform/getFormImgById', '0:0:0:0:0:0:0:1', '2017-02-12 19:10:18', 'getFormImgById');
+INSERT INTO `ke_user_log` VALUES ('3982', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-02-12 19:10:20', 'index');
+INSERT INTO `ke_user_log` VALUES ('3983', '5', '/admin/knform/edit', '0:0:0:0:0:0:0:1', '2017-02-12 19:10:22', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3984', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-02-12 19:10:30', 'index');
+INSERT INTO `ke_user_log` VALUES ('3985', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-02-12 19:10:31', 'edit');
+INSERT INTO `ke_user_log` VALUES ('3986', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 13:26:36', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3987', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:26:42', 'index');
+INSERT INTO `ke_user_log` VALUES ('3988', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 13:28:43', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3989', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:28:43', 'index');
+INSERT INTO `ke_user_log` VALUES ('3990', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:28:45', 'index');
+INSERT INTO `ke_user_log` VALUES ('3991', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 13:30:59', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('3992', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:30:59', 'index');
+INSERT INTO `ke_user_log` VALUES ('3993', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:31:00', 'index');
+INSERT INTO `ke_user_log` VALUES ('3994', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:31:01', 'index');
+INSERT INTO `ke_user_log` VALUES ('3995', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:31:46', 'index');
+INSERT INTO `ke_user_log` VALUES ('3996', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:31:48', 'index');
+INSERT INTO `ke_user_log` VALUES ('3997', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:32:23', 'index');
+INSERT INTO `ke_user_log` VALUES ('3998', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:32:25', 'index');
+INSERT INTO `ke_user_log` VALUES ('3999', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 13:34:24', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4000', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:34:24', 'index');
+INSERT INTO `ke_user_log` VALUES ('4001', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:34:26', 'index');
+INSERT INTO `ke_user_log` VALUES ('4002', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:35:51', 'index');
+INSERT INTO `ke_user_log` VALUES ('4003', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 13:37:16', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4004', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:37:16', 'index');
+INSERT INTO `ke_user_log` VALUES ('4005', '5', '/admin/menu', '0:0:0:0:0:0:0:1', '2017-02-13 13:37:23', 'index');
+INSERT INTO `ke_user_log` VALUES ('4006', '5', '/admin/role', '0:0:0:0:0:0:0:1', '2017-02-13 13:37:24', 'index');
+INSERT INTO `ke_user_log` VALUES ('4007', '5', '/admin/role', '0:0:0:0:0:0:0:1', '2017-02-13 13:38:59', 'index');
+INSERT INTO `ke_user_log` VALUES ('4008', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 13:39:48', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4009', '5', '/admin/role', '0:0:0:0:0:0:0:1', '2017-02-13 13:39:48', 'index');
+INSERT INTO `ke_user_log` VALUES ('4010', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 13:46:57', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4011', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 13:49:11', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4012', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:51:09', 'index');
+INSERT INTO `ke_user_log` VALUES ('4013', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 13:51:11', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4014', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 13:51:11', 'index');
+INSERT INTO `ke_user_log` VALUES ('4015', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 13:56:25', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4016', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 14:27:21', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4017', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 14:28:45', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4018', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 14:36:52', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4019', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 14:38:58', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4020', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 14:41:09', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4021', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 14:49:46', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4022', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 14:55:57', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4023', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 14:57:58', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4024', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:02:25', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4025', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:05:14', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4026', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:07:23', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4027', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:12:55', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4028', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:15:13', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4029', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:24:36', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4030', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:29:30', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4031', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:33:37', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4032', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:35:56', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4033', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:37:57', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4034', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:41:12', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4035', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-13 15:41:59', 'index');
+INSERT INTO `ke_user_log` VALUES ('4036', '5', '/admin/organ', '0:0:0:0:0:0:0:1', '2017-02-13 15:42:37', 'index');
+INSERT INTO `ke_user_log` VALUES ('4037', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:44:31', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4038', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:48:56', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4039', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:51:30', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4040', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:53:53', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4041', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 15:57:47', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4042', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 16:01:21', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4043', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 16:04:13', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4044', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 16:07:06', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4045', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 16:24:31', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4046', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 16:27:23', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4047', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 16:29:39', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4048', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 19:34:33', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4049', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 19:38:25', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4050', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 19:42:45', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4051', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 19:45:26', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4052', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 19:48:57', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4053', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 19:52:05', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4054', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 19:54:06', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4055', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 20:01:03', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4056', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 20:03:15', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4057', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 20:05:31', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4058', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 20:07:50', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4059', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 20:10:34', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4060', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 20:12:36', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4061', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 20:15:36', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4062', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 20:17:36', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4063', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 20:21:15', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4064', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-13 20:24:53', 'ke_user_log');
 
 -- ----------------------------
 -- Table structure for `kn_entry`
@@ -3895,20 +4672,24 @@ CREATE TABLE `kn_entry` (
   `knen_tag` varchar(255) DEFAULT NULL COMMENT '词条关键词',
   `knen_crea_user_id` int(11) DEFAULT NULL COMMENT '创建词条用户ID',
   `knen_last_user_id` int(11) DEFAULT NULL COMMENT '最后修改词条的用户ID',
-  `knen_isformula` bit(1) DEFAULT b'0' COMMENT '该词条是否有公式',
-  `knen_ismolecular` bit(1) DEFAULT b'0' COMMENT '该词条是否包含分子式',
-  `knen_isdata` bit(1) DEFAULT b'0' COMMENT '该词条是否含有可计算的数据文件',
+  `knen_is_form` bit(1) DEFAULT b'0' COMMENT '该词条是否有公式',
+  `knen_is_mole` bit(1) DEFAULT b'0' COMMENT '该词条是否包含分子式',
+  `knen_is_file` bit(1) DEFAULT b'0' COMMENT '该词条是否含有可计算的数据文件',
   `knen_last_ip` varchar(45) DEFAULT NULL COMMENT '最后修改IP\n',
-  `knen_secu_id` int(11) DEFAULT NULL,
+  `knen_secu_id` int(11) DEFAULT '1' COMMENT '密级',
   `knen_text_type` varchar(255) DEFAULT 'HTML' COMMENT '词条文本语言类型：WIKI，Markdown，HTML',
   PRIMARY KEY (`id`),
   KEY `fk_knen_kn_tree` (`knen_kntr_id`),
   CONSTRAINT `fk_knen_kn_tree` FOREIGN KEY (`knen_kntr_id`) REFERENCES `kn_tree` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='存放词条正文';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='存放词条正文';
 
 -- ----------------------------
 -- Records of kn_entry
 -- ----------------------------
+INSERT INTO `kn_entry` VALUES ('6', '炸药', '<p>炸药是一种嫌贵不稳定的物质，在外界能量的作用下，能够自行发生急剧的化学变化，在极短的时间内突然释放出大量的能量，产生的爆炸产物快速向周围膨胀，产生强冲击波，造成对周围介质的破坏。</p><p>广义上，炸药指能发生化学爆炸的物质，包括化合物和混合物。火药、烟火剂、起爆药都属于炸药的范畴。但是技术上只将用于爆破目的的物质叫做炸药，又叫猛炸药，这是炸药的侠义概念。</p><p>炸药因其组成、物理性能、化学性能和爆炸性能的不同可分为很多种。通常有两种分类方法，一是按炸药的化学组分分类，一是按炸药的用途分类。</p>', '15', '2017-02-11 20:07:28', '2017-02-11 20:07:28', '0', '猛炸药,火药,烟火剂,起爆药', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML');
+INSERT INTO `kn_entry` VALUES ('7', '单质炸药', '<p>单质炸药是只含有一种化合物的炸药，在他们的分子内含有爆炸性基团，期中最重要的是硝基（—NO<sub>2</sub>）。根据硝基基团的连接方式可分为有C<span style=\"font-family: 微软雅黑; font-size: 18px;\">—NO</span><sub style=\"font-family: 微软雅黑; white-space: normal;\">2</sub>、N<span style=\"font-family: 微软雅黑; font-size: 18px;\">—NO</span><sub style=\"font-family: 微软雅黑; white-space: normal;\">2</sub>和O<span style=\"font-family: 微软雅黑; font-size: 18px;\">—NO</span><sub style=\"font-family: 微软雅黑; white-space: normal;\">2</sub>，分别形成了硝基化合物、硝铵和硝酸酯三类最重要的单质炸药。</p><p><strong>硝基化合物炸药</strong></p><p>目前用作炸药的硝基化合物主要是芳香族多硝基化合物。最常用的是以梯恩梯（TNT）为代表的单碳环多硝基化合物。此类扎奥的感度和能量大多数低于硝铵和硝酸酯类炸药，但其制造工艺成熟，原料廉价易得，因而被广泛应用。可用作炸药的脂肪族多硝基化合物主要有硝防系化合物，虽然其机械感度较高，但它们氧平衡较好，爆速和爆压较高，有的已获得实际应用。</p><p><br/></p><p><br/></p>', '4', '2017-02-11 20:25:35', '2017-02-11 20:25:35', '0', '单质炸药,硝基化合物', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML');
+INSERT INTO `kn_entry` VALUES ('8', '静电势', '<p>分子中心的原子核和核外电子在其周围空间某点上的静电势，取决于分子固有的结构和电荷分布，且有分子本身的性质决定，可以采用他来描述分子的性质。</p><p><img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"{\\Delta }^{2}V(\\gamma )=4\\pi \\rho (\\gamma )-4\\pi \\sum _{A} {{Z}_{A}}\\delta ({R}_{A}-\\gamma )\"/></p>', '62', '2017-02-12 19:04:47', '2017-02-12 19:04:47', '0', '静电势,感度', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML');
+INSERT INTO `kn_entry` VALUES ('9', '最小键级法', '<p>所为的最小键级法师用化合物体系中最弱键级来判定感°</p><p><img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}\"/></p><p><img class=\"kfformula\" src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAABTCAYAAACbKGKIAAAQIUlEQVR4Xu2dBcwuRxWG3+Lu7kWCu6YQ3L1Q3N3dHYpbcddixd0luITgEiBQ3N3d8tAzYbPd/Xb37Oys/GeSm//e+38zO/PO7DvHv30ULRAIBAIBSfsECoFAIBAIgECQQZyDQCAQ+B8CQQZxEAKBQCDIIM5AIBAI/B+BkAziNAQCgUBIBnEGAoFAICSDOAOBQCBQQyDUhDgSgUAgEGpCnIFAIBAINSHOQCAQCISaEGcgEAgEmhAIm0Gci0AgEAibQZyBQCAQCJtBnIFAIBAIm0GcgUAgEAibQZyBQCAQaEUgDIhxOAKBQCAMiBs8A5D7AZIuLuk4kl4t6RySfiDpGpIeIulbG1x3LCkDAiEZZABxQUMcV9LtJH1Q0vMkHSLpKZKObD+/LekJC5pvTGVBCAQZLGgzMkzlZJLOJOn4ku4r6caSvivpRJJeKukVJi1keFQMsTUEggy2tqPSESU9UtKxjRD+IulCkp4t6WaSvrq9JceKciAQZJADxWWNgarwQknvlvQiK213D0lnkfRoSaeT9OFlTTlmswQEggyWsAt553AuSa+SdEtJnzaVARXhxZL+KunvZlPI+9QYbfUIBBmsfgsPt4BrS7q1pJtL+pmkI0m6l/38s6TnS/rT9pYdKxqLQJDBWASjfyCwEQSCDDaykQWXcQRJR5OElJGj5R4vx5z25BhBBnty292LxkPxUElvz2iERI3BwPkjc3v+2z276DgKgSCDUfDtqc7HlPR4SZ+wYKb/ZFz9lGNnnOa2hwoy2Pb+5lpdMkIy3pMl/TPXwJVxTirpaZKek1HqmGCa2x1yTjJYk64ITkeXRABP3xuR2+5Wkn5pQT+/l3SQpN86jxPxAQQNTdEOtkjFtrEvLekOku4k6edTTMDG5Dn3MW8IasPU7VSSrifpLpKuKekLUz+wx/iEju8n6QGSvmj5JLiDJ29zkQEvCgfrbZK+Nvkq8zyA5J+zWiBP181IFOBtJX1c0pckHdVyAiCS+5u/f+isjmeH9bTWET17yOE9jyTGgFT4+7krE+BGvnvLhE5i7siXSHrL0EkP/Dw4ERj1K8PrXwP7ez5+dSODm0r6iWeACfrUA8cmeMThh5yDDBA5YeLPrUwcBKvrG4RkA+6SEE4h6W6SHiXpD9bncpKeaDfRN5y7e8lKwBA5B+cdIWlADBAAf1jLvi1jId1cxaSc3zjnPaRbydBp9vRBkpAQIFckvyW0M0t6pZ0hLpQibQ4yuLykCxjzd92wRUAY8BAkGl5wbklu/LZ2GksMImvwBfahi0p6lyTW/6kBz6x/9OGSHmb/+WZJ+48Yi66QAuMQpcifaiPhiZDmd9jPoY/iUCMBggcRkCRRfV8S6sAHJL2+YUAwfqakL1umZV+1bOjc+DzekWdJ+srCsjm5OA60RLNDPQvz9ClNBoicj7NEmu94JryAPtxcN6kkAfWd0o1sc1NkYN9+TZ/7kKRL2C9u0fASe8aGENCbq+0y5kFg7h5p5jamyqAyIfoiERIVyXjXkcTcm6QNfg9OU4vuZ7RMThK7ILylNOwFqHHghq2pSCtNBtcyffURkkrog1OAyM1FjQCSgYj979NObDfQGyW9ZoARsm1s9H7sBbxgGCQvNdB+0DQudgRUj2TgTNmPiNDc7knd6bNePnMUI6wfmnSEioTNIYnmeA9Is24SzcmvQGrgue/r+0DH57ADPdeICTvFDU1S+rWkp0saGvOQo7jMMcyrgv0CkrqCJEgLaZoYD2pSTNJKkgHWeKzp5NQX04MmQe0wL8HJzdjVJcZiI7mnEQAkkks14hZ/k60PYsB+kLNh90BvfauRn3dsRF4ONdLUNy1xqkv1SAY0Pk91pqkuDuwEqG14MPgJAT3JrPhIsEOfm6O4DAZiEs1wsRLlCTGl+hQkn01mcC9JBuiPjzFR8cfekzWy30VMRGXzyeDzNm4uDE+3bxFz07jJ6MiLhcU+FxGk8Z9qRib+vcsj4FknWL1XEolPY25nXjjwurMlSKFmMVcqMiExYT+pJ04lqYR+kMgUhksuJ8j5DHY5YTv4hQeoSp++xWUwBF+45VmQAS/9Z42IqUzVdeGMnPZh3UuSATfEde3w5oprHwoCRjwO11jLMYeY7D8MebsMiYih3NgcNIjggnbgEMdzNaSC5CbEmIjun6Ohrz/YairuWuOuZzUZ6NCHT2g335XsZ9MNDFmgJnBmvp5jQbUxkuTzPVNV3mOu7qHSQH1qY4vLsG5iOt5vagqEX+TyLEkGLBLRGnvBEKbjQMGUf7PinoCEsQf/MHonBwu99OU9bt42MkAHJ+2XcRDrCXhBPGN89Pz6jZ70utfuuDWRhLgBsNAzd7DGgPbOzEVJ0fUxKCb7AeSTg2wQz69oejQvjKedXtLLTNSnLiMNw+cNzKvwOlMdmsZmf7ExXGwitfL8ktg/5oKRDvX1jpJ+KumPtv+eNY8pLoOdBfWEgDxI836STmCkzLuD2jTUjtF7DSXJgMMFyIhmfRvGugfaRqErITbiokK0RITlJUCMwrhCDEBX5d8mMuD2Zm4EAyGagQmSA2G3EEyT8SxtGp9Hr643JAcKktbdfpDYFGIvlnfcnTQwwaA4piURGpLEso9xrXRjrz5mHpgmjNvmw4uExHFO+wARfdiqcGte1lQSjKLctthdkIAQzXFn8nckWGwxuEDrrc+lMaa4DOcGewFxLKyZM4ghEWkPtQJby2StFBmkw/XRlpenbYGwNgeRF5/GJgIWIb4Y8Y5lLwE+aUijK2ikTgZEFPIScRAAP0ks6SBCEkTENUky/A6J4bEZdodDih3D0yhvxvy5ZSmHTkP6Ih7B25LkQ3+Cp+ZQ6yjTxs2NigWx9mn1wDDOB/0R/bHC49HgTGEkpPQbFwxYIX1yIyMRcqFUz0J6bt9LY0xxGcra493AvoL6B1nxBzc8lyAl7ydrSyYDNogb+hkVAxKiHSHMbCYSxhB1AxCrZMC/kwGp7s9OIiovF9b0pgYZ0LCUL6HVw5WRDpASPA3VixcCdWOsfcXzfPqgZuGGfcMAjOmDNMb5gKhR+SBzpLGUe4CdB1UFaapLkkxzH3NpeNdfvN+SyaAJDERWdDvcQB4Ld5UMECNT5F3VfZUMQFftMF4tjQzAC/vB5w04ko848J62VjJAWkRKTPEfSX9nT/mdxytR9Tp4Lg0P/rP0KUUGXTp2n8WnMdCdCA5pM2phP+BFpRpPvfEtQ8kQc2q7fXh5kksJWwQiN2XFaRgVf9cyOY8NpM86x34GgyWkgPHSmyG5VjKoY5ekC4y23ngFXKFjLo2x+1msfykyYEFjdezkCiIs1iu6JskAYyHiI8Yivo6s6jpL0W/YJto8H14byNQbiygMGWDo8hIBc1wSGaAqeO0yfdS9rj3hrGGArKuMSeroujS6xl/M70uSASL+2UcwdEr0wdBWNSjhk02pwl3AJjLAbcMBI+AEKaMabFI9QNgnmtyByX/OPHJEU+YwIIJtyi8YktrchFkiO0hhl3TUhTe/99YMSPYh9nuINyHNKal7Vx6RKYp0iUXfe2n0wWcxnylJBkS0EZZL8kqb6J2AYV4UncBtSJQf2X7J3Yfx5yP2wVPaeJTj6vIk0KVqM6B8OD7squss5R0wV4JdcOsQP888qnPGFUUU3b0HGKGm3HSMh1icwaieeeh5blLJzpbJteipGZA8OruMuLvWxlfK4RqG6KvuYUgGNaqPm65qL/BcGh7sZ+tTkgzQ1YmmItmiKwMuMTKRdRh+CNq5q0kWBAFxI7NRbDK++77x2lUy4CbFPsD4fOUYhTVw6XALEFYKGSEKEjWIDaHquWAcMsr4/NAEntybDREQ0IPBEHxzNaQn3GR94jd2PdNbMwD8Sf/um/KNfYAXHJch6h0vPJISkaJJ3cO7AIETR9B1BllTmrv30si1F0XGKUkGiG24dRBheaG7Gi8hXxyKUY8Dj+5IXjwE8EmLa2ccorL6tioZkJuA+41bi0IrFPcg2IPIQ3z0RKIRwAIRVNWIFJSEpNDnduk7N+/nOPDYB7yeg7bnggs+76tZMJZ3ft6aAUg52HN2GYurc4I82CvOB5jQn2w/go74PwLeUBmQ/ojJ6OuWxiDtvTS8mM3SryQZsEAss+igbNQc3+qTIzcBCQc9kkSluWsyJGMhnoOxLXkfkr0hGVIx/ELE3uapGZAkQ4ikb/o00XtUbcLLBAEQ4EZ4Of9H0BRkwH6hcg4J6eUd8VwaXrxm61eaDBDFuXXZkKT3l1w8B5wSXrzM3iKT2BjQR8l373u7TLFGJAEO+hgXYnVeEEtVusiVRuypGZArfXoK3Dc7ZmkyAEiiudC3URmKVXHJtIMYLAl7piQVFXvmahAAonAqSDJmHsnmQFJQNYQ5qUPoy96AHeblqRmABEmCE0E+fQvIjMEg+hZOYa4CjkfgfBZqnDvHf6qNrSdNTfWcrnEhAAyGY6sbpdLrSBcQAjaTerbj2JfSUzMgFwl14Ri/ryEwh2TAFHguvnUMdOSRL70xT6zq1LHH8zBX46UlYpKcg74uRF56/qSWSqVDKqlhgW+yO6TipCTIeErVeWoGYJNBKsCYuwQD7Vx7Xfy5c5FB8YVu5IHVQiY5l7SrqCpFUVOl3qEGU0/NAOpk8mUxxKNM+YUtOfHbxFhBBuvaxhxeg6YVQzJt4cuI+gRdQQRDM0XR+ckY7FszgFp/1P6jxPzUX9iyrp0vMNsggwIgb+ARFAbB105ocN8SaMSVIFHQ+tQM4Czidsbj01Y1eQNQLncJQQbL3ZtdM/PG+49ZLUZfvAoUO/GkAnc9m+AeogMZf05PTdc8N/v7IIP1bq0n3p/VEutBtR+CcIii5CYm0rArCIyzQj9Svwl7JkQ8V8NlS5g62YF9woRzPTfGqSAQZLDO4+CN92e1JP5AAJStpxwYtz11HvrUpuS55AqQzUiKd45GaTLyTshM9BZezTGPPT9GkME6j4A33j99kU31ew7J0CQpiejDKcT/dSK8B2cdZLDOTffE+7NS4vdJ6yXSMH35K9l+hFZzO4eIvs7zkGXWQQZZYCw+iCfen0mmr/om9bpKBojo1f8rvqB44PwIBBnMvweeGXTF+5OMRbpuvZF8RBAR30dAQA/lw4kAJdIvyMCzExvqE2Swvs30xPunVYZksL79LjbjIINiUGd7kCfePz08bAbZtmF7AwUZrG9P+8T7E4PQpCYQFbiffbXYoaYmfMbSjPEmzPE1auvbgY3OOMhgfRs7NN6/vkKyL/kCGYJ8qPhDCvM/7GvI5izWsr6d2NiMgwzWtaFD4/2bVkcEIrUliThEEiCVmQjEuQu7rmsnNjjbIIMNbmosKRDwIBBk4EEt+gQCG0QgyGCDmxpLCgQ8CAQZeFCLPoHABhEIMtjgpsaSAgEPAkEGHtSiTyCwQQSCDDa4qbGkQMCDQJCBB7XoEwhsEIEggw1uaiwpEPAgEGTgQS36BAIbRCDIYIObGksKBDwIBBl4UIs+gcAGEQgy2OCmxpICAQ8C/wXaP5mBYjud4wAAAABJRU5ErkJggg==\" data-latex=\"\\left ( {x+a} \\right )^{2}=\\sum ^{n}_{k=0} {\\left ( {^{n}_{k}} \\right ){x}^{k}{a}^{n-k}}\"/></p>', '62', '2017-02-12 19:07:38', '2017-02-12 19:07:38', '0', '最小键级法,感度', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML');
 
 -- ----------------------------
 -- Table structure for `kn_entry_history`
@@ -3946,11 +4727,12 @@ CREATE TABLE `kn_entr_file` (
   KEY `fk_entry_entry` (`knfi_id`),
   CONSTRAINT `fk_entry_entry` FOREIGN KEY (`knfi_id`) REFERENCES `kn_file` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_entry_file` FOREIGN KEY (`entr_id`) REFERENCES `kn_entry` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of kn_entr_file
 -- ----------------------------
+INSERT INTO `kn_entr_file` VALUES ('7', '6', '8');
 
 -- ----------------------------
 -- Table structure for `kn_entr_form`
@@ -3965,11 +4747,15 @@ CREATE TABLE `kn_entr_form` (
   KEY `fk_to_formu` (`form_id`),
   CONSTRAINT `fk_to_entry` FOREIGN KEY (`entr_id`) REFERENCES `kn_entry` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_to_formu` FOREIGN KEY (`form_id`) REFERENCES `kn_formula` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of kn_entr_form
 -- ----------------------------
+INSERT INTO `kn_entr_form` VALUES ('1', '6', '8');
+INSERT INTO `kn_entr_form` VALUES ('2', '8', '22');
+INSERT INTO `kn_entr_form` VALUES ('3', '9', '23');
+INSERT INTO `kn_entr_form` VALUES ('4', '9', '24');
 
 -- ----------------------------
 -- Table structure for `kn_entr_mole`
@@ -3984,11 +4770,15 @@ CREATE TABLE `kn_entr_mole` (
   KEY `fk_re_mole` (`mole_id`),
   CONSTRAINT `fk_re_entry` FOREIGN KEY (`entr_id`) REFERENCES `kn_entry` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_re_mole` FOREIGN KEY (`mole_id`) REFERENCES `kn_molecular` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of kn_entr_mole
 -- ----------------------------
+INSERT INTO `kn_entr_mole` VALUES ('10', '6', '4');
+INSERT INTO `kn_entr_mole` VALUES ('11', '6', '3');
+INSERT INTO `kn_entr_mole` VALUES ('12', '6', '2');
+INSERT INTO `kn_entr_mole` VALUES ('13', '7', '3');
 
 -- ----------------------------
 -- Table structure for `kn_file`
@@ -4038,19 +4828,22 @@ CREATE TABLE `kn_formula` (
   PRIMARY KEY (`id`),
   KEY `fk_knfo_kn_tree` (`knfo_kntr_id`),
   CONSTRAINT `fk_knfo_kn_tree` FOREIGN KEY (`knfo_kntr_id`) REFERENCES `kn_tree` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='词条中对应的公式';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='词条中对应的公式';
 
 -- ----------------------------
 -- Records of kn_formula
 -- ----------------------------
-INSERT INTO `kn_formula` VALUES ('1', '20', '<p><img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}\"/></p>', '高浮雕', '.c', '5', ' 发', '<p>功夫大师犯得上</p>', '  下次', '2017-02-07 10:10:38', '犯得上不，非官方的', '改得发', null, null);
-INSERT INTO `kn_formula` VALUES ('2', '2', '<p><img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"\\left ( {x+a} \\right )^{n}=\\sum ^{n}_{k=0} {\\left ( {^{n}_{k}} \\right ){x}^{k}{a}^{n-k}}\"/></p>', null, '.cpp', '5', null, '<p>烦得很</p>', '更多你你你', '2017-02-07 11:42:15', '密度 爆轰', null, '\\left ( {x+a} \\right )^{n}=\\sum ^{n}_{k=0} {\\left ( {^{n}_{k}} \\right ){x}^{k}{a}^{n-k}}', null);
+INSERT INTO `kn_formula` VALUES ('1', '20', '<p><img class=\"kfformula\" src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKEAAAA7CAYAAAATrOqTAAAHZUlEQVR4Xu2cZYh1VRSGn88WFbv7h92NivXD+GGLHditGAhiiy12ga0Y2IqBnViInRjYATai2MHjtw5cxrkz5x5n3zszd234mI9799l7nXe/e+1V+04gWyLQYwQm9Hj+nD4RIEmYJOg5AknCni9BCpAkTA70HIEkYc+XIAVIEiYHeo5AkrDnS5ACJAmTAz1HIEnY8yVIAZKEyYGeI5AkLL8ESwMzlp+myAwfAR8WGbll0CRhaYThVOC+8tMUmUECJgmLQNvdQY8D/JetDQL9pgkXA/YFlgJ2Aj4uzIwFgGWBO2rMMyuwFfAtsCBwLvBTjefGfJd+I6ELdjCgnbZ/zUWeFNgQeBH4pMMVPwi4Cvg+nhtqE2wBvAu8zcQj/G7g4Q7nG5Pd+42EUwFnAt8AxwN/1li1qYGzgKuBZ2v0b+0y2FHcbhPsDvwRpD0aeAe4scP57D4zsFrYob83eL7rj/QbCT3yro+Fvq4m2iNJwjqbQE/6ZOC0Bk6B63kgsDBwKPBLzXfsabd+I6HHsCTcFXiuJvJNSagtOAPwWMs8w22CyYAD4uh/vKZ8rd18v4vj+SRhAwC78cjWwNnA7UHCtYETgPeHmLwpCQc7iofaBCqEzYCvgFfCbn2yA1CmAfaJ/jo2ScIOwOtWVx0MCbc4sBfwJXAs8CtwSggxCbBJHGeVXJMDGwAvAZ+2CPsbcBPwWZsXGIyEQ22C9YHtgDeBmYD7gUc6AEfHRgLPGzZhKwmnBHYG5gO+BqYHPgib0yNbDbwRsEpobv/eGe/cgQjNuo7H41jtJogDm/aYC6X3+TzwTJDLBRlKazTRhB7DLvo5LULU2QTNVhEMBbl5LgQkuo5J9U4SzP8rkxtjiuj3BaAD9Fd8PydwZGyAKyOsdEFTgTp5bjySsN37LwpcDuwHvBza4LIg5OnA320ebELCTcOpcJ6qSXbnM3uiHBUph9sEPq+zopacdhAZ1d6rAm8Aptn0sJdrIeHKwBXADvHeA+3SNcMJ2i20sONNF+Erxyre+omEqwNHATvGkVQtjhpLzdiu1SGhTohaT/IZExzsKG66CYYjwVqhvbRzbdu3aEJNDbXbksCewA/AChFukpTanpok83cQNx1Ono6/7ycSLhHk2Bv4ETgx7EIdlaF2fB0SCrxmgEee2RGD1K1Hsd833QTDLaoB8NlbOimHdu+loRkPifes4qLawwbfq1COzpC27klDnAbDyfC/vu8nEmobeeTMAmio61CYzVBbVE0nZHMm2litnw3mmBjovmVALE8N6JgSwb+trekm6HSBB9OErrNOmWQ1hPNqmAULhRY1wH1M2IfipF2p4/Zgp5M36d9PJGyCT6fPSEKrTowNDqw+qbMJOp2vtb8ba8WIgc4dmthYqAQ7AngU8PPPgTUiBamtqHcsAV+Pjelm0W6VqO3s5P8j53+eTRKOKJz/HsNzAIeP7LDje7Qk4ciurw7KOhEQH9mRx/Fo3Sahrr8pM+0wPbaHgHuAjcNe8ejQSL5mGGdhNC+JRGwNzYxmWUeFbN0koWklbZNrgbciLaVNYmXKA2FHGa/TrtkGeG9UIJRCFEegmyTcNkqoJJxtnigmMI2k12og1kj9a0HWn0NbGjow29FpMwZmWKIvCkM7BWc09e8WCT2GraM7H/guADBoehdwRthQTT0xwykGW7OVQ8ANXRXmjvgs3SLhYIIbz/JoXq9b8agRRy8HHBEEekVCk+iWsFtoYE7UnGe2PkWgVyScC7Cy2YoWj2ntv/HWLBQwEuAGM+NiftpUWmuGZry9c6P36RUJzaPeCxwWaaRKeIsyn4povZ8ZxhmLjon5ZgPX3ksxQ2EVjJUzFqmaU7Z8Klsg0A0SOoe5SMMvFg9IPrWfF46sAHkiZDGltEeUFY11zWgFtfV93hWpLlNZOGCxgLawF62ydZGE1eWeZSIU43FkBYc5yttCE6o5rPMzcG0Mcaw3A9Y3xHtWISnJ5+bLGOiA1e2GJnTKlaKo0sC05U5eZbTUXOJZ4az9JCG9dzsemzhb1+c7S8QqdmmNoVXPHtPLx2V8y/otJuib1i0S9g2gbV7UkqmLopyqMj+sAzwvih1eANYNx8XC2L5K+yUJy28P05VepHo6TgCD8pZdaSNbRuU9Dy9N+bMkZpWqyu/yko2SGZKEZRfCGkKPX38+RBOkygotEiEqS+u1g6u4qb+YUJGyrGSjaPQkYbnFqKIChmNuDgJa5qW95y8kGDPcMi4oGTc1e3RJ3IG26rvdVdJyEvdo5CRhOeCtXrbA9daICxoB8L6HtuFsYQ8aJfA3ZzyGLYTdJdKYXg3wSmZftCRhmWXWEbEmcuD9ZwmoN+zFKmOixkbVeHrL3v6zosgSNrNJTQs6yrxRwVGThAXBzaHrIZAkrIdT9iqIQJKwILg5dD0EkoT1cMpeBRFIEhYEN4euh0CSsB5O2asgAknCguDm0PUQSBLWwyl7FUQgSVgQ3By6HgJJwno4Za+CCCQJC4KbQ9dDIElYD6fsVRCBJGFBcHPoegj8A6lndkukinQyAAAAAElFTkSuQmCC\" data-latex=\"x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}\"/></p>', '高浮雕', '.py', '5', ' 发', '<p>功夫大师犯得上</p>', '  下次', '2017-02-07 10:10:38', '犯得上不，非官方的', '改得发', null, null);
+INSERT INTO `kn_formula` VALUES ('2', '2', '<p><img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"\\left ( {x+a} \\right )^{n}=\\sum ^{n}_{k=0} {\\left ( {^{n}_{k}} \\right ){x}^{k}{a}^{n-k}}\"/></p>', null, '.py', '5', null, '<p>烦得很</p>', '更多你你你', '2017-02-07 11:42:15', '密度 爆轰', null, '\\left ( {x+a} \\right )^{n}=\\sum ^{n}_{k=0} {\\left ( {^{n}_{k}} \\right ){x}^{k}{a}^{n-k}}', null);
 INSERT INTO `kn_formula` VALUES ('3', '1', '<img class=\"kfformula\" src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaIAAABWCAYAAACNf5LUAAAYdElEQVR4Xu3dBbAsz1kF8BPc3QIECe4Q9I+7BYfgLoHg7gR31+ASLATXIMEhAQLBAgQLEDRIcNf6Fd3UsLUyMzu7s3vv11Wv3nv3zrSc6e7Tn/adUqUQKAQKgUKgEFgRgTut2HY1XQgUAoVAIVAIpIioJkEhUAgUAoXAqggUEa0KfzVeCBQChUAhUERUc6AQKAQKgUJgVQSKiFaFvxovBAqBQqAQKCKqOVAIFAKFQCGwKgJFRKvCX40XAoVAIVAIFBHVHCgECoFCoBBYFYEiolXhr8YLgUKgECgEiohqDhQChUAhUAisikAR0arwV+OFQCFQCBQCRUQ1BwqBQqAQKARWRaCIaFX4q/FCoBAoBAqBIqKaA4VAIVAIFAKrIlBEtCr81XghUAgUAoVAEVHNgUKgECgECoFVESgiWhX+arwQKAQKgUKgiKjmQCFQCBQChcCqCBQRrQp/NV4IFAKFQCFQRFRzoBAoBAqBQmBVBIqIVoW/Gi8ErhKB50ryHkmeKclXJnmOJI9M8spJfjjJt1zlqKrTqyFQRLQa9NVwIXC1CLxLkl9Kcs8kT5rkvZI8KslbJblHkndI8tdXO7rq+NkRKCI6O+TVYCFw1Qg8TpJXSPJHSb4syacn+c4k9pKPSPK0ST44yT9f9Sir82dFoIjorHBXY4XAjUHg1ZJ8fJK3SfLbSZ48yVck+d72940ZaA3k9AgUEZ0e46Va+I4kT7ZUZRdSz/s2Fc+FdKe6MQGB90vygkneM8k/JnmJJJ+b5F2TPHWSn2k/n1BlPXpbESgiuo4v/8JJniUJMqpSCKyNwBMn+cIkD0vyaa0zH5bkKZPcJ8lrtb//c+2OVvvXgUAR0fzv9DxJ3j3JCyR52+Y1NL+2/W+SHL46yd8caMCplEfTMyR5eNPd//epOlX13loE7prkvkk+KsmPNhTYjd6irYNvbuq6WwtQDXwaAkVE0/DafHpTPXGotldp3kVOklPKxyTxR3nCduL8uCRflOQL2s8fPwlvpq9K8lRJPjHJByT50ykN1bOFQCFQCJwbgSKi+Yg/XpLPTPJXST42yRg1hBPkbyX5ponNDonIq8+c5OuTfHSL2/CzJ2n9YDBGPp+f5N5JfmdiW/sef8wkr5nkIUn+fMF6q6pCYB8C1tp/tD9TkbLHOaTx4ivtwFT0zvR8EdF8oBlkv6GpzJDCmDKHiF6xVfxjgwZeKsmXNlXIr21pmIruDZsU9a9jOjbymRdL8hlJ3nlhghvZfD12yxCwP1H53b3NZU4RU4s63jzJMyb5vCRLroepfanndyBQRDR/avAYQkTvmOTnRlYzh4g2pSFNsUnRx3Od/cuNtsVxfGAjDEGGSxUSl5iRF0ry1kVES8Fa9exBAAndK8n7NJX2XLAeq6mpvU+LQbqqckEIFBHN/xhvluSzk3x7IyKSi7iKR+ypcg4RcVT4nEGd1GPaeYIkH5rkXwa/Yz8S7Y4guXr/+4H+jB29efImLVaEpCWSfkmV39h+1HO3BwHOQJ+chDfebywwbGvjU5M8KMk3lppuAUQXrKKIaB6YnQyet8VNsJew1xD7LR4FMb3kRvUvn+TRze21/4re+nuS/PqWriCTt98gIoGDX5vkiVpOr6dL8ofNi+n9G1n8RXNYQJR/Mm+I/+8tucReNclPNElrk4ieu504fyrJ3Zrn1A8MxmmeGfvrJPnJJM/evPq+b0TfjrEPjKj+7I/ITKD8246WbZjv1CRdKta/S/JZIzwmlxyIw4/UPUsXGRikBjpUYGDu/nizhR56fuzvkRu3c+P7lbEvTXiO+s8B1fp4g5FjnVD9yR9drf9FRMldWn6sxz7wmf84CbdUZGORfnmS729R5J2Y/Jyn2lBKGVY7VSIymX9/Y0JTCd4vySe0kx13bRKTwMJTSCmP2+p2ihQ/oq0hEVncdO+ks19IIuJe6pe+EM0xasTXayoWRmOefhwq4LFrQ4bbHUleNMkX3yB1ik2WtyWHFRkJhsU8ItH+dNsoYS9Ox2FlU/o95a6ELKhgFWQwtE+OaVfMmz/i34aEpp5XGlGBnHWv3w55S+asMxffO4k56xucIg2ReW59UJ9fo8fqKv0vIhqxKrY8QgLgnSYDsUXbiennBxvHtpqnEtE2+9DmROnExFYlmn1XmUO46iIJkUpIbZ30OhH1jRLxdlLZtF95hwT3IS3mxJxjb7IJ7CMhmwVb1CfdwAj9XXa8p29k7ZDx9+1DIna2OSft35w3XSe/hUT6vBa79iLtQDS5okZIpPouZT3rgbru3KR7gbHfNqfBA+9o/+uaR6lM4UuWnm+PZHEqoluyv5t1rdb/IqJ5n/VlknzkwFmACkU6fAsOGe0qh4iIKo5Kr2dQ2LQP+V5UgNxR+8aPmD58kPNr3oi2v0Xt95YtSh5xbBKR/3c3cjnGqJ0+pdmmhsTEqWLKCRFRiYMSJ7WEfWBJTJaqy5UJ1JVIpxvPXasgcJn0SapUzLUHJHn1AweNpfrV6zGXxaQpSAkZHVPM7R6Ure5d5Y2ag8K++YLIqaGpeL+rrQfE7fBCLU3i3hVOQeq0hhweJWdd0otuW8aJYzA797ur9b+IaN6nfr7mTvpuSf6hbSbsRPTa+zxyDhERdRYiQkBOpf5t8faCgLTBzoIAukTCKUHm4yUXlTYFxj7/oH0ZG2STEKMkc4OJ+yVNtcmN3IneaZNrOacN6kySmvemnBCpZmw2xnpTYz98O2RrI2V721VgQTK0eS/pBTlm5pt7b9ceFCvXg6rHvLvrGYcsY9mWJYTaEon8bsNm17dna/ynRuQkdjY10iLS5hXn8LTPachzJC4q423hD3PHhxjNf85EDmbXVlbrfxHRvKnCHdTkt1HbUGy4Fu2QCAR+dj17b2WXs8IDkzy0PdTT+SAlOnU2ol76ac6iQ0TiejhHsA+dQ22zTSJiH6J3F6hrYbNluI/GCR4mL95imnpyTHPO78RhGcPmZsMZgx2KbWTJTWLelz7tWzJt2FRhtu0QASPGdSoqNqVzkzIphjQkgFph35lqL9pEcFPqH/6emtmlelTeP7QHetKkdcELjoOMOQgbpC1mCNEJNN9VHJjMPbZWB6mlivXNnulOJu0jROPloKSP/zWzoe61qn7aAv12QOSkxJbmgLuEffhU/T847CKigxCd/QEG3p7kdNsJlAcbsvrFRkQ2bdLJqQu1B3IV0+F0zKDu1CmtEIkHGfcszGKbLAyLnZu5uCZ2pF9OQprk1EAK2LYwnVZJAFQvpzAmnxqnKfWzh/h+MmBsHiQcdmBggz0kaU9pc+qz5qK5ppBi2FgO5Tyc2kZ/XuZuKjkb+B8cqKTH8Zl/Dx5oB/52RKaTrkJ2kER63R43t9/9PVK/Q9YHtb+RqgBw857Kekz2lW19oEaEjbx+iJPq1pzgYOVv67Annz1mDKfq/8E+FREdhGiVBzoBLaEKWWUAMxvtxlJ6/iVPqmO60yUxapUlTpdj2uzeljaqYdqnng3Ayd3VCmsHYDr42PAUqjWxZEuXnjKLuncMOWw67SBITjHdNskjcV8aKhs7EiNBLfG9u9r82dohjSRrHi9R2GodQM1Rdi0HNRIhIqV1oA4kJSmP0aSk5zzQ8GbYyCn7fxCDIqKDEK3ygNMTD7jbdu1DN5Zyjd9nNznFR3GFAfsE8j+HmrOPgQTAC9MG2k/MVCScA2xmSIh606Y2VNOeAoN9dZqL1ECKk/MwyHqJvvSUWfIYDrHYVve2oG5ehW/cNmpEyU65LyUQb8QfbCmElphrXd1HkiPJi6P77iOkoM1x9zFbI/0GXE5SHHrY8Y5VY5+6/3vnyLmJCIiM1/ThdJxsI4x6TjeM0zYDVxA72ax9Clxicc2tg47bwj+VCmRuv079nsVg8xVNv0/d6NTnzhtXcChUFII+e+CtDYgLrc1y7Kn0WCJiK2TvYbcj4TD8yrohLyCVyi7jOdKRu69LAexw3UnFOrFGucsL/l3i5D73G7J1IMIeF4QoxwSnjm3PuEmFXzOQvna9SzLgpWqNeF6hOqbKfGQjgUNpt8SnIQpqtLG5IveNRX33b3ZSQcikFI49f9YcmtiJjimbsYvmhQOBQwynF85NYr7mllP3/2KIiEcMN2MfiEsuHa/J5OTvZMIISs9pIS8lLs/9KGu/Z9HfNhKCuc3IHOD8sMtG0NVWnqeOkGECeZEmbPZibjhN0M3bCMZmOj+GiMxtm4HgS/13IqYqosuXXYPdYJfx3QbARuSAhmCpJDdVXw5rXOCXDO6cM8cRZL9/CCkho6XmKdsgxwNqpyWI4dD4OvF9a/NyO/T8od+TbHuYAucO0rWfkbwcSBDkMWUztyUyppazh7K/isnr32ZOO6fu/8UQkc2BJwnSUZxY5URj2OaBZkMRt/CrjbCGhmrSk4VOjzy1OJ0yrs/J3Du1rXr+OARsRtQyvJ92eT3ZQGzUiIbUzKhvbtgEejYHcSISZpIsx0oRc4moJ9R8uSbZOAErXedOItoXjLrpiTgWQVKg07xxTi3c/RHmHJUU1SV8FRshD8klCsnQid545vRrah8OqQKnSN2kHfeDKfYamh/qdQ483Wlnm8ejQxWCMXelHKIR4ASEZOx/NEb9PWpHknN34+/zzt9c2Q+pIvfhQ+03p/9TMd/5/LlUcz4MMVL8ST/VddHYhnKT40UW+1i3oKIxROTQ4rDSVS9dZWEx+d1cqWEuEdlASWYIVLaNXnq//N8GwptrW0FE3QX+nLapY6bTMAUQIhrGus2t1+GDtuRl22Y8t56x7/neJC+S3WaM26mk7mHftOGAQvvDE5UGoMcF0ggIyzhkKxs71ot/7lxEtA2IPvH2qS1OASBd6r7I7lO0WXXuR6B7B44hos2auoqFDeWYhTuHiPrGwV4lO/kwkWaPiSH1OyXvigG6RiIapgCygfr/seWSiOhUUvcQI5IflTLS+ZHBLzoO51JRHvvdFnl/LSLqfvz052NiBhYZbFVy8QgM7SX7AhKHA+HoIqszjy5ZCvaVp2gqCE4Nm4Wqi+GXKmVb/BJJS+Dp0HONLQDRyHC+KfWM7dcYu9glfrieAmiJIFfjuyQiOpXU3b/j07QUTlR6PdC7/450RuX6ui3e7hK//eJ9WouIuqsgVcSU1C+LA1AVXhQCU+0l3aX1tRdICjpHImL/YfNkmB5KY71fvOje9IAH4BwpcO2PxpmGYVyM0xJquTWJSDqhfRnz9W0pqbt/N/n0OElIETaMl+vhCwKdHdDHenyuPR+Obn8tIuqJHDH/8EO4jbGnwB8O7jY7KzCq8qiiApHZQFJVCTGXzit39GRaoAJkwOhKlTXmvhgBfVz9LdhhECTJSkaAoc3mUPfmEFH39BLHcd9BA5v2IQGJVNBspJuFVxVD9NQD2VrOCvrfU08tqeLuWI6RbPWBdEtqMFd8+6m53bo06yoXQcz7yljp9tAc8/uuDWIb2pR6ep9+tknf+7LTj2nrap45BxF1oxwvHScAmYQtOskJhx4y0sSIdJY/6qandhk7QXheiWoXK0H9w5vG5srNVYzM3NxVY9s/93M9ul4w4DY1m5Op8fOusgEhG7EknbzYYXgRSSnEZXaK8X8OEfWTMpfxocuxXGg9+at+2nCUbWOyFoy7X6h4bsyntkcCIhHxUFyyzInr8Y6D7JyAzrFxS0tK3fDqF1ty+aeOHF5c2YNsNw82S+J8kXWdg4j65iIBKN2rkzwDnZxjkjmaSDbcfqq5qWn/50wABm8nRHfy9Kh7qUm4L+9zcZ7T1qW8Y45QTXDJ3jTw8zISSW6uICCbuMBR0oGfyYROTWeRu8RwSpLQOUTUM2hzn0U4vhHpXSZ0810ckQOYSHiS22ZmhO7iTU2zL8nnpXwbhyJSkHiipeKH+th8R96HsBhLyj0zOfdnYSBTSlerOvzuizVbUurWv+6tJ2Epbzlzp5ehfciNzQJ0zfe5nqBT8Fj12XMQkQFKUcILRPCq05QP7+4Vm4eEhdRPSGnzxspVwbmAxp34LU7E3eOvLD4T9qYG/Tqg2LhtepsL0Dzxc2pK5OM6DJk4/MyCRkS/16TuqdLiHCIyRaiIhmpBG6K5TBVHaiCVSb8iin+TGAW9Ilw2iku/zbNfWc9DbmkSgmNXZ9qgOYUcUkttS/MzZclSt8mUvakeO6XUrX/98OHfQ3Us9a3UVg437EOSBSNYB5lDWEwZ90U+ey4iusjBX2GnelJQJG4SC9I1cW0SfmYTtKBtxsh+15Xllzx04xEM6EbYpW/Q3DfuuUR0DJakP9/r0uPougq0BwwfM2bvkqg2r5PoxNIDPA9JAV3FxcbDWWRqkUbKYWFTPXZKqbv3kZZD1g/r1gGEk4KLNu9oByp9Ep/mMMUj9MaXIqLr+sTcjonqjKuiz3t0NSlTLA5DqNgEk7tnIb6uEf5vb6V5knLE9eLnshe650V7TslO5acuXHjdzkrtumYy00PjNLccbASuLpGEl/SKhLblqSOlCHDfjMna1keu9lznOTwJbqZx0VffkZp03yGse6c5uG1KX6eUuvs4rFtjlCtRuIA8m5xdqJStWwHbirV+KzLCFBEdWoaX83uTlO78QYNL0voV5Rahhd3TljAonyNf16nQ6XfxGFNXSZ6qrTXqte54QiJZdqQptqxz9re7aXOWWSLbNgnAgWlXAGzPz0cdRb25ryAtaWlIlaQHkgMVKdUXctq3gU9p55x439q2ioiu49PbmKninNT7TZ1dTcc4fs8kMv7yIrJpdGK6jtFt7+VmktxrHstm33mL3q25c19ylvmeAf5YN22qPfnpqPb2XSHRM1XAi51wV4hCn/ukChk15KicYl8Wx6N++S9Je1VWRqCIaOUPMKL57v5OX9w9wUSzE+l5Z7n8q3ts8agTRMm5oaeFn2q0H9Glsz3CEaBH3B+yGZytU0c2xJbHTZd79yXHgpGqe+LYOUNmB+rXgiOiXth29jk7uD6dzQxJ7Lpjp6vW/O1w5jn9HYOnAw6bkvf6upkzvnpnQQSKiBYE80RVyerMo4ZbK1KheuhunVQRviGbET0zV3iBoAy47En9rpYTda2qvaEI9PQ9Sw+P+uxQ/FEnCnaSXU4cAj+pnqkLxZSxFbHt+bdwEZ6Uuwp1towQxjglzmxpLKq+AQJFRJc9HZCJ+BM5+YaFEZPL713alRnSrQgIFhyHuJz23FNyDqP7ZSNYvZuDAIcC0szShapvzGV6siw4XLH/bFOdsQkhnns0KYh0aT3ctRn6d7XR476sCxnPL9U2tzTuF19fEdHFf6LqYCFw6xDgyk3qR4ZsS5t2NARFbShhqLuVuD67P8j9P/vSX3HXFsDKdfrW5HG7htlTRHQNX6n6WAjcPgSo6KT7knFiiVgaNlNpxZBWZW+5sPlURHRhH6S6UwisiIBsFS+dRLCnm43XjkVj95R5gi3oYUfgwqmBZCXX3zlufz2iq7fz1SKi2/nda9SFwC4EeqodDi9TspcfQtReI7+bP8jg7i2G6pDbNc9J3qA98e+hdjZ/j1y9L/7uoVNfrufPg0AR0XlwrlYKgWtBQK41HmkScrqSZalCNXbvJm09qiU9FniqnV3XqC/VdtVz4QgUEV34B6ruFQJnRkCMk4wFgqJdGrdUEQ8m+bGUOtLviCcS+yNbiGTIVW4xAkVEt/jj19ALgS0IsA+5wqJn61gCJPsMG42A037FQ89CLYP6NaejWgKfW19HEdGtnwIFQCHwfwi4ekCwp6S54nheo933JAkttdojZmLVScf1HZtENPzZzOrrtWtHoIjo2r9g9b8QWA6BflX1fdp1BI9uKjR52SRp5fbsojgxPpwIDhXODg8Z3MFTRHQIsVv6+yKiW/rha9iFwBYEZDR4QPNQE7+z7TK/OcCVRDQHtVv0ThHRLfrYNdRC4AAC3JzvleSBLa+h+B1po44tZSM6FsEb/n4R0Q3/wDW8QmAkAi5VdDOuVDkcFlwSSP0mE8Gd2zULku7OUc3pAq85wbJywvGacyOu2CABqw8e2cd67IYiUER0Qz9sDasQmIhAv1Txfs2LTTocTgsSlUq6e2xwqwS+bqR1HxEpSxZs0hd700254mMi5PV4R6CIqOZCIVAIQMAFizJaSyQqe7XrGvyR/XqJTO72mjtadniqP5kV7p/k4QV/IVBEVHOgECgECoFCYFUEiohWhb8aLwQKgUKgECgiqjlQCBQChUAhsCoCRUSrwl+NFwKFQCFQCBQR1RwoBAqBQqAQWBWBIqJV4a/GC4FCoBAoBIqIag4UAoVAIVAIrIpAEdGq8FfjhUAhUAgUAkVENQcKgUKgECgEVkWgiGhV+KvxQqAQKAQKgSKimgOFQCFQCBQCqyJQRLQq/NV4IVAIFAKFwP8A9JcYosiDSDcAAAAASUVORK5CYII=\" data-latex=\"x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}\\left ( {x+a} \\right )^{2}=\\sum ^{n}_{k=0} {\\left ( {^{n}_{k}} \\right ){x}^{k}{a}^{n-k}}\">', null, null, '5', null, '<p>哇哇哇哇哇</p><p>	</p>', '啊高富帅', '2017-02-07 15:49:40', '密度,爆轰', null, 'x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}\\left ( {x+a} \\right )^{2}=\\sum ^{n}_{k=0} {\\left ( {^{n}_{k}} \\right ){x}^{k}{a}^{n-k}}', null);
 INSERT INTO `kn_formula` VALUES ('4', '15', '<img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}\">', null, null, '5', null, '<p>&nbsp;规划</p>', '法大师傅', '2017-02-07 12:34:35', '密度 爆轰', null, 'x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}', null);
 INSERT INTO `kn_formula` VALUES ('5', '2', '<img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}\">', null, null, '5', null, '<p>发</p>', '发的', '2017-02-07 12:44:43', '密度,爆轰', null, 'x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}', null);
 INSERT INTO `kn_formula` VALUES ('8', '9', '<img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}\">', null, null, '5', null, '<p>&nbsp;分</p><p>	</p>', 'ukraine', '2017-02-09 13:27:07', '密度,爆轰', null, 'x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}', '1486617852181.png');
 INSERT INTO `kn_formula` VALUES ('9', '11', '<img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}\">', null, null, '5', null, '<p>					</p><p>&nbsp;分</p><p>\n					</p>', '测试', '2017-02-07 14:03:19', '密度,爆轰', null, 'x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}', null);
 INSERT INTO `kn_formula` VALUES ('10', '5', '<img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}\">', null, null, '5', null, '<p>发的</p><p><br/></p><p>	</p>', '范德萨', '2017-02-09 13:19:57', '发的', null, 'x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}', '1486512523091.png');
+INSERT INTO `kn_formula` VALUES ('22', '62', '<img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"{\\Delta }^{2}V(\\gamma )=4\\pi \\rho (\\gamma )-4\\pi \\sum _{A} {{Z}_{A}}\\delta ({R}_{A}-\\gamma )\">', null, null, '5', null, null, '静电势', '2017-02-12 19:04:48', '静电势,感度', null, '{\\Delta }^{2}V(\\gamma )=4\\pi \\rho (\\gamma )-4\\pi \\sum _{A} {{Z}_{A}}\\delta ({R}_{A}-\\gamma )', '1486897488038.png');
+INSERT INTO `kn_formula` VALUES ('23', '62', '<img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}\"><img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"\\left ( {x+a} \\right )^{2}=\\sum ^{n}_{k=0} {\\left ( {^{n}_{k}} \\right ){x}^{k}{a}^{n-k}}\">', null, null, '5', null, null, '最小键级法', '2017-02-12 19:07:38', '最小键级法，感度', null, 'x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}', '1486897658229.png');
+INSERT INTO `kn_formula` VALUES ('24', '62', '<img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"x=\\frac {-b\\pm \\sqrt {{b}^{2}-4ac}} {2a}\"><img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"\\left ( {x+a} \\right )^{2}=\\sum ^{n}_{k=0} {\\left ( {^{n}_{k}} \\right ){x}^{k}{a}^{n-k}}\">', null, null, '5', null, null, '最小键级法', '2017-02-12 19:07:38', '最小键级法，感度', null, '\\left ( {x+a} \\right )^{2}=\\sum ^{n}_{k=0} {\\left ( {^{n}_{k}} \\right ){x}^{k}{a}^{n-k}}', '1486897658239.png');
 
 -- ----------------------------
 -- Table structure for `kn_lang`
@@ -4058,20 +4851,19 @@ INSERT INTO `kn_formula` VALUES ('10', '5', '<img class=\"kfformula\" src=\"data
 DROP TABLE IF EXISTS `kn_lang`;
 CREATE TABLE `kn_lang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `lang` varchar(40) DEFAULT NULL,
-  `ext` varchar(255) DEFAULT NULL,
+  `lang` varchar(40) DEFAULT NULL COMMENT '语言名称',
+  `ext` varchar(255) DEFAULT NULL COMMENT '扩展名',
+  `cmd` varchar(255) DEFAULT NULL COMMENT '调用的路径和命令名',
+  `argu` varchar(255) DEFAULT NULL COMMENT '参数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='公式附加程序代码支持的语言。';
 
 -- ----------------------------
 -- Records of kn_lang
 -- ----------------------------
-INSERT INTO `kn_lang` VALUES ('1', 'C', '.c');
-INSERT INTO `kn_lang` VALUES ('2', 'C++', '.cpp');
-INSERT INTO `kn_lang` VALUES ('3', 'Java', '.java');
-INSERT INTO `kn_lang` VALUES ('4', 'Python', '.py');
-INSERT INTO `kn_lang` VALUES ('5', 'JavaScript', '.js');
-INSERT INTO `kn_lang` VALUES ('6', 'MatLab', '.m');
+INSERT INTO `kn_lang` VALUES ('4', 'Python', '.py', 'python', null);
+INSERT INTO `kn_lang` VALUES ('5', 'JavaScript', '.js', null, null);
+INSERT INTO `kn_lang` VALUES ('6', 'MatLab', '.m', null, null);
 
 -- ----------------------------
 -- Table structure for `kn_molecular`
@@ -4112,7 +4904,7 @@ CREATE TABLE `kn_tag` (
   `tag` varchar(255) DEFAULT NULL COMMENT '标签名称',
   `num` int(11) DEFAULT NULL COMMENT '使用次数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of kn_tag
@@ -4141,6 +4933,15 @@ INSERT INTO `kn_tag` VALUES ('21', '钝感', '1');
 INSERT INTO `kn_tag` VALUES ('22', '苯并三氧化呋咱', '2');
 INSERT INTO `kn_tag` VALUES ('23', 'Benzotrifuroxan', '2');
 INSERT INTO `kn_tag` VALUES ('24', 'C6N6O6', '2');
+INSERT INTO `kn_tag` VALUES ('25', '猛炸药', '9');
+INSERT INTO `kn_tag` VALUES ('26', '火药', '9');
+INSERT INTO `kn_tag` VALUES ('27', '烟火剂', '9');
+INSERT INTO `kn_tag` VALUES ('28', '起爆药', '9');
+INSERT INTO `kn_tag` VALUES ('29', '单质炸药', '1');
+INSERT INTO `kn_tag` VALUES ('30', '硝基化合物', '1');
+INSERT INTO `kn_tag` VALUES ('31', '静电势', '2');
+INSERT INTO `kn_tag` VALUES ('32', '感度', '3');
+INSERT INTO `kn_tag` VALUES ('33', '最小键级法', '1');
 
 -- ----------------------------
 -- Table structure for `kn_tree`
