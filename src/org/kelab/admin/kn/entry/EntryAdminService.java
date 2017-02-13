@@ -9,6 +9,7 @@ import org.kelab.admin.kn.formula.FormulaAdminService;
 import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
+import org.kelab.bean.Latex;
 import org.kelab.model.KnEntrFile;
 import org.kelab.model.KnEntrForm;
 import org.kelab.model.KnEntrMole;
@@ -113,20 +114,19 @@ public class EntryAdminService {
 	
 	public List<String> saveFromText(KnEntry knEntr){
 		//获取公式Latex文本
-		List<String> latexL = StringUtils.extrLatex(knEntr.getKnenText());
+		List<Latex> latexL = StringUtils.extrLatex(knEntr.getKnenText());
 		List<String> formL = new ArrayList<String>();
 		int icount = 1;
-		for(String latex : latexL){
+		for(Latex latex : latexL){
 			String filename = System.currentTimeMillis()+".png";
 			String filePath = PathKit.getWebRootPath()+"/"+PropKit.get("baseUploadPath")
 								+PropKit.get("knFormPath")+filename;
-			String base64Str = StringUtils.extBase64Str(knEntr.getKnenText());
-			Base64Utils.GenerateImage(base64Str, filePath);
+			Base64Utils.GenerateImage(latex.getBase64Code(), filePath);
 			String formName = knEntr.getKnenName();
 			if(icount > 1)
 				formName = formName + icount;
 			new KnFormula().set("knfo_kntr_id",knEntr.getKnenKntrId())
-							.set("knfo_text", StringUtils.onlyimg(knEntr.getKnenText()))
+							.set("knfo_text", latex.getImgHtml())
 							.set("knfo_user_id",knEntr.getKnenCreaUserId())
 							.set("knfo_name", formName)
 							.set("knfo_time",new Date())

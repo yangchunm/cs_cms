@@ -14,6 +14,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.safety.Whitelist;
 import org.jsoup.select.Elements;
+import org.kelab.bean.Latex;
 
 import com.jfinal.core.JFinal;
 import com.jfinal.log.Log;
@@ -165,16 +166,26 @@ public class StringUtils {
 	}
 	
 	/**
-	 * 从html的img标签中抽取Latex文本
+	 * 从html的img标签中抽取Latex对象
 	 * @param formHtml
 	 * @return
 	 */
-	public static List<String> extrLatex(String formHtml){
-		List<String> strLatex = new ArrayList<String>();
+	public static List<Latex> extrLatex(String formHtml){
+		List<Latex> strLatex = new ArrayList<Latex>();
 		Document doc = Jsoup.parseBodyFragment(formHtml);
 		Elements imgs = doc.getElementsByTag("img");
 		for(Element img : imgs) {
-			strLatex.add(img.attr("data-latex"));
+			String lat = img.attr("data-latex");
+			if(lat != null && lat != ""){
+				Latex latex = new Latex();
+				latex.setLatexCode(lat);
+				latex.setImgHtml(img.toString());
+				String base64 = img.attr("src");
+				if(base64 != null && base64 != "" && base64.indexOf(",")>0)
+					base64 = base64.split(",")[1];
+				latex.setBase64Code(base64);
+				strLatex.add(latex);
+			}
 			}
 		return strLatex;
 	}
