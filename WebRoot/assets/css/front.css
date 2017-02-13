@@ -5,6 +5,7 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
+  /*background-color: #efefef;*/
 }
 
 
@@ -22,8 +23,8 @@ body {
  * Hide default border to remove 1px line.
  */
 .navbar-fixed-top {
-  background-color: #32A7B8;
-  border-bottom-color:#aaa;
+  background-color: #dd4814;
+  border:#bf3e11;
  
 }
 
@@ -33,12 +34,21 @@ body {
 
 .navbar-nav>li>a {
    	color: #fff;
+   	font-size:16px;
+   	font-weight:bold;
     text-decoration: none;
 }
 
 .navbar-nav>li>a:hover {
-   	color: #32A7B8;
+   	color: #fff;
     text-decoration: none;
+    background-color: #ac0f0f;
+}
+
+.navbar-nav>li.active >a {
+   	color: #fff;
+    text-decoration: none;
+    background-color: #ac0f0f;
 }
 /*
  * Sidebar
@@ -94,6 +104,7 @@ body {
 .nav-sidebar > li .active > a:hover,
 .nav-sidebar > li .active > a:focus {
   color: #337db7;
+
   background-color: #ddd;
 }
 
@@ -108,8 +119,54 @@ body {
  */
 
 .main {
-  padding: 20px;
+  padding: 10px;
+  background-color: #fff;
 }
+.jumbotron {
+    background-color: #8ba8af;
+    padding-top: 18px;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+}
+
+.jumbotron h1, .jumbotron .h1 {
+    font-family: 'amblebold_italic';
+    color: #fff;
+    font-size: 42px;
+    text-shadow: 0 -1px 0 rgba(0,0,0, 0.8);
+}
+
+.jumbotronwidth {
+    max-width: 100%;
+    float: right;
+    margin-right: 40px;
+    height: 150px;
+}
+
+.well {
+    background-color: #F5F5F5;
+}
+.stat-icon {
+    font-size: 40px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.stat-number {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #dd4814;
+}
+.mian-header{
+	margin:0 0 10px 0;
+	border-bottom:1px solid #ddd;
+}
+
+.breadcrumb{
+	margin-bottom: 0px;
+}
+
 @media (min-width: 768px) {
   .main {
     padding-right: 40px;
@@ -146,6 +203,18 @@ body {
 	height:30px;
 }
 
+.table-tree>tbody>tr>td, 
+.table-tree>tbody>tr>th, 
+.table-tree>tfoot>tr>td, 
+.table-tree>tfoot>tr>th, 
+.table-tree>thead>tr>td, 
+.table-tree>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    /* border-top: 1px solid #ddd; */
+}
+
 .page-footer {
   margin: 0;
   border-top:1px solid #ddd;
@@ -180,4 +249,12 @@ body {
 .keyword{
 	clear:all;
 	width:50px;
+}
+
+.footer {
+	padding: 10px 0;
+	color:#fff;
+    height: 60px;
+    border-top: 1px solid #ccc;
+    background-color: #3e3e3e;
 }

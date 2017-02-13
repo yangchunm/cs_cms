@@ -2,5 +2,108 @@
 #@layout()
 #define main()
 <!-- 内容容器 -->
+<!-- begin left side -->
+<div class="jumbotron">
+	<div class="container">
+  		<div class="col-md-4 col-lg-4 pull-left">
+			<img vspace="20" class="jumbotronwidth" alt="" src="#(BASE_PATH)/assets/img/ci-logo-big.png">
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+			<h1>含能材料基础数据平台</h1>
+			<p>EMDBP ： Energetic Materials Basic Data Platform</p>
+			<p>含能材料基础知识库，含能材料基因数据库，含能材料数据挖掘工具</p>
+		</div>
+  </div>
+</div>
+<div class="main container">
+	<div class="row">
+		<div class="col-sm-6 col-md-3 col-lg-3">
+			<div class="well text-center">
+				<div class="stat-icon">
+					<span class="glyphicon glyphicon-book"></span>
+				</div>
+				<div class="stat-number">
+					3623条
+				</div>
+				<div>含能材料知识词条</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-3 col-lg-3">
+			<div class="well text-center">
+				<div class="stat-icon">
+					<span class="glyphicon glyphicon-filter"></span>
+				</div>
+				<div class="stat-number">
+					873个
+				</div>
+				<div>含能材料配方数据库</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-3 col-lg-3">
+			<div class="well text-center">
+				<div class="stat-icon">
+					<span class="glyphicon glyphicon-hdd"></span>
+				</div>
+				<div class="stat-number">
+					52798个
+				</div>
+				<div>含能材料实验数据</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-3 col-lg-3">
+			<div class="well text-center">
+				<div class="stat-icon">
+					<span class="glyphicon glyphicon-compressed"></span>
+				</div>
+				<div class="stat-number">
+					25种
+				</div>
+				<div>含能材料数据挖掘与分析算法</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+	<div class="col-md-3">
+	
+		<div class="panel panel-info">
+		  <div class="panel-heading">
+		    <h3 class="panel-title"><span class="glyphicon glyphicon-tree-deciduous"></span> 含能材料知识结构</h3>
+		  </div>
+		  <div class="panel-body">
+		    <table class="table-tree tree ">
+		 	<tbody>
+		 		#for(x : knTreeL)
+		 			<tr id="node-#(x.id)" class="treegrid-#(x.id)">	         		
+		         		<td>#(for.index+1) #(x.kntrName)</td>
+	         		</tr>
+			 		#@kntr_tree_grid_front(x.knTreeL,for.index+1)
+	         	#end
+	        </tbody>       
+	     </table>
+		  </div>
+		</div>
+	
+		
+	
+	</div>
+	<!-- end left side and began middle -->
+	<div class="col-md-7">
+	
+	</div>
+	<!-- end middle and began right -->
+	<div class="col-md-2">
+	</div>
+	</div>
+</div>
+#end
 
+#define css()
+
+	<link rel="stylesheet" type="text/css" href="#(BASE_PATH)/assets/treegrid/jquery.treegrid.css">
+#end
+
+#define js()
+	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.min.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.bootstrap3.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/kn.tree.js"></script>
 #end

@@ -1,6 +1,7 @@
 package org.kelab.admin.kn.tree;
 
 import java.util.List;
+
 import org.kelab.model.KnTree;
 import com.jfinal.kit.Ret;
 import com.jfinal.plugin.activerecord.Db;
@@ -25,7 +26,6 @@ public class TreeAdminService {
 		}
 		return treeList;
 	}
-	
 	
 	/**
 	 * 保存信息

@@ -73,6 +73,18 @@
 	#end
 #end
 
+### 知识树显示函数--前台
+#define kntr_tree_grid_front(treeObj,pre)
+	#for(y : treeObj)
+      	<tr id="node-#(y.kntrParentId)-#(y.id)" class="treegrid-#(y.id) treegrid-parent-#(y.kntrParentId)">
+      		<td>
+      			#(pre).#(for.index+1) #(y.kntrName)
+      		</td>
+     	</tr>
+     	 #@kntr_tree_grid_front(y.knTreeL,pre + "."+(for.index+1))
+	#end
+#end
+
 ### 知识树显示函数select
 #define kntr_tree_list(treeObj,pre,currId)
 	#setLocal(pre = pre + "&nbsp;&nbsp;")
