@@ -17,36 +17,36 @@ public abstract class BaseEmAttr<M extends BaseEmAttr<M>> extends Model<M> imple
 		return get("id");
 	}
 
-	public void setEmfoEmcaId(java.lang.Integer emfoEmcaId) {
-		set("emfo_emca_id", emfoEmcaId);
+	public void setEmatEmcaId(java.lang.Integer ematEmcaId) {
+		set("emat_emca_id", ematEmcaId);
 	}
 
-	public java.lang.Integer getEmfoEmcaId() {
-		return get("emfo_emca_id");
+	public java.lang.Integer getEmatEmcaId() {
+		return get("emat_emca_id");
 	}
 
-	public void setEmfoSecuId(java.lang.Integer emfoSecuId) {
-		set("emfo_secu_id", emfoSecuId);
+	public void setEmatSecuId(java.lang.Integer ematSecuId) {
+		set("emat_secu_id", ematSecuId);
 	}
 
-	public java.lang.Integer getEmfoSecuId() {
-		return get("emfo_secu_id");
+	public java.lang.Integer getEmatSecuId() {
+		return get("emat_secu_id");
 	}
 
-	public void setEmfoName(java.lang.String emfoName) {
-		set("emfo_name", emfoName);
+	public void setEmatName(java.lang.String ematName) {
+		set("emat_name", ematName);
 	}
 
-	public java.lang.String getEmfoName() {
-		return get("emfo_name");
+	public java.lang.String getEmatName() {
+		return get("emat_name");
 	}
 
-	public void setEmfoType(java.lang.Integer emfoType) {
-		set("emfo_type", emfoType);
+	public void setEmatType(java.lang.Integer ematType) {
+		set("emat_type", ematType);
 	}
 
-	public java.lang.Integer getEmfoType() {
-		return get("emfo_type");
+	public java.lang.Integer getEmatType() {
+		return get("emat_type");
 	}
 
 }

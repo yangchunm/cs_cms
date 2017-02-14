@@ -3,6 +3,8 @@ package org.kelab.admin.common;
 import org.kelab.admin.dm.algocate.AlgoCateAdminController;
 import org.kelab.admin.dm.algorithm.AlgorithmAdminController;
 import org.kelab.admin.dm.submit.SubmitAdminController;
+import org.kelab.admin.em.attr.AttrAdminController;
+import org.kelab.admin.em.cate.CateAdminController;
 import org.kelab.admin.index.IndexAdminController;
 import org.kelab.admin.ke.menu.MenuAdminController;
 import org.kelab.admin.ke.organ.OrganAdminController;
@@ -46,6 +48,9 @@ public class AdminRoutes extends Routes {
 		add("/admin/knform", FormulaAdminController.class, "/knform");
 		add("/admin/knmole", MolecularAdminController.class, "/knmole");
 		add("/admin/knentry", EntryAdminController.class, "/knentry");
+
+		add("/admin/emcate", CateAdminController.class, "/emcate");
+		add("/admin/emattr", AttrAdminController.class, "/emattr");
 		
 		add("/admin/dmcate", AlgoCateAdminController.class, "/dmcate");
 		add("/admin/dmalgo", AlgorithmAdminController.class, "/dmalgo");

@@ -97,3 +97,29 @@
      	 #@kntr_tree_list(y.knTreeL,pre+ "&nbsp;&nbsp;",currId)
 	#end
 #end
+
+### 配方分类显示函数
+#define emcate_tree_grid(treeObj,pre)
+	#for(y : treeObj)
+      	<tr id="node-#(y.emcaParentId)-#(y.id)" class="treegrid-#(y.id) treegrid-parent-#(y.emcaParentId)">
+      		<td>
+      			<input value="#(y.id)" type="checkbox" id="check-#(y.emcaParentId)-#(y.id)" />
+      			#(pre).#(for.index+1) #(y.emcaName)
+      		</td>
+     	</tr>
+     	 #@emcate_tree_grid(y.emCateL,pre + "."+(for.index+1))
+	#end
+#end
+
+### 配方显示函数select
+#define emcate_tree_list(treeObj,pre,currId)
+	#setLocal(pre = pre + "&nbsp;&nbsp;")
+	#for(y : treeObj)
+		#if(y.id == currId)
+		<option value="#(y.id)" selected>#(pre)#(y.emcaName)</option>
+		#else
+		<option value="#(y.id)" >#(pre)#(y.emcaName)</option>
+		#end
+     	 #@emcate_tree_list(y.emCateL,pre+ "&nbsp;&nbsp;",currId)
+	#end
+#end

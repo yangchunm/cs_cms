@@ -1,0 +1,81 @@
+#set(pageTitle="配方属性设置")
+#set(btnBar = {"add":1,"mod":1,"del":1})
+#set(currCont = "emattr")
+#@adminLayout()
+#define main()
+#include("/_view/_admin/common/_button_bar.html")
+	<form class="form-inline" id="search-form" name="search-form" method="post" action="#(BASE_PATH)#(mandir)/#(currCont)">
+		<div class="form-group">
+    		<label for="s.emat_name">名称</label>
+    		<input type="text" class="form-control" name="s.emat_name" id="s.emat_name" value="#(sEmat.ematName)" placeholder="属性名称">
+    		<input type="hidden" id="page" name="page" value="#(comQ.page ?? "1")">
+  		</div>
+			<select id="s.emat_emca_id" name="s.emat_emca_id" class="form-control">
+			   	<option value="0">分类</option>
+			   	#for(x : emCateL)
+			   		#if(x.id == sEmat.ematEmatId)
+				   		<option value="#(x.id)" selected>#(x.emcaName)</option>
+				   	#else
+				   		<option value="#(x.id)">#(x.emcaName)</option>
+				   	#end
+				#end			    	
+			 </select>
+			 <select name="s.emat_secu_id" id="s.emat_secu_id" class="form-control">
+					<option value="0">密级</option>
+					#for(x : keSecuL)
+						#if(x.id == sEmat.ematSecuId)
+						<option value="#(x.id)" selected>#(x.secuName)</option>
+						#else
+						<option value="#(x.id)">#(x.secuName)</option>
+						#end
+					#end
+				</select>
+			 
+			    <button type="submit" id="btn-search" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> 搜索</button>
+
+			    每页
+			    <select id="pageSize" name="pageSize" class="form-control">
+			    	<option value="#(comQ.pageSize)">#(comQ.pageSize)</option>
+			    	<option value="1">1</option>
+			    	<option value="20">20</option>
+			    	<option value="50">50</option>
+			    	<option value="100">100</option>
+			    </select>
+			    条
+			
+		</form>
+	 <table class="table table-condensed .table-hover">
+	 	<thead>
+	 		<tr>
+	 			<th>序</th><th>属性名</th><th>类型</th><th>分类</th><th>密级</th>
+	 		</tr>
+	 	</thead>
+	 	<tbody>
+	 		#for(x : emAttrP.list)
+	 			<tr>	         		
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1)</td>
+	         		<td>#(x.ematName)</td>
+	         		<td>#(x.ematType)</td>
+	         		<td>#(x.emcaName)</td>
+	         		<td>#(x.secuName)</td>
+         		</tr>
+         	#end
+        </tbody>       
+     </table>
+     #if(emAttrP.totalRow == 0)
+		<div class="alert alert-warning" role="alert">
+		<span class="glyphicon glyphicon-info-sign"></span> 
+		   没有满足条件的记录！
+		</div>
+	#end
+    #set(pageUrl=mandir+"/"+currCont+"/")
+    #@paginate(emAttrP.pageNumber, emAttrP.totalPage,emAttrP.totalRow, pageUrl)
+    #include("/_view/_admin/emattr/_add_form.html") 
+#end
+
+#define css()
+#end
+
+#define js()
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/ke.user.js"></script>
+#end
