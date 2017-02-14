@@ -17,12 +17,12 @@ public abstract class BaseEmAttr<M extends BaseEmAttr<M>> extends Model<M> imple
 		return get("id");
 	}
 
-	public void setEmatEmcaId(java.lang.Integer ematEmcaId) {
-		set("emat_emca_id", ematEmcaId);
+	public void setEmatPareId(java.lang.Integer ematPareId) {
+		set("emat_pare_id", ematPareId);
 	}
 
-	public java.lang.Integer getEmatEmcaId() {
-		return get("emat_emca_id");
+	public java.lang.Integer getEmatPareId() {
+		return get("emat_pare_id");
 	}
 
 	public void setEmatSecuId(java.lang.Integer ematSecuId) {

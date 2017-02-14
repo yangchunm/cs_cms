@@ -1,15 +1,11 @@
 package org.kelab.admin.em.attr;
 
-import java.util.Date;
 import java.util.List;
 
-import org.kelab.bean.CommQuery;
 import org.kelab.model.EmAttr;
-import org.kelab.model.KeUser;
 
 import com.jfinal.kit.Ret;
 import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
 
 public class AttrAdminService {
@@ -19,18 +15,20 @@ public class AttrAdminService {
 	
 	/**
 	 * 加载
-	 * @return 则返回所有
+	 * @param parentId
+	 * 			父id，如果为0，则返回所有
+	 * @return
 	 */
-	public Page<EmAttr> findAllAttr(CommQuery comQ, EmAttr emattr){
-		String strSele = "select emat.*,emca.emca_name as emcaName,kese.secu_name as secuName";
-		String strFrom = "from em_attr emat, em_cate emca, ke_security kese";
-		String strWhere = " where emat.emat_emca_id = emca.id and emat.emat_secu_id = kese.id";
-		if(comQ.getKeyWord() != null && comQ.getKeyWord() != "")
-			strWhere += " and emat.emat_name like '%"+comQ.getKeyWord()+"%'";
-		
-		Page<EmAttr> attrP = dao.paginate(comQ.getPage(), comQ.getPageSize(), strSele, strFrom
-				+  strWhere+" order by emat.id desc");
-		return attrP;
+	public List<EmAttr> findAllAttr(int parentId){
+		String sql = "select emat.*,emay.type_name as typeName,kese.secu_name as secuName"
+				+ " from em_attr emat ,em_attr_type emay,ke_security kese "
+				+ "where emat.emat_type = emay.id and emat.emat_secu_id = kese.id"
+				+ " and emat_pare_id = ? order by id asc";
+		List<EmAttr> attrL = dao.find(sql,parentId);
+		for(EmAttr attr : attrL){
+			attr.put("emAttrL",findAllAttr(attr.getId()));
+		}
+		return attrL;
 	}
 	
 
@@ -59,7 +57,7 @@ public class AttrAdminService {
 		String strWhere = "";
 		if(oldId > 0)
 			strWhere = " and id <>" + oldId;
-		String sql = "select id from ke_user where em_attr=? "+strWhere+" limit 1";
+		String sql = "select id from em_attr where emat_name =? "+strWhere+" limit 1";
 		return Db.queryInt(sql , attrName) != null;
 	}
 	
@@ -74,7 +72,8 @@ public class AttrAdminService {
     	String msg = "";
     	for(String obj :ids.split(",")){
     		int id = Integer.parseInt(obj);
-	    	if(id > 0 ){	    		
+    		String sql ="select * from em_formula_attr where emat_id = ?";
+	    	if(id > 0 && Db.find(sql,id).size() == 0){	    		
 	    		Db.update("delete from em_attr where id=?",id);
 	    		rt=1;
 	    	}else{
@@ -86,16 +85,6 @@ public class AttrAdminService {
 			return Ret.ok();
 		else
 			return Ret.fail("msg", msg);
-	}
-	
-	/**
-	 * 根据分类id查找所有用户
-	 * @param cateId
-	 * @return 用户列表
-	 */
-	public List<EmAttr> findAttrByRoleId(int cateId){
-		String sql = "select * from em_attr where emat_emca_id =? order by id asc";
-		return dao.find(sql,cateId);
 	}
 	
 	public void clearCache() {

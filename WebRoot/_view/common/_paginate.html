@@ -123,3 +123,31 @@
      	 #@emcate_tree_list(y.emCateL,pre+ "&nbsp;&nbsp;",currId)
 	#end
 #end
+
+### 配方属性显示函数
+#define emattr_tree_grid(treeObj,pre)
+	#for(y : treeObj)
+      	<tr id="node-#(y.ematPareId)-#(y.id)" class="treegrid-#(y.id) treegrid-parent-#(y.ematPareId)">
+      		<td>
+      			<input value="#(y.id)" type="checkbox" id="check-#(y.ematPareId)-#(y.id)" />
+      			#(pre).#(for.index+1) #(y.ematName)
+      			<td>#(y.typeName)</td>
+				<td>#(y.secuName)</td>
+      		</td>
+     	</tr>
+     	 #@emattr_tree_grid(y.emAttrL,pre + "."+(for.index+1))
+	#end
+#end
+
+### 配方属性函数select
+#define emattr_tree_list(treeObj,pre,currId)
+	#setLocal(pre = pre + "&nbsp;&nbsp;")
+	#for(y : treeObj)
+		#if(y.id == currId)
+		<option value="#(y.id)" selected>#(pre)#(y.ematName)</option>
+		#else
+		<option value="#(y.id)" >#(pre)#(y.ematName)</option>
+		#end
+     	 #@emattr_tree_list(y.emAttrL,pre+ "&nbsp;&nbsp;",currId)
+	#end
+#end
