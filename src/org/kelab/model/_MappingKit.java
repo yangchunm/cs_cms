@@ -22,10 +22,10 @@ public class _MappingKit {
 		arp.addMapping("em_attr", "id", EmAttr.class);
 		arp.addMapping("em_cate", "id", EmCate.class);
 		arp.addMapping("em_file", "id", EmFile.class);
-		arp.addMapping("em_formula", "id", EmFormula.class);
-		arp.addMapping("em_formula_attr", "id", EmFormulaAttr.class);
-		arp.addMapping("em_formula_cate", "id", EmFormulaCate.class);
-		arp.addMapping("em_formula_opt", "id", EmFormulaOpt.class);
+		arp.addMapping("em_gene", "id", EmGene.class);
+		arp.addMapping("em_gene_attr", "id", EmGeneAttr.class);
+		arp.addMapping("em_gene_cate", "id", EmGeneCate.class);
+		arp.addMapping("em_gene_opt", "id", EmGeneOpt.class);
 		arp.addMapping("em_molecular", "id", EmMolecular.class);
 		arp.addMapping("ke_action", "id", KeAction.class);
 		arp.addMapping("ke_auth_code", "id", KeAuthCode.class);

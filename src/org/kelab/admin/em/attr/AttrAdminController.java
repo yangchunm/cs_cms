@@ -5,7 +5,6 @@ import org.kelab.admin.em.cate.CateAdminService;
 import org.kelab.model.EmAttr;
 import org.kelab.model.EmAttrType;
 import org.kelab.model.KeSecurity;
-import org.kelab.model.KeUser;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;

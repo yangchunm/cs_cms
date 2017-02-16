@@ -5,6 +5,7 @@ import org.kelab.admin.dm.algorithm.AlgorithmAdminController;
 import org.kelab.admin.dm.submit.SubmitAdminController;
 import org.kelab.admin.em.attr.AttrAdminController;
 import org.kelab.admin.em.cate.CateAdminController;
+import org.kelab.admin.em.gene.GeneAdminController;
 import org.kelab.admin.index.IndexAdminController;
 import org.kelab.admin.ke.menu.MenuAdminController;
 import org.kelab.admin.ke.organ.OrganAdminController;
@@ -51,6 +52,7 @@ public class AdminRoutes extends Routes {
 
 		add("/admin/emcate", CateAdminController.class, "/emcate");
 		add("/admin/emattr", AttrAdminController.class, "/emattr");
+		add("/admin/emgene", GeneAdminController.class, "/emgene");
 		
 		add("/admin/dmcate", AlgoCateAdminController.class, "/dmcate");
 		add("/admin/dmalgo", AlgorithmAdminController.class, "/dmalgo");

@@ -1,5 +1,6 @@
 package org.kelab.admin.em.attr;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.kelab.model.EmAttr;
@@ -31,7 +32,6 @@ public class AttrAdminService {
 		return attrL;
 	}
 	
-
 	
 	/**
 	 * 保存信息
