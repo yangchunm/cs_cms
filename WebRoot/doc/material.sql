@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
-Source Server Version : 50611
+Source Server         : localhost
+Source Server Version : 50621
 Source Host           : localhost:3306
 Source Database       : material
 
 Target Server Type    : MYSQL
-Target Server Version : 50611
+Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2017-02-14 10:43:03
+Date: 2017-02-16 19:54:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -121,7 +121,7 @@ CREATE TABLE `dm_algo_cate` (
   `dmac_name` varchar(255) NOT NULL COMMENT '数据挖掘算法类别名称',
   `dmac_desc` text COMMENT '类别描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='数据挖掘算法类别';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='数据挖掘算法类别';
 
 -- ----------------------------
 -- Records of dm_algo_cate
@@ -163,18 +163,136 @@ CREATE TABLE `dm_submit` (
 DROP TABLE IF EXISTS `em_attr`;
 CREATE TABLE `em_attr` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `emat_emca_id` int(11) DEFAULT NULL COMMENT '属性所属类别ID',
+  `emat_pare_id` int(11) DEFAULT '0' COMMENT '属性父ID',
   `emat_secu_id` int(11) DEFAULT NULL COMMENT '密级',
   `emat_name` varchar(255) DEFAULT NULL COMMENT '属性名称',
-  `emat_type` int(11) DEFAULT NULL COMMENT '属性类型',
-  PRIMARY KEY (`id`),
-  KEY `fk_emat_emca_id` (`emat_emca_id`),
-  CONSTRAINT `fk_emat_emca_id` FOREIGN KEY (`emat_emca_id`) REFERENCES `em_cate` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='含能材料配方属性信息表';
+  `emat_type` int(11) DEFAULT NULL COMMENT '属性类型，1：数字，2：文本，3：图片，4：表格数字',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8 COMMENT='含能材料配方属性信息表';
 
 -- ----------------------------
 -- Records of em_attr
 -- ----------------------------
+INSERT INTO `em_attr` VALUES ('2', '0', '1', '组份及配比', '2');
+INSERT INTO `em_attr` VALUES ('3', '2', '1', '质量分数/%', '4');
+INSERT INTO `em_attr` VALUES ('4', '2', '1', '体积分数/%', '4');
+INSERT INTO `em_attr` VALUES ('5', '0', '1', '化学性质', '2');
+INSERT INTO `em_attr` VALUES ('6', '5', '1', '结构式', '3');
+INSERT INTO `em_attr` VALUES ('7', '5', '1', '相对分子质量', '1');
+INSERT INTO `em_attr` VALUES ('8', '5', '1', '溶解性', '2');
+INSERT INTO `em_attr` VALUES ('9', '8', '1', '17℃溶解度', '4');
+INSERT INTO `em_attr` VALUES ('10', '8', '1', '20℃溶解度', '4');
+INSERT INTO `em_attr` VALUES ('11', '8', '1', '25℃溶解度', '4');
+INSERT INTO `em_attr` VALUES ('12', '8', '1', '40℃溶解度', '4');
+INSERT INTO `em_attr` VALUES ('13', '8', '1', '50℃溶解度', '4');
+INSERT INTO `em_attr` VALUES ('14', '8', '1', '60℃溶解度', '4');
+INSERT INTO `em_attr` VALUES ('15', '8', '1', '70℃溶解度', '4');
+INSERT INTO `em_attr` VALUES ('16', '5', '1', '化学稳定性', '2');
+INSERT INTO `em_attr` VALUES ('17', '0', '1', '物理性质', '2');
+INSERT INTO `em_attr` VALUES ('18', '17', '1', '外观(物理状态)', '2');
+INSERT INTO `em_attr` VALUES ('19', '17', '1', '理论密度（g/cm^3）', '1');
+INSERT INTO `em_attr` VALUES ('20', '17', '1', '实际密度（g/cm^3）', '1');
+INSERT INTO `em_attr` VALUES ('21', '17', '1', '名义相对分子质量', '1');
+INSERT INTO `em_attr` VALUES ('22', '17', '1', '元素组成', '4');
+INSERT INTO `em_attr` VALUES ('23', '17', '1', '晶体结构', '2');
+INSERT INTO `em_attr` VALUES ('24', '17', '1', '晶体密度（g/cm^3）', '1');
+INSERT INTO `em_attr` VALUES ('25', '17', '1', '熔点（℃）', '1');
+INSERT INTO `em_attr` VALUES ('26', '0', '1', '热性质', '2');
+INSERT INTO `em_attr` VALUES ('27', '26', '1', '燃烧热（MJ/kg）', '1');
+INSERT INTO `em_attr` VALUES ('28', '26', '1', '生成热（kJ/mol）', '1');
+INSERT INTO `em_attr` VALUES ('29', '26', '1', '爆热（MJ/kg）', '1');
+INSERT INTO `em_attr` VALUES ('30', '26', '1', '爆热-表（MJ/kg）', '4');
+INSERT INTO `em_attr` VALUES ('31', '26', '1', '爆容（L/kg）', '1');
+INSERT INTO `em_attr` VALUES ('32', '26', '1', '爆容-表（L/kg）', '4');
+INSERT INTO `em_attr` VALUES ('33', '26', '1', '爆发点', '1');
+INSERT INTO `em_attr` VALUES ('34', '26', '1', '热安定性', '2');
+INSERT INTO `em_attr` VALUES ('35', '26', '1', 'DTA曲线', '3');
+INSERT INTO `em_attr` VALUES ('36', '26', '1', '蒸气压（Pa）', '4');
+INSERT INTO `em_attr` VALUES ('37', '26', '1', '质量热容（kJ/kgK）', '1');
+INSERT INTO `em_attr` VALUES ('38', '26', '1', '热扩散率（*10^-7m^2/s）', '1');
+INSERT INTO `em_attr` VALUES ('39', '26', '1', '热扩散率-表（*10^-7m^2/s）', '4');
+INSERT INTO `em_attr` VALUES ('40', '26', '1', '导热系数（W/mK）', '1');
+INSERT INTO `em_attr` VALUES ('41', '26', '1', '线膨胀系数（*10^-5/K）', '1');
+INSERT INTO `em_attr` VALUES ('42', '26', '1', '线膨胀系数-表（/*10^-5K）', '4');
+INSERT INTO `em_attr` VALUES ('43', '26', '1', '质量热容（J/g·K）', '1');
+INSERT INTO `em_attr` VALUES ('44', '34', '1', '布鲁屯压力法-表格', '4');
+INSERT INTO `em_attr` VALUES ('45', '34', '1', '真空安定性-表格', '4');
+INSERT INTO `em_attr` VALUES ('46', '34', '1', '化学反应性', '2');
+INSERT INTO `em_attr` VALUES ('47', '34', '1', '热失重-表格', '4');
+INSERT INTO `em_attr` VALUES ('48', '26', '1', '差热分析-文本', '2');
+INSERT INTO `em_attr` VALUES ('49', '26', '1', '差热分析-图片', '3');
+INSERT INTO `em_attr` VALUES ('50', '26', '1', '热爆炸（爆发点）', '2');
+INSERT INTO `em_attr` VALUES ('51', '0', '1', '力学性能', '2');
+INSERT INTO `em_attr` VALUES ('52', '51', '1', '抗压强度（MPa）', '1');
+INSERT INTO `em_attr` VALUES ('53', '51', '1', '抗拉强度（MPa）', '1');
+INSERT INTO `em_attr` VALUES ('54', '51', '1', '抗压强度和抗拉强度', '1');
+INSERT INTO `em_attr` VALUES ('55', '54', '1', '抗压强度和抗拉强度-数据1', '1');
+INSERT INTO `em_attr` VALUES ('56', '54', '1', '抗压强度和抗拉强度-数据2', '1');
+INSERT INTO `em_attr` VALUES ('57', '51', '1', '泊松比', '1');
+INSERT INTO `em_attr` VALUES ('58', '51', '1', '压缩弹性模量（GPa）', '1');
+INSERT INTO `em_attr` VALUES ('59', '51', '1', '压缩模量（GPa）', '1');
+INSERT INTO `em_attr` VALUES ('60', '51', '1', '应力应变曲线', '3');
+INSERT INTO `em_attr` VALUES ('61', '51', '1', '蠕变曲线', '3');
+INSERT INTO `em_attr` VALUES ('62', '0', '1', '感度', '2');
+INSERT INTO `em_attr` VALUES ('63', '62', '1', '落锤撞击感度（%）', '1');
+INSERT INTO `em_attr` VALUES ('64', '62', '1', '摩擦感度（%）', '1');
+INSERT INTO `em_attr` VALUES ('65', '62', '1', '50%爆炸特性落高（cm）', '1');
+INSERT INTO `em_attr` VALUES ('66', '62', '1', '电火花感度（%）', '1');
+INSERT INTO `em_attr` VALUES ('67', '62', '1', '苏珊感度-数字（%）', '1');
+INSERT INTO `em_attr` VALUES ('68', '62', '1', '苏珊感度-图片', '3');
+INSERT INTO `em_attr` VALUES ('69', '62', '1', '枪击感度', '1');
+INSERT INTO `em_attr` VALUES ('70', '62', '1', '实测超压（kPa）', '1');
+INSERT INTO `em_attr` VALUES ('71', '62', '1', 'TNT当量（g）', '1');
+INSERT INTO `em_attr` VALUES ('72', '0', '1', '冲击波引爆', '2');
+INSERT INTO `em_attr` VALUES ('73', '72', '1', '大隔板实验', '2');
+INSERT INTO `em_attr` VALUES ('74', '73', '1', '大隔板实验-数据1', '4');
+INSERT INTO `em_attr` VALUES ('75', '73', '1', '大隔板实验-数据2', '4');
+INSERT INTO `em_attr` VALUES ('76', '72', '1', '小隔板实验', '2');
+INSERT INTO `em_attr` VALUES ('77', '76', '1', '小隔板实验-数据1', '4');
+INSERT INTO `em_attr` VALUES ('78', '76', '1', '小隔板实验-数据2', '4');
+INSERT INTO `em_attr` VALUES ('79', '0', '1', '爆轰性能', '2');
+INSERT INTO `em_attr` VALUES ('80', '79', '1', '爆速（m/s）-表格', '4');
+INSERT INTO `em_attr` VALUES ('81', '79', '1', '爆压（GPa）', '1');
+INSERT INTO `em_attr` VALUES ('82', '79', '1', '爆压（GPa）-表格', '4');
+INSERT INTO `em_attr` VALUES ('83', '79', '1', '多方指数', '1');
+INSERT INTO `em_attr` VALUES ('84', '79', '1', '多方指数-表格', '4');
+INSERT INTO `em_attr` VALUES ('85', '79', '1', '平面飞片速度ρ（g/cm^3）', '2');
+INSERT INTO `em_attr` VALUES ('86', '85', '1', '平面飞片速度μ（m/s）', '1');
+INSERT INTO `em_attr` VALUES ('87', '85', '1', '平面飞片速度Δμ（m/s）', '1');
+INSERT INTO `em_attr` VALUES ('88', '79', '1', '板痕实验', '1');
+INSERT INTO `em_attr` VALUES ('89', '79', '1', '圆筒试验', '2');
+INSERT INTO `em_attr` VALUES ('90', '89', '1', '圆筒试验-数据1', '4');
+INSERT INTO `em_attr` VALUES ('91', '89', '1', '圆筒试验-数据2', '4');
+INSERT INTO `em_attr` VALUES ('92', '0', '1', '加速老化及长期贮存性能', '2');
+INSERT INTO `em_attr` VALUES ('93', '92', '1', '老化前后及密度变化率', '2');
+INSERT INTO `em_attr` VALUES ('94', '93', '1', '老化前后及密度变化率-初始值', '1');
+INSERT INTO `em_attr` VALUES ('95', '93', '1', '老化前后及密度变化率-数据1', '4');
+INSERT INTO `em_attr` VALUES ('96', '93', '1', '老化前后及密度变化率-数据2', '4');
+INSERT INTO `em_attr` VALUES ('97', '93', '1', '老化前后及密度变化率-数据3', '4');
+INSERT INTO `em_attr` VALUES ('98', '93', '1', '老化前后及密度变化率-数据4', '4');
+INSERT INTO `em_attr` VALUES ('99', '93', '1', '老化前后及密度变化率-数据5', '4');
+INSERT INTO `em_attr` VALUES ('100', '93', '1', '老化前后及密度变化率-数据6', '4');
+INSERT INTO `em_attr` VALUES ('101', '0', '1', '炸药感度', '2');
+INSERT INTO `em_attr` VALUES ('102', '101', '1', '摩擦感度', '1');
+INSERT INTO `em_attr` VALUES ('103', '101', '1', '电火花感度', '1');
+
+-- ----------------------------
+-- Table structure for `em_attr_type`
+-- ----------------------------
+DROP TABLE IF EXISTS `em_attr_type`;
+CREATE TABLE `em_attr_type` (
+  `id` int(11) NOT NULL COMMENT '编号',
+  `type_name` varchar(40) DEFAULT NULL COMMENT '类型名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of em_attr_type
+-- ----------------------------
+INSERT INTO `em_attr_type` VALUES ('1', '数字');
+INSERT INTO `em_attr_type` VALUES ('2', '文本');
+INSERT INTO `em_attr_type` VALUES ('3', '图片');
+INSERT INTO `em_attr_type` VALUES ('4', '表格数字');
 
 -- ----------------------------
 -- Table structure for `em_cate`
@@ -186,15 +304,23 @@ CREATE TABLE `em_cate` (
   `emca_parent_id` int(11) DEFAULT NULL COMMENT '父类编号',
   `emca_imag` varchar(255) DEFAULT NULL COMMENT '类别图标（图片）',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='含能材料分类信息';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='含能材料分类信息';
 
 -- ----------------------------
 -- Records of em_cate
 -- ----------------------------
-INSERT INTO `em_cate` VALUES ('1', '单质炸药', '0', null);
-INSERT INTO `em_cate` VALUES ('2', '混合炸药', '0', null);
-INSERT INTO `em_cate` VALUES ('4', 'TEst', '1', null);
-INSERT INTO `em_cate` VALUES ('5', '范德萨', '4', null);
+INSERT INTO `em_cate` VALUES ('1', '用途', '0', null);
+INSERT INTO `em_cate` VALUES ('2', '化学成分', '0', null);
+INSERT INTO `em_cate` VALUES ('4', '起爆药', '1', null);
+INSERT INTO `em_cate` VALUES ('5', '猛炸药', '1', null);
+INSERT INTO `em_cate` VALUES ('6', '发射药', '1', null);
+INSERT INTO `em_cate` VALUES ('7', '单质炸药', '2', null);
+INSERT INTO `em_cate` VALUES ('8', '混合炸药', '2', null);
+INSERT INTO `em_cate` VALUES ('9', '使用条件', '0', null);
+INSERT INTO `em_cate` VALUES ('10', '安全炸药（煤矿许用炸药）', '9', null);
+INSERT INTO `em_cate` VALUES ('11', '非安全炸药', '9', null);
+INSERT INTO `em_cate` VALUES ('12', '地下露天可使用', '11', null);
+INSERT INTO `em_cate` VALUES ('13', '仅露天可使用', '11', null);
 
 -- ----------------------------
 -- Table structure for `em_file`
@@ -209,7 +335,7 @@ CREATE TABLE `em_file` (
   `enfi_order` int(11) DEFAULT NULL COMMENT '显示顺序',
   PRIMARY KEY (`id`),
   KEY `fk_emfi_em_formula` (`emfo_emfo_id`),
-  CONSTRAINT `fk_emfi_em_formula` FOREIGN KEY (`emfo_emfo_id`) REFERENCES `em_formula` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_emfi_em_formula` FOREIGN KEY (`emfo_emfo_id`) REFERENCES `em_gene` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配方对应的数据文件';
 
 -- ----------------------------
@@ -217,91 +343,91 @@ CREATE TABLE `em_file` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `em_formula`
+-- Table structure for `em_gene`
 -- ----------------------------
-DROP TABLE IF EXISTS `em_formula`;
-CREATE TABLE `em_formula` (
+DROP TABLE IF EXISTS `em_gene`;
+CREATE TABLE `em_gene` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `emfo_abbr_name` varchar(255) DEFAULT NULL COMMENT '配方名称缩写',
-  `emfo_en_name` varchar(255) DEFAULT NULL COMMENT '配方英文名',
-  `emfo_zh_name` varchar(255) DEFAULT NULL COMMENT '配方中文名',
-  `emfo_code` varchar(255) DEFAULT NULL COMMENT '配方代码',
-  `emfo_src` text COMMENT '配方来源',
-  `emfo_desc` text COMMENT '配方说明',
-  `emfo_status` int(11) DEFAULT '0' COMMENT '配方状态，0：正在编辑；1：编辑完成，等待校对；2：校对完成，等待审核；9：审核完成，正式配方',
-  `emfo_create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `emfo_update_time` datetime DEFAULT NULL COMMENT '最后更新时间',
-  `emfo_search_count` int(11) DEFAULT NULL COMMENT '搜索次数',
-  `emfo_user_id` int(11) DEFAULT NULL COMMENT '添加用户id',
-  `emfo_secu_id` int(11) DEFAULT NULL,
+  `emge_abbr_name` varchar(255) DEFAULT NULL COMMENT '配方名称缩写',
+  `emge_en_name` varchar(255) DEFAULT NULL COMMENT '配方英文名',
+  `emge_zh_name` varchar(255) DEFAULT NULL COMMENT '配方中文名',
+  `emge_code` varchar(255) DEFAULT NULL COMMENT '配方代码',
+  `emge_src` text COMMENT '配方来源',
+  `emge_desc` text COMMENT '配方说明',
+  `emge_status` int(11) DEFAULT '0' COMMENT '配方状态，0：正在编辑；1：编辑完成，等待校对；2：校对完成，等待审核；9：审核完成，正式配方',
+  `emge_create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `emge_update_time` datetime DEFAULT NULL COMMENT '最后更新时间',
+  `emge_search_count` int(11) DEFAULT NULL COMMENT '搜索次数',
+  `emge_user_id` int(11) DEFAULT NULL COMMENT '添加用户id',
+  `emge_secu_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='含能材料配方信息表';
 
 -- ----------------------------
--- Records of em_formula
+-- Records of em_gene
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `em_formula_attr`
+-- Table structure for `em_gene_attr`
 -- ----------------------------
-DROP TABLE IF EXISTS `em_formula_attr`;
-CREATE TABLE `em_formula_attr` (
+DROP TABLE IF EXISTS `em_gene_attr`;
+CREATE TABLE `em_gene_attr` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `emfo_id` int(11) NOT NULL COMMENT '配方编号',
+  `emge_id` int(11) NOT NULL COMMENT '配方编号',
   `emat_id` int(11) NOT NULL COMMENT '属性编号',
-  `emfa_value` text NOT NULL COMMENT '属性值',
+  `emga_value` text NOT NULL COMMENT '属性值',
   PRIMARY KEY (`id`),
-  KEY `fk_emfo_em_formu` (`emfo_id`),
+  KEY `fk_emfo_em_formu` (`emge_id`),
   KEY `fk_emfo_em_attr` (`emat_id`),
   CONSTRAINT `fk_emfo_em_attr` FOREIGN KEY (`emat_id`) REFERENCES `em_attr` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_emfo_em_formu` FOREIGN KEY (`emfo_id`) REFERENCES `em_formula` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_emfo_em_formu` FOREIGN KEY (`emge_id`) REFERENCES `em_gene` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配方与属性对应关系表';
 
 -- ----------------------------
--- Records of em_formula_attr
+-- Records of em_gene_attr
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `em_formula_cate`
+-- Table structure for `em_gene_cate`
 -- ----------------------------
-DROP TABLE IF EXISTS `em_formula_cate`;
-CREATE TABLE `em_formula_cate` (
+DROP TABLE IF EXISTS `em_gene_cate`;
+CREATE TABLE `em_gene_cate` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `emfo_id` int(11) DEFAULT NULL COMMENT '配方编号',
+  `emge_id` int(11) DEFAULT NULL COMMENT '配方编号',
   `emca_id` int(11) DEFAULT NULL COMMENT '分类编号',
   PRIMARY KEY (`id`),
-  KEY `fk_emfc_em_formula` (`emfo_id`),
+  KEY `fk_emfc_em_formula` (`emge_id`),
   KEY `fk_emfc_em_cate` (`emca_id`),
   CONSTRAINT `fk_emfc_em_cate` FOREIGN KEY (`emca_id`) REFERENCES `em_cate` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_emfc_em_formula` FOREIGN KEY (`emfo_id`) REFERENCES `em_formula` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_emfc_em_formula` FOREIGN KEY (`emge_id`) REFERENCES `em_gene` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配方与分类信息对应表';
 
 -- ----------------------------
--- Records of em_formula_cate
+-- Records of em_gene_cate
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `em_formula_opt`
+-- Table structure for `em_gene_opt`
 -- ----------------------------
-DROP TABLE IF EXISTS `em_formula_opt`;
-CREATE TABLE `em_formula_opt` (
+DROP TABLE IF EXISTS `em_gene_opt`;
+CREATE TABLE `em_gene_opt` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `emfo_id` int(11) DEFAULT NULL COMMENT '操作的配方编号',
-  `emfo_user_id` int(11) DEFAULT NULL COMMENT '操作用户ID',
-  `emfo_type` int(11) DEFAULT NULL COMMENT '操作的类型：\n0：新增\n1：校对\n2：审核',
-  `emfo_sugg` text,
-  `emfo_create_time` datetime DEFAULT NULL,
-  `emfo_ip` varchar(45) DEFAULT NULL,
-  `emfo_status` bit(1) DEFAULT b'0' COMMENT '操作状态，0：返回修改，1：通过。',
+  `emgo_id` int(11) DEFAULT NULL COMMENT '操作的配方编号',
+  `emgo_user_id` int(11) DEFAULT NULL COMMENT '操作用户ID',
+  `emgo_type` int(11) DEFAULT NULL COMMENT '操作的类型：\n0：新增\n1：校对\n2：审核',
+  `emgo_sugg` text,
+  `emgo_create_time` datetime DEFAULT NULL,
+  `emgo_ip` varchar(45) DEFAULT NULL,
+  `emgo_status` bit(1) DEFAULT b'0' COMMENT '操作状态，0：返回修改，1：通过。',
   PRIMARY KEY (`id`),
-  KEY `fk_emfp_em_formula` (`emfo_id`),
-  KEY `fk_ke_user` (`emfo_user_id`),
-  CONSTRAINT `fk_emfp_em_formula` FOREIGN KEY (`emfo_id`) REFERENCES `em_formula` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ke_user` FOREIGN KEY (`emfo_user_id`) REFERENCES `ke_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_emfp_em_formula` (`emgo_id`),
+  KEY `fk_ke_user` (`emgo_user_id`),
+  CONSTRAINT `fk_emfp_em_formula` FOREIGN KEY (`emgo_id`) REFERENCES `em_gene` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ke_user` FOREIGN KEY (`emgo_user_id`) REFERENCES `ke_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配方操作新信息表';
 
 -- ----------------------------
--- Records of em_formula_opt
+-- Records of em_gene_opt
 -- ----------------------------
 
 -- ----------------------------
@@ -315,7 +441,7 @@ CREATE TABLE `em_molecular` (
   `emmo_order` int(11) DEFAULT NULL COMMENT '显示顺序',
   PRIMARY KEY (`id`),
   KEY `fk_emmo_em_formula` (`emm0_emfo_id`),
-  CONSTRAINT `fk_emmo_em_formula` FOREIGN KEY (`emm0_emfo_id`) REFERENCES `em_formula` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_emmo_em_formula` FOREIGN KEY (`emm0_emfo_id`) REFERENCES `em_gene` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配方对应的分子式';
 
 -- ----------------------------
@@ -396,7 +522,7 @@ INSERT INTO `ke_menu` VALUES ('29', '27', '算法管理', 'dmalgo', 'glyphicon g
 INSERT INTO `ke_menu` VALUES ('30', '27', '算法运行结果', 'dmsubmit', 'glyphicon glyphicon-credit-card', '2', '3', '');
 INSERT INTO `ke_menu` VALUES ('31', '26', '分类设置', 'emcate', 'glyphicon glyphicon-tent', '2', '1', '');
 INSERT INTO `ke_menu` VALUES ('32', '26', '属性设置', 'emattr', 'glyphicon glyphicon-equalizer', '2', '2', '');
-INSERT INTO `ke_menu` VALUES ('33', '26', '含能材料配方管理', 'emform', 'glyphicon glyphicon-baby-formula', '2', '3', '');
+INSERT INTO `ke_menu` VALUES ('33', '26', '材料配方管理', 'emgene', 'glyphicon glyphicon-baby-formula', '2', '3', '');
 
 -- ----------------------------
 -- Table structure for `ke_menu_action`
@@ -427,7 +553,7 @@ CREATE TABLE `ke_organ` (
   `orga_parent_id` int(11) DEFAULT NULL COMMENT '父类编号',
   `orga_name` varchar(255) DEFAULT NULL COMMENT '机构名称',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='组织机构信息';
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='组织机构信息';
 
 -- ----------------------------
 -- Records of ke_organ
@@ -455,7 +581,7 @@ CREATE TABLE `ke_role` (
   `role_name` varchar(45) NOT NULL COMMENT '角色名称',
   `role_desc` varchar(255) DEFAULT NULL COMMENT '角色描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='用角色信息';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用角色信息';
 
 -- ----------------------------
 -- Records of ke_role
@@ -579,7 +705,7 @@ CREATE TABLE `ke_user` (
 -- ----------------------------
 -- Records of ke_user
 -- ----------------------------
-INSERT INTO `ke_user` VALUES ('5', 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 'MrYang', '2017-01-27 09:53:48', '2017-02-14 10:40:09', '1', '3', '1', '3', '', null, '');
+INSERT INTO `ke_user` VALUES ('5', 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 'MrYang', '2017-01-27 09:53:48', '2017-02-16 19:51:42', '1', '3', '1', '3', '', null, '');
 INSERT INTO `ke_user` VALUES ('6', 'mryang@yahoo.cn', 'e10adc3949ba59abbe56e057f20f883e', '杨春明', '2017-02-02 13:37:06', null, null, '3', '2', '3', '', null, '');
 INSERT INTO `ke_user` VALUES ('8', 'test@test.com', 'e10adc3949ba59abbe56e057f20f883e', '测试账号', '2017-02-02 14:25:29', null, null, '2', '1', '1', '', null, '');
 INSERT INTO `ke_user` VALUES ('9', 'test@www.com', 'e10adc3949ba59abbe56e057f20f883e', '测试', '2017-02-02 14:25:54', null, null, '2', '1', '1', '', null, '');
@@ -605,7 +731,7 @@ CREATE TABLE `ke_user_log` (
   PRIMARY KEY (`id`),
   KEY `fk_log_user` (`log_user_id`),
   CONSTRAINT `fk_log_user` FOREIGN KEY (`log_user_id`) REFERENCES `ke_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4200 DEFAULT CHARSET=utf8 COMMENT='用户操作日志信息';
+) ENGINE=InnoDB AUTO_INCREMENT=4567 DEFAULT CHARSET=utf8 COMMENT='用户操作日志信息';
 
 -- ----------------------------
 -- Records of ke_user_log
@@ -4802,6 +4928,373 @@ INSERT INTO `ke_user_log` VALUES ('4196', '5', '/admin/knentry', '0:0:0:0:0:0:0:
 INSERT INTO `ke_user_log` VALUES ('4197', '5', '/admin/knfile', '0:0:0:0:0:0:0:1', '2017-02-14 10:41:24', 'index');
 INSERT INTO `ke_user_log` VALUES ('4198', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-02-14 10:41:25', 'index');
 INSERT INTO `ke_user_log` VALUES ('4199', '5', '/admin/knmole', '0:0:0:0:0:0:0:1', '2017-02-14 10:41:26', 'index');
+INSERT INTO `ke_user_log` VALUES ('4200', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 14:02:44', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4201', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-14 14:02:47', 'index');
+INSERT INTO `ke_user_log` VALUES ('4202', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 14:02:50', 'index');
+INSERT INTO `ke_user_log` VALUES ('4203', '5', '/admin/emcate/getCateById', '0:0:0:0:0:0:0:1', '2017-02-14 14:03:26', 'getCateById');
+INSERT INTO `ke_user_log` VALUES ('4204', '5', '/admin/emcate/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:03:32', 'save');
+INSERT INTO `ke_user_log` VALUES ('4205', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 14:03:32', 'index');
+INSERT INTO `ke_user_log` VALUES ('4206', '5', '/admin/emcate/getCateById', '0:0:0:0:0:0:0:1', '2017-02-14 14:03:37', 'getCateById');
+INSERT INTO `ke_user_log` VALUES ('4207', '5', '/admin/emcate/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:03:47', 'save');
+INSERT INTO `ke_user_log` VALUES ('4208', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 14:03:47', 'index');
+INSERT INTO `ke_user_log` VALUES ('4209', '5', '/admin/emcate/getCateById', '0:0:0:0:0:0:0:1', '2017-02-14 14:03:49', 'getCateById');
+INSERT INTO `ke_user_log` VALUES ('4210', '5', '/admin/emcate/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:03:58', 'save');
+INSERT INTO `ke_user_log` VALUES ('4211', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 14:03:58', 'index');
+INSERT INTO `ke_user_log` VALUES ('4212', '5', '/admin/emcate/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:04:07', 'save');
+INSERT INTO `ke_user_log` VALUES ('4213', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 14:04:07', 'index');
+INSERT INTO `ke_user_log` VALUES ('4214', '5', '/admin/emcate/getCateById', '0:0:0:0:0:0:0:1', '2017-02-14 14:04:09', 'getCateById');
+INSERT INTO `ke_user_log` VALUES ('4215', '5', '/admin/emcate/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:04:18', 'save');
+INSERT INTO `ke_user_log` VALUES ('4216', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 14:04:18', 'index');
+INSERT INTO `ke_user_log` VALUES ('4217', '5', '/admin/emcate/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:04:30', 'save');
+INSERT INTO `ke_user_log` VALUES ('4218', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 14:04:30', 'index');
+INSERT INTO `ke_user_log` VALUES ('4219', '5', '/admin/emcate/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:04:40', 'save');
+INSERT INTO `ke_user_log` VALUES ('4220', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 14:04:40', 'index');
+INSERT INTO `ke_user_log` VALUES ('4221', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 14:04:48', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4222', '5', '/admin/emcate/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:04:48', 'save');
+INSERT INTO `ke_user_log` VALUES ('4223', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 14:04:48', 'index');
+INSERT INTO `ke_user_log` VALUES ('4224', '5', '/admin/emcate/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:05:14', 'save');
+INSERT INTO `ke_user_log` VALUES ('4225', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 14:05:14', 'index');
+INSERT INTO `ke_user_log` VALUES ('4226', '5', '/admin/emcate/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:05:29', 'save');
+INSERT INTO `ke_user_log` VALUES ('4227', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 14:05:29', 'index');
+INSERT INTO `ke_user_log` VALUES ('4228', '5', '/admin/emcate/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:05:56', 'save');
+INSERT INTO `ke_user_log` VALUES ('4229', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 14:05:56', 'index');
+INSERT INTO `ke_user_log` VALUES ('4230', '5', '/admin/emcate/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:06:09', 'save');
+INSERT INTO `ke_user_log` VALUES ('4231', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 14:06:09', 'index');
+INSERT INTO `ke_user_log` VALUES ('4232', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:06:30', 'index');
+INSERT INTO `ke_user_log` VALUES ('4233', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 14:24:50', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4234', '5', '/admin/kntree', '0:0:0:0:0:0:0:1', '2017-02-14 14:24:50', 'index');
+INSERT INTO `ke_user_log` VALUES ('4235', '5', '/admin/organ', '0:0:0:0:0:0:0:1', '2017-02-14 14:25:07', 'index');
+INSERT INTO `ke_user_log` VALUES ('4236', '5', '/admin/kntree', '0:0:0:0:0:0:0:1', '2017-02-14 14:25:13', 'index');
+INSERT INTO `ke_user_log` VALUES ('4237', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 14:34:25', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4238', '5', '/admin/kntree', '0:0:0:0:0:0:0:1', '2017-02-14 14:34:25', 'index');
+INSERT INTO `ke_user_log` VALUES ('4239', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:34:28', 'index');
+INSERT INTO `ke_user_log` VALUES ('4240', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:34:30', 'index');
+INSERT INTO `ke_user_log` VALUES ('4241', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:35:08', 'index');
+INSERT INTO `ke_user_log` VALUES ('4242', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 14:36:00', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4243', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:36:00', 'index');
+INSERT INTO `ke_user_log` VALUES ('4244', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:36:04', 'index');
+INSERT INTO `ke_user_log` VALUES ('4245', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 14:45:14', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4246', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:45:14', 'index');
+INSERT INTO `ke_user_log` VALUES ('4247', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:45:23', 'index');
+INSERT INTO `ke_user_log` VALUES ('4248', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:45:51', 'index');
+INSERT INTO `ke_user_log` VALUES ('4249', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:46:33', 'index');
+INSERT INTO `ke_user_log` VALUES ('4250', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 14:47:17', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4251', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:47:17', 'index');
+INSERT INTO `ke_user_log` VALUES ('4252', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 14:50:02', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4253', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:50:02', 'index');
+INSERT INTO `ke_user_log` VALUES ('4254', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:50:14', 'index');
+INSERT INTO `ke_user_log` VALUES ('4255', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:51:08', 'save');
+INSERT INTO `ke_user_log` VALUES ('4256', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:51:51', 'index');
+INSERT INTO `ke_user_log` VALUES ('4257', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:51:57', 'save');
+INSERT INTO `ke_user_log` VALUES ('4258', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 14:53:39', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4259', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:53:39', 'save');
+INSERT INTO `ke_user_log` VALUES ('4260', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:53:39', 'index');
+INSERT INTO `ke_user_log` VALUES ('4261', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:54:07', 'save');
+INSERT INTO `ke_user_log` VALUES ('4262', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:54:08', 'index');
+INSERT INTO `ke_user_log` VALUES ('4263', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:54:26', 'save');
+INSERT INTO `ke_user_log` VALUES ('4264', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:54:26', 'index');
+INSERT INTO `ke_user_log` VALUES ('4265', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:54:42', 'save');
+INSERT INTO `ke_user_log` VALUES ('4266', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:54:42', 'index');
+INSERT INTO `ke_user_log` VALUES ('4267', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:54:53', 'save');
+INSERT INTO `ke_user_log` VALUES ('4268', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:54:53', 'index');
+INSERT INTO `ke_user_log` VALUES ('4269', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:55:05', 'save');
+INSERT INTO `ke_user_log` VALUES ('4270', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:55:05', 'index');
+INSERT INTO `ke_user_log` VALUES ('4271', '5', '/admin/kntree', '0:0:0:0:0:0:0:1', '2017-02-14 14:55:12', 'index');
+INSERT INTO `ke_user_log` VALUES ('4272', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:55:20', 'index');
+INSERT INTO `ke_user_log` VALUES ('4273', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 14:56:11', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4274', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:56:11', 'index');
+INSERT INTO `ke_user_log` VALUES ('4275', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:56:11', 'index');
+INSERT INTO `ke_user_log` VALUES ('4276', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:57:19', 'index');
+INSERT INTO `ke_user_log` VALUES ('4277', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:57:28', 'index');
+INSERT INTO `ke_user_log` VALUES ('4278', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:57:45', 'save');
+INSERT INTO `ke_user_log` VALUES ('4279', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:57:45', 'index');
+INSERT INTO `ke_user_log` VALUES ('4280', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:58:02', 'save');
+INSERT INTO `ke_user_log` VALUES ('4281', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:58:02', 'index');
+INSERT INTO `ke_user_log` VALUES ('4282', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 14:58:14', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4283', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:58:14', 'save');
+INSERT INTO `ke_user_log` VALUES ('4284', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:58:14', 'index');
+INSERT INTO `ke_user_log` VALUES ('4285', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:58:25', 'save');
+INSERT INTO `ke_user_log` VALUES ('4286', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:58:25', 'index');
+INSERT INTO `ke_user_log` VALUES ('4287', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:58:34', 'save');
+INSERT INTO `ke_user_log` VALUES ('4288', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:58:34', 'index');
+INSERT INTO `ke_user_log` VALUES ('4289', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:58:45', 'save');
+INSERT INTO `ke_user_log` VALUES ('4290', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:58:45', 'index');
+INSERT INTO `ke_user_log` VALUES ('4291', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:58:55', 'save');
+INSERT INTO `ke_user_log` VALUES ('4292', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:58:55', 'index');
+INSERT INTO `ke_user_log` VALUES ('4293', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:59:06', 'save');
+INSERT INTO `ke_user_log` VALUES ('4294', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:59:06', 'index');
+INSERT INTO `ke_user_log` VALUES ('4295', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:59:25', 'save');
+INSERT INTO `ke_user_log` VALUES ('4296', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:59:25', 'index');
+INSERT INTO `ke_user_log` VALUES ('4297', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:59:41', 'save');
+INSERT INTO `ke_user_log` VALUES ('4298', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:59:41', 'index');
+INSERT INTO `ke_user_log` VALUES ('4299', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 14:59:57', 'save');
+INSERT INTO `ke_user_log` VALUES ('4300', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 14:59:57', 'index');
+INSERT INTO `ke_user_log` VALUES ('4301', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:00:08', 'save');
+INSERT INTO `ke_user_log` VALUES ('4302', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:00:08', 'index');
+INSERT INTO `ke_user_log` VALUES ('4303', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 15:00:23', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4304', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:00:23', 'save');
+INSERT INTO `ke_user_log` VALUES ('4305', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:00:23', 'index');
+INSERT INTO `ke_user_log` VALUES ('4306', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:00:31', 'save');
+INSERT INTO `ke_user_log` VALUES ('4307', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:00:31', 'index');
+INSERT INTO `ke_user_log` VALUES ('4308', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:00:43', 'save');
+INSERT INTO `ke_user_log` VALUES ('4309', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:00:43', 'index');
+INSERT INTO `ke_user_log` VALUES ('4310', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:00:57', 'save');
+INSERT INTO `ke_user_log` VALUES ('4311', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:00:57', 'index');
+INSERT INTO `ke_user_log` VALUES ('4312', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:01:07', 'save');
+INSERT INTO `ke_user_log` VALUES ('4313', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:01:07', 'index');
+INSERT INTO `ke_user_log` VALUES ('4314', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:01:17', 'save');
+INSERT INTO `ke_user_log` VALUES ('4315', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:01:17', 'index');
+INSERT INTO `ke_user_log` VALUES ('4316', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:01:32', 'save');
+INSERT INTO `ke_user_log` VALUES ('4317', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:01:32', 'index');
+INSERT INTO `ke_user_log` VALUES ('4318', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:01:44', 'save');
+INSERT INTO `ke_user_log` VALUES ('4319', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:01:44', 'index');
+INSERT INTO `ke_user_log` VALUES ('4320', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:01:56', 'save');
+INSERT INTO `ke_user_log` VALUES ('4321', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:01:56', 'index');
+INSERT INTO `ke_user_log` VALUES ('4322', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:02:07', 'save');
+INSERT INTO `ke_user_log` VALUES ('4323', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:02:07', 'index');
+INSERT INTO `ke_user_log` VALUES ('4324', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:02:20', 'save');
+INSERT INTO `ke_user_log` VALUES ('4325', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:02:20', 'index');
+INSERT INTO `ke_user_log` VALUES ('4326', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 15:02:46', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4327', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:02:46', 'save');
+INSERT INTO `ke_user_log` VALUES ('4328', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:02:46', 'index');
+INSERT INTO `ke_user_log` VALUES ('4329', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:02:58', 'save');
+INSERT INTO `ke_user_log` VALUES ('4330', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:02:58', 'index');
+INSERT INTO `ke_user_log` VALUES ('4331', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:03:10', 'save');
+INSERT INTO `ke_user_log` VALUES ('4332', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:03:10', 'index');
+INSERT INTO `ke_user_log` VALUES ('4333', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:03:36', 'save');
+INSERT INTO `ke_user_log` VALUES ('4334', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:03:37', 'index');
+INSERT INTO `ke_user_log` VALUES ('4335', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:03:51', 'save');
+INSERT INTO `ke_user_log` VALUES ('4336', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:03:51', 'index');
+INSERT INTO `ke_user_log` VALUES ('4337', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:04:05', 'save');
+INSERT INTO `ke_user_log` VALUES ('4338', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:04:05', 'index');
+INSERT INTO `ke_user_log` VALUES ('4339', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:04:17', 'save');
+INSERT INTO `ke_user_log` VALUES ('4340', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:04:17', 'index');
+INSERT INTO `ke_user_log` VALUES ('4341', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:04:35', 'save');
+INSERT INTO `ke_user_log` VALUES ('4342', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:04:35', 'index');
+INSERT INTO `ke_user_log` VALUES ('4343', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 15:04:47', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4344', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:04:47', 'save');
+INSERT INTO `ke_user_log` VALUES ('4345', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:04:47', 'index');
+INSERT INTO `ke_user_log` VALUES ('4346', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:04:58', 'save');
+INSERT INTO `ke_user_log` VALUES ('4347', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:04:58', 'index');
+INSERT INTO `ke_user_log` VALUES ('4348', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:05:09', 'save');
+INSERT INTO `ke_user_log` VALUES ('4349', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:05:09', 'index');
+INSERT INTO `ke_user_log` VALUES ('4350', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:05:24', 'save');
+INSERT INTO `ke_user_log` VALUES ('4351', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:05:24', 'index');
+INSERT INTO `ke_user_log` VALUES ('4352', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:05:40', 'save');
+INSERT INTO `ke_user_log` VALUES ('4353', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:05:40', 'index');
+INSERT INTO `ke_user_log` VALUES ('4354', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:05:59', 'save');
+INSERT INTO `ke_user_log` VALUES ('4355', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:05:59', 'index');
+INSERT INTO `ke_user_log` VALUES ('4356', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:06:13', 'save');
+INSERT INTO `ke_user_log` VALUES ('4357', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:06:13', 'index');
+INSERT INTO `ke_user_log` VALUES ('4358', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:06:26', 'save');
+INSERT INTO `ke_user_log` VALUES ('4359', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:06:26', 'index');
+INSERT INTO `ke_user_log` VALUES ('4360', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:06:40', 'save');
+INSERT INTO `ke_user_log` VALUES ('4361', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:06:40', 'index');
+INSERT INTO `ke_user_log` VALUES ('4362', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 15:06:56', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4363', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:06:56', 'save');
+INSERT INTO `ke_user_log` VALUES ('4364', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:06:56', 'index');
+INSERT INTO `ke_user_log` VALUES ('4365', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:07:08', 'save');
+INSERT INTO `ke_user_log` VALUES ('4366', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:07:08', 'index');
+INSERT INTO `ke_user_log` VALUES ('4367', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:07:24', 'save');
+INSERT INTO `ke_user_log` VALUES ('4368', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:07:24', 'index');
+INSERT INTO `ke_user_log` VALUES ('4369', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:08:03', 'save');
+INSERT INTO `ke_user_log` VALUES ('4370', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:08:03', 'index');
+INSERT INTO `ke_user_log` VALUES ('4371', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:08:18', 'save');
+INSERT INTO `ke_user_log` VALUES ('4372', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:08:18', 'index');
+INSERT INTO `ke_user_log` VALUES ('4373', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:08:26', 'save');
+INSERT INTO `ke_user_log` VALUES ('4374', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:08:26', 'index');
+INSERT INTO `ke_user_log` VALUES ('4375', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:08:39', 'save');
+INSERT INTO `ke_user_log` VALUES ('4376', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:08:39', 'index');
+INSERT INTO `ke_user_log` VALUES ('4377', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:08:50', 'save');
+INSERT INTO `ke_user_log` VALUES ('4378', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:08:50', 'index');
+INSERT INTO `ke_user_log` VALUES ('4379', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 15:09:17', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4380', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:09:17', 'save');
+INSERT INTO `ke_user_log` VALUES ('4381', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:09:17', 'index');
+INSERT INTO `ke_user_log` VALUES ('4382', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:09:29', 'save');
+INSERT INTO `ke_user_log` VALUES ('4383', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:09:29', 'index');
+INSERT INTO `ke_user_log` VALUES ('4384', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:09:39', 'save');
+INSERT INTO `ke_user_log` VALUES ('4385', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:09:39', 'index');
+INSERT INTO `ke_user_log` VALUES ('4386', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:09:48', 'save');
+INSERT INTO `ke_user_log` VALUES ('4387', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:09:48', 'index');
+INSERT INTO `ke_user_log` VALUES ('4388', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:09:58', 'save');
+INSERT INTO `ke_user_log` VALUES ('4389', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:09:58', 'index');
+INSERT INTO `ke_user_log` VALUES ('4390', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:10:10', 'save');
+INSERT INTO `ke_user_log` VALUES ('4391', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:10:10', 'index');
+INSERT INTO `ke_user_log` VALUES ('4392', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:10:22', 'save');
+INSERT INTO `ke_user_log` VALUES ('4393', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:10:22', 'index');
+INSERT INTO `ke_user_log` VALUES ('4394', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:10:33', 'save');
+INSERT INTO `ke_user_log` VALUES ('4395', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:10:33', 'index');
+INSERT INTO `ke_user_log` VALUES ('4396', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:10:41', 'save');
+INSERT INTO `ke_user_log` VALUES ('4397', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:10:41', 'index');
+INSERT INTO `ke_user_log` VALUES ('4398', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:10:49', 'save');
+INSERT INTO `ke_user_log` VALUES ('4399', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:10:49', 'index');
+INSERT INTO `ke_user_log` VALUES ('4400', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:10:58', 'save');
+INSERT INTO `ke_user_log` VALUES ('4401', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:10:58', 'index');
+INSERT INTO `ke_user_log` VALUES ('4402', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:11:05', 'save');
+INSERT INTO `ke_user_log` VALUES ('4403', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:11:05', 'index');
+INSERT INTO `ke_user_log` VALUES ('4404', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 15:11:18', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4405', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:11:18', 'save');
+INSERT INTO `ke_user_log` VALUES ('4406', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:11:18', 'index');
+INSERT INTO `ke_user_log` VALUES ('4407', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:11:29', 'save');
+INSERT INTO `ke_user_log` VALUES ('4408', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:11:29', 'index');
+INSERT INTO `ke_user_log` VALUES ('4409', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:11:38', 'save');
+INSERT INTO `ke_user_log` VALUES ('4410', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:11:38', 'index');
+INSERT INTO `ke_user_log` VALUES ('4411', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:11:49', 'save');
+INSERT INTO `ke_user_log` VALUES ('4412', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:11:49', 'index');
+INSERT INTO `ke_user_log` VALUES ('4413', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:11:58', 'save');
+INSERT INTO `ke_user_log` VALUES ('4414', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:11:58', 'index');
+INSERT INTO `ke_user_log` VALUES ('4415', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:12:44', 'save');
+INSERT INTO `ke_user_log` VALUES ('4416', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:12:44', 'index');
+INSERT INTO `ke_user_log` VALUES ('4417', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:12:54', 'save');
+INSERT INTO `ke_user_log` VALUES ('4418', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:12:54', 'index');
+INSERT INTO `ke_user_log` VALUES ('4419', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:13:05', 'save');
+INSERT INTO `ke_user_log` VALUES ('4420', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:13:05', 'index');
+INSERT INTO `ke_user_log` VALUES ('4421', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:13:18', 'save');
+INSERT INTO `ke_user_log` VALUES ('4422', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:13:18', 'index');
+INSERT INTO `ke_user_log` VALUES ('4423', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 15:13:27', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4424', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:13:27', 'save');
+INSERT INTO `ke_user_log` VALUES ('4425', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:13:27', 'index');
+INSERT INTO `ke_user_log` VALUES ('4426', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:13:37', 'save');
+INSERT INTO `ke_user_log` VALUES ('4427', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:13:37', 'index');
+INSERT INTO `ke_user_log` VALUES ('4428', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:13:47', 'save');
+INSERT INTO `ke_user_log` VALUES ('4429', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:13:47', 'index');
+INSERT INTO `ke_user_log` VALUES ('4430', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:14:04', 'save');
+INSERT INTO `ke_user_log` VALUES ('4431', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:14:04', 'index');
+INSERT INTO `ke_user_log` VALUES ('4432', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:14:15', 'save');
+INSERT INTO `ke_user_log` VALUES ('4433', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:14:15', 'index');
+INSERT INTO `ke_user_log` VALUES ('4434', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:14:26', 'save');
+INSERT INTO `ke_user_log` VALUES ('4435', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:14:26', 'index');
+INSERT INTO `ke_user_log` VALUES ('4436', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:14:39', 'save');
+INSERT INTO `ke_user_log` VALUES ('4437', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:14:39', 'index');
+INSERT INTO `ke_user_log` VALUES ('4438', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:14:51', 'save');
+INSERT INTO `ke_user_log` VALUES ('4439', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:14:51', 'index');
+INSERT INTO `ke_user_log` VALUES ('4440', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:15:06', 'save');
+INSERT INTO `ke_user_log` VALUES ('4441', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:15:06', 'index');
+INSERT INTO `ke_user_log` VALUES ('4442', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:15:19', 'save');
+INSERT INTO `ke_user_log` VALUES ('4443', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:15:19', 'index');
+INSERT INTO `ke_user_log` VALUES ('4444', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 15:15:35', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4445', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:15:35', 'save');
+INSERT INTO `ke_user_log` VALUES ('4446', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:15:35', 'index');
+INSERT INTO `ke_user_log` VALUES ('4447', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:16:00', 'save');
+INSERT INTO `ke_user_log` VALUES ('4448', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:16:00', 'index');
+INSERT INTO `ke_user_log` VALUES ('4449', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:16:12', 'save');
+INSERT INTO `ke_user_log` VALUES ('4450', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:16:12', 'index');
+INSERT INTO `ke_user_log` VALUES ('4451', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:16:23', 'save');
+INSERT INTO `ke_user_log` VALUES ('4452', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:16:23', 'index');
+INSERT INTO `ke_user_log` VALUES ('4453', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:16:33', 'save');
+INSERT INTO `ke_user_log` VALUES ('4454', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:16:33', 'index');
+INSERT INTO `ke_user_log` VALUES ('4455', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:16:45', 'save');
+INSERT INTO `ke_user_log` VALUES ('4456', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:16:45', 'index');
+INSERT INTO `ke_user_log` VALUES ('4457', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:17:07', 'save');
+INSERT INTO `ke_user_log` VALUES ('4458', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:17:07', 'index');
+INSERT INTO `ke_user_log` VALUES ('4459', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:17:27', 'save');
+INSERT INTO `ke_user_log` VALUES ('4460', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:17:27', 'index');
+INSERT INTO `ke_user_log` VALUES ('4461', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 15:17:38', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4462', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:17:38', 'save');
+INSERT INTO `ke_user_log` VALUES ('4463', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:17:38', 'index');
+INSERT INTO `ke_user_log` VALUES ('4464', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:17:51', 'save');
+INSERT INTO `ke_user_log` VALUES ('4465', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:17:51', 'index');
+INSERT INTO `ke_user_log` VALUES ('4466', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:18:05', 'save');
+INSERT INTO `ke_user_log` VALUES ('4467', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:18:05', 'index');
+INSERT INTO `ke_user_log` VALUES ('4468', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:18:17', 'save');
+INSERT INTO `ke_user_log` VALUES ('4469', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:18:17', 'index');
+INSERT INTO `ke_user_log` VALUES ('4470', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:18:29', 'save');
+INSERT INTO `ke_user_log` VALUES ('4471', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:18:29', 'index');
+INSERT INTO `ke_user_log` VALUES ('4472', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:18:40', 'save');
+INSERT INTO `ke_user_log` VALUES ('4473', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:18:40', 'index');
+INSERT INTO `ke_user_log` VALUES ('4474', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:18:51', 'save');
+INSERT INTO `ke_user_log` VALUES ('4475', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:18:51', 'index');
+INSERT INTO `ke_user_log` VALUES ('4476', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:19:03', 'save');
+INSERT INTO `ke_user_log` VALUES ('4477', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:19:03', 'index');
+INSERT INTO `ke_user_log` VALUES ('4478', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:19:11', 'save');
+INSERT INTO `ke_user_log` VALUES ('4479', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:19:11', 'index');
+INSERT INTO `ke_user_log` VALUES ('4480', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:19:36', 'index');
+INSERT INTO `ke_user_log` VALUES ('4481', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 15:19:38', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4482', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:19:38', 'index');
+INSERT INTO `ke_user_log` VALUES ('4483', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:19:41', 'index');
+INSERT INTO `ke_user_log` VALUES ('4484', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:19:43', 'index');
+INSERT INTO `ke_user_log` VALUES ('4485', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:19:45', 'index');
+INSERT INTO `ke_user_log` VALUES ('4486', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:19:51', 'index');
+INSERT INTO `ke_user_log` VALUES ('4487', '5', '/admin/emattr/getAttrById', '0:0:0:0:0:0:0:1', '2017-02-14 15:20:07', 'getAttrById');
+INSERT INTO `ke_user_log` VALUES ('4488', '5', '/admin/emattr/getAttrById', '0:0:0:0:0:0:0:1', '2017-02-14 15:20:14', 'getAttrById');
+INSERT INTO `ke_user_log` VALUES ('4489', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 15:20:55', 'index');
+INSERT INTO `ke_user_log` VALUES ('4490', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:20:57', 'index');
+INSERT INTO `ke_user_log` VALUES ('4491', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 15:20:59', 'index');
+INSERT INTO `ke_user_log` VALUES ('4492', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:21:00', 'index');
+INSERT INTO `ke_user_log` VALUES ('4493', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 15:21:02', 'index');
+INSERT INTO `ke_user_log` VALUES ('4494', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:21:02', 'index');
+INSERT INTO `ke_user_log` VALUES ('4495', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 15:21:44', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4496', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-14 15:21:44', 'index');
+INSERT INTO `ke_user_log` VALUES ('4497', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-14 15:21:50', 'index');
+INSERT INTO `ke_user_log` VALUES ('4498', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 15:21:52', 'index');
+INSERT INTO `ke_user_log` VALUES ('4499', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:21:53', 'index');
+INSERT INTO `ke_user_log` VALUES ('4500', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 15:29:44', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4501', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-14 15:29:44', 'index');
+INSERT INTO `ke_user_log` VALUES ('4502', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:29:46', 'index');
+INSERT INTO `ke_user_log` VALUES ('4503', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 15:29:47', 'index');
+INSERT INTO `ke_user_log` VALUES ('4504', '5', '/admin/knmole', '0:0:0:0:0:0:0:1', '2017-02-14 15:29:49', 'index');
+INSERT INTO `ke_user_log` VALUES ('4505', '5', '/admin/knmole', '0:0:0:0:0:0:0:1', '2017-02-14 15:30:05', 'index');
+INSERT INTO `ke_user_log` VALUES ('4506', '5', '/admin/knmole', '0:0:0:0:0:0:0:1', '2017-02-14 15:30:49', 'index');
+INSERT INTO `ke_user_log` VALUES ('4507', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 15:30:51', 'index');
+INSERT INTO `ke_user_log` VALUES ('4508', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:30:52', 'index');
+INSERT INTO `ke_user_log` VALUES ('4509', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-14 15:30:53', 'index');
+INSERT INTO `ke_user_log` VALUES ('4510', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:31:05', 'index');
+INSERT INTO `ke_user_log` VALUES ('4511', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 15:36:50', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4512', '5', '/admin/emattr/save', '0:0:0:0:0:0:0:1', '2017-02-14 15:36:50', 'save');
+INSERT INTO `ke_user_log` VALUES ('4513', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:36:50', 'index');
+INSERT INTO `ke_user_log` VALUES ('4514', '5', '/admin/emattr/del', '0:0:0:0:0:0:0:1', '2017-02-14 15:36:54', 'del');
+INSERT INTO `ke_user_log` VALUES ('4515', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:37:36', 'index');
+INSERT INTO `ke_user_log` VALUES ('4516', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 15:37:40', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4517', '5', '/admin/emattr/del', '0:0:0:0:0:0:0:1', '2017-02-14 15:37:40', 'del');
+INSERT INTO `ke_user_log` VALUES ('4518', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:38:40', 'index');
+INSERT INTO `ke_user_log` VALUES ('4519', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-14 15:38:45', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4520', '5', '/admin/emattr/del', '0:0:0:0:0:0:0:1', '2017-02-14 15:38:45', 'del');
+INSERT INTO `ke_user_log` VALUES ('4521', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-14 15:38:45', 'index');
+INSERT INTO `ke_user_log` VALUES ('4522', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-16 12:21:13', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4523', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-16 12:21:17', 'index');
+INSERT INTO `ke_user_log` VALUES ('4524', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-16 12:21:20', 'index');
+INSERT INTO `ke_user_log` VALUES ('4525', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-16 12:21:35', 'index');
+INSERT INTO `ke_user_log` VALUES ('4526', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-16 12:21:36', 'index');
+INSERT INTO `ke_user_log` VALUES ('4527', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-16 12:22:11', 'index');
+INSERT INTO `ke_user_log` VALUES ('4528', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-16 12:22:12', 'index');
+INSERT INTO `ke_user_log` VALUES ('4529', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-16 19:12:23', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4530', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-16 19:12:25', 'index');
+INSERT INTO `ke_user_log` VALUES ('4531', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-16 19:12:27', 'index');
+INSERT INTO `ke_user_log` VALUES ('4532', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-16 19:12:37', 'index');
+INSERT INTO `ke_user_log` VALUES ('4533', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-16 19:12:48', 'index');
+INSERT INTO `ke_user_log` VALUES ('4534', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-16 19:13:43', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4535', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-16 19:13:43', 'index');
+INSERT INTO `ke_user_log` VALUES ('4536', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-16 19:13:54', 'index');
+INSERT INTO `ke_user_log` VALUES ('4537', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-16 19:14:13', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4538', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-16 19:14:13', 'index');
+INSERT INTO `ke_user_log` VALUES ('4539', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-16 19:14:15', 'index');
+INSERT INTO `ke_user_log` VALUES ('4540', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-16 19:16:01', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4541', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-16 19:16:01', 'index');
+INSERT INTO `ke_user_log` VALUES ('4542', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-16 19:16:33', 'index');
+INSERT INTO `ke_user_log` VALUES ('4543', '5', '/admin/menu', '0:0:0:0:0:0:0:1', '2017-02-16 19:16:46', 'index');
+INSERT INTO `ke_user_log` VALUES ('4544', '5', '/admin/menu/getMenuById', '0:0:0:0:0:0:0:1', '2017-02-16 19:16:51', 'getMenuById');
+INSERT INTO `ke_user_log` VALUES ('4545', '5', '/admin/menu/save', '0:0:0:0:0:0:0:1', '2017-02-16 19:16:59', 'save');
+INSERT INTO `ke_user_log` VALUES ('4546', '5', '/admin/menu', '0:0:0:0:0:0:0:1', '2017-02-16 19:16:59', 'index');
+INSERT INTO `ke_user_log` VALUES ('4547', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-16 19:21:21', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4548', '5', '/admin/menu/getMenuById', '0:0:0:0:0:0:0:1', '2017-02-16 19:21:21', 'getMenuById');
+INSERT INTO `ke_user_log` VALUES ('4549', '5', '/admin/menu/save', '0:0:0:0:0:0:0:1', '2017-02-16 19:21:27', 'save');
+INSERT INTO `ke_user_log` VALUES ('4550', '5', '/admin/menu', '0:0:0:0:0:0:0:1', '2017-02-16 19:21:27', 'index');
+INSERT INTO `ke_user_log` VALUES ('4551', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-16 19:32:16', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4552', '5', '/admin/menu', '0:0:0:0:0:0:0:1', '2017-02-16 19:32:16', 'index');
+INSERT INTO `ke_user_log` VALUES ('4553', '5', '/admin/menu', '0:0:0:0:0:0:0:1', '2017-02-16 19:32:17', 'index');
+INSERT INTO `ke_user_log` VALUES ('4554', '5', '/admin/emattr', '0:0:0:0:0:0:0:1', '2017-02-16 19:32:18', 'index');
+INSERT INTO `ke_user_log` VALUES ('4555', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-02-16 19:32:20', 'index');
+INSERT INTO `ke_user_log` VALUES ('4556', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-16 19:32:21', 'index');
+INSERT INTO `ke_user_log` VALUES ('4557', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-16 19:50:33', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4558', '5', '/admin/emgene', '0:0:0:0:0:0:0:1', '2017-02-16 19:50:33', 'index');
+INSERT INTO `ke_user_log` VALUES ('4559', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-16 19:51:12', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4560', '5', '/admin/emgene', '0:0:0:0:0:0:0:1', '2017-02-16 19:51:12', 'index');
+INSERT INTO `ke_user_log` VALUES ('4561', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-16 19:51:42', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4562', '5', '/admin/emgene', '0:0:0:0:0:0:0:1', '2017-02-16 19:51:42', 'index');
+INSERT INTO `ke_user_log` VALUES ('4563', '5', '/admin/emgene', '0:0:0:0:0:0:0:1', '2017-02-16 19:52:12', 'index');
+INSERT INTO `ke_user_log` VALUES ('4564', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-16 19:52:16', 'add');
+INSERT INTO `ke_user_log` VALUES ('4565', '5', '/admin/emgene', '0:0:0:0:0:0:0:1', '2017-02-16 19:52:22', 'index');
+INSERT INTO `ke_user_log` VALUES ('4566', '5', '/admin/emgene', '0:0:0:0:0:0:0:1', '2017-02-16 19:52:23', 'index');
 
 -- ----------------------------
 -- Table structure for `kn_entry`
@@ -4873,7 +5366,7 @@ CREATE TABLE `kn_entr_file` (
   KEY `fk_entry_entry` (`knfi_id`),
   CONSTRAINT `fk_entry_entry` FOREIGN KEY (`knfi_id`) REFERENCES `kn_file` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_entry_file` FOREIGN KEY (`entr_id`) REFERENCES `kn_entry` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of kn_entr_file
@@ -4892,7 +5385,7 @@ CREATE TABLE `kn_entr_form` (
   KEY `fk_to_formu` (`form_id`),
   CONSTRAINT `fk_to_entry` FOREIGN KEY (`entr_id`) REFERENCES `kn_entry` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_to_formu` FOREIGN KEY (`form_id`) REFERENCES `kn_formula` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of kn_entr_form
@@ -4940,7 +5433,7 @@ CREATE TABLE `kn_file` (
   PRIMARY KEY (`id`),
   KEY `fk_knfi_kn-tree` (`knfi_kntr_id`),
   CONSTRAINT `fk_knfi_kn?tree` FOREIGN KEY (`knfi_kntr_id`) REFERENCES `kn_tree` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='存放词条中的数据文件';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='存放词条中的数据文件';
 
 -- ----------------------------
 -- Records of kn_file
@@ -4968,7 +5461,7 @@ CREATE TABLE `kn_formula` (
   PRIMARY KEY (`id`),
   KEY `fk_knfo_kn_tree` (`knfo_kntr_id`),
   CONSTRAINT `fk_knfo_kn_tree` FOREIGN KEY (`knfo_kntr_id`) REFERENCES `kn_tree` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='词条中对应的公式';
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COMMENT='词条中对应的公式';
 
 -- ----------------------------
 -- Records of kn_formula
