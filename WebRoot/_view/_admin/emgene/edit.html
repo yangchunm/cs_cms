@@ -1,0 +1,18 @@
+#set(pageTitle="知识库知识词条管理 / 编辑")
+#set(currCont = "knentry")
+#set(btnBar = {"add":0,"mod":0,"del":0})
+#@adminLayout()
+#define main()
+	#include("/_view/_admin/common/_button_bar.html")
+    #include("/_view/_admin/knentry/_add_form.html")
+    
+    #include("/_view/_admin/knentry/_file_list_modal.html")
+#end
+
+#define css()
+#end
+
+#define js()
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/kn.entry.js"></script>
+	#include("/_view/_admin/knentry/_form_editor_js.html")
+#end

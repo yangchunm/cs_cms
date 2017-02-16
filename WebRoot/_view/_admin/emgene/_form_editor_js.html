@@ -1,0 +1,27 @@
+<script type="text/javascript" src="#(BASE_PATH)/assets/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="#(BASE_PATH)/assets/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="#(BASE_PATH)/assets/ueditor/kityformula-plugin/addKityFormulaDialog.js"></script>
+<script type="text/javascript" charset="utf-8" src="#(BASE_PATH)/assets/ueditor/kityformula-plugin/getKfContent.js"></script>
+<script type="text/javascript" charset="utf-8" src="#(BASE_PATH)/assets/ueditor/kityformula-plugin/defaultFilterFix.js"></script>
+<script type="text/javascript">
+	
+	// 加载 ueditor
+		var ue = UE.getEditor('frm_knen_text', {
+			initialFrameHeight:500
+			,wordCount:false
+			,toolbars: [[
+			             'bold', 'italic', 'underline',  'superscript', 'subscript',
+			             'fontborder','strikethrough','paragraph', 'fontfamily', 'fontsize','|',
+			 		     'removeformat', 'formatmatch', 'blockquote','pasteplain', '|',
+			 		    'insertorderedlist', 'insertunorderedlist',
+			 		    'justifyleft', 'justifycenter', 'justifyright','|',
+					    'link', 'unlink','kityformula','anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+					    'insertimage', 'scrawl', 'insertvideo', 'music', 'attachment','insertframe',
+					    '|','deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol',
+					    'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 
+	
+			         ]]
+	
+		});
+
+</script>
