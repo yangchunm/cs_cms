@@ -1,6 +1,7 @@
 package org.kelab.admin.em.gene;
 
 
+import org.kelab.admin.em.attr.AttrAdminService;
 import org.kelab.admin.em.cate.CateAdminService;
 import org.kelab.bean.CommQuery;
 import org.kelab.model.EmAttr;
@@ -15,6 +16,7 @@ import com.jfinal.kit.Ret;
 public class GeneAdminController extends Controller{
 	static GeneAdminService srv = GeneAdminService.me;
 	static CateAdminService cateSrv = CateAdminService.me;
+	static AttrAdminService attrSrv = AttrAdminService.me;
 	
 	public void index() {
 		CommQuery comQ = getBean(CommQuery.class,"comm");
@@ -25,6 +27,13 @@ public class GeneAdminController extends Controller{
 		setAttr("comQ",comQ);
 		setAttr("emGeneP",srv.findAllGene(comQ));
 		render("index.html");
+	}
+	
+	public void add(){
+		setAttr("emCateL",cateSrv.findAllEmCate(0));
+		setAttr("keSecuL",KeSecurity.dao.findAll());
+		setAttr("emAttrL",attrSrv.findAllAttrValue(0,0));
+		render("edit.html");
 	}
 	
 	@Before(GeneAdminValidator.class)

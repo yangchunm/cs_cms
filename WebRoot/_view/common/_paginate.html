@@ -103,7 +103,7 @@
 	#for(y : treeObj)
       	<tr id="node-#(y.emcaParentId)-#(y.id)" class="treegrid-#(y.id) treegrid-parent-#(y.emcaParentId)">
       		<td>
-      			<input value="#(y.id)" type="checkbox" id="check-#(y.emcaParentId)-#(y.id)" />
+      			<input value="#(y.id)" type="checkbox" id="check-#(y.emcaParentId)-#(y.id)" name="check-#(y.emcaParentId)-#(y.id)" />
       			#(pre).#(for.index+1) #(y.emcaName)
       		</td>
      	</tr>
@@ -111,7 +111,7 @@
 	#end
 #end
 
-### 配方显示函数select
+### 配方分类显示函数select
 #define emcate_tree_list(treeObj,pre,currId)
 	#setLocal(pre = pre + "&nbsp;&nbsp;")
 	#for(y : treeObj)
@@ -149,5 +149,26 @@
 		<option value="#(y.id)" >#(pre)#(y.ematName)</option>
 		#end
      	 #@emattr_tree_list(y.emAttrL,pre+ "&nbsp;&nbsp;",currId)
+	#end
+#end
+
+### 有值的配方属性显示函数
+#define emattr_tree_grid_value(treeObj,pre)
+	#for(y : treeObj)
+      	<tr id="node-#(y.ematPareId)-#(y.id)" class="treegrid-#(y.id) treegrid-parent-#(y.ematPareId)">
+      		<td>
+      			#(pre).#(for.index+1) #(y.ematName)
+      			<td>
+      				#if(y.emgaValue ==null && y.ematType <= 2)
+      				<input type="text" name="em-attr-#(y.id)">
+      				#elseif(y.emgaValue ==null &&y.ematType >2)
+      				<a href="">点击上传文件</a>
+      				#else
+      				#(y.emgaValue)
+      				#end
+      			</td>
+      		</td>
+     	</tr>
+     	 #@emattr_tree_grid_value(y.emAttrL,pre + "."+(for.index+1))
 	#end
 #end

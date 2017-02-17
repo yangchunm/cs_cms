@@ -32,6 +32,27 @@ public class AttrAdminService {
 		return attrL;
 	}
 	
+	/**
+	 * 加载
+	 * @param parentId
+	 * 			父id，如果为0，则返回所有
+	 * @return
+	 */
+	public List<EmAttr> findAllAttrValue(int parentId, int emgeneId){
+		String strWhere = "";
+		if(emgeneId > 0)
+			strWhere += " and emga.emge_id =" + emgeneId;
+		String sql = "select emat.*,emga.emga_value as emgaValue"
+				+ " from em_attr emat left join em_gene_attr emga on emat.id = emga.emat_id"
+				+ " where emat.emat_pare_id = ?" + strWhere
+				+ "  order by emat.id asc";
+		List<EmAttr> attrL = dao.find(sql,parentId);
+		for(EmAttr attr : attrL){
+			attr.put("emAttrL",findAllAttrValue(attr.getId(),emgeneId));
+		}
+		return attrL;
+	}
+	
 	
 	/**
 	 * 保存信息

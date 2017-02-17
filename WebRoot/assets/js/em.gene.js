@@ -1,9 +1,8 @@
 $(document).ready(function() {
-	$("#frm_knen_text_plain").hide();
 	
 	//新增按钮
 	$("#btn-add").click(function(){
-		window.location = "knentry/add";
+		window.location = "emgene/add";
 	});
 
 	//修改
@@ -13,7 +12,7 @@ $(document).ready(function() {
 			$.messager.alert("提示","请选中要修改的一条信息！");
 			return ;
 		}
-		window.location = "knentry/edit/"+ids;
+		window.location = "emgene/edit/"+ids;
 	 });
 	//修改页面加载附加文件信息
 	var entrId = $("#frm_id").val();
@@ -22,7 +21,7 @@ $(document).ready(function() {
 	}
 	
 	//删除
-	doDel("#btn-del","knentry/del");
+	doDel("#btn-del","emgene/del");
 	
 	//编辑语法切换
 	$("#frm_knen_text_type").change(function(){

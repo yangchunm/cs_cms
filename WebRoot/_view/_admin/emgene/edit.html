@@ -1,18 +1,32 @@
-#set(pageTitle="知识库知识词条管理 / 编辑")
-#set(currCont = "knentry")
+#set(pageTitle="材料配方管理 / 编辑")
+#set(currCont = "emgene")
 #set(btnBar = {"add":0,"mod":0,"del":0})
 #@adminLayout()
 #define main()
 	#include("/_view/_admin/common/_button_bar.html")
-    #include("/_view/_admin/knentry/_add_form.html")
+    #include("/_view/_admin/emgene/_add_form.html")
     
-    #include("/_view/_admin/knentry/_file_list_modal.html")
+    #include("/_view/_admin/emgene/_file_list_modal.html")
 #end
 
 #define css()
+	<link rel="stylesheet" type="text/css" href="#(BASE_PATH)/assets/treegrid/jquery.treegrid.css">
 #end
 
 #define js()
-	<script type="text/javascript" src="#(BASE_PATH)/assets/js/kn.entry.js"></script>
-	#include("/_view/_admin/knentry/_form_editor_js.html")
+	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.min.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.bootstrap3.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/em.gene.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//显示TreeGrid
+			$(".tree").treegrid({
+				//initialState:"collapsed"
+				});
+			
+			$(".attr-tree").treegrid({
+				initialState:"collapsed"
+				});
+		});
+	</script>
 #end

@@ -1,116 +1,108 @@
      <div class="row">
      	<form class="" id="add-form" action="#(BASE_PATH)#(mandir)/#(currCont)/save" method="post">
      		<div class="col-md-8">
-				<div class="form-group">
-					<label for="knen_name">词条名称   <span class="small text-danger" id="knen_name_msg">*（主题或术语，简短）</span></label>
-						<input type="text" name="en.knen_name" id="frm_knen_name" class="form-control"
-							 value="#(knEntr.knenName??)" placeholder="词条名称或主题">
-						 <input type="hidden" name="en.id" value="#(knEntr.id ?? '0')" id="frm_id">
+     			<div>
+		     		<div class="col-md-6">
+		     			<div class="form-group">
+							<label for="em.emge_abbr_name">缩写   <span class="small text-danger" id="emge_abbr_name_msg">*（配方缩写）</span></label>
+								<input type="text" name="em.emge_abbr_name" id="frm_emge_abbr_name" class="form-control"
+									 value="#(emGene.emgeAbbrName??)" placeholder="配方缩写">
+								 <input type="hidden" name="em.id" value="#(emGene.id ?? '0')" id="frm_id">
+						</div>
+						<div class="form-group">
+							<label for="em.emge_en_name">英文名   <span class="small text-danger" id="emge_en_name_msg">*（配方的英文名称）</span></label>
+								<input type="text" name="em.emge_en_name" id="frm_emge_en_name" class="form-control"
+									 value="#(emGene.emgeEnName??)" placeholder="配方英文名称">
+						</div>
+						<div class="form-group">
+							<label for="em.emge_zh_name">中文名   <span class="small text-danger" id="emge_zh_name_msg">*（配方的中文名称）</span></label>
+								<input type="text" name="em.emge_zh_name" id="frm_emge_zh_name" class="form-control"
+									 value="#(emGene.emgeZhName??)" placeholder="配方中文名称">
+						</div>
+						<div class="form-group">
+							<label for="em.emge_code">代号   <span class="small text-danger" id="emge_code_msg">*（配方的代号）</span></label>
+								<input type="text" name="em.emge_code" id="frm_emge_code" class="form-control"
+									 value="#(emGene.emgeCode??)" placeholder="配方的代号">
+						</div>
+						
+						<div class="form-group">
+							<label for="em.emge_secu_id">密级   <span class="small text-danger" id="emge_secu_id_msg">*（配方的英文名称）</span></label>
+							<select name="em.emge_secu_id" id="frm_emge_secu_id"  class="form-control">
+								#for(x : keSecuL)
+									#if(emGene.emgeSecuId ?? && x.id == emGene.emgeSecuId)
+										<option value="#(x.id)" selected>#(x.secuName)</option>
+									#else
+										<option value="#(x.id)">#(x.secuName)</option>
+									#end
+								#end
+							</select>
+						</div>
+		     		</div>
+		     		<!-- begin emcate -->
+		     		<div class="col-md-6">
+						<table class="table table-condensed .table-hover tree">
+						 	<thead>
+						 		<tr>
+						 			<th>配方分类</th>
+						 		</tr>
+						 	</thead>
+						 	<tbody>
+						 		#for(x : emCateL)
+						 			<tr id="node-#(x.id)" class="treegrid-#(x.id)">	         		
+						         		<td>#(for.index+1) #(x.emcaName)</td>
+					         		</tr>
+							 		#@emcate_tree_grid(x.emCateL,for.index+1)
+					         	#end
+					        </tbody>       
+					     </table>
+						
+					</div>
 				</div>
+				<div >
+					<div class="form-group">
+						<label for="em.enge_src">配方来源  <span class="small text-danger" id="enge_src_msg">*</span></label>
+							<textarea class="form-control"  id="frm_emge_src" name="em.emge_src" rows="2">#(emGene.emgeSrc ??)</textarea>
+					</div>
+					<div class="form-group">
+						<label for="em.emge_desc">配方描述  <span class="small text-danger" id="emte_desc_msg">*</span></label>
+							<textarea class="form-control"  id="frm_emge_desc" name="em.emge_desc" rows="5">#(emGene.emgeDesc ??)</textarea>
+					</div>
 				
-				<div class="form-group">
-					<label for="knen_text_type">编辑词条语法   <span class="small text-danger" id="knen_text_type_msg">*（支持HTML、Wiki和Markdown语法编辑）</span></label>
-					<select name="en.knen_text_type" id="frm_knen_text_type"  class="form-control">
-						#if(knEntr.knenTextType ??)
-							<option value="#(knEntr.knenTextType)">#(knEntr.knenTextType)</option>
-						#end
-						<option value="HTML">在线编辑器（HTML）</option>
-						<option value="Wiki">Wiki语法</option>
-						<option value="Markdown">Markdown语法</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="knen_text">词条正文  <span class="small text-danger" id="knen_text_msg">*（词条或主题的详细内容）</span></label>
-						<script id="frm_knen_text" name="en.knen_text" style="line-height: 20px;"  type="text/plain">#(knEntr.knenText ??)</script>
-						<textarea class="form-control"  id="frm_knen_text_plain" name="knen_text_plain" rows="25">#(knEntr.knenText ??)</textarea>
-				</div>
-			
-		      <div class="form-group">
-		       	<label for="button" class="control-label"></label>
-		        	<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save-file"></span> 保存</button>
-		         	<button type="reset" class="btn btn-default"><span class="glyphicon glyphicon-remove-circle"></span> 重置</button>
-		         	<a href="javascript:history.go(-1)" class="btn btn-success"><span class="glyphicon glyphicon-circle-arrow-left"></span> 返回</a>
-		     </div>
+				      <div class="form-group">
+				       	<label for="button" class="control-label"></label>
+				        	<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save-file"></span> 保存</button>
+				         	<button type="reset" class="btn btn-default"><span class="glyphicon glyphicon-remove-circle"></span> 重置</button>
+				         	<a href="javascript:history.go(-1)" class="btn btn-success"><span class="glyphicon glyphicon-circle-arrow-left"></span> 返回</a>
+				     </div>
+		    	 </div>
 	     </div>
      
       <!--  end of left mian body -->
       <div class="col-md-4">
       	<div class="panel panel-default">
 		  <div class="panel-heading">
-		    <h3 class="panel-title"><span class="glyphicon glyphicon-tags"></span>  词条标注（附属信息）</h3>
+		    <h3 class="panel-title"><span class="glyphicon glyphicon-tags"></span>  配方属性信息</h3>
 		  </div>
 		  <div class="panel-body">
-    		<div class="form-group">
-				<label for="knen_kntr_id" >知识点 <span class="small text-danger" id="knen_kntr_id_msg">*（属于知识结构树的那一部分）</span></label>
-				<select name="en.knen_kntr_id" id="frm_knen_kntr_id" class="form-control">
-				 		#for(x : knTreeL)
-				 			#if(x.id == knEntr.knenKntrId ?? "0")
-				 				<option value="#(x.id)" selected>#(x.kntrName)</option>
-				 			#else
-				 				<option value="#(x.id)">#(x.kntrName)</option>
-				 			#end
-				 			#@kntr_tree_list(x.knTreeL,"&nbsp;&nbsp",knEntr.knenKntrId ?? "0")
-				        #end
-				 </select>
-			</div>
-			<div class="form-group">
-				<label for="knen_tag">标签   <span class="small text-danger" id="knen_tag_msg">*（3~5个关于本词条的关键词）</span></label>
-					<input type="text" name="en.knen_tag" id="frm_knen_tag" class="form-control"
-					value="#(knEntr.knenTag ??)" placeholder="标签，逗号隔开">
-			</div>
-			<div class="form-group">
-				<label for="knen_secu_id" >密级 <span class="small text-danger" id="knen_kntr_id_msg">*（本词条的密级）</span></label>
-				<select name="en.knen_secu_id" id="frm_knen_secu_id" class="form-control">
-				 		#for(x : keSecuL)
-				 			#if(x.id == knEntr.knenSecuId ?? "0")
-				 				<option value="#(x.id)" selected>#(x.secuName)</option>
-				 			#else
-				 				<option value="#(x.id)">#(x.secuName)</option>
-				 			#end
-				        #end
-				 </select>
-			</div>
+    		<table class="table table-condensed .table-hover attr-tree">
+			 	<thead>
+			 		<tr>
+			 			<th>属性名称</th><th>值</th>
+			 		</tr>
+			 	</thead>
+			 	<tbody>
+			 		#for(x : emAttrL)
+			 			<tr id="node-#(x.id)" class="treegrid-#(x.id)">	         		
+			         		<td>#(for.index+1) #(x.ematName)</td>
+			         		<td></td>
+		         		</tr>
+				 		#@emattr_tree_grid_value(x.emAttrL,for.index+1)
+		         	#end
+		        </tbody>       
+		     </table>
 		  </div>
 		</div><!-- end tags panel-->
 		
-		<div class="panel panel-default">
-		  <div class="panel-heading">
-		    <h3 class="panel-title"><span class="glyphicon glyphicon-paperclip"></span>  词条相关文件    
-		    	<a href="#" id="modal-file-add"><span class="glyphicon glyphicon-upload"></span>上传</a>
-		    	<a href="#"  class="rela-file-check" value="file"><span class="glyphicon glyphicon-check">选择</span></a>
-		    </h3>
-		  </div>
-		  <div class="panel-body" id="knen_file_list">
-    		#for(x : knEntrFile)
-    			<input type="checkbox" checked name="kn_file_list" value="#(x.id)">#(x.knfiEname) <br />
-    		#end
-		  </div>
-		</div><!-- end entry file panel -->	
-		
-		<div class="panel panel-default">
-		  <div class="panel-heading">
-		    <h3 class="panel-title"><span class="glyphicon glyphicon-euro"></span>  词条相关公式    
-		    <a href="#"  class="rela-file-check" value="form"><span class="glyphicon glyphicon-check">选择</span></a></h3>
-		  </div>
-		  <div class="panel-body" id="knen_form_list">
-    		#for(x : knEntrForm)
-    			<input type="checkbox" checked name="kn_form_list" value="#(x.id)">#(x.knfoName) <br />
-    		#end
-		  </div>
-		</div><!-- end entry file panel -->	
-		
-		<div class="panel panel-default">
-		  <div class="panel-heading">
-		    <h3 class="panel-title"><span class="glyphicon glyphicon-filter"></span>  词条相关分子式   
-		     <a href="#" id="modal-mole-add"><span class="glyphicon glyphicon-plus-sign"></span>添加</a>
-		     <a href="#"  class="rela-file-check" value="mole"><span class="glyphicon glyphicon-check">选择</span></a></h3>
-		  </div>
-		  <div class="panel-body" id="knen_mole_list">
-    		#for(x : knEntrMole)
-    			<input type="checkbox" checked name="kn_mole_list" value="#(x.id)">#(x.knmoName) <br />
-    		#end
-		  </div>
-		</div><!-- end entry file panel -->	
       </div>
        </form>
 	</div>
