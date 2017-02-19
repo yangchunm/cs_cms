@@ -15,7 +15,7 @@
 									 value="#(emGene.emgeEnName??)" placeholder="配方英文名称">
 						</div>
 						<div class="form-group">
-							<label for="em.emge_zh_name">中文名   <span class="small text-danger" id="emge_zh_name_msg">*（配方的中文名称）</span></label>
+							<label for="em.emge_zh_name">中文名   <span class="small text-danger" id="emge_zh_name_msg">（配方的中文名称）</span></label>
 								<input type="text" name="em.emge_zh_name" id="frm_emge_zh_name" class="form-control"
 									 value="#(emGene.emgeZhName??)" placeholder="配方中文名称">
 						</div>
@@ -26,7 +26,7 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="em.emge_secu_id">密级   <span class="small text-danger" id="emge_secu_id_msg">*（配方的英文名称）</span></label>
+							<label for="em.emge_secu_id">密级   <span class="small text-danger" id="emge_secu_id_msg">*（配方的密级）</span></label>
 							<select name="em.emge_secu_id" id="frm_emge_secu_id"  class="form-control">
 								#for(x : keSecuL)
 									#if(emGene.emgeSecuId ?? && x.id == emGene.emgeSecuId)

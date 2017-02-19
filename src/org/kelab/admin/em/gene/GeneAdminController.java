@@ -1,19 +1,21 @@
 package org.kelab.admin.em.gene;
 
 
+import java.util.Date;
+
 import org.kelab.admin.em.attr.AttrAdminService;
 import org.kelab.admin.em.cate.CateAdminService;
 import org.kelab.bean.CommQuery;
+import org.kelab.common.controller.BaseController;
 import org.kelab.model.EmAttr;
-import org.kelab.model.EmAttrType;
+import org.kelab.model.EmGene;
 import org.kelab.model.KeSecurity;
 
 import com.jfinal.aop.Before;
-import com.jfinal.core.Controller;
 import com.jfinal.kit.Ret;
 
 
-public class GeneAdminController extends Controller{
+public class GeneAdminController  extends BaseController{
 	static GeneAdminService srv = GeneAdminService.me;
 	static CateAdminService cateSrv = CateAdminService.me;
 	static AttrAdminService attrSrv = AttrAdminService.me;
@@ -39,15 +41,12 @@ public class GeneAdminController extends Controller{
 	@Before(GeneAdminValidator.class)
 	public void save(){
 		Ret ret = new Ret();
-		EmAttr attr = getModel(EmAttr.class,"");
-		int attrId = getParaToInt("id",0);
-		if(attrId == 0){//新增
-			ret = srv.save(attr);
-		}else{
-			attr.setId(attrId);
-			attr.update();
-			ret = Ret.ok();
-		}
+		EmGene gene = getModel(EmGene.class,"em");
+		String[] emCateIds = getParaValues("emcateId");
+		gene.setEmgeUserId(getLoginUserId());
+		gene.setEmgeCreateTime(new Date());
+		gene.setEmgeUpdateTime(new Date());
+		ret = srv.save(gene,emCateIds);
 		renderJson(ret);
 	}
 	

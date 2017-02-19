@@ -103,7 +103,8 @@
 	#for(y : treeObj)
       	<tr id="node-#(y.emcaParentId)-#(y.id)" class="treegrid-#(y.id) treegrid-parent-#(y.emcaParentId)">
       		<td>
-      			<input value="#(y.id)" type="checkbox" id="check-#(y.emcaParentId)-#(y.id)" name="check-#(y.emcaParentId)-#(y.id)" />
+      			<input value="#(y.id)" type="checkbox" id="check-#(y.emcaParentId)-#(y.id)" 
+      			name="emcateId" />
       			#(pre).#(for.index+1) #(y.emcaName)
       		</td>
      	</tr>
@@ -160,9 +161,10 @@
       			#(pre).#(for.index+1) #(y.ematName)
       			<td>
       				#if(y.emgaValue ==null && y.ematType <= 2)
-      				<input type="text" name="em-attr-#(y.id)">
-      				#elseif(y.emgaValue ==null &&y.ematType >2)
-      				<a href="">点击上传文件</a>
+      				<input type="text" name="em-attr-#(y.id)" size="5">
+      				#elseif(y.emgaValue ==null &&y.ematType == 3)
+      					<a href="javascript:void(0);" name="img_up_#(y.id)" class="pick-img">上传</a>
+      					<input type="hidden" id="img_up_#(y.id)" >
       				#else
       				#(y.emgaValue)
       				#end

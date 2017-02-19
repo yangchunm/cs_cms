@@ -6,6 +6,7 @@ import java.util.List;
 import org.kelab.bean.CommQuery;
 import org.kelab.model.EmAttr;
 import org.kelab.model.EmGene;
+import org.kelab.model.EmGeneCate;
 import org.kelab.model.KnEntry;
 
 import com.jfinal.kit.Ret;
@@ -42,16 +43,45 @@ public class GeneAdminService {
 	
 	/**
 	 * 保存信息
-	 * @param EmAttr对象
+	 * @param EmGene对象
 	 * @return 结果信息
 	 */
-	public Ret save(EmAttr emAttr){
-		if (isAttrNameExists(emAttr.getEmatName(),emAttr.getId())) {
-			return Ret.fail("msg", "该名称已经存在");
+	public Ret save(EmGene emGene, String[] emCateIds){
+		if (isExists(emGene,emGene.getId())) {
+			return Ret.fail("msg", "该缩写、英文名、中文名、代号已经存在");
 		}
-		emAttr.save();
+		int currId = emGene.getId();
+		//新增
+		if(emGene.getId() == 0){
+			emGene.save();
+			emGene = findLastOne();
+			currId = emGene.getId();
+		}			
+		//修改
+		if(emGene.getId() > 0)
+			emGene.update();
+		//分类关联
+		Db.update("delete from em_gene_cate where emge_id = ?",currId);
+		for(String cateId : emCateIds){
+			int id = Integer.parseInt(cateId);
+			new EmGeneCate().set("emge_id",currId).set("emca_id",id).save();
+		}
+		
 		GeneAdminService.me.clearCache();    // 清缓存
-		return Ret.ok();
+		return Ret.ok("gene",emGene);
+	}
+	
+	/**
+	 * 找到最新一条信息
+	 * @return
+	 */
+	public EmGene findLastOne(){
+		String sql = "select * from em_gene order by id desc limit 1";
+		List<EmGene> geneL = dao.find(sql);
+		if(geneL.size()>0)
+			return geneL.get(0);
+		else
+			return null;
 	}
 	
 	/**
@@ -60,12 +90,15 @@ public class GeneAdminService {
 	 * @param oldId，旧的ID，如果为0，则为新增，否则检查除自己以外的是否有重复
 	 * @return 是否存在重复名称
 	 */
-	boolean isAttrNameExists(String attrName, int oldId) {
+	boolean isExists(EmGene gene, int oldId) {
 		String strWhere = "";
 		if(oldId > 0)
 			strWhere = " and id <>" + oldId;
-		String sql = "select id from em_attr where emat_name =? "+strWhere+" limit 1";
-		return Db.queryInt(sql , attrName) != null;
+		String sql = "select id from em_gene where emge_abbr_name =? "
+				+ "or emge_en_name = ? or emge_zh_name =? or emge_code = ?"
+				+ ""+strWhere+" limit 1";
+		return Db.queryInt(sql , gene.getEmgeAbbrName(),gene.getEmgeEnName()
+				,gene.getEmgeZhName(),gene.getEmgeCode()) != null;
 	}
 	
 	

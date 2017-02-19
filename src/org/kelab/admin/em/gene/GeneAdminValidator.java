@@ -8,11 +8,11 @@ import com.jfinal.validate.Validator;
 public class GeneAdminValidator extends Validator {
 
 	protected void validate(Controller c) {
-		validateRequired("em.emge_abbr_name", "emgeAbbrNameMsg", "不能为空");
-		validateRequired("em.emge_en_name", "emgeEnNameMsg", "不能为空");
-		validateRequired("em.emge_code", "emgeCodeMsg", "不能为空");
-		validateRequired("em.emge_src", "emgeSrcMsg", "不能为空");
-		validateRequired("em.emge_desc", "emgeDescMsg", "不能为空");
+		validateRequired("em.emge_abbr_name", "emge_abbr_name_msg", "不能为空");
+		validateRequired("em.emge_en_name", "emge_en_name_msg", "不能为空");
+		validateRequired("em.emge_code", "emge_code_msg", "不能为空");
+		validateRequired("em.emge_src", "emge_src_msg", "不能为空");
+		validateRequired("em.emge_desc", "emge_desc_msg", "不能为空");
 		
 
 	}
