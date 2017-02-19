@@ -162,12 +162,13 @@
       			<td>
       				#if(y.ematType <= 2)
       					<input type="text" value="#(y.emgaValue ?? )" id="em-attr-#(y.id)" class="attr_add" size="5">
-      					<span id="em-attr-#(y.id)-msg" style="display:none;" class="small text-danger glyphicon glyphicon-ok"></span>
+      					<span id="em-attr-#(y.id)-msg" class="small text-danger"></span>
       				#end
-      				#if(y.emgaValue ==null &&y.ematType >= 3)
-      					<a href="javascript:void(0);" value="#(y.id)" class="attr_add_modal">添加</a>
-      				#elseif(y.emgaValue !=null &&y.ematType >= 3)
-      					#(y.emgaValue)
+      				#if(y.ematType >= 3)
+      					
+      					<span id="em-attr-#(y.id)-msg" class="small text-danger">#(y.emgaValue??)</span>
+      					<a href="javascript:void(0);" value="#(y.id)-#(y.ematType)-#(y.emtaId)" 
+      					data="#(y.emgaValue)" class="attr_add_modal">添加</a>
       				#end
       			</td>
       		</td>

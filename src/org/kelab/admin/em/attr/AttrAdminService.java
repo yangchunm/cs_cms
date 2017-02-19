@@ -47,8 +47,10 @@ public class AttrAdminService {
 			if(emgeneId > 0){
 				String attrSql = "select * from em_gene_attr where emge_id = ? and emat_id =?";
 				List<EmGeneAttr> emgaL = emgaDao.find(attrSql,emgeneId,attr.getId());
-				if(emgaL.size()>0)
+				if(emgaL.size()>0){
 					attr.put("emgaValue",emgaL.get(0).getEmgaValue());
+					attr.put("emgaId",emgaL.get(0).getId());
+				}
 			}
 			attr.put("emAttrL",findAllAttrValue(attr.getId(),emgeneId));
 		}

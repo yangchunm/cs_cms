@@ -1,6 +1,7 @@
 package org.kelab.admin.em.gene;
 
 
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -12,9 +13,13 @@ import org.kelab.model.EmAttr;
 import org.kelab.model.EmGene;
 import org.kelab.model.EmGeneAttr;
 import org.kelab.model.KeSecurity;
+import org.kelab.model.KnFile;
+import org.kelab.util.FileUtils;
 
 import com.jfinal.aop.Before;
+import com.jfinal.kit.PropKit;
 import com.jfinal.kit.Ret;
+import com.jfinal.upload.UploadFile;
 
 
 public class GeneAdminController  extends BaseController{
@@ -67,6 +72,48 @@ public class GeneAdminController  extends BaseController{
 		Ret ret = new Ret();
 		EmGeneAttr emga = getModel(EmGeneAttr.class,"");
 		ret = srv.SaveGeneAttr(emga);
+		renderJson(ret);
+	}
+	
+	public void saveAttrFile(){
+		Ret ret = new Ret();
+		EmGeneAttr emga = new EmGeneAttr();
+		String filestr = System.currentTimeMillis()+"";
+		
+		UploadFile uf = null;
+		try {
+			uf = getFile("attr.file",PropKit.get("emGenePath"));
+			emga = getModel(EmGeneAttr.class,"geat");
+			int attrType = getParaToInt("attr.type",4);
+			if (attrType == 3 && uf == null) {
+				renderJson(Ret.fail("msg", "请先选择上传文件"));
+				return;
+			}
+			if(attrType == 3 && uf != null){
+				filestr =filestr + FileUtils.getSuffix(uf.getFileName());
+				File f = new File(uf.getUploadPath()+filestr);
+				uf.getFile().renameTo(f);
+				emga.setEmgaValue(filestr);
+			}
+			if (attrType == 4 && uf != null) {
+				uf.getFile().delete();
+			}
+		} catch (Exception e) {
+			if (e instanceof com.oreilly.servlet.multipart.ExceededSizeException) {
+				renderJson(Ret.fail("msg", "文件大小超出范围"));
+			} else {
+				if (uf != null) {
+					uf.getFile().delete();
+				}
+				renderJson(Ret.fail("msg", e.getMessage()));
+			}
+			return ;
+		}
+		if(emga.getId()==0)
+			emga.save();
+		else
+			emga.update();
+		ret = Ret.ok("emga",emga);
 		renderJson(ret);
 	}
 	
