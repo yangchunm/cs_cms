@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2017-02-16 19:54:41
+Date: 2017-02-19 08:11:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -361,11 +361,13 @@ CREATE TABLE `em_gene` (
   `emge_user_id` int(11) DEFAULT NULL COMMENT '添加用户id',
   `emge_secu_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='含能材料配方信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='含能材料配方信息表';
 
 -- ----------------------------
 -- Records of em_gene
 -- ----------------------------
+INSERT INTO `em_gene` VALUES ('1', 'www', 'dfs', '法国韩国', 'c4', '功夫大师', '感受到', '0', null, null, null, null, '1');
+INSERT INTO `em_gene` VALUES ('2', '士大夫但是', '犯得上', ' 发的', ' 但是', '发的', ' 但是 速度是是', '0', '2017-02-19 08:08:55', '2017-02-19 08:08:55', null, '5', '1');
 
 -- ----------------------------
 -- Table structure for `em_gene_attr`
@@ -373,15 +375,15 @@ CREATE TABLE `em_gene` (
 DROP TABLE IF EXISTS `em_gene_attr`;
 CREATE TABLE `em_gene_attr` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `emge_id` int(11) NOT NULL COMMENT '配方编号',
-  `emat_id` int(11) NOT NULL COMMENT '属性编号',
-  `emga_value` text NOT NULL COMMENT '属性值',
+  `emge_id` int(11) DEFAULT NULL COMMENT '配方编号',
+  `emat_id` int(11) DEFAULT NULL COMMENT '属性编号',
+  `emga_value` text COMMENT '属性值',
   PRIMARY KEY (`id`),
-  KEY `fk_emfo_em_formu` (`emge_id`),
-  KEY `fk_emfo_em_attr` (`emat_id`),
-  CONSTRAINT `fk_emfo_em_attr` FOREIGN KEY (`emat_id`) REFERENCES `em_attr` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_emfo_em_formu` FOREIGN KEY (`emge_id`) REFERENCES `em_gene` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配方与属性对应关系表';
+  KEY `fk_emge_em_formu` (`emge_id`) USING BTREE,
+  KEY `fk_emge_em_attr` (`emat_id`) USING BTREE,
+  CONSTRAINT `fk_emge_em_attr` FOREIGN KEY (`emat_id`) REFERENCES `em_attr` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_emge_em_formu` FOREIGN KEY (`emge_id`) REFERENCES `em_gene` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='配方与属性对应关系表';
 
 -- ----------------------------
 -- Records of em_gene_attr
@@ -705,7 +707,7 @@ CREATE TABLE `ke_user` (
 -- ----------------------------
 -- Records of ke_user
 -- ----------------------------
-INSERT INTO `ke_user` VALUES ('5', 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 'MrYang', '2017-01-27 09:53:48', '2017-02-16 19:51:42', '1', '3', '1', '3', '', null, '');
+INSERT INTO `ke_user` VALUES ('5', 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 'MrYang', '2017-01-27 09:53:48', '2017-02-19 08:10:15', '1', '3', '1', '3', '', null, '');
 INSERT INTO `ke_user` VALUES ('6', 'mryang@yahoo.cn', 'e10adc3949ba59abbe56e057f20f883e', '杨春明', '2017-02-02 13:37:06', null, null, '3', '2', '3', '', null, '');
 INSERT INTO `ke_user` VALUES ('8', 'test@test.com', 'e10adc3949ba59abbe56e057f20f883e', '测试账号', '2017-02-02 14:25:29', null, null, '2', '1', '1', '', null, '');
 INSERT INTO `ke_user` VALUES ('9', 'test@www.com', 'e10adc3949ba59abbe56e057f20f883e', '测试', '2017-02-02 14:25:54', null, null, '2', '1', '1', '', null, '');
@@ -731,7 +733,7 @@ CREATE TABLE `ke_user_log` (
   PRIMARY KEY (`id`),
   KEY `fk_log_user` (`log_user_id`),
   CONSTRAINT `fk_log_user` FOREIGN KEY (`log_user_id`) REFERENCES `ke_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4567 DEFAULT CHARSET=utf8 COMMENT='用户操作日志信息';
+) ENGINE=InnoDB AUTO_INCREMENT=4648 DEFAULT CHARSET=utf8 COMMENT='用户操作日志信息';
 
 -- ----------------------------
 -- Records of ke_user_log
@@ -5295,6 +5297,87 @@ INSERT INTO `ke_user_log` VALUES ('4563', '5', '/admin/emgene', '0:0:0:0:0:0:0:1
 INSERT INTO `ke_user_log` VALUES ('4564', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-02-16 19:52:16', 'add');
 INSERT INTO `ke_user_log` VALUES ('4565', '5', '/admin/emgene', '0:0:0:0:0:0:0:1', '2017-02-16 19:52:22', 'index');
 INSERT INTO `ke_user_log` VALUES ('4566', '5', '/admin/emgene', '0:0:0:0:0:0:0:1', '2017-02-16 19:52:23', 'index');
+INSERT INTO `ke_user_log` VALUES ('4567', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-18 07:12:14', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4568', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-18 07:12:17', 'index');
+INSERT INTO `ke_user_log` VALUES ('4569', '5', '/admin/emgene', '0:0:0:0:0:0:0:1', '2017-02-18 07:12:19', 'index');
+INSERT INTO `ke_user_log` VALUES ('4570', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 07:12:20', 'add');
+INSERT INTO `ke_user_log` VALUES ('4571', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 07:13:03', 'add');
+INSERT INTO `ke_user_log` VALUES ('4572', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-18 07:15:17', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4573', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 07:15:18', 'add');
+INSERT INTO `ke_user_log` VALUES ('4574', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-18 07:20:46', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4575', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 07:20:46', 'add');
+INSERT INTO `ke_user_log` VALUES ('4576', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 07:20:53', 'add');
+INSERT INTO `ke_user_log` VALUES ('4577', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-18 07:36:00', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4578', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 07:36:00', 'add');
+INSERT INTO `ke_user_log` VALUES ('4579', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 07:36:08', 'add');
+INSERT INTO `ke_user_log` VALUES ('4580', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-18 07:40:04', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4581', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 07:40:04', 'add');
+INSERT INTO `ke_user_log` VALUES ('4582', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-18 07:46:16', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4583', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 07:46:16', 'add');
+INSERT INTO `ke_user_log` VALUES ('4584', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-18 08:04:08', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4585', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 08:04:08', 'add');
+INSERT INTO `ke_user_log` VALUES ('4586', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 08:05:53', 'add');
+INSERT INTO `ke_user_log` VALUES ('4587', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-18 08:23:58', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4588', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 08:23:58', 'add');
+INSERT INTO `ke_user_log` VALUES ('4589', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 08:24:22', 'add');
+INSERT INTO `ke_user_log` VALUES ('4590', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 08:24:27', 'add');
+INSERT INTO `ke_user_log` VALUES ('4591', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 08:25:04', 'add');
+INSERT INTO `ke_user_log` VALUES ('4592', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 08:25:47', 'add');
+INSERT INTO `ke_user_log` VALUES ('4593', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-18 09:03:47', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4594', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 09:03:47', 'add');
+INSERT INTO `ke_user_log` VALUES ('4595', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-18 09:08:10', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4596', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 09:08:10', 'add');
+INSERT INTO `ke_user_log` VALUES ('4597', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 09:08:53', 'add');
+INSERT INTO `ke_user_log` VALUES ('4598', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 09:09:59', 'add');
+INSERT INTO `ke_user_log` VALUES ('4599', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 09:10:03', 'add');
+INSERT INTO `ke_user_log` VALUES ('4600', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-18 09:10:59', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4601', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 09:10:59', 'add');
+INSERT INTO `ke_user_log` VALUES ('4602', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-18 09:13:02', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4603', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 09:13:02', 'add');
+INSERT INTO `ke_user_log` VALUES ('4604', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 09:14:09', 'add');
+INSERT INTO `ke_user_log` VALUES ('4605', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 09:14:31', 'add');
+INSERT INTO `ke_user_log` VALUES ('4606', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-18 09:15:44', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4607', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 09:15:44', 'add');
+INSERT INTO `ke_user_log` VALUES ('4608', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-18 09:24:14', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4609', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 09:24:14', 'add');
+INSERT INTO `ke_user_log` VALUES ('4610', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 09:24:32', 'add');
+INSERT INTO `ke_user_log` VALUES ('4611', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-18 09:24:44', 'add');
+INSERT INTO `ke_user_log` VALUES ('4612', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-19 06:59:47', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4613', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-02-19 06:59:54', 'index');
+INSERT INTO `ke_user_log` VALUES ('4614', '5', '/admin/emgene', '0:0:0:0:0:0:0:1', '2017-02-19 07:00:00', 'index');
+INSERT INTO `ke_user_log` VALUES ('4615', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-19 07:00:02', 'add');
+INSERT INTO `ke_user_log` VALUES ('4616', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-19 07:25:15', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4617', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-19 07:25:15', 'add');
+INSERT INTO `ke_user_log` VALUES ('4618', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-19 07:39:06', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4619', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-19 07:39:06', 'add');
+INSERT INTO `ke_user_log` VALUES ('4620', '5', '/admin/emgene/save', '0:0:0:0:0:0:0:1', '2017-02-19 07:39:11', 'save');
+INSERT INTO `ke_user_log` VALUES ('4621', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-19 07:39:22', 'add');
+INSERT INTO `ke_user_log` VALUES ('4622', '5', '/admin/emgene/save', '0:0:0:0:0:0:0:1', '2017-02-19 07:39:24', 'save');
+INSERT INTO `ke_user_log` VALUES ('4623', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-19 07:40:50', 'add');
+INSERT INTO `ke_user_log` VALUES ('4624', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-19 07:40:56', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4625', '5', '/admin/emgene/save', '0:0:0:0:0:0:0:1', '2017-02-19 07:40:56', 'save');
+INSERT INTO `ke_user_log` VALUES ('4626', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-19 07:42:42', 'add');
+INSERT INTO `ke_user_log` VALUES ('4627', '5', '/admin/emgene/save', '0:0:0:0:0:0:0:1', '2017-02-19 07:42:47', 'save');
+INSERT INTO `ke_user_log` VALUES ('4628', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-19 07:44:32', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4629', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-19 07:44:32', 'add');
+INSERT INTO `ke_user_log` VALUES ('4630', '5', '/admin/emgene/save', '0:0:0:0:0:0:0:1', '2017-02-19 07:44:38', 'save');
+INSERT INTO `ke_user_log` VALUES ('4631', '5', '/admin/emgene/save', '0:0:0:0:0:0:0:1', '2017-02-19 07:44:50', 'save');
+INSERT INTO `ke_user_log` VALUES ('4632', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-19 07:45:12', 'add');
+INSERT INTO `ke_user_log` VALUES ('4633', '5', '/admin/emgene/save', '0:0:0:0:0:0:0:1', '2017-02-19 07:45:15', 'save');
+INSERT INTO `ke_user_log` VALUES ('4634', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-19 07:46:38', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4635', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-19 07:46:38', 'add');
+INSERT INTO `ke_user_log` VALUES ('4636', '5', '/admin/emgene/save', '0:0:0:0:0:0:0:1', '2017-02-19 07:46:49', 'save');
+INSERT INTO `ke_user_log` VALUES ('4637', '5', '/admin/emgene/save', '0:0:0:0:0:0:0:1', '2017-02-19 07:48:08', 'save');
+INSERT INTO `ke_user_log` VALUES ('4638', '5', '/admin/emgene', '0:0:0:0:0:0:0:1', '2017-02-19 07:48:13', 'index');
+INSERT INTO `ke_user_log` VALUES ('4639', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-19 07:52:03', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4640', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-19 07:52:03', 'add');
+INSERT INTO `ke_user_log` VALUES ('4641', '5', '/admin/emgene/save', '0:0:0:0:0:0:0:1', '2017-02-19 07:52:08', 'save');
+INSERT INTO `ke_user_log` VALUES ('4642', '5', '/admin/emgene/save', '0:0:0:0:0:0:0:1', '2017-02-19 07:53:04', 'save');
+INSERT INTO `ke_user_log` VALUES ('4643', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-19 08:08:36', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4644', '5', '/admin/emgene/add', '0:0:0:0:0:0:0:1', '2017-02-19 08:08:36', 'add');
+INSERT INTO `ke_user_log` VALUES ('4645', '5', '/admin/emgene/save', '0:0:0:0:0:0:0:1', '2017-02-19 08:08:55', 'save');
+INSERT INTO `ke_user_log` VALUES ('4646', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-02-19 08:10:15', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('4647', '5', '/admin/emgene/save', '0:0:0:0:0:0:0:1', '2017-02-19 08:10:15', 'save');
 
 -- ----------------------------
 -- Table structure for `kn_entry`
