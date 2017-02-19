@@ -1,11 +1,20 @@
 package org.kelab.admin.em.gene;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.kelab.admin.em.attr.AttrAdminService;
+import org.kelab.admin.em.cate.CateAdminService;
 import org.kelab.bean.CommQuery;
+import org.kelab.model.EmAttr;
+import org.kelab.model.EmCate;
 import org.kelab.model.EmGene;
 import org.kelab.model.EmGeneAttr;
 import org.kelab.model.EmGeneCate;
+import org.kelab.util.ExcelUtils;
 
 import com.jfinal.kit.Ret;
 import com.jfinal.plugin.activerecord.Db;
@@ -16,6 +25,8 @@ public class GeneAdminService {
 	public static final GeneAdminService me = new GeneAdminService();
 	final static EmGene dao = new EmGene().dao();
 	final static EmGeneAttr emgaDao = new EmGeneAttr().dao();
+	final static CateAdminService srvCate = new CateAdminService(); 
+	final static AttrAdminService srvAttr = new AttrAdminService();
 	final String cacheName = "emGene";
 	
 	public Page<EmGene> findAllGene(CommQuery comQ){
@@ -105,10 +116,9 @@ public class GeneAdminService {
 		if(oldId > 0)
 			strWhere = " and id <>" + oldId;
 		String sql = "select id from em_gene where emge_abbr_name =? "
-				+ "or emge_en_name = ? or emge_zh_name =? or emge_code = ?"
+				+ " or emge_zh_name =? "
 				+ ""+strWhere+" limit 1";
-		return Db.queryInt(sql , gene.getEmgeAbbrName(),gene.getEmgeEnName()
-				,gene.getEmgeZhName(),gene.getEmgeCode()) != null;
+		return Db.queryInt(sql , gene.getEmgeAbbrName(),gene.getEmgeZhName()) != null;
 	}
 	
 	
@@ -122,13 +132,13 @@ public class GeneAdminService {
     	String msg = "";
     	for(String obj :ids.split(",")){
     		int id = Integer.parseInt(obj);
-    		String sql ="select * from em_formula_attr where emat_id = ?";
-	    	if(id > 0 && Db.find(sql,id).size() == 0){	    		
-	    		Db.update("delete from em_attr where id=?",id);
+	    	if(id > 0){	
+	    		//删除分类信息
+	    		Db.update("delete from em_gene_cate where emge_id =?",id);
+	    		//删除属性信息
+	    		Db.update("delete from em_gene_attr where emge_id =?",id);
+	    		Db.update("delete from em_gene where id=?",id);
 	    		rt=1;
-	    	}else{
-	    		rt = 0;
-	    		msg = "部分不能删除！";
 	    	}
     	}
 		if(rt == 1)
@@ -137,6 +147,11 @@ public class GeneAdminService {
 			return Ret.fail("msg", msg);
 	}
 	
+	/**
+	 * 单条保存配方属性信息
+	 * @param geneAttr
+	 * @return
+	 */
 	public Ret SaveGeneAttr(EmGeneAttr geneAttr){
 		String sql ="select * from em_gene_attr where emge_id = ? and emat_id = ?";
 		List<EmGeneAttr> tmpL = emgaDao.find(sql,geneAttr.getEmgeId(),geneAttr.getEmatId());
@@ -148,8 +163,73 @@ public class GeneAdminService {
 			geneAttr.save();
 		}
 		return Ret.ok();
-			
-		
+	}
+	
+	
+	public Ret geneImport(String filePath,int userId) throws FileNotFoundException, IOException{
+		List<String> importRst = new ArrayList<String>();
+    	List<String> colName = new ArrayList<String>();
+        int colCount = 40;
+        
+        Object geneObj[][] = ExcelUtils.ReadExcel(filePath,colCount);
+        //获取列名
+        for(int j=8;j<colCount;j++){
+        	colName.add(geneObj[0][j].toString());
+        }
+        
+        for(int i=1;i<geneObj.length;i++){
+        	EmGene gene = new EmGene();
+        	String emSecuId = geneObj[i][0].toString();
+        	if(emSecuId.indexOf(".")>0)
+        		emSecuId = emSecuId.substring(0, emSecuId.indexOf("."));
+        	String emCateName = geneObj[i][1].toString();
+        	EmCate cate = srvCate.findCateIdByName(emCateName);
+        	if(cate == null){
+        		String rtMsg = "第" + i + "条数据的类别信息 【" + emCateName + "】错误，导入失败！";
+ 				importRst.add(rtMsg);
+        	}else{
+        		gene.setEmgeSecuId(Integer.parseInt(emSecuId));
+        		gene.setEmgeAbbrName(geneObj[i][2].toString());
+        		gene.setEmgeZhName(geneObj[i][3].toString());
+        		gene.setEmgeEnName(geneObj[i][4].toString());
+        		gene.setEmgeCode(geneObj[i][5].toString());
+        		gene.setEmgeSrc(geneObj[i][6].toString());
+        		gene.setEmgeDesc(geneObj[i][7].toString());
+        		gene.setEmgeCreateTime(new Date());
+        		gene.setEmgeUpdateTime(new Date());
+        		gene.setEmgeUserId(userId);
+        		if(isExists(gene,0)) {
+        			String rtMsg = "第" + i + "条数据【"+gene.getEmgeAbbrName()+"】的缩写、中文名、英文名、代号有重复，导入失败！";
+     				importRst.add(rtMsg);
+     				continue;
+        		}else
+        			gene.save();
+        		int currId = findLastOne().getId();
+        		//保存分类
+        		new EmGeneCate().set("emge_id",currId).set("emca_id", cate.getId()).save();
+        		//处理属性信息
+        		int k =8;
+        		for(String col : colName){
+        			EmAttr attr = AttrAdminService.findAttrByName(col);
+        			System.out.println(col+"##"+geneObj[i][k].toString());
+        			if(attr == null){
+                		String rtMsg = "第" + i + "条数据的 【" + col + "】错误，找不到对应苏还行，该属性导入失败！";
+                		
+         				importRst.add(rtMsg);
+        			}else{
+        				EmGeneAttr emga = new EmGeneAttr();
+        				emga.setEmgeId(currId);
+        				emga.setEmatId(attr.getId());
+        				emga.setEmgaValue(geneObj[i][k].toString());
+        				emga.save();
+        			}
+        			k++;
+        		}
+        	}
+        }
+        for(String msg : importRst)
+        	System.out.println(msg);
+        return Ret.ok("msg",importRst);
 	}
 	
 	public void clearCache() {

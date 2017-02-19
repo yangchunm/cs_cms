@@ -112,6 +112,15 @@ public class AttrAdminService {
 			return Ret.fail("msg", msg);
 	}
 	
+	public static EmAttr findAttrByName(String attrName){
+		String sql = "select * from em_attr where emat_name =?";
+		List<EmAttr> attrL = dao.find(sql,attrName);
+		if(attrL.size()>0)
+			return attrL.get(0);
+		else
+			return null;
+	}
+	
 	public void clearCache() {
 		CacheKit.removeAll(cacheName);
 	}

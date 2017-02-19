@@ -125,4 +125,51 @@ $(document).ready(function() {
 		, error: function(ret) { }             
 		, complete: function(ret) { }       
 	});
+	
+	//导入对话框
+	$("#btn-import").click(function(){
+		$("#load-img").hide();
+		$("#file-import-modal").modal("show");
+	});
+	//下载样例
+	$("#downsample").click(function(){
+		$.get("emgene/sampledown",function(ret){
+			if(ret.isOk){
+				window.location.href=ret.msg;
+				return ;
+			}
+			if (ret.isFail) {
+				$.messager.alert("提示",ret.msg);
+				return ;
+			}
+		});
+	});
+	
+	//配方数据导入保存
+	$("#file-import-form").ajaxForm({
+		dataType: "json"
+		, beforeSubmit: function(formData, jqForm, options) {   
+			$("#load-img").show();
+		}
+		, success: function(ret) {
+			if(ret.isOk) {
+				$("#load-img").hide();
+				var html = "";
+				$.each(ret.msg,function(key,val){
+					html += val+"<br>";
+				});
+				$("#import-msg").empty().append(html);
+			}
+			if (ret.isFail) {
+				$.messager.alert("提示",ret.msg);
+				return ;
+			}
+			$.each(ret,function(key,value){
+				var obj = "#"+key;
+				$(obj).text(value);
+			})
+		}
+		, error: function(ret) { }             
+		, complete: function(ret) { }       
+	});
 });

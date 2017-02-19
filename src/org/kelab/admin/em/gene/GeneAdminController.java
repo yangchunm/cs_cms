@@ -129,4 +129,46 @@ public class GeneAdminController  extends BaseController{
 		renderJson(emattr);
 	}
 	
+	public void geneImport(){
+		Ret ret = new Ret();
+		String filestr = System.currentTimeMillis()+"";
+		
+		UploadFile uf = null;
+		try {
+			uf = getFile("gene.file","temp/");
+			if (uf == null) {
+				renderJson(Ret.fail("msg", "请先选择上传文件"));
+				return;
+			}
+			if (uf != null && !FileUtils.getSuffix(uf.getFileName()).equals(".xls")) {
+				uf.getFile().delete();
+				renderJson(Ret.fail("msg", "只支持.xls文件"));
+				return;
+			}
+			if(uf != null){
+				filestr =filestr + FileUtils.getSuffix(uf.getFileName());
+				File f = new File(uf.getUploadPath()+filestr);
+				uf.getFile().renameTo(f);
+				
+				ret = srv.geneImport(uf.getUploadPath()+filestr,getLoginUserId());
+			}
+		} catch (Exception e) {
+			if (e instanceof com.oreilly.servlet.multipart.ExceededSizeException) {
+				renderJson(Ret.fail("msg", "文件大小超出范围"));
+			} else {
+				if (uf != null) {
+					uf.getFile().delete();
+				}
+				renderJson(Ret.fail("msg", e.getMessage()));
+			}
+			return ;
+		}
+		renderJson(ret);
+	}
+	
+	public void sampledown(){
+		String fileStr = "/download/emgene-sample.xls";
+		renderJson(FileUtils.fileDown(fileStr));
+	}
+	
 }

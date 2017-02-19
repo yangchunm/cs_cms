@@ -1,5 +1,5 @@
 #set(pageTitle="材料配方管理")
-#set(btnBar = {"add":1,"mod":1,"del":1})
+#set(btnBar = {"add":1,"import":1,"del":1})
 #set(currCont = "emgene")
 #@adminLayout()
 #define main()
@@ -51,8 +51,9 @@
 	 	</thead>
 	 	<tbody>
 	 		#for(x : emGeneP.list)
+	 			#set(indexBase = (emGeneP.pageNumber -1 )*10)
 	 			<tr>	         		
-	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1)</td>
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1+indexBase)</td>
 	         		<td><a href="#(BASE_PATH)#(mandir)/#(currCont)/edit/#(x.id)">#(x.emgeAbbrName)</a></td>
 	         		<td>#(x.emgeZhName)</td>
 	         		<td>#(x.emgeEnName)</td>
@@ -74,6 +75,8 @@
 	#end
     #set(pageUrl=mandir+"/"+currCont+"/")
     #@paginate(emGeneP.pageNumber, emGeneP.totalPage,emGeneP.totalRow, pageUrl)
+    
+    #include("/_view/_admin/emgene/_file_text_modal.html")
 #end
 
 #define css()

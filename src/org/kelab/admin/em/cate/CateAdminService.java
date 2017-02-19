@@ -76,6 +76,15 @@ public class CateAdminService {
 			return Ret.fail("msg", msg);
 	}
 	
+	public EmCate findCateIdByName(String cateName){
+		String sql = "select * from em_cate where emca_name=?";
+		List<EmCate> cateL = dao.find(sql,cateName);
+		if(cateL.size()>0)
+			return cateL.get(0);
+		else
+			return null;
+	}
+	
 	public void clearCache() {
 		CacheKit.removeAll(cacheName);
 	}

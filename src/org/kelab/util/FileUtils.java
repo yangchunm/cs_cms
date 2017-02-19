@@ -14,6 +14,7 @@ import java.util.zip.ZipFile;
 
 import com.jfinal.core.JFinal;
 import com.jfinal.kit.PathKit;
+import com.jfinal.kit.Ret;
 
 
 public class FileUtils {
@@ -122,17 +123,18 @@ public class FileUtils {
 	}
 	
 	/**
-	 * 移动文件
-	 * @param srcFile
-	 * @param destPath
-	 * @throws IOException
+	 * 检查文件是否存在
+	 * @param filePath
+	 * @return
 	 */
-	 public static boolean MoveFile(File srcFile, String destPath)
-	 {
-	     System.out.println("EEE"+srcFile.getName());   
-		 File dir = new File(destPath);
-	        boolean success = srcFile.renameTo(new File(dir, srcFile.getName()));
-	        return success;
-	    }
+	
+	public static Ret fileDown(String filePath){
+		String file = PathKit.getWebRootPath()+filePath;
+		File f = new File(file);
+		if(f.exists()){
+			return Ret.ok("msg",filePath);
+		}else
+			return Ret.fail("msg","该文件不存在！");
+	}
 
 }

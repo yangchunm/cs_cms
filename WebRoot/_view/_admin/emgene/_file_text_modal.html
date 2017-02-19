@@ -30,4 +30,36 @@
 </div><!-- /.modal -->
 
 
-
+<div id="file-import-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-title">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modal-title"><span class="glyphicon glyphicon-cloud-upload"></span> 配方导入</h4>
+      </div>
+      <div class="modal-body">
+      	<form id="file-import-form" action="#(BASE_PATH)#(mandir)/#(currCont)/geneImport" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="gene.file">配方数据文件</label>
+				<input type="file" name="gene.file" id="tmp_gene_file">
+			</div>
+			<div class="alert alert-info" role="alert">
+				<strong>导入说明：</strong>
+				<p>1、只支持.xls格式文件导入；不能改变表格格式；配方分类名称、密级名称要与系统设置一致。</p>
+				<p>2、<span class="glyphicon glyphicon-download-alt"></span><a href="#" id="downsample">点击这里下载模板文件</a></p>
+  			 </div>
+  			 <div id="load-img">
+				<img src="../../assets/img/loading.gif" /> 正在导入，请稍后...			
+  			 </div>
+  			 <div id="import-msg" class="alert alert-warning" role="alert">
+				
+  			 </div>
+		    <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> 关闭</button>
+		        <button type="submit" class="btn btn-primary" ><span class="glyphicon glyphicon-check"></span> 确定</button>
+		    </div>
+	      </form>
+	   </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
