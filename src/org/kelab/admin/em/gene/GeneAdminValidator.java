@@ -13,6 +13,7 @@ public class GeneAdminValidator extends Validator {
 		validateRequired("em.emge_code", "emge_code_msg", "不能为空");
 		validateRequired("em.emge_src", "emge_src_msg", "不能为空");
 		validateRequired("em.emge_desc", "emge_desc_msg", "不能为空");
+		validateRequired("emcateId", "em_cate_id_msg", "请选择配方分类信息！");
 		
 
 	}

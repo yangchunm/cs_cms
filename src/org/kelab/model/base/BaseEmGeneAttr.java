@@ -33,12 +33,12 @@ public abstract class BaseEmGeneAttr<M extends BaseEmGeneAttr<M>> extends Model<
 		return get("emat_id");
 	}
 
-	public void setEmfaValue(java.lang.String emfaValue) {
-		set("emfa_value", emfaValue);
+	public void setEmgaValue(java.lang.String emgaValue) {
+		set("emga_value", emgaValue);
 	}
 
-	public java.lang.String getEmfaValue() {
-		return get("emfa_value");
+	public java.lang.String getEmgaValue() {
+		return get("emga_value");
 	}
 
 }

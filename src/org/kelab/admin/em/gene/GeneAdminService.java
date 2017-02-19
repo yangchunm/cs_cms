@@ -1,13 +1,11 @@
 package org.kelab.admin.em.gene;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.kelab.bean.CommQuery;
-import org.kelab.model.EmAttr;
 import org.kelab.model.EmGene;
+import org.kelab.model.EmGeneAttr;
 import org.kelab.model.EmGeneCate;
-import org.kelab.model.KnEntry;
 
 import com.jfinal.kit.Ret;
 import com.jfinal.plugin.activerecord.Db;
@@ -17,6 +15,7 @@ import com.jfinal.plugin.ehcache.CacheKit;
 public class GeneAdminService {
 	public static final GeneAdminService me = new GeneAdminService();
 	final static EmGene dao = new EmGene().dao();
+	final static EmGeneAttr emgaDao = new EmGeneAttr().dao();
 	final String cacheName = "emGene";
 	
 	public Page<EmGene> findAllGene(CommQuery comQ){
@@ -84,6 +83,17 @@ public class GeneAdminService {
 			return null;
 	}
 	
+	public EmGene findOneById(int geneId){
+		String sql = "select * from em_gene where id = ?";
+		List<EmGene> geneL = dao.find(sql,geneId);
+		if(geneL.size() >0){
+			String catesql = "select * from em_gene_cate where emge_id = ?";
+			geneL.get(0).put("cateL",EmGeneCate.dao.find(catesql,geneId));
+			return geneL.get(0);
+		}else
+			return null;
+	}
+	
 	/**
 	 * 检查是否存在
 	 * @param EmAttr
@@ -125,6 +135,21 @@ public class GeneAdminService {
 			return Ret.ok();
 		else
 			return Ret.fail("msg", msg);
+	}
+	
+	public Ret SaveGeneAttr(EmGeneAttr geneAttr){
+		String sql ="select * from em_gene_attr where emge_id = ? and emat_id = ?";
+		List<EmGeneAttr> tmpL = emgaDao.find(sql,geneAttr.getEmgeId(),geneAttr.getEmatId());
+		//修改
+		if(tmpL.size() >0){
+			geneAttr.setId(tmpL.get(0).getId());
+			geneAttr.update();
+		}else{
+			geneAttr.save();
+		}
+		return Ret.ok();
+			
+		
 	}
 	
 	public void clearCache() {

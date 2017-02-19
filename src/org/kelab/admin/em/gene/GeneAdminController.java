@@ -2,6 +2,7 @@ package org.kelab.admin.em.gene;
 
 
 import java.util.Date;
+import java.util.List;
 
 import org.kelab.admin.em.attr.AttrAdminService;
 import org.kelab.admin.em.cate.CateAdminService;
@@ -9,6 +10,7 @@ import org.kelab.bean.CommQuery;
 import org.kelab.common.controller.BaseController;
 import org.kelab.model.EmAttr;
 import org.kelab.model.EmGene;
+import org.kelab.model.EmGeneAttr;
 import org.kelab.model.KeSecurity;
 
 import com.jfinal.aop.Before;
@@ -37,6 +39,17 @@ public class GeneAdminController  extends BaseController{
 		setAttr("emAttrL",attrSrv.findAllAttrValue(0,0));
 		render("edit.html");
 	}
+	public void edit(){
+		int geneId = getParaToInt(0,0);
+		setAttr("emCateL",cateSrv.findAllEmCate(0));
+		setAttr("keSecuL",KeSecurity.dao.findAll());
+		List<EmAttr> emAttrL = attrSrv.findAllAttrValue(0,geneId);
+		if(emAttrL.size() == 0)
+			emAttrL = attrSrv.findAllAttrValue(0,0);
+		setAttr("emAttrL",emAttrL);
+		setAttr("emGene",srv.findOneById(geneId));
+		render("edit.html");
+	}
 	
 	@Before(GeneAdminValidator.class)
 	public void save(){
@@ -47,6 +60,13 @@ public class GeneAdminController  extends BaseController{
 		gene.setEmgeCreateTime(new Date());
 		gene.setEmgeUpdateTime(new Date());
 		ret = srv.save(gene,emCateIds);
+		renderJson(ret);
+	}
+	
+	public void saveAttr(){
+		Ret ret = new Ret();
+		EmGeneAttr emga = getModel(EmGeneAttr.class,"");
+		ret = srv.SaveGeneAttr(emga);
 		renderJson(ret);
 	}
 	

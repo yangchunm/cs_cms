@@ -3,6 +3,7 @@ package org.kelab.admin.em.attr;
 import java.util.List;
 
 import org.kelab.model.EmAttr;
+import org.kelab.model.EmGeneAttr;
 
 import com.jfinal.kit.Ret;
 import com.jfinal.plugin.activerecord.Db;
@@ -11,6 +12,7 @@ import com.jfinal.plugin.ehcache.CacheKit;
 public class AttrAdminService {
 	public static final AttrAdminService me = new AttrAdminService();
 	final static EmAttr dao = new EmAttr().dao();
+	final static EmGeneAttr emgaDao = new EmGeneAttr().dao();
 	final String cacheName = "emAttr";
 	
 	/**
@@ -38,15 +40,16 @@ public class AttrAdminService {
 	 * @return
 	 */
 	public List<EmAttr> findAllAttrValue(int parentId, int emgeneId){
-		String strWhere = "";
-		if(emgeneId > 0)
-			strWhere += " and emga.emge_id =" + emgeneId;
-		String sql = "select emat.*,emga.emga_value as emgaValue"
-				+ " from em_attr emat left join em_gene_attr emga on emat.id = emga.emat_id"
-				+ " where emat.emat_pare_id = ?" + strWhere
-				+ "  order by emat.id asc";
+		String sql = "select * from em_attr where emat_pare_id = ?" 
+				+ "  order by id asc";
 		List<EmAttr> attrL = dao.find(sql,parentId);
 		for(EmAttr attr : attrL){
+			if(emgeneId > 0){
+				String attrSql = "select * from em_gene_attr where emge_id = ? and emat_id =?";
+				List<EmGeneAttr> emgaL = emgaDao.find(attrSql,emgeneId,attr.getId());
+				if(emgaL.size()>0)
+					attr.put("emgaValue",emgaL.get(0).getEmgaValue());
+			}
 			attr.put("emAttrL",findAllAttrValue(attr.getId(),emgeneId));
 		}
 		return attrL;
