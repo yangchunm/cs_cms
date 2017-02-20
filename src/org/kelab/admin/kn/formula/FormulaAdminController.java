@@ -1,5 +1,6 @@
 package org.kelab.admin.kn.formula;
 
+import java.io.IOException;
 import java.util.Date;
 
 import org.kelab.admin.kn.lang.LangAdminService;
@@ -66,6 +67,12 @@ public class FormulaAdminController extends BaseController{
 	public void getFormImgById(){
 		int id = getParaToInt(0);
 		renderHtml(KnFormula.dao.findById(id).getKnfoText());
+	}
+	
+	public void runFormProg() throws IOException{
+		int id = getParaToInt(0);
+		Ret ret = srv.runFormProg(id);
+		renderJson(ret);
 	}
 	
 }

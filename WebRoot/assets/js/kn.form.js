@@ -27,6 +27,7 @@ $(document).ready(function() {
 		}
 		, success: function(ret) {
 			if(ret.isOk) {
+				$("#frm_id").val(ret.currId);
 				$.messager.confirm("提示","<strong>保存成功！！</strong><strong>确定</strong>返回上一页，<strong>取消</strong>继续添加？"
 					,function(){
 					 	fromurl = document.referrer;
@@ -49,6 +50,18 @@ $(document).ready(function() {
 		, complete: function(ret) { }       
 	});
 	
-	
+	//运行程序
+	$("#form-run").click(function(){
+		var id = $("#frm_id").val();
+		if(id == 0){
+			$.messager.alert("提示","请先保存公式后再运行！");
+			return ;
+		}
+		$.get("../runFormProg/"+id,function(ret){
+			$.messager.alert("运行结果",ret.msg+"<br>共耗时："+ret.timeUser+"ms.");
+			return ;
+		});
+		
+	});
 });
 
