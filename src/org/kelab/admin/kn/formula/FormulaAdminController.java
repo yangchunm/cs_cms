@@ -70,8 +70,8 @@ public class FormulaAdminController extends BaseController{
 	}
 	
 	public void runFormProg() throws IOException{
-		int id = getParaToInt(0);
-		Ret ret = srv.runFormProg(id);
+		KnFormula form = getModel(KnFormula.class,"");
+		Ret ret = srv.runFormProg(form);
 		renderJson(ret);
 	}
 	

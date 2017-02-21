@@ -52,13 +52,19 @@ $(document).ready(function() {
 	
 	//运行程序
 	$("#form-run").click(function(){
-		var id = $("#frm_id").val();
-		if(id == 0){
-			$.messager.alert("提示","请先保存公式后再运行！");
+		var knfo_code = $("#frm_knfo_code").val();
+		var knfo_lang = $("#frm_knfo_lang").val();
+		var knfo_input = $("#frm_knfo_input").val();
+		if(knfo_code == "" || knfo_lang == "" || knfo_input == ""){
+			$.messager.alert("提示","程序、语言和数据样例必须填写！！");
 			return ;
 		}
-		$.get("../runFormProg/"+id,function(ret){
-			$.messager.alert("运行结果",ret.msg+"<br>共耗时："+ret.timeUser+"ms.");
+		$.post("../runFormProg",{
+				knfo_code : knfo_code,
+				knfo_lang : knfo_lang,
+				knfo_input : knfo_input
+			},function(ret){
+			$.messager.alert("共耗时："+ret.timeUser+"ms",ret.msg);
 			return ;
 		});
 		

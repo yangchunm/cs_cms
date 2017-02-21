@@ -179,9 +179,8 @@ public class FormulaAdminService {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Ret runFormProg(int formId) throws IOException{
+	public Ret runFormProg(KnFormula form) throws IOException{
 		Ret ret = new Ret();
-		KnFormula form = dao.findById(formId);
 		List<KnLang> lang = KnLang.dao.find("select * from kn_lang where ext = ? limit 1",form.getKnfoLang());
 		String cmdPath = "";
 		String cmdArgu = "";
@@ -202,6 +201,8 @@ public class FormulaAdminService {
 		ret = CmdUtils.executeCmd(cmdPath, srcDir, filename, cmdArgu, "");
 		long end = System.currentTimeMillis();
 		ret.put("timeUser", end - begin);
+		//删除文件
+		file.delete();
 		return ret;
 	}
 	
