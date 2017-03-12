@@ -7,13 +7,14 @@
 	 <table class="table table-condensed .table-hover tree">
 	 	<thead>
 	 		<tr>
-	 			<th>名称</th>
+	 			<th>名称</th><th>词条</th><th>文件</th><th>公式</th><th>分子</th>
 	 		</tr>
 	 	</thead>
 	 	<tbody>
 	 		#for(x : knTreeL)
 	 			<tr id="node-#(x.id)" class="treegrid-#(x.id)">	         		
 	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" />#(for.index+1) #(x.kntrName)</td>
+	         		<td>#(x.knEntrNum)</td><td>#(x.knFileNum)</td><td>#(x.knFormNum)</td><td>#(x.knMoleNum)</td>
          		</tr>
 		 		#@kntr_tree_grid(x.knTreeL,for.index+1)
          	#end

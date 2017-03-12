@@ -173,3 +173,17 @@ $(document).ready(function() {
 		, complete: function(ret) { }       
 	});
 });
+
+//设置状态
+function setEmgeStatus(emgeId,status){
+	$.post("emgene/setEmgeStatus",{emgeId:emgeId,emgeStatus:status},function(ret){
+		 if(ret.isOk){
+			 window.location.reload();
+			 return ;
+		 }
+		 if(ret.isFail){
+			 $.messager.alert("提示",ret.msg);
+			 window.location.reload();
+		 }
+		  });
+}

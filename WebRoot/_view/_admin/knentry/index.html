@@ -56,7 +56,15 @@
 	         		<td><a href="#(BASE_PATH)#(mandir)/#(currCont)/edit/#(x.id)">#(x.knenName)</a></td>
 	         		<td>#(x.kntrName)</td>
 	         		<td>#(x.knenTag)</td>
-	         		<td>#((x.knenStatus < 9) ? "未发布" : "已发布")</td>
+	         		<td>#((x.knenStatus < 9) ? "未发布" : "已发布")
+	         			#if(x.knenStatus < 9)
+	         			<a href="javascript:void(0);" onClick="setEntryStatus(#(x.id),9)" title="发布">
+	         			<span class="glyphicon glyphicon-transfer"></span></a>
+	         			#else
+	         			<a href="javascript:void(0);" onClick="setEntryStatus(#(x.id),0)" title="关闭">
+	         			<span class="glyphicon glyphicon-transfer"></span></a>
+	         			#end
+	         		</td>
 	         		<td>#(x.secuName)</td>
 	         		<td title="#(x.userName)">#(x.userRealName)</td>
 	         		<td>#date(x.knenTime, "yyyy-MM-dd HH:mm")</td>

@@ -59,7 +59,15 @@
 	         		<td>#(x.emgeEnName)</td>
 	         		<td>#(x.emgeCode)</td>
 	         		<td>#(x.secuName)</td>
-	         		<td>#((x.emgeStatus < 9) ? "未发布" : "已发布")</td>
+	         		<td>#((x.emgeStatus < 9) ? "未发布" : "已发布")
+	         			#if(x.emgeStatus < 9)
+	         			<a href="javascript:void(0);" onClick="setEmgeStatus(#(x.id),9)" title="发布">
+	         			<span class="glyphicon glyphicon-transfer"></span></a>
+	         			#else
+	         			<a href="javascript:void(0);" onClick="setEmgeStatus(#(x.id),0)" title="关闭">
+	         			<span class="glyphicon glyphicon-transfer"></span></a>
+	         			#end
+	         		</td>
 	         		<td title="#(x.userName)">#(x.userRealName)</td>
 	         		<td>#date(x.emgeCreateTime, "yyyy-MM-dd HH:mm")</td>
          		</tr>

@@ -2,6 +2,7 @@ package org.kelab.admin.kn.tree;
 
 import java.util.List;
 
+import org.kelab.model.KnEntry;
 import org.kelab.model.KnTree;
 import com.jfinal.kit.Ret;
 import com.jfinal.plugin.activerecord.Db;
@@ -23,6 +24,19 @@ public class TreeAdminService {
 		List<KnTree> treeList = dao.find(sql,treeParentId);
 		for(KnTree knTree : treeList){
 			knTree.put("knTreeL",findAllKnTree(knTree.getId()));
+			//统计开始
+			//词条
+			String entrSql = "select count(*) from kn_entry where knen_kntr_id =?";
+			knTree.put("knEntrNum",Db.queryLong(entrSql,knTree.getId()));
+			//文件
+			String fileSql = "select count(*) from kn_file where knfi_kntr_id =?";
+			knTree.put("knFileNum",Db.queryLong(fileSql,knTree.getId()));
+			//公式
+			String formSql = "select count(*) from kn_formula where knfo_kntr_id =?";
+			knTree.put("knFormNum",Db.queryLong(formSql,knTree.getId()));
+			//分子式
+			String moleSql = "select count(*) from kn_molecular where knmo_kntr_id =?";
+			knTree.put("knMoleNum",Db.queryLong(moleSql,knTree.getId()));
 		}
 		return treeList;
 	}

@@ -109,4 +109,12 @@ public class EntryAdminController extends BaseController{
 		renderHtml(KnFormula.dao.findById(id).getKnfoText());
 	}
 	
+	//设置状态
+	public void setEntryStatus(){
+		int entrId = getParaToInt("entrId",0);
+		int entrStatus = getParaToInt("entrStatus",0);
+		KnEntry.dao.findById(entrId).set("knen_status", entrStatus).update();
+		renderJson(Ret.ok());
+	}
+	
 }

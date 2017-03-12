@@ -68,6 +68,7 @@
       			<input value="#(y.id)" type="checkbox" id="check-#(y.kntrParentId)-#(y.id)" />
       			#(pre).#(for.index+1) #(y.kntrName)
       		</td>
+      		<td>#(y.knEntrNum)</td><td>#(y.knFileNum)</td><td>#(y.knFormNum)</td><td>#(y.knMoleNum)</td>
      	</tr>
      	 #@kntr_tree_grid(y.knTreeL,pre + "."+(for.index+1))
 	#end
@@ -109,6 +110,29 @@
       		</td>
      	</tr>
      	 #@emcate_tree_grid(y.emCateL,pre + "."+(for.index+1))
+	#end
+#end
+
+### 配方分类显示函数：编辑页面
+#define emcate_tree_grid_edit(treeObj,pre,cateL)
+	#for(y : treeObj)
+      	<tr id="node-#(y.emcaParentId)-#(y.id)" class="treegrid-#(y.id) treegrid-parent-#(y.emcaParentId)">
+      		<td>
+      			#if(!(y.emCateL??))
+      				#for(c : cateL)
+      					#if(y.id == c.emcaId)
+		      				<input value="#(y.id)" type="checkbox" id="check-#(y.emcaParentId)-#(y.id)" 
+		      			name="emcateId" checked />
+		      			#else
+		      				<input value="#(y.id)" type="checkbox" id="check-#(y.emcaParentId)-#(y.id)" 
+		      			name="emcateId"/>
+		      			#end
+		      		#end
+      			#end 
+      			#(pre).#(for.index+1) #(y.emcaName)
+      		</td>
+     	</tr>
+     	 #@emcate_tree_grid_edit(y.emCateL,pre + "."+(for.index+1),cateL)
 	#end
 #end
 
@@ -168,7 +192,7 @@
       					
       					<span id="em-attr-#(y.id)-msg" class="small text-danger">#(y.emgaValue??)</span>
       					<a href="javascript:void(0);" value="#(y.id)-#(y.ematType)-#(y.emtaId)" 
-      					data="#(y.emgaValue)" class="attr_add_modal">添加</a>
+      					data="#(y.emgaValue)" class="attr_add_modal"><span class="glyphicon glyphicon-plus-sign"></span></a>
       				#end
       			</td>
       		</td>

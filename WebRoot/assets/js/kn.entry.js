@@ -283,3 +283,17 @@ function renderCheckList(type,checkList){
 	var obj = "#knen_"+type+"_list";
 	$(obj).append(html);
 }
+
+//设置状态
+function setEntryStatus(entrId,currStatus){
+	$.post("knentry/setEntryStatus",{entrId:entrId,entrStatus:currStatus},function(ret){
+		 if(ret.isOk){
+			 window.location.reload();
+			 return ;
+		 }
+		 if(ret.isFail){
+			 $.messager.alert("提示",ret.msg);
+			 window.location.reload();
+		 }
+		  });
+}

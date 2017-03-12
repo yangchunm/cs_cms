@@ -13,6 +13,7 @@ import org.kelab.model.EmAttr;
 import org.kelab.model.EmGene;
 import org.kelab.model.EmGeneAttr;
 import org.kelab.model.KeSecurity;
+import org.kelab.model.KnEntry;
 import org.kelab.model.KnFile;
 import org.kelab.util.FileUtils;
 
@@ -169,6 +170,14 @@ public class GeneAdminController  extends BaseController{
 	public void sampledown(){
 		String fileStr = "/download/emgene-sample.xls";
 		renderJson(FileUtils.fileDown(fileStr));
+	}
+	
+	//设置状态
+	public void setEmgeStatus(){
+		int emgeId = getParaToInt("emgeId",0);
+		int emgeStatus = getParaToInt("emgeStatus",0);
+		EmGene.dao.findById(emgeId).set("emge_status", emgeStatus).update();
+		renderJson(Ret.ok());
 	}
 	
 }
