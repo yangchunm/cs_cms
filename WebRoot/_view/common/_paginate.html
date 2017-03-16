@@ -42,7 +42,9 @@
       			<input value="#(y.id)" type="checkbox" id="check-#(y.orgaParentId)-#(y.id)" />
       			#(pre).#(for.index+1) #(y.orgaName)
       		</td>
+      		<td>#(y.userCount)</td>
      	</tr>
+     	#set(userSum = userSum + y.userCount))
      	 #@orga_tree_grid(y.subOrgaL,pre + "."+(for.index+1))
 	#end
 #end

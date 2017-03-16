@@ -7,16 +7,20 @@
 	 <table class="table table-condensed .table-hover tree">
 	 	<thead>
 	 		<tr>
-	 			<th>名称</th>
+	 			<th>名称</th><th>用户数</th>
 	 		</tr>
 	 	</thead>
 	 	<tbody>
+	 		#set(userSum = 0)
 	 		#for(x : keOrgaList)
 	 			<tr id="node-#(x.id)" class="treegrid-#(x.id)">	         		
 	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" />#(for.index+1) #(x.orgaName)</td>
+	         		<td>#(x.userCount)</td>
          		</tr>
+         		#set(userSum = userSum + x.userCount)
 		 		#@orga_tree_grid(x.subOrgaL,for.index+1)
          	#end
+         	<tr><td>合计</td><td>#(userSum)</td></tr>
         </tbody>       
      </table>
      

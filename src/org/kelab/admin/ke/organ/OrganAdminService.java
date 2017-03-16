@@ -2,6 +2,7 @@ package org.kelab.admin.ke.organ;
 
 import java.util.List;
 
+import org.kelab.admin.ke.user.UserAdminService;
 import org.kelab.model.KeOrgan;
 import com.jfinal.kit.Ret;
 import com.jfinal.plugin.activerecord.Db;
@@ -23,7 +24,7 @@ public class OrganAdminService {
 		List<KeOrgan> organList = dao.find(sql,orgaParentId);
 		for(KeOrgan keOrgan : organList){
 			keOrgan.put("subOrgaL",findAllKeOrgan(keOrgan.getId()));
-			//keOrgan.put("userCount",UserAdminService.me.findUserByOrgaId(keOrgan.getId()).size());
+			keOrgan.put("userCount",UserAdminService.me.findUserByOrgaId(keOrgan.getId()).size());
 		}
 		return organList;
 	}
