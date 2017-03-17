@@ -40,9 +40,9 @@ public class MainConfig extends JFinalConfig {
 		//me.setBaseDownloadPath("");
 		//me.setViewType(ViewType.JSP);
 		
-		me.setError404View("error_404.html");
-		me.setError500View("error_500.html");
-		me.setError403View("error_403.html");
+		me.setError404View("/_view/error_404.html");
+		me.setError500View("/_view/error_500.html");
+		me.setError403View("/_view/error_403.html");
 		
 	}
 	

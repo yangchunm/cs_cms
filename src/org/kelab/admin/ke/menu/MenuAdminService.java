@@ -202,6 +202,21 @@ public class MenuAdminService {
 		return menuL;
 	}
 	
+	/**
+	 * 根据url找菜单
+	 * @param url
+	 * @return KeMenu
+	 */
+	public KeMenu findMenuByUrl(String url){
+		String sql = "select * from ke_menu where menu_url = ?";
+		List<KeMenu> menuL = dao.find(sql,url);
+		if(menuL.size()>0)
+			return menuL.get(0);
+		else
+			return null;
+				
+	}
+	
 	public void clearCache() {
 		CacheKit.removeAll(menuCacheName);
 	}

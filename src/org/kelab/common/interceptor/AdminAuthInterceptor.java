@@ -8,9 +8,12 @@ import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
 
 import java.util.Date;
+import java.util.List;
 
 import org.kelab.admin.ke.menu.MenuAdminService;
+import org.kelab.admin.ke.role.RoleAdminService;
 import org.kelab.login.LoginService;
+import org.kelab.model.KeMenu;
 import org.kelab.model.KeUser;
 import org.kelab.util.IpKit;
 
@@ -31,19 +34,38 @@ public class AdminAuthInterceptor implements Interceptor {
 		KeUser loginAccount = c.getAttr(LoginService.loginUserCacheName);
 		if (isAdmin(loginAccount)) {
 			//获取菜单项
-			c.setAttr("menuL", MenuAdminService.me.findByUserId(loginAccount.getId()));
-			//加日志
-			String loginIp = IpKit.getRealIp(c.getRequest());
-			Record userLog = new Record().set("log_user_id", loginAccount.getId())
-					.set("log_ip", loginIp)
-					.set("log_desc", inv.getActionKey())
-					.set("log_time", new Date())
-					.set("log_opt_table",inv.getMethodName());
-			Db.save("ke_user_log", userLog);
-			inv.invoke();
+			List<KeMenu> menuL = MenuAdminService.me.findByUserId(loginAccount.getId());
+			c.setAttr("menuL", menuL);
+			String acName[] = inv.getActionKey().split("/");
+			String currMenuUrl ="";
+			if(acName.length >2)
+				currMenuUrl = acName[2];
+			else
+				currMenuUrl = "index";
+			if(isInMenuL(currMenuUrl,loginAccount.getUserRoleId())){
+				//加日志
+				String loginIp = IpKit.getRealIp(c.getRequest());
+				Record userLog = new Record().set("log_user_id", loginAccount.getId())
+						.set("log_ip", loginIp)
+						.set("log_desc", inv.getActionKey())
+						.set("log_time", new Date())
+						.set("log_opt_table",inv.getMethodName());
+				Db.save("ke_user_log", userLog);
+				inv.invoke();
+			}else
+				c.renderError(403);
 		} else {
-			c.renderError(404);
+			c.renderError(403);
 		}
+	}
+	
+	public boolean isInMenuL(String currUrl, int roleId){
+		KeMenu menu = MenuAdminService.me.findMenuByUrl(currUrl);
+		if(menu != null && RoleAdminService.me.findRoleMenu(menu.getId(),roleId).size()>0){
+			return true;
+		} 
+		else		
+			return false;
 	}
 }
 

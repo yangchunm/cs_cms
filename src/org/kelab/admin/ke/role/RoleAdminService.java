@@ -155,6 +155,11 @@ public class RoleAdminService {
 			return Ret.fail("msg", msg);
 	}
 	
+	
+	public List<KeRoleMenu> findRoleMenu(int menuId, int roleId){
+		String sql = "select * from ke_role_menu where role_id =? and menu_id = ?";
+		return KeRoleMenu.dao.find(sql,roleId,menuId);
+	}
 	public void clearCache() {
 		CacheKit.removeAll(roleCacheName);
 	}
