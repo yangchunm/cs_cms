@@ -181,3 +181,24 @@ body {
 	clear:all;
 	width:50px;
 }
+
+.jumbotron {
+    background-color: #8ba8af;
+    padding-top: 18px;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+}
+
+.jumbotron h1, .jumbotron .h1 {
+    font-family: 'amblebold_italic';
+    color: #fff;
+    font-size: 42px;
+    text-shadow: 0 -1px 0 rgba(0,0,0, 0.8);
+}
+
+.jumbotronwidth {
+    max-width: 100%;
+    float: right;
+    margin-right: 40px;
+    height: 150px;
+}

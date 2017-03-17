@@ -1,8 +1,71 @@
-#set(pageTitle="平台管理首页")
+#set(pageTitle="平台概览")
 #set(adminActive = 'class="active"')
 #@adminLayout()
 #define main()
+<div class="row page-header">
+	<span class="glyphicon glyphicon-dashboard"></span> #(pageTitle ?? "平台管理")
 
+</div>
+<div class="jumbotron">
+	<div class="container">
+	  <div class="col-md-4 col-lg-4 pull-left">
+			<img vspace="20" class="jumbotronwidth" alt="" src="#(BASE_PATH)/assets/img/ci-logo-big.png">
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+			<h1>含能材料基础数据平台</h1>
+			<p>EMDBP ： Energetic Materials Basic Data Platform</p>
+			<p>含能材料基础知识库，含能材料基因数据库，含能材料数据挖掘工具</p>
+		</div>
+	</div>
+</div>
+	<h4><span class="glyphicon glyphicon-equalizer"></span> 平台数据统计</h4>
+	<table class="table table-bordered">
+		<tr>
+			<td>知识点：#(static.treeNum) 个</td>
+			<td>词条：#(static.entrNum) 条</td>
+			<td>公式：#(static.formNum) 个</td>
+			<td>分子式：#(static.moleNum) 个</td>
+			<td>文件：#(static.fileNum) 个</td>
+		</tr>
+		<tr>
+			<td>配方数：#(static.emgeNum) 条</td>
+			<td>配方属性数：#(static.egatNum) 个</td>
+			<td>挖掘算法：#(static.dmalNum) 个</td>
+			<td>算法使用次数：#(static.dmalsubNum) 次</td>
+			<td>用户数：#(static.userNum) 人</td>
+		</tr>
+	</table>
+	<h4 ><span class="glyphicon glyphicon-dashboard"> 服务器状态信息</span></h4>
+	<table class="table table-bordered">
+	<thead>
+			<tr>
+				<th class="span2">项目</th>
+				<th class="span3">值</th>
+				<th class="span2">项目</th>
+				<th class="span3">值</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="success">
+				<td>操作系统版本及类型：</td>
+				<td id="osname">#(srvSta.osname) V#(srvSta.osversion) #(srvSta.ostype)</td>
+				<td>可使用内存：</td>
+				<td id="totalmemory">#(srvSta.totalmemory)MB</td>
+			</tr>
+			<tr class="active">
+				<td>JAVA路径及版本：</td>
+				<td id="jdkpath">#(srvSta.jdkpath) V#(srvSta.jdkversion)</td>
+				<td>剩余内存：</td>
+				<td id="freememory">#(srvSta.freememory)MB</td>
+			</tr>
+			<tr class="info">
+				<td>服务器IP：</td>
+				<td id="servipaddr">#(srvSta.servipaddr)</td>
+				<td>最大可使用内存：</td>
+				<td id="maxmemory">#(srvSta.maxmemory)MB</td>
+			</tr>
+		</tbody>
+	</table>
 #end
 
 #define js()
