@@ -27,6 +27,7 @@
 	         		<span class="glyphicon glyphicon-triangle-top"  value="#(x.id)-#(x.menuOrder)" title="调整顺序"></span></td>
 	         		#end
 	         		<td><span class="#(x.menuIcon)"></span> #(x.menuIcon)</td><td>#(x.menuUrl)</td>
+	         		</td>
          		</tr>
 	         	#set(subCount = 1)
 		 		#for(y : x.subMenuL)
@@ -48,6 +49,7 @@
 		         		#end
 	         			</td>
 	         			<td><span class="#(y.menuIcon)"></span> #(y.menuIcon)</td><td>#(y.menuUrl)</td>
+	         		</td>
          			</tr>
 	         		#set(subCount = subCount +1)
 	         	#end

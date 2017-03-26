@@ -98,10 +98,12 @@ function openAddDialog(obj){
 function openModDialog(obj,getUrl){
 	$(obj).click(function(){
 		var ids =getCheckIds();
-		if(ids == "" || ids.split(",").length > 1){
+		if(ids == ""){
 			$.messager.alert("提示","请选中要修改的一条信息！");
 			return ;
 		}
+		if(ids.split(",").length > 1)
+			ids = ids.split(",")[0];
 		$("#modal-title").text("修改");
 		$("#add-form")[0].reset();
 		$.getJSON(getUrl+ids,

@@ -5,6 +5,10 @@ $(document).ready(function() {
 	//新增dialog
 	openAddDialog("#btn-add");
 	openModDialog("#btn-mod","menu/getMenuById/");
+	//修改
+	$(".menu-mod").click(function(){
+		menuId = $(this).attr("value");
+	});
 	doDel("#btn-del","menu/del");
 	doSave("#add-form");
 	//调整顺序，增加
