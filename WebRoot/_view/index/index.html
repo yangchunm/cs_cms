@@ -63,23 +63,11 @@
 		</div>
 	</div>
 	<div class="row">
-	<div class="col-md-3">
+	<div class="col-md-4">
 	
 		<div class="panel panel-info">
-		  <div class="panel-heading">
-		    <h3 class="panel-title"><span class="glyphicon glyphicon-tree-deciduous"></span> 含能材料知识结构</h3>
-		  </div>
-		  <div class="panel-body">
-		    <table class="table-tree tree ">
-		 	<tbody>
-		 		#for(x : knTreeL)
-		 			<tr id="node-#(x.id)" class="treegrid-#(x.id)">	         		
-		         		<td>#(for.index+1) #(x.kntrName)</td>
-	         		</tr>
-			 		#@kntr_tree_grid_front(x.knTreeL,for.index+1)
-	         	#end
-	        </tbody>       
-	     </table>
+		  <div class="panel-body" id="tags-cloud" style="width: 400px;height:400px;">
+
 		  </div>
 		</div>
 	
@@ -87,7 +75,7 @@
 	
 	</div>
 	<!-- end left side and began middle -->
-	<div class="col-md-7">
+	<div class="col-md-6">
 	
 	</div>
 	<!-- end middle and began right -->
@@ -99,11 +87,10 @@
 
 #define css()
 
-	<link rel="stylesheet" type="text/css" href="#(BASE_PATH)/assets/treegrid/jquery.treegrid.css">
 #end
 
 #define js()
-	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.min.js"></script>
-	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.bootstrap3.js"></script>
-	<script type="text/javascript" src="#(BASE_PATH)/assets/js/kn.tree.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/echarts/echarts.min.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/echarts/echarts.wordcloud.min.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/front.index.js"></script>
 #end

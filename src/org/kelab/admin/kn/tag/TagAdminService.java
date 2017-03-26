@@ -7,6 +7,7 @@ import org.kelab.util.StringUtils;
 
 import com.jfinal.kit.Ret;
 import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.ehcache.CacheKit;
 
 public class TagAdminService {
@@ -25,10 +26,21 @@ public class TagAdminService {
 		return tagList;
 	}
 	
+	/**
+	 * 提取次数最多的topN个Tag
+	 * @param topN
+	 * @return
+	 */
+	public List<Record> findTopKnTag(int topN){
+		String sql = "select tag as name,num as value from kn_tag order by num desc limit ?";
+		List<Record> tagL = Db.find(sql,topN);
+		return tagL;
+	}
+	
 	
 	/**
 	 * 保存信息
-	 * @param KnLang对象
+	 * @param KnTag对象
 	 * @return 结果信息
 	 */
 	public Ret save(KnTag knTag){
