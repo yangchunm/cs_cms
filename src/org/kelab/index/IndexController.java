@@ -12,7 +12,7 @@ public class IndexController extends Controller{
 	static TreeAdminService treeSrv = new TreeAdminService();
 	static IndexAdminService inAdSrv = new IndexAdminService();
 	public void index(){
-		//setAttr("knTreeL",treeSrv.findAllKnTree(0));
+		setAttr("firstEntry",srv.firstEntry());
 		setAttr("static",inAdSrv.siteStatics());
 		render("index.html");
 	}

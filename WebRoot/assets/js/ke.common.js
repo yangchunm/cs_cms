@@ -232,4 +232,3 @@ function miniPaginate(totalRow,totalPage,page,url,objId){
 	$(objId).empty().html(html);
 }
 
-
