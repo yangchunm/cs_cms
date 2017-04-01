@@ -1,6 +1,7 @@
 package org.kelab.common;
 
 import org.kelab.index.IndexController;
+import org.kelab.kn.KnIndexController;
 import org.kelab.login.LoginController;
 
 import com.jfinal.config.Routes;
@@ -16,7 +17,7 @@ public class FrontRoutes extends Routes {
 		
 		add("/", IndexController.class, "/index");
 		add("/login", LoginController.class);
-		//add("/share", ShareController.class);
+		add("/kn", KnIndexController.class,"/kn");
 		//add("/feedback", FeedbackController.class);
 		//add("/project", ProjectController.class);
 		

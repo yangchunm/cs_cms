@@ -1,4 +1,4 @@
-package org.kelab.index;
+package org.kelab.kn;
 
 import java.util.List;
 import info.bliki.wiki.model.WikiModel;
@@ -7,7 +7,7 @@ import info.bliki.wiki.tags.*;
 
 import org.kelab.model.KnEntry;
 
-public class IndexService{
+public class KnIndexService{
 	
 	public KnEntry firstEntry(){
 		Configuration conf = Configuration.DEFAULT_CONFIGURATION;
