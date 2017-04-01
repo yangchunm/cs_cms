@@ -1,6 +1,8 @@
 <!-- 当前位置 -->
 <ol class="breadcrumb">
-  <li><a href="#(BASE_PATH)/"><span class="glyphicon glyphicon-home"> </span> 首页</a></li>
-  <li><a href="#(BASE_PATH)/#(currCont)">#(pageTitle)</a></li>
-  <li class="active">Data</li>
+  <li><a href="#(BASE_PATH)/"><span class="glyphicon glyphicon-home"> </span> 平台首页</a></li>
+  #for(loc :locBar)
+  	<li><a href="#(BASE_PATH)/#(loc.url)">#(loc.name)</a></li>
+  #end
+  <li class="active">#(pageTitle)</li>
 </ol>

@@ -1,0 +1,17 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title"><span class="glyphicon glyphicon-tree-deciduous"></span> 含能材料知识结构</h3>
+  </div>
+  <div class="panel-body">
+    <table class="table-tree tree ">
+ 	<tbody>
+ 		#for(x : knTreeL)
+ 			<tr id="node-#(x.id)" class="treegrid-#(x.id)">	         		
+         		<td>#(for.index+1) #(x.kntrName)</td>
+        		</tr>
+	 		#@kntr_tree_grid_front(x.knTreeL,for.index+1)
+        	#end
+       </tbody>       
+    </table>
+  </div>
+</div>

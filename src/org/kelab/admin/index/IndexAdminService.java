@@ -78,8 +78,6 @@ public class IndexAdminService {
 		String jkdVersion = System.getProperty("java.specification.version");
 		// JDK路径
 		String jkdPath = System.getProperty("java.home");
-		// 当前程序主目录
-		String appDir = System.getProperty("user.dir");
 		// 操作系统类型
 		String osType = System.getProperty("os.arch");
 		// 操作系统内部版本号

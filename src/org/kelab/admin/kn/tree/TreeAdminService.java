@@ -2,7 +2,6 @@ package org.kelab.admin.kn.tree;
 
 import java.util.List;
 
-import org.kelab.model.KnEntry;
 import org.kelab.model.KnTree;
 import com.jfinal.kit.Ret;
 import com.jfinal.plugin.activerecord.Db;

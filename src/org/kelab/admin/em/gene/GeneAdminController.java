@@ -1,6 +1,4 @@
 package org.kelab.admin.em.gene;
-
-
 import java.io.File;
 import java.util.Date;
 import java.util.List;
@@ -13,8 +11,6 @@ import org.kelab.model.EmAttr;
 import org.kelab.model.EmGene;
 import org.kelab.model.EmGeneAttr;
 import org.kelab.model.KeSecurity;
-import org.kelab.model.KnEntry;
-import org.kelab.model.KnFile;
 import org.kelab.util.FileUtils;
 
 import com.jfinal.aop.Before;
