@@ -34,7 +34,7 @@
 									<input type="text" name="captcha" id="captchaInput" class="form-control" placeholder="验证码">
 								</div>
 								<div class="col-sm-4">
-									<img title="点击刷新" class="captcha" src="/login/captcha" onclick="updateCaptcha();">
+									<img title="点击刷新" class="captcha" src="#(BASE_PATH)/login/captcha" onclick="updateCaptcha();">
 								</div>
 								<div class="col-sm-3">
 									<span class="small text-danger" id="captchaMsg"></span>
@@ -72,6 +72,7 @@
 	<script type="text/javascript" src="#(BASE_PATH)/assets/jquery_form/jquery.form.min.js"></script>
 	<script type="text/javascript" src="#(BASE_PATH)/assets/layer/layer.js"></script>
 	<script type="text/javascript" src="#(BASE_PATH)/assets/js/common.md5.js"></script>
+	
 
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -84,7 +85,7 @@
 				}
 				, success: function(ret) {
 					if(ret.isOk) {
-						location.href = ret.returnUrl;
+						location.href = "#(BASE_PATH)/"+ret.returnUrl;
 						return ;
 					}
 					if (ret.isFail) {

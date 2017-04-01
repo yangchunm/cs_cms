@@ -23,7 +23,7 @@ function appendReturnUrl(target) {
  */
 function logout() {
 	$.messager.confirm("确认提示", "确定要退出登录？", function() { 
-		location.href = '/logout';
+		location.href = 'mat/logout';
       });
 }
 
