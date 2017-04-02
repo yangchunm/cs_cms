@@ -8,11 +8,13 @@
   <li class="active">#(pageTitle)</li>
 </ol>
 <div class="col-md-5 text-right">
-	<form class="form-inline">
+	<form class="form-inline" action="#(BASE_PATH)/kn/entry" method="post">
 	  <div class="form-group">
 	    <label for="entryName">知识搜索</label>
-	    <input type="text" class="form-control" data-provide="typeahead"  
-                        data-items="5" data-source='["Deluxe Bicycle", "Super Deluxe Trampoline", "Super Duper Scooter"]' placeholder="爆轰">
+	    <input type="text" class="form-control" name="knWord" 
+	    	data-provide="typeahead" data-items="5" 
+	    	data-source='["Deluxe Bicycle", "Super Deluxe Trampoline", "Super Duper Scooter"]' 
+	    	placeholder="请输入词条">
 	  </div>
 	  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> 搜索</button>
 	</form>

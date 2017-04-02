@@ -1,0 +1,47 @@
+#set(pageTitle="知识库")
+#if(knEntry??)
+	#set(pageTitle=knEntry.knenName)
+#end
+#set(locBar = [{"name":"含能材料知识库","url":"kn"}])
+#@layout()
+#define main()
+<!-- 内容容器 -->
+<!-- begin left side -->
+<div class="main container">
+#include("/_view/common/_location_bar.html")
+<div class="row">
+	<!-- end left side and began middle -->
+	<div class="col-md-9">
+		<div class="well well">
+			#if(knEntry??)
+				<div class="page-header">
+					#(knEntry.knenName)
+				</div>
+				#(knEntry.knenText)
+				
+			#else
+				#for(x : simKnEntry)
+					#(x.knenName)
+				#end
+			#end
+		</div>
+	</div>
+	<!-- end middle and began right -->
+	<div class="col-md-3" id="test11">
+	</div>
+	</div>
+</div>
+#end
+
+#define css()
+<link rel="stylesheet" type="text/css" href="#(BASE_PATH)/assets/treegrid/jquery.treegrid.css">
+#end
+
+#define js()
+	<script type="text/javascript" src="#(BASE_PATH)/assets/echarts/echarts.min.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/echarts/echarts.wordcloud.min.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.min.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.bootstrap3.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/front.kn.index.js"></script>
+	
+#end

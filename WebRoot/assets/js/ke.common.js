@@ -3,7 +3,7 @@ $(document).ready(function() {
 	postPage();
 	doSearch();
 	$('.collapse').collapse();
-	$('.typeahead').typeahead();
+	//$('.typeahead').typeahead();
 });
 
 /**

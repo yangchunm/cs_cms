@@ -12,7 +12,7 @@ public class IndexService{
 	public KnEntry firstEntry(){
 		Configuration conf = Configuration.DEFAULT_CONFIGURATION;
 		conf.addTokenTag("img", new HTMLTag("img"));
-		WikiModel wiki = new WikiModel(conf, "${image}", "kn/${title}");
+		WikiModel wiki = new WikiModel(conf, "${image}", "kn/entry/${title}");
 		String sql = "select * from kn_entry order by id asc limit 1";
 		List<KnEntry> entryL = KnEntry.dao.find(sql);
 		if(entryL.size()>0){
