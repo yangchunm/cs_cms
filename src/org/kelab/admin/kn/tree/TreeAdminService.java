@@ -41,6 +41,21 @@ public class TreeAdminService {
 	}
 	
 	/**
+	 * 根据当前知识点，找到所有父节点
+	 * @param knTree
+	 * @return
+	 */
+	public KnTree findParentByTree(KnTree knTree){
+		if(knTree.getKntrParentId() != 0){
+			KnTree tmpKn = KnTree.dao.findById(knTree.getKntrParentId());
+			knTree.put("knTreeP",tmpKn);
+			findParentByTree(tmpKn);
+		}
+		return knTree;
+	}
+	
+	
+	/**
 	 * 保存信息
 	 * @param knTree对象
 	 * @return 结果信息

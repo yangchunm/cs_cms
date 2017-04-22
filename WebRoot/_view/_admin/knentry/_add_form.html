@@ -5,7 +5,7 @@
 					<div  class="col-md-6">
 					<label for="knen_name">词条名称   <span class="small text-danger" id="knen_name_msg">*（主题或术语，简短）</span></label>
 						<input type="text" name="en.knen_name" id="frm_knen_name" class="form-control"
-							 value="#(knEntr.knenName??)" placeholder="词条名称或主题">
+							 value="#(knEntr.knenName ?? knWord)" placeholder="词条名称或主题">
 						 <input type="hidden" name="en.id" value="#(knEntr.id ?? '0')" id="frm_id">
 					</div>
 					<div  class="col-md-6">

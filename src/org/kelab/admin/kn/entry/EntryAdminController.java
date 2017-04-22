@@ -1,5 +1,7 @@
 package org.kelab.admin.kn.entry;
 
+import java.io.UnsupportedEncodingException;
+
 import org.kelab.admin.kn.file.FileAdminService;
 import org.kelab.admin.kn.formula.FormulaAdminService;
 import org.kelab.admin.kn.lang.LangAdminService;
@@ -34,7 +36,11 @@ public class EntryAdminController extends BaseController{
 		render("index.html");
 	}
 	
-	public void add(){
+	public void add() throws UnsupportedEncodingException{
+		String knWord = getPara(0);
+		if(knWord != null && knWord != "")
+			knWord = java.net.URLDecoder.decode(knWord,"UTF-8");
+		setAttr("knWord",knWord);
 		setAttr("knTreeL",treeSrv.findAllKnTree(0));
 		setAttr("keSecuL",KeSecurity.dao.findAll());
 		render("edit.html");

@@ -202,3 +202,11 @@
      	 #@emattr_tree_grid_value(y.emAttrL,pre + "."+(for.index+1))
 	#end
 #end
+
+### 知识点路径
+#define knen_tree_path(treeObj,pre)
+	#for(y : treeObj)
+      	#(y.kntrName) #(pre) 
+     	#@knen_tree_path(y.knTreeP,pre)
+	#end
+#end
