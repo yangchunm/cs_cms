@@ -16,12 +16,22 @@
 			#if(knEntry??)
 				<div class="page-header">
 					#(knEntry.knenName)
+					#if(knEntry.knenAlias??)
+					    &nbsp;&nbsp;&nbsp;&nbsp;<small>#(knEntry.knenAlias)</small>
+					#end
 				</div>
 				#(knEntry.knenText)
 				
 			#else
+				<div class="alert alert-warning" role="alert">
+				<span class="glyphicon glyphicon-exclamation-sign"></span> 还没有该词条的知识，如果你是知识管理员，
+				<a href="#(BASE_PATH)/admin/knentry/add">
+				<span class="glyphicon glyphicon-hand-right"></span> 点击这里开始编辑>>></a></div>
+				<div class="page-header">相似知识：
+				</div>
 				#for(x : simKnEntry)
-					#(x.knenName)
+					<h3>#(x.knenName)</h3>
+					<p>#(x.knenText)</p>
 				#end
 			#end
 		</div>

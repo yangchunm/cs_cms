@@ -2,10 +2,17 @@
      	<form class="" id="add-form" action="#(BASE_PATH)#(mandir)/#(currCont)/save" method="post">
      		<div class="col-md-8">
 				<div class="form-group">
+					<div  class="col-md-6">
 					<label for="knen_name">词条名称   <span class="small text-danger" id="knen_name_msg">*（主题或术语，简短）</span></label>
 						<input type="text" name="en.knen_name" id="frm_knen_name" class="form-control"
 							 value="#(knEntr.knenName??)" placeholder="词条名称或主题">
 						 <input type="hidden" name="en.id" value="#(knEntr.id ?? '0')" id="frm_id">
+					</div>
+					<div  class="col-md-6">
+					<label for="knen_name">词条别名   <span class="small text-danger" id="knen_alias_msg">*（词条别名，简短）</span></label>
+						<input type="text" name="en.knen_alias" id="frm_knen_alias" class="form-control"
+							 value="#(knEntr.knenAlias??)" placeholder="别名，其他名称">
+					</div>
 				</div>
 				
 				<div class="form-group">

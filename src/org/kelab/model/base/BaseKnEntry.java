@@ -24,6 +24,14 @@ public abstract class BaseKnEntry<M extends BaseKnEntry<M>> extends Model<M> imp
 	public java.lang.String getKnenName() {
 		return get("knen_name");
 	}
+	
+	public void setKnenAlias(java.lang.String knenAlias) {
+		set("knen_alias", knenAlias);
+	}
+
+	public java.lang.String getKnenAlias() {
+		return get("knen_alias");
+	}
 
 	public void setKnenText(java.lang.String knenText) {
 		set("knen_text", knenText);

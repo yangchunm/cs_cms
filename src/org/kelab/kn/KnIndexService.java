@@ -56,6 +56,9 @@ public class KnIndexService{
 		String sql = "select * from kn_entry where knen_tag like '%"+knWord+"%'"
 				+ " or knen_name like '%"+knWord+"%' order by id desc";
 		List<KnEntry> enL = KnEntry.dao.find(sql);
+		for(KnEntry en: enL){
+			en.setKnenText(en.getKnenText().substring(0, 100)+"...");
+		}
 		return enL;
 		
 	}
