@@ -7,7 +7,7 @@
  	<tbody>
  		#for(x : knTreeL)
  			<tr id="node-#(x.id)" class="treegrid-#(x.id)">	         		
-         		<td>#(for.index+1) #(x.kntrName)</td>
+         		<td><a href="#(BASE_PATH)/kn/tree/#(x.id)">#(for.index+1) #(x.kntrName)</a></td>
         		</tr>
 	 		#@kntr_tree_grid_front(x.knTreeL,for.index+1)
         	#end

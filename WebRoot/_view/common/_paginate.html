@@ -81,7 +81,7 @@
 	#for(y : treeObj)
       	<tr id="node-#(y.kntrParentId)-#(y.id)" class="treegrid-#(y.id) treegrid-parent-#(y.kntrParentId)">
       		<td>
-      			#(pre).#(for.index+1) #(y.kntrName)
+      			<a href="#(BASE_PATH)/kn/tree/#(x.id)">#(pre).#(for.index+1) #(y.kntrName)</a>
       		</td>
      	</tr>
      	 #@kntr_tree_grid_front(y.knTreeL,pre + "."+(for.index+1))

@@ -18,6 +18,7 @@ public class FrontRoutes extends Routes {
 		add("/", IndexController.class, "/index");
 		add("/login", LoginController.class);
 		add("/kn", KnIndexController.class,"/kn");
+		add("/kn/tree", KnIndexController.class,"/kn/tree");
 		//add("/feedback", FeedbackController.class);
 		//add("/project", ProjectController.class);
 		

@@ -11,7 +11,7 @@ import org.kelab.model.KnFormula;
 import org.kelab.model.KnMolecular;
 import org.kelab.util.StringUtils;
 
-public class KnIndexService{
+public class KnTreeService{
 	
 	public static WikiModel confWiki(){
 		Configuration conf = Configuration.DEFAULT_CONFIGURATION;
