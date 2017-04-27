@@ -22,7 +22,17 @@
 				</div>
 				<p class="lead"><span class="glyphicon glyphicon-tags"></span> #(knEntry.knenTag)</p>
 				#(knEntry.knenText)
-				#@knen_tree_path(knEntryPath,"<")
+				
+				<ol class="breadcrumb">
+				<span class="glyphicon glyphicon-tree-deciduous"></span> 
+				#for(t :knEntryPath)
+					#if(for.last)
+						<li class="active"><a href="#(BASE_PATH)/kn/tree/#(t.id)">#(t.kntrName)</a></li>
+					#else
+						<li><a href="#(BASE_PATH)/kn/tree/#(t.id)">#(t.kntrName)</a></li>
+					#end
+				#end
+				</ol>
 			#else
 				<div class="alert alert-warning" role="alert">
 					<span class="glyphicon glyphicon-exclamation-sign"></span> 还没有该词条的知识，如果你是知识管理员，
@@ -87,6 +97,7 @@
 			#end
 		#end
 	</div>
+</div>
 </div>
 #end
 

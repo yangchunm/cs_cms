@@ -1,5 +1,7 @@
 package org.kelab.admin.kn.tree;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.kelab.model.KnTree;
@@ -45,13 +47,15 @@ public class TreeAdminService {
 	 * @param knTree
 	 * @return
 	 */
-	public KnTree findParentByTree(KnTree knTree){
+	public List<KnTree> findParentByTree(KnTree knTree){
+		List<KnTree> knTreeParentL = new ArrayList<KnTree>();
 		if(knTree.getKntrParentId() != 0){
-			KnTree tmpKn = KnTree.dao.findById(knTree.getKntrParentId());
-			knTree.put("knTreeP",tmpKn);
-			findParentByTree(tmpKn);
-		}
-		return knTree;
+			List<KnTree> knTreeL = findAllTree();
+			findParent(knTreeL,knTree.getId(),knTreeParentL);
+		}else
+			knTreeParentL.add(knTree);
+		Collections.reverse(knTreeParentL);
+		return knTreeParentL;
 	}
 	
 	
@@ -101,6 +105,27 @@ public class TreeAdminService {
 			return Ret.ok();
 		else
 			return Ret.fail("msg", msg);
+	}
+	
+	/**
+	 * 获取所有的信息
+	 * @return
+	 */
+	public List<KnTree> findAllTree(){
+		String sql = "select * from kn_tree";
+		return KnTree.dao.find(sql);
+	}
+	
+	public void findParent(List<KnTree> knTreeL, int currKntrId,List<KnTree> parentTreeL){
+		for(KnTree knTree: knTreeL){
+			if(knTree.getId() == currKntrId){
+				parentTreeL.add(knTree);
+				if(knTree.getKntrParentId()>0)
+					findParent(knTreeL,knTree.getKntrParentId(),parentTreeL);
+				else
+					break;
+			}
+		}
 	}
 	
 	public void clearCache() {
