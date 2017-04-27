@@ -19,6 +19,7 @@
 					#if(knEntry.knenAlias??)
 					    &nbsp;&nbsp;——&nbsp;&nbsp;<small>#(knEntry.knenAlias)</small>
 					#end
+					<input type="hidden" id="knWord" value="#(knEntry.knenName)">
 				</div>
 				<p class="lead"><span class="glyphicon glyphicon-tags"></span> #(knEntry.knenTag)</p>
 				#(knEntry.knenText)
@@ -39,12 +40,13 @@
 					<a href="#(BASE_PATH)/admin/knentry/add/#(knWord)">
 					<span class="glyphicon glyphicon-hand-right"></span> 点击这里开始编辑>>></a>
 				</div>
-				<div class="page-header">相似知识：</div>
-				#for(x : simKnEntry)
-					<h3><a href="#(BASE_PATH)/kn/entry/#(x.knenName)">#(x.knenName)</a></h3>
-					<p>#(x.knenText)</p>
+				#if(simKnEntry??)
+					<div class="page-header">相似知识：</div>
+					#for(x : simKnEntry)
+						<h3><a href="#(BASE_PATH)/kn/entry/#(x.knenName)">#(x.knenName)</a></h3>
+						<p>#(x.knenText)</p>
+					#end
 				#end
-				
 			#end
 		</div>
 	</div>
@@ -96,20 +98,28 @@
 			</div><!-- end entry file panel -->	
 			#end
 		#end
+			<!-- begin emge -->
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+			    <h3 class="panel-title"><span class="glyphicon glyphicon-baby-formula"></span>  相关配方   
+			  </div>
+			  <div class="panel-body" >
+			  <ul>
+			  #for(x : knEntry.moleL)
+			  	<li><a href="#(BASE_PATH)/kn/mole/#(x.id)">#(x.knmoName)</a></li>
+			  #end
+			  </ul>
+			  </div>
+			</div><!-- end emge panel -->	
 	</div>
 </div>
 </div>
 #end
 
 #define css()
-<link rel="stylesheet" type="text/css" href="#(BASE_PATH)/assets/treegrid/jquery.treegrid.css">
 #end
 
 #define js()
-	<script type="text/javascript" src="#(BASE_PATH)/assets/echarts/echarts.min.js"></script>
-	<script type="text/javascript" src="#(BASE_PATH)/assets/echarts/echarts.wordcloud.min.js"></script>
-	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.min.js"></script>
-	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.bootstrap3.js"></script>
-	<script type="text/javascript" src="#(BASE_PATH)/assets/js/front.kn.index.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/front.kn.entry.js"></script>
 	
 #end

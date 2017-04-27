@@ -2,17 +2,22 @@ package org.kelab.kn;
 
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import org.kelab.admin.index.IndexAdminService;
 import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
+import org.kelab.em.EmGeneService;
+import org.kelab.model.EmGene;
 import org.kelab.model.KnEntry;
 import org.kelab.model.KnTree;
 
 import com.jfinal.core.Controller;
+import com.jfinal.kit.Ret;
 
 public class KnIndexController extends Controller{
 	static KnIndexService srv = new KnIndexService();
+	static EmGeneService emgeSrv = new EmGeneService();
 	static TreeAdminService treeSrv = new TreeAdminService();
 	static IndexAdminService inAdSrv = new IndexAdminService();
 	
@@ -44,5 +49,19 @@ public class KnIndexController extends Controller{
     	}
 		setAttr("knWord",knWord);
 		render("entry.html");
+	}
+	
+	public void findEmgeByKnWord() throws UnsupportedEncodingException{
+		Ret ret = new Ret();
+		String knWord = getPara("knWord");
+		int topN = getParaToInt("topN",10);
+		if(knWord != null && knWord != ""){
+			List<EmGene> emGeneL = emgeSrv.findGeneByKnWord(knWord, topN);
+			if(emGeneL.size()>0)
+				ret = Ret.ok("emgeL", emGeneL);
+			else
+				ret = Ret.fail();
+    	}
+		renderJson(ret);
 	}
 }

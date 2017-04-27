@@ -25,14 +25,14 @@
 			#end
 		</div>
 				#for(x : entrL.list)
-					<h3><a href="#(BASE_PATH)/kn/entry/#(x.knenName)">#(x.knenName)</a></h3>
+					<h4><a href="#(BASE_PATH)/kn/entry/#(x.knenName)">#(x.knenName)</a></h4>
 					<p>#(x.knenText)</p>
 				#end
 				
 				#if(entrL.totalRow == 0)
 					<div class="alert alert-warning" role="alert">
 					<span class="glyphicon glyphicon-info-sign"></span> 
-					   没有满足条件的记录！
+					    该知识点下还没有内容，请到<a href="#(BASE_PATH)/admin/knentry/add">知识词条管理功能处添加>>></a>
 					</div>
 				#end
 				<form class="form-inline" id="search-form" name="search-form" method="post" action="#(BASE_PATH)/kn/tree/#(kntrId)">
