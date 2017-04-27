@@ -76,7 +76,11 @@ public class KnIndexService{
 				+ " or knen_name like '%"+knWord+"%' order by id desc";
 		List<KnEntry> enL = KnEntry.dao.find(sql);
 		for(KnEntry en: enL){
-			en.setKnenText(StringUtils.delHTML(en.getKnenText()).substring(0, 100)+"...");
+			String delHtmlStr = StringUtils.delHTML(en.getKnenText());
+			if(delHtmlStr.length()>100)
+				en.setKnenText(delHtmlStr.substring(0, 100)+"...");
+			else
+				en.setKnenText(delHtmlStr);
 		}
 		return enL;
 		

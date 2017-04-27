@@ -116,6 +116,12 @@ public class TreeAdminService {
 		return KnTree.dao.find(sql);
 	}
 	
+	/**
+	 * 根据当前知识节点ID，找出所有的父节点
+	 * @param knTreeL 所有知识结构列表
+	 * @param currKntrId 当前的知识节点ID
+	 * @param parentTreeL 所有父节点的名称列表
+	 */
 	public void findParent(List<KnTree> knTreeL, int currKntrId,List<KnTree> parentTreeL){
 		for(KnTree knTree: knTreeL){
 			if(knTree.getId() == currKntrId){
@@ -125,6 +131,31 @@ public class TreeAdminService {
 				else
 					break;
 			}
+		}
+	}
+	
+	/**
+	 * 根据父ID查找所有的孩子节点
+	 * @param parentId
+	 * @return
+	 */
+	public List<KnTree> findAllChild(int parentId){
+		String sql = "select * from kn_tree where kntr_parent_id= ? "
+				+ " order by id ASC";
+		List<KnTree> treeList = dao.find(sql,parentId);
+		for(KnTree knTree : treeList){
+			knTree.put("knTreeL",findAllChild(knTree.getId()));
+		}
+		return treeList;
+	}
+	
+	public void findAllChildIds(List<KnTree> knTreeL, List<Integer> childIds){
+		for(KnTree kntree: knTreeL){
+			childIds.add(kntree.getId());
+			//System.out.println(kntree.get("knTreeL"));
+			List<KnTree> childL = kntree.get("knTreeL");
+			if(childL != null)
+				findAllChildIds(childL,childIds);
 		}
 	}
 	

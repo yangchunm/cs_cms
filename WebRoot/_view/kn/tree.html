@@ -6,23 +6,44 @@
 <!-- begin left side -->
 <div class="main container">
 #include("/_view/common/_location_bar.html")
-<div class="row">
+	<div class="row">
 	<div class="col-md-3">
 		#include("/_view/common/_kntree_sidebar.html")
 	</div>
 	
 	<!-- end left side and began middle -->
-	<div class="col-md-5">
-		<div class="panel panel-info">
-		  <div class="panel-heading"><h4>#(firstEntry.knenName)</h4></div>
-		  <div class="panel-body">
-				#(firstEntry.knenText)
-		  </div>
+	<div class="col-md-9">
+		<div class="well">
+		  <div class="page-header">
+		  	<span class="glyphicon glyphicon-triangle-right"></span>
+		  	#for(t :knEntryPath)
+				#if(for.last)
+					<a href="#(BASE_PATH)/kn/tree/#(t.id)">#(t.kntrName)</a>
+				#else
+					<a href="#(BASE_PATH)/kn/tree/#(t.id)">#(t.kntrName)</a> > 
+				#end
+			#end
+		</div>
+				#for(x : entrL.list)
+					<h3><a href="#(BASE_PATH)/kn/entry/#(x.knenName)">#(x.knenName)</a></h3>
+					<p>#(x.knenText)</p>
+				#end
+				
+				#if(entrL.totalRow == 0)
+					<div class="alert alert-warning" role="alert">
+					<span class="glyphicon glyphicon-info-sign"></span> 
+					   没有满足条件的记录！
+					</div>
+				#end
+				<form class="form-inline" id="search-form" name="search-form" method="post" action="#(BASE_PATH)/kn/tree/#(kntrId)">
+			    	<input type="hidden" id="page" name="comm.page" value="#(comQ.page)">
+			   		<input type="hidden" id="page" name="comm.pageSize" value="#(comQ.pageSize)">
+				</form>
+			    #set(pageUrl="/kn/tree/"+kntrId)
+			    #@paginate(entrL.pageNumber, entrL.totalPage,entrL.totalRow, pageUrl)
 		</div>
 	</div>
 	<!-- end middle and began right -->
-	<div class="col-md-3" id="test11">
-	</div>
 	</div>
 </div>
 #end

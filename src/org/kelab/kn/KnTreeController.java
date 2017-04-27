@@ -4,21 +4,30 @@ import java.io.UnsupportedEncodingException;
 import org.kelab.admin.index.IndexAdminService;
 import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
+import org.kelab.bean.CommQuery;
 import org.kelab.model.KnEntry;
 import org.kelab.model.KnTree;
 
 import com.jfinal.core.Controller;
 
 public class KnTreeController extends Controller{
-	static KnIndexService srv = new KnIndexService();
+	static KnTreeService srv = new KnTreeService();
 	static TreeAdminService treeSrv = new TreeAdminService();
 	static IndexAdminService inAdSrv = new IndexAdminService();
 	
 	public void index(){
+		CommQuery comQ = getBean(CommQuery.class,"comm");
+		if(comQ.getPage() == 0)
+			comQ.setPage(1);
+		if(comQ.getPageSize() == 0)
+			comQ.setPageSize(10);
+		setAttr("comQ",comQ);
 		int kntrId = getParaToInt(0,1);
-		setAttr("firstEntry",srv.firstEntry());
+		setAttr("kntrId",kntrId);
+		setAttr("knEntryPath",treeSrv.findParentByTree(KnTree.dao.findById(kntrId)));
+		setAttr("entrL",srv.findEntryByTreeId(kntrId,comQ));
 		setAttr("knTreeL",treeSrv.findAllKnTree(0));
-		render("index.html");
+		render("tree.html");
 	}
 	
 	public void topTags(){

@@ -1,17 +1,24 @@
 package org.kelab.kn;
 
+import java.util.ArrayList;
 import java.util.List;
 import info.bliki.wiki.model.WikiModel;
 import info.bliki.wiki.model.Configuration;
 import info.bliki.wiki.tags.*;
 
+import org.kelab.admin.kn.tree.TreeAdminService;
+import org.kelab.bean.CommQuery;
 import org.kelab.model.KnEntry;
 import org.kelab.model.KnFile;
 import org.kelab.model.KnFormula;
 import org.kelab.model.KnMolecular;
+import org.kelab.model.KnTree;
 import org.kelab.util.StringUtils;
 
+import com.jfinal.plugin.activerecord.Page;
+
 public class KnTreeService{
+	static TreeAdminService treeSrv = new TreeAdminService();
 	
 	public static WikiModel confWiki(){
 		Configuration conf = Configuration.DEFAULT_CONFIGURATION;
@@ -20,17 +27,26 @@ public class KnTreeService{
 		return wiki;
 	}
 	
-	public KnEntry firstEntry(){
-		String sql = "select * from kn_entry order by id asc limit 1";
-		List<KnEntry> entryL = KnEntry.dao.find(sql);
-		if(entryL.size()>0){
-			KnEntry entry = entryL.get(0);
-			WikiModel wiki = confWiki();
-			entry.setKnenText(wiki.render(entry.getKnenText()));
-			return entry;
+	public Page<KnEntry> findEntryByTreeId(int kntrId,CommQuery comQ){
+		List<KnTree> knTreeL = treeSrv.findAllChild(kntrId);
+		List<Integer> childIds = new ArrayList<Integer>();
+		childIds.add(kntrId);
+		treeSrv.findAllChildIds(knTreeL, childIds);
+		String strIn = "(";
+		for(Integer id: childIds){
+			strIn += id + ",";
 		}
-		else
-			return null;
+		strIn = strIn.substring(0, strIn.length()-1) +")";
+		String sql = " from kn_entry where knen_kntr_id in "+strIn+" order by id asc";
+		Page<KnEntry> entryL = KnEntry.dao.paginate(comQ.getPage(), comQ.getPageSize(), "select *", sql);
+		for(KnEntry en: entryL.getList()){
+			String delHtmlStr = StringUtils.delHTML(en.getKnenText());
+			if(delHtmlStr.length()>100)
+				en.setKnenText(delHtmlStr.substring(0, 100)+"...");
+			else
+				en.setKnenText(delHtmlStr);
+		}
+		return entryL;
 	}
 	
 	/**
