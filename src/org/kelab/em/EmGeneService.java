@@ -1,24 +1,13 @@
 package org.kelab.em;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.kelab.admin.em.attr.AttrAdminService;
 import org.kelab.admin.em.cate.CateAdminService;
-import org.kelab.bean.CommQuery;
-import org.kelab.model.EmAttr;
-import org.kelab.model.EmCate;
 import org.kelab.model.EmGene;
 import org.kelab.model.EmGeneAttr;
 import org.kelab.model.EmGeneCate;
-import org.kelab.util.ExcelUtils;
 
-import com.jfinal.kit.Ret;
-import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheKit;
 
 public class EmGeneService {

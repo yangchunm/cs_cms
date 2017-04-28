@@ -51,7 +51,7 @@ public class KnIndexController extends Controller{
 		render("entry.html");
 	}
 	
-	public void findEmgeByKnWord() throws UnsupportedEncodingException{
+	public void findEmgeByKnWord(){
 		Ret ret = new Ret();
 		String knWord = getPara("knWord");
 		int topN = getParaToInt("topN",10);

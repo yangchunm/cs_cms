@@ -99,15 +99,12 @@
 			#end
 		#end
 			<!-- begin emge -->
-			<div class="panel panel-default">
+			<div class="panel panel-default" id="relEmge">
 			  <div class="panel-heading">
 			    <h3 class="panel-title"><span class="glyphicon glyphicon-baby-formula"></span>  相关配方   
 			  </div>
 			  <div class="panel-body" >
-			  <ul>
-			  #for(x : knEntry.moleL)
-			  	<li><a href="#(BASE_PATH)/kn/mole/#(x.id)">#(x.knmoName)</a></li>
-			  #end
+			  <ul id="relEmgeL">
 			  </ul>
 			  </div>
 			</div><!-- end emge panel -->	
