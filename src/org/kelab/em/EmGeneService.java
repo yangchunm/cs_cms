@@ -7,6 +7,7 @@ import org.kelab.admin.em.cate.CateAdminService;
 import org.kelab.model.EmGene;
 import org.kelab.model.EmGeneAttr;
 import org.kelab.model.EmGeneCate;
+import org.kelab.util.StringUtils;
 
 import com.jfinal.plugin.ehcache.CacheKit;
 
@@ -18,11 +19,20 @@ public class EmGeneService {
 	final static AttrAdminService srvAttr = new AttrAdminService();
 	final String cacheName = "emGene";
 	
+	/**
+	 * 通过词条名称、关键词、别名关联配方的缩写、分类名称、中文名、code
+	 * @param knWord
+	 * @param topN
+	 * @return
+	 */
 	public List<EmGene> findGeneByKnWord(String knWord, int topN){
+		String inStr = StringUtils.tags2InStr(knWord);
 		String sql = "select emge.* from em_gene emge, em_gene_cate emgc, em_cate emca "
 				+ "where emca.id = emgc.emca_id and emgc.emge_id = emge.id and "
-				+ "(emca.emca_name = ? or emge.emge_abbr_name = ?) order by emge.id desc limit ?";
-		return dao.find(sql,knWord,knWord,topN);
+				+ "(emca.emca_name in "+inStr+" or emge.emge_abbr_name in "+inStr+""
+				+ " or emge.emge_zh_name in "+inStr+" or emge.emge_code in "+inStr+")"
+				+ " order by emge.id desc limit ?";
+		return dao.find(sql,topN);
 	}
 	
 	/**

@@ -5,11 +5,14 @@ import info.bliki.wiki.model.WikiModel;
 import info.bliki.wiki.model.Configuration;
 import info.bliki.wiki.tags.*;
 
+import org.kelab.bean.CommQuery;
 import org.kelab.model.KnEntry;
 import org.kelab.model.KnFile;
 import org.kelab.model.KnFormula;
 import org.kelab.model.KnMolecular;
 import org.kelab.util.StringUtils;
+
+import com.jfinal.plugin.activerecord.Page;
 
 public class KnIndexService{
 	
@@ -71,11 +74,12 @@ public class KnIndexService{
 	 * @param knWord
 	 * @return
 	 */
-	public List<KnEntry> findSimEntryByWord(String knWord){
-		String sql = "select * from kn_entry where knen_tag like '%"+knWord+"%'"
-				+ " or knen_name like '%"+knWord+"%' order by id desc";
-		List<KnEntry> enL = KnEntry.dao.find(sql);
-		for(KnEntry en: enL){
+	public Page<KnEntry> findSimEntryByWord(String knWord,CommQuery comQ){
+		String sql = " from kn_entry where knen_tag like '%"+knWord+"%'"
+				+ " or knen_name like '%"+knWord+"%'  or knen_alias like '%"+knWord+"%'"
+				+ " order by id desc";
+		Page<KnEntry> enL = KnEntry.dao.paginate(comQ.getPage(), comQ.getPageSize(), "select *", sql);
+		for(KnEntry en: enL.getList()){
 			String delHtmlStr = StringUtils.delHTML(en.getKnenText());
 			if(delHtmlStr.length()>100)
 				en.setKnenText(delHtmlStr.substring(0, 100)+"...");

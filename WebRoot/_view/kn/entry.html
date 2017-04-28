@@ -19,12 +19,16 @@
 					#if(knEntry.knenAlias??)
 					    &nbsp;&nbsp;——&nbsp;&nbsp;<small>#(knEntry.knenAlias)</small>
 					#end
-					<input type="hidden" id="knWord" value="#(knEntry.knenName)">
+					<input type="hidden" id="knWord" value="#(knEntry.knenName),#(knEntry.knenTag),#(knEntry.knenAlias)">
 				</div>
-				<p class="lead"><span class="glyphicon glyphicon-tags"></span> #(knEntry.knenTag)</p>
+				<p><span class="glyphicon glyphicon-tags"></span>  &nbsp;
+					#for(x : knEntry.tagL)
+						<a href="#(BASE_PATH)/kn/entry/#(x)">#(x)</a> &nbsp;
+					#end
+				</p>
 				#(knEntry.knenText)
 				
-				<ol class="breadcrumb">
+				<ol class="breadcrumb well well-sm">
 				<span class="glyphicon glyphicon-tree-deciduous"></span> 
 				#for(t :knEntryPath)
 					#if(for.last)
@@ -39,13 +43,22 @@
 					<span class="glyphicon glyphicon-exclamation-sign"></span> 还没有该词条的知识，如果你是知识管理员，
 					<a href="#(BASE_PATH)/admin/knentry/add/#(knWord)">
 					<span class="glyphicon glyphicon-hand-right"></span> 点击这里开始编辑>>></a>
+					<input type="hidden" id="knWord" value="#(knWord)">
 				</div>
-				#if(simKnEntry??)
-					<div class="page-header">相似知识：</div>
-					#for(x : simKnEntry)
-						<h3><a href="#(BASE_PATH)/kn/entry/#(x.knenName)">#(x.knenName)</a></h3>
+				#if(simKnEntry.list??)
+					<div class="page-header">为您检索到与 #(knWord) 相关的知识：</div>
+					
+					#for(x : simKnEntry.list)
+						<h4><a href="#(BASE_PATH)/kn/entry/#(x.knenName)">#(x.knenName)</a></h4>
 						<p>#(x.knenText)</p>
 					#end
+					
+					<form class="form-inline" id="search-form" name="search-form" method="post" action="#(BASE_PATH)/kn/entry/#(knWord)">
+				    	<input type="hidden" id="page" name="comm.page" value="#(comQ.page)">
+				   		<input type="hidden" id="page" name="comm.pageSize" value="#(comQ.pageSize)">
+					</form>
+			    #set(pageUrl="")
+			    #@paginate(simKnEntry.pageNumber, simKnEntry.totalPage,simKnEntry.totalRow, pageUrl)
 				#end
 			#end
 		</div>

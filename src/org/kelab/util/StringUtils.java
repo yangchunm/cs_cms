@@ -164,6 +164,18 @@ public class StringUtils {
 					
 	}
 	
+	public static String tags2InStr(String srcTags){
+		String inStr = "(";
+		String[] tags =  srcTags.split(",");
+		for(String tag : tags){
+			if(tag.length()>0)
+				inStr += "'"+tag+"',";
+		}
+		inStr = inStr.substring(0, inStr.length()-1) + ")";
+		return inStr;
+					
+	}
+	
 	/**
 	 * 从html的img标签中抽取Latex对象
 	 * @param formHtml

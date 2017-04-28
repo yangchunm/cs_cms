@@ -7,6 +7,7 @@ import java.util.List;
 import org.kelab.admin.index.IndexAdminService;
 import org.kelab.admin.kn.tag.TagAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
+import org.kelab.bean.CommQuery;
 import org.kelab.em.EmGeneService;
 import org.kelab.model.EmGene;
 import org.kelab.model.KnEntry;
@@ -34,18 +35,25 @@ public class KnIndexController extends Controller{
 	
 	public void entry() throws UnsupportedEncodingException{
 		String knWord = getPara(0);
+		CommQuery comQ = getBean(CommQuery.class,"comm");
+		if(comQ.getPage() == 0)
+			comQ.setPage(1);
+		if(comQ.getPageSize() == 0)
+			comQ.setPageSize(10);
+		setAttr("comQ",comQ);
 		if(knWord == null || knWord == "")
 			knWord = getPara("knWord");
 		if(knWord != null && knWord != ""){
 			knWord = java.net.URLDecoder.decode(knWord,"UTF-8");
 			KnEntry knEntry = srv.findEntryByName(knWord);
 			if(knEntry != null){
+				knEntry.put("tagL",knEntry.getKnenTag().split(","));
 				KnTree knTree = KnTree.dao.findById(knEntry.getKnenKntrId());
 				setAttr("knEntryPath",treeSrv.findParentByTree(knTree));
 				setAttr("knEntry",knEntry);
 			}
 			else
-				setAttr("simKnEntry",srv.findSimEntryByWord(knWord));
+				setAttr("simKnEntry",srv.findSimEntryByWord(knWord,comQ));
     	}
 		setAttr("knWord",knWord);
 		render("entry.html");

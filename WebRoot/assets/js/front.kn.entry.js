@@ -4,9 +4,12 @@ $(document).ready(function() {
 
 //查找相关的配方
 function loadRelEmge(){
-	$("#relEmge").hide();
 	var knWord = $("#knWord").val();
-	$.post("../findEmgeByKnWord",{knWord:knWord,topN:10},function(ret){
+	var currUrl = location.pathname;
+	var urlPre = "";
+	if(currUrl.indexOf("entry/")>=0)
+		urlPre ="../";
+	$.post(urlPre+"findEmgeByKnWord",{knWord:knWord,topN:10},function(ret){
 		 if(ret.isOk){
 			 var html = "";
 			 $.each(ret.emgeL,function(key,obj){
@@ -14,8 +17,9 @@ function loadRelEmge(){
 			 });
 			 //alert(html);
 			 $("#relEmgeL").empty().append(html);
-			 $("#relEmge").show();
 			 return ;
+		 }else{
+			 $("#relEmgeL").empty().append("未找到相关配方信息！");
 		 }
 	});
 }
