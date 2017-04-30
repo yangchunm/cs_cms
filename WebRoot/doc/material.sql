@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
-Source Server Version : 50611
+Source Server         : localhost
+Source Server Version : 50621
 Source Host           : localhost:3306
 Source Database       : material
 
 Target Server Type    : MYSQL
-Target Server Version : 50611
+Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2017-04-22 10:50:46
+Date: 2017-04-30 11:28:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -1306,14 +1306,18 @@ INSERT INTO `ke_session` VALUES ('160fdca4ae3a4e478649c7a1f56ad3d2', '5', '15800
 INSERT INTO `ke_session` VALUES ('1a9ee949cb6d47d29958174e9f89105c', '5', '1580259509646');
 INSERT INTO `ke_session` VALUES ('3f3899d4521245b5b46777f77c8c646a', '5', '1580094418986');
 INSERT INTO `ke_session` VALUES ('50ba1a4487cd4887968e65e06b9e3c9b', '5', '1580093992304');
+INSERT INTO `ke_session` VALUES ('5f4fd0237ae9473db65373c60981bb71', '5', '1587467768224');
+INSERT INTO `ke_session` VALUES ('851dd12ae15d485b82ba5d9e79996a38', '5', '1587467805295');
 INSERT INTO `ke_session` VALUES ('88f8634be9784f48a0e0beafe9ee6f5d', '5', '1580094115643');
 INSERT INTO `ke_session` VALUES ('993c1342cc98443c9cdbc7f6c1135f68', '5', '1585267571180');
 INSERT INTO `ke_session` VALUES ('a35e632cb5964d3288a8261f0bff0eb3', '5', '1580094263706');
+INSERT INTO `ke_session` VALUES ('a8d7b2bcd0cd480b97abacb1b4f3e632', '5', '1587467782946');
 INSERT INTO `ke_session` VALUES ('ca9b928f9d254b11b719b6aee6cebbcc', '5', '1580095648331');
 INSERT INTO `ke_session` VALUES ('d753fadad6a743c2bc17ceffd0e33dfd', '5', '1581595263870');
 INSERT INTO `ke_session` VALUES ('dbc9899c3acc4908a4f467f1e04163ee', '5', '1580093525552');
 INSERT INTO `ke_session` VALUES ('deef5aad3edd4e1092ca6dc19cfa58da', '5', '1580093354313');
 INSERT INTO `ke_session` VALUES ('df2f7c1db9e94c2fb69f7a990ffe264f', '5', '1581643031836');
+INSERT INTO `ke_session` VALUES ('fc4f9ad88a0b44dfa208f33b57de8be9', '5', '1587468031032');
 
 -- ----------------------------
 -- Table structure for `ke_user`
@@ -1345,7 +1349,7 @@ CREATE TABLE `ke_user` (
 -- ----------------------------
 -- Records of ke_user
 -- ----------------------------
-INSERT INTO `ke_user` VALUES ('5', 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 'MrYang', '2017-01-27 09:53:48', '2017-04-22 10:49:08', '1', '3', '1', '3', '', null, '');
+INSERT INTO `ke_user` VALUES ('5', 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 'MrYang', '2017-01-27 09:53:48', '2017-04-30 11:27:57', '1', '3', '1', '3', '', null, '');
 INSERT INTO `ke_user` VALUES ('6', 'mryang@yahoo.cn', 'e10adc3949ba59abbe56e057f20f883e', '杨春明', '2017-02-02 13:37:06', null, null, '3', '2', '3', '', null, '');
 
 -- ----------------------------
@@ -1362,7 +1366,7 @@ CREATE TABLE `ke_user_log` (
   PRIMARY KEY (`id`),
   KEY `fk_log_user` (`log_user_id`),
   CONSTRAINT `fk_log_user` FOREIGN KEY (`log_user_id`) REFERENCES `ke_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5549 DEFAULT CHARSET=utf8 COMMENT='用户操作日志信息';
+) ENGINE=InnoDB AUTO_INCREMENT=5778 DEFAULT CHARSET=utf8 COMMENT='用户操作日志信息';
 
 -- ----------------------------
 -- Records of ke_user_log
@@ -6908,6 +6912,235 @@ INSERT INTO `ke_user_log` VALUES ('5545', '5', '用户登录', '0:0:0:0:0:0:0:1'
 INSERT INTO `ke_user_log` VALUES ('5546', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 10:43:36', 'ke_user_log');
 INSERT INTO `ke_user_log` VALUES ('5547', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 10:47:24', 'ke_user_log');
 INSERT INTO `ke_user_log` VALUES ('5548', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 10:49:08', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5549', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 19:16:08', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5550', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 19:16:22', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5551', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 19:16:45', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5552', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 19:20:20', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5553', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 19:20:31', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5554', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-22 19:20:51', 'index');
+INSERT INTO `ke_user_log` VALUES ('5555', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-22 19:20:58', 'index');
+INSERT INTO `ke_user_log` VALUES ('5556', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-22 19:21:02', 'index');
+INSERT INTO `ke_user_log` VALUES ('5557', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-22 19:21:04', 'index');
+INSERT INTO `ke_user_log` VALUES ('5558', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-22 19:21:07', 'index');
+INSERT INTO `ke_user_log` VALUES ('5559', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-22 19:21:08', 'index');
+INSERT INTO `ke_user_log` VALUES ('5560', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-22 19:21:09', 'index');
+INSERT INTO `ke_user_log` VALUES ('5561', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-22 19:21:40', 'index');
+INSERT INTO `ke_user_log` VALUES ('5562', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-22 19:21:41', 'index');
+INSERT INTO `ke_user_log` VALUES ('5563', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-22 19:21:41', 'index');
+INSERT INTO `ke_user_log` VALUES ('5564', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-22 19:21:42', 'index');
+INSERT INTO `ke_user_log` VALUES ('5565', '5', '/admin/emcate', '0:0:0:0:0:0:0:1', '2017-04-22 19:21:48', 'index');
+INSERT INTO `ke_user_log` VALUES ('5566', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-22 19:21:52', 'index');
+INSERT INTO `ke_user_log` VALUES ('5567', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-22 19:21:56', 'add');
+INSERT INTO `ke_user_log` VALUES ('5568', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-22 19:21:59', 'index');
+INSERT INTO `ke_user_log` VALUES ('5569', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-04-22 19:22:02', 'edit');
+INSERT INTO `ke_user_log` VALUES ('5570', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-22 19:22:05', 'index');
+INSERT INTO `ke_user_log` VALUES ('5571', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-22 19:22:15', 'index');
+INSERT INTO `ke_user_log` VALUES ('5572', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-22 19:22:21', 'index');
+INSERT INTO `ke_user_log` VALUES ('5573', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 19:22:39', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5574', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-22 19:22:39', 'index');
+INSERT INTO `ke_user_log` VALUES ('5575', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-22 19:23:10', 'index');
+INSERT INTO `ke_user_log` VALUES ('5576', '5', '/admin/organ', '0:0:0:0:0:0:0:1', '2017-04-22 19:23:12', 'index');
+INSERT INTO `ke_user_log` VALUES ('5577', '5', '/admin/user', '0:0:0:0:0:0:0:1', '2017-04-22 19:23:14', 'index');
+INSERT INTO `ke_user_log` VALUES ('5578', '5', '/admin/userlog', '0:0:0:0:0:0:0:1', '2017-04-22 19:23:15', 'index');
+INSERT INTO `ke_user_log` VALUES ('5579', '5', '/admin/userlog', '0:0:0:0:0:0:0:1', '2017-04-22 19:23:17', 'index');
+INSERT INTO `ke_user_log` VALUES ('5580', '5', '/admin/userlog', '0:0:0:0:0:0:0:1', '2017-04-22 19:23:18', 'index');
+INSERT INTO `ke_user_log` VALUES ('5581', '5', '/admin/menu', '0:0:0:0:0:0:0:1', '2017-04-22 19:23:36', 'index');
+INSERT INTO `ke_user_log` VALUES ('5582', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-22 19:23:41', 'index');
+INSERT INTO `ke_user_log` VALUES ('5583', '5', '/admin/kntree', '0:0:0:0:0:0:0:1', '2017-04-22 19:24:00', 'index');
+INSERT INTO `ke_user_log` VALUES ('5584', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-22 19:24:01', 'index');
+INSERT INTO `ke_user_log` VALUES ('5585', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 19:24:45', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5586', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-22 19:25:01', 'add');
+INSERT INTO `ke_user_log` VALUES ('5587', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 19:26:47', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5588', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-22 19:26:53', 'add');
+INSERT INTO `ke_user_log` VALUES ('5589', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 19:28:46', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5590', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-22 19:28:46', 'add');
+INSERT INTO `ke_user_log` VALUES ('5591', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-22 19:28:51', 'index');
+INSERT INTO `ke_user_log` VALUES ('5592', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-22 19:28:52', 'add');
+INSERT INTO `ke_user_log` VALUES ('5593', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-22 19:28:56', 'index');
+INSERT INTO `ke_user_log` VALUES ('5594', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 19:30:13', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5595', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-22 19:30:16', 'add');
+INSERT INTO `ke_user_log` VALUES ('5596', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-04-22 19:30:37', 'save');
+INSERT INTO `ke_user_log` VALUES ('5597', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-22 19:31:05', 'add');
+INSERT INTO `ke_user_log` VALUES ('5598', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-22 19:31:21', 'add');
+INSERT INTO `ke_user_log` VALUES ('5599', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 19:32:43', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5600', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 19:36:00', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5601', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-22 19:36:01', 'add');
+INSERT INTO `ke_user_log` VALUES ('5602', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 20:24:13', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5603', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 20:49:42', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5604', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 20:51:45', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5605', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-22 20:51:52', 'index');
+INSERT INTO `ke_user_log` VALUES ('5606', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-22 20:51:56', 'index');
+INSERT INTO `ke_user_log` VALUES ('5607', '5', '/admin/kntree', '0:0:0:0:0:0:0:1', '2017-04-22 20:52:03', 'index');
+INSERT INTO `ke_user_log` VALUES ('5608', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 20:53:53', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5609', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-22 21:01:20', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5610', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-22 21:01:29', 'index');
+INSERT INTO `ke_user_log` VALUES ('5611', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-04-22 21:01:30', 'edit');
+INSERT INTO `ke_user_log` VALUES ('5612', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-04-22 21:01:36', 'save');
+INSERT INTO `ke_user_log` VALUES ('5613', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-22 21:01:38', 'index');
+INSERT INTO `ke_user_log` VALUES ('5614', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 18:48:59', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5615', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 18:51:14', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5616', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-26 18:51:57', 'index');
+INSERT INTO `ke_user_log` VALUES ('5617', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-26 18:52:00', 'index');
+INSERT INTO `ke_user_log` VALUES ('5618', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-04-26 18:52:02', 'edit');
+INSERT INTO `ke_user_log` VALUES ('5619', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 18:54:19', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5620', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 18:59:12', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5621', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 19:01:29', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5622', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 19:04:09', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5623', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 19:10:16', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5624', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 19:52:42', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5625', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 19:54:03', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5626', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 19:56:18', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5627', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 19:57:06', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5628', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 20:00:23', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5629', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 20:07:43', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5630', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 20:15:06', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5631', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 20:18:45', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5632', '5', '/admin/knmole', '0:0:0:0:0:0:0:1', '2017-04-26 20:18:45', 'index');
+INSERT INTO `ke_user_log` VALUES ('5633', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-04-26 20:19:33', 'index');
+INSERT INTO `ke_user_log` VALUES ('5634', '5', '/admin/knfile', '0:0:0:0:0:0:0:1', '2017-04-26 20:19:40', 'index');
+INSERT INTO `ke_user_log` VALUES ('5635', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-04-26 20:20:15', 'index');
+INSERT INTO `ke_user_log` VALUES ('5636', '5', '/admin/knmole', '0:0:0:0:0:0:0:1', '2017-04-26 20:20:16', 'index');
+INSERT INTO `ke_user_log` VALUES ('5637', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 20:32:08', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5638', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 20:38:47', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5639', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 20:51:31', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5640', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 20:54:18', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5641', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 20:56:32', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5642', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 21:12:38', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5643', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-26 21:24:52', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5644', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-27 20:48:46', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5645', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-27 20:51:42', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5646', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-27 20:54:15', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5647', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-27 20:54:29', 'add');
+INSERT INTO `ke_user_log` VALUES ('5648', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-27 20:56:20', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5649', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-27 20:56:20', 'index');
+INSERT INTO `ke_user_log` VALUES ('5650', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-27 20:56:23', 'index');
+INSERT INTO `ke_user_log` VALUES ('5651', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-27 20:56:25', 'add');
+INSERT INTO `ke_user_log` VALUES ('5652', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-27 20:56:55', 'add');
+INSERT INTO `ke_user_log` VALUES ('5653', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-27 20:58:43', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5654', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-27 21:26:40', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5655', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-27 21:30:47', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5656', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-27 21:33:19', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5657', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-27 22:10:44', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5658', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-27 22:17:34', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5659', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-27 22:20:58', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5660', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-27 22:22:35', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5661', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-27 22:26:54', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5662', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-27 22:26:54', 'index');
+INSERT INTO `ke_user_log` VALUES ('5663', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 08:02:00', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5664', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-29 08:02:50', 'index');
+INSERT INTO `ke_user_log` VALUES ('5665', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-29 08:02:52', 'index');
+INSERT INTO `ke_user_log` VALUES ('5666', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-04-29 08:02:55', 'edit');
+INSERT INTO `ke_user_log` VALUES ('5667', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 08:05:14', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5668', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-04-29 08:05:14', 'edit');
+INSERT INTO `ke_user_log` VALUES ('5669', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-04-29 08:05:46', 'edit');
+INSERT INTO `ke_user_log` VALUES ('5670', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-29 08:05:56', 'index');
+INSERT INTO `ke_user_log` VALUES ('5671', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-29 08:05:57', 'index');
+INSERT INTO `ke_user_log` VALUES ('5672', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-29 08:05:59', 'add');
+INSERT INTO `ke_user_log` VALUES ('5673', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-29 08:06:33', 'add');
+INSERT INTO `ke_user_log` VALUES ('5674', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-29 08:06:44', 'add');
+INSERT INTO `ke_user_log` VALUES ('5675', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-29 08:07:03', 'add');
+INSERT INTO `ke_user_log` VALUES ('5676', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 08:23:57', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5677', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-29 08:23:57', 'add');
+INSERT INTO `ke_user_log` VALUES ('5678', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-29 08:24:31', 'add');
+INSERT INTO `ke_user_log` VALUES ('5679', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-29 08:24:36', 'add');
+INSERT INTO `ke_user_log` VALUES ('5680', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-29 08:24:59', 'add');
+INSERT INTO `ke_user_log` VALUES ('5681', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-29 08:25:00', 'add');
+INSERT INTO `ke_user_log` VALUES ('5682', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-29 08:25:18', 'add');
+INSERT INTO `ke_user_log` VALUES ('5683', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-29 08:25:49', 'add');
+INSERT INTO `ke_user_log` VALUES ('5684', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 08:26:06', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5685', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-29 08:26:06', 'add');
+INSERT INTO `ke_user_log` VALUES ('5686', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 08:43:10', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5687', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-29 08:43:10', 'add');
+INSERT INTO `ke_user_log` VALUES ('5688', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 15:24:26', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5689', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-29 15:24:28', 'index');
+INSERT INTO `ke_user_log` VALUES ('5690', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-29 15:24:30', 'index');
+INSERT INTO `ke_user_log` VALUES ('5691', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-04-29 15:24:32', 'edit');
+INSERT INTO `ke_user_log` VALUES ('5692', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-04-29 15:25:15', 'save');
+INSERT INTO `ke_user_log` VALUES ('5693', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 15:27:01', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5694', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-04-29 15:27:01', 'save');
+INSERT INTO `ke_user_log` VALUES ('5695', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 15:28:58', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5696', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-04-29 15:28:58', 'save');
+INSERT INTO `ke_user_log` VALUES ('5697', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 15:32:06', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5698', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-04-29 15:32:06', 'save');
+INSERT INTO `ke_user_log` VALUES ('5699', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 15:33:36', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5700', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-04-29 15:33:36', 'save');
+INSERT INTO `ke_user_log` VALUES ('5701', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 15:35:04', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5702', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-04-29 15:35:04', 'save');
+INSERT INTO `ke_user_log` VALUES ('5703', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 15:37:46', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5704', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-04-29 15:37:46', 'save');
+INSERT INTO `ke_user_log` VALUES ('5705', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-29 15:37:48', 'index');
+INSERT INTO `ke_user_log` VALUES ('5706', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-04-29 15:38:17', 'edit');
+INSERT INTO `ke_user_log` VALUES ('5707', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-04-29 15:38:20', 'save');
+INSERT INTO `ke_user_log` VALUES ('5708', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-29 15:38:21', 'index');
+INSERT INTO `ke_user_log` VALUES ('5709', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-04-29 15:38:29', 'edit');
+INSERT INTO `ke_user_log` VALUES ('5710', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 15:40:00', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5711', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-04-29 15:40:00', 'save');
+INSERT INTO `ke_user_log` VALUES ('5712', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-29 15:40:01', 'index');
+INSERT INTO `ke_user_log` VALUES ('5713', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-04-29 15:40:41', 'edit');
+INSERT INTO `ke_user_log` VALUES ('5714', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-29 15:40:44', 'index');
+INSERT INTO `ke_user_log` VALUES ('5715', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-04-29 15:40:45', 'edit');
+INSERT INTO `ke_user_log` VALUES ('5716', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-29 15:40:46', 'index');
+INSERT INTO `ke_user_log` VALUES ('5717', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-04-29 15:40:48', 'edit');
+INSERT INTO `ke_user_log` VALUES ('5718', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-29 15:40:50', 'index');
+INSERT INTO `ke_user_log` VALUES ('5719', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-04-29 15:40:52', 'edit');
+INSERT INTO `ke_user_log` VALUES ('5720', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 16:15:40', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5721', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 16:41:15', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5722', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-29 17:32:17', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5723', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 08:35:36', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5724', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 08:38:47', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5725', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 08:40:48', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5726', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 08:48:46', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5727', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 08:51:27', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5728', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 08:53:01', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5729', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 08:54:24', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5730', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 08:58:28', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5731', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 08:59:27', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5732', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 08:59:58', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5733', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 09:01:37', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5734', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 09:03:32', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5735', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 09:13:13', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5736', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 09:14:02', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5737', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 09:29:14', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5738', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 09:29:42', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5739', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 09:30:08', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5740', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 09:33:18', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5741', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 09:35:37', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5742', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 09:43:39', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5743', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 09:51:42', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5744', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 10:02:18', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5745', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 10:04:11', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5746', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 10:13:15', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5747', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 10:15:28', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5748', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 10:23:23', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5749', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 10:29:15', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5750', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 10:30:37', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5751', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 10:35:23', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5752', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 10:37:28', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5753', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 10:40:39', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5754', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 10:43:04', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5755', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 10:53:19', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5756', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 10:57:42', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5757', '5', '/admin', '0:0:0:0:0:0:0:1', '2017-04-30 10:57:45', 'index');
+INSERT INTO `ke_user_log` VALUES ('5758', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-30 10:57:48', 'index');
+INSERT INTO `ke_user_log` VALUES ('5759', '5', '/admin/knfile', '0:0:0:0:0:0:0:1', '2017-04-30 10:57:49', 'index');
+INSERT INTO `ke_user_log` VALUES ('5760', '5', '/admin/knform', '0:0:0:0:0:0:0:1', '2017-04-30 10:57:50', 'index');
+INSERT INTO `ke_user_log` VALUES ('5761', '5', '/admin/knmole', '0:0:0:0:0:0:0:1', '2017-04-30 10:57:52', 'index');
+INSERT INTO `ke_user_log` VALUES ('5762', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-30 10:57:58', 'index');
+INSERT INTO `ke_user_log` VALUES ('5763', '5', '/admin/knentry/edit', '0:0:0:0:0:0:0:1', '2017-04-30 10:58:00', 'edit');
+INSERT INTO `ke_user_log` VALUES ('5764', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 11:08:47', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5765', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-04-30 11:08:47', 'save');
+INSERT INTO `ke_user_log` VALUES ('5766', '5', '/admin/knentry', '0:0:0:0:0:0:0:1', '2017-04-30 11:08:49', 'index');
+INSERT INTO `ke_user_log` VALUES ('5767', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 11:10:53', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5768', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-30 11:10:53', 'add');
+INSERT INTO `ke_user_log` VALUES ('5769', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 11:14:29', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5770', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-04-30 11:14:29', 'save');
+INSERT INTO `ke_user_log` VALUES ('5771', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-30 11:14:50', 'add');
+INSERT INTO `ke_user_log` VALUES ('5772', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 11:18:41', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5773', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-04-30 11:18:41', 'save');
+INSERT INTO `ke_user_log` VALUES ('5774', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 11:21:20', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5775', '5', '/admin/knentry/add', '0:0:0:0:0:0:0:1', '2017-04-30 11:21:25', 'add');
+INSERT INTO `ke_user_log` VALUES ('5776', '5', '用户登录', '0:0:0:0:0:0:0:1', '2017-04-30 11:27:57', 'ke_user_log');
+INSERT INTO `ke_user_log` VALUES ('5777', '5', '/admin/knentry/save', '0:0:0:0:0:0:0:1', '2017-04-30 11:27:57', 'save');
 
 -- ----------------------------
 -- Table structure for `kn_entry`
@@ -6931,19 +7164,24 @@ CREATE TABLE `kn_entry` (
   `knen_last_ip` varchar(45) DEFAULT NULL COMMENT '最后修改IP\n',
   `knen_secu_id` int(11) DEFAULT '1' COMMENT '密级',
   `knen_text_type` varchar(255) DEFAULT 'HTML' COMMENT '词条文本语言类型：WIKI，Markdown，HTML',
+  `knen_hit` int(11) DEFAULT '0' COMMENT '浏览次数',
   PRIMARY KEY (`id`),
   KEY `fk_knen_kn_tree` (`knen_kntr_id`),
   CONSTRAINT `fk_knen_kn_tree` FOREIGN KEY (`knen_kntr_id`) REFERENCES `kn_tree` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='存放词条正文';
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='存放词条正文';
 
 -- ----------------------------
 -- Records of kn_entry
 -- ----------------------------
-INSERT INTO `kn_entry` VALUES ('6', '炸药', null, '<p>&nbsp; &nbsp; &nbsp; &nbsp; 炸药是一种相对不稳定的物质，在外界能量的作用下，能够自行发生急剧的化学变化，在极短的时间内突然释放出大量的能量，产生的爆炸产物快速向周围膨胀，产生强冲击波，造成对周围介质的破坏。</p><p>&nbsp; &nbsp; &nbsp; &nbsp; 广义上，炸药指能发生化学爆炸的物质，包括[[化合物]]和[[混合物]]。[[火药]]、[[烟火剂]]、[[起爆药]]都属于炸药的范畴。但是技术上只将用于爆破目的的物质叫做炸药，又叫[[猛炸药]]，这是炸药的侠义概念。</p><p>&nbsp; &nbsp; &nbsp; &nbsp; 炸药因其组成、物理性能、化学性能和爆炸性能的不同可分为很多种。通常有两种分类方法，一是按炸药的化学组分分类，一是按炸药的用途分类。</p><p><strong>发展历史</strong></p><p>&nbsp; &nbsp; &nbsp; &nbsp; 黑火药为中国古代四大发明之一，是现代炸药的始祖，它是由硝石（硝酸钾）、硫磺和木炭组成的一种化合物。约在10世纪初，黑火药开始步入军事应用，使武器由冷兵器逐渐转变为热兵器，这是兵器史上一个重要里程碑，为现代武器的发展奠定了初步基础。</p>', '1', '2017-03-28 08:08:09', '2017-03-28 08:08:09', '9', '猛炸药,火药,烟火剂,起爆药', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML');
-INSERT INTO `kn_entry` VALUES ('7', '单质炸药', null, '<p>单质炸药是只含有一种化合物的炸药，在他们的分子内含有爆炸性基团，期中最重要的是硝基（—NO<sub>2</sub>）。根据硝基基团的连接方式可分为有C<span style=\"font-family: 微软雅黑; font-size: 18px;\">—NO</span><sub style=\"font-family: 微软雅黑; white-space: normal;\">2</sub>、N<span style=\"font-family: 微软雅黑; font-size: 18px;\">—NO</span><sub style=\"font-family: 微软雅黑; white-space: normal;\">2</sub>和O<span style=\"font-family: 微软雅黑; font-size: 18px;\">—NO</span><sub style=\"font-family: 微软雅黑; white-space: normal;\">2</sub>，分别形成了硝基化合物、硝铵和硝酸酯三类最重要的单质炸药。</p><p><strong>硝基化合物炸药</strong></p><p>目前用作炸药的硝基化合物主要是芳香族多硝基化合物。最常用的是以梯恩梯（TNT）为代表的单碳环多硝基化合物。此类扎奥的感度和能量大多数低于硝铵和硝酸酯类炸药，但其制造工艺成熟，原料廉价易得，因而被广泛应用。可用作炸药的脂肪族多硝基化合物主要有硝防系化合物，虽然其机械感度较高，但它们氧平衡较好，爆速和爆压较高，有的已获得实际应用。</p><p><br/></p><p><br/></p>', '4', '2017-02-11 20:25:35', '2017-02-11 20:25:35', '9', '单质炸药,硝基化合物', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML');
-INSERT INTO `kn_entry` VALUES ('8', '静电势', null, '<p>分子中心的原子核和核外电子在其周围空间某点上的静电势，取决于分子固有的结构和电荷分布，且有分子本身的性质决定，可以采用他来描述分子的性质。</p><p><img class=\"kfformula\" src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAacAAABDCAYAAAA4Tcq4AAAWNklEQVR4Xu3dBdAtzVEG4A4W3N2CS0GQQHAL7u4Q3IMEDRbcXYIGd/fg7hKCBAgOwd0JGqAearrYWlbP2bNnv+/2VN1K/nv37My+09Nv28zcJaoVAoVAIVAIFAIHQ+AuBxtPDacQKAQKgUKgEIgipxKCQqAQKAQKgcMhUOR0uCmpARUChUAhUAgUOZUMFAKFQCFQCBwOgSKnw01JDagQKAQKgUKgyKlkoBAoBAqBQuBwCBQ5HW5KakCFQCFQCBQCRU4lA4VAIVAIFAKHQ6DI6XBTUgMqBAqBQqAQKHIqGSgECoFCoBA4HAJFToebkhpQIVAIFAKFQJFTyUAhUAgUAoXA4RAocjrclNSACoFCoBAoBG4qOT1ORLxtRPxVRLxQRPxDRHxKRPzdTlP6aBHhz7+e0R/sHysi/iUi/vuM99wpP90Cc1g9ZkT8Z/tzW7G7b0Q8wQU+7lsj4hcv8N5rvnIrubrmN1y676usmZtITo8aEe8QET8REb8cEXeNiE9oCv79zySMJZP8ZBFxn4j4nIj48yU/mHjmpSLiOSPiC2+5sjwTptgS86eIiHeOiM+KiL88d2AH/T0Ced42th+JiB9eOc5niAh/nq9HcsjptVe+68iPbylXR/7Oc8d2lTVzE8npqSPiPSLioyLiHxvqrxARnxgRbxQRv3HuTEz8nsf2gRHxFRHxsA36gf8bt/d8TXlQg4hujblOGARvHhEfExH/vME8Hu0VSAUh8Z5EE57xjKiCd71V++N93vX7Ex8sGsBYfNf2zE9HxEMi4g86v3mMiHi1iHjhiHi3iHjAFQC8hFxd4TN263L3NXMUcnqi5ol8dUSwzqba00fEl0SEZx/YHnzxiPiuiHjFiLAYnjwi3iwiXiki7hkRv9pCgN8bEV8+oJA8f7+2AJ84IlibnvuyiPiP1ges3q6F4b5yQyKxSBDtFzdPcDdpuwEdXQpz7yUfFOkXbDiXR4JUaO9T24AQ1b3OHNwTtnWHmLx7rN0tIr4qIh4eER8cEb/Xwxf2bxIRn9vW2PttbCAgU54xZer/P15bx+8VEX99wlp+pmb0vlhEvHpE/E3D4S/au/w7/fWjTSdlH2fCfbif775mjkJOr9UE9ZubJSWHtKZRNCxhFl431PYiEYGQfrIpoynBeey2mH+sLa7/6g3g2RuBvXdE/O2awS14Vt7s3hFhocpBXas9TUTcPyI+4ALfeMo3XRJzCuWTI+LjL+xtz303g+r52zjmnl37798SEdaW9uER8WFrXzDwPMMQOY3ld18zIt4mIt5xIOxN3yDJL2q5q6FnzhmiORVVQcp0yNNGxEu2kPk3dULnp8iVEDyj9fMi4j1765SB+b4tCiLlgKhuY9t1zRyBnB6/KX0ekYX0OhHxAytmVtxY/oDwfW3PSiOE/g6ZILA/mXjvC7a+PyIi/q33HJwI5N+3/NCK4S16lHBbUKz4n130i+0fkhiWs3uJBUS+fe///42XxlyPimqEqmB/jaKUp2xz/jMR8ZEXAJW3I//Em9EQw9r8U39YmYtCfP0mH/yhEfH9Iwr6pSPiS5sxIOz3Wxt/s/Vu/SLPPx1596lyhUh5e+/UCKr/euFO0RyphreY6H/jT979dbutmSOQE8vxSVroTd7FQiW4S3IBFCp3nWKhYFRhdRviEmKQ0HvDiPj1kalEkCzLzx5ZME8aEZ/RnrlUTsukP1VEfPSVFKXQqMIMYRtEfu3wxB6YP1dEfEgrcFH5uWejyFn5vBn50kuQk+8R2vqF9mHmlpd2qapWc8aI+7hOPjgxFWYTutbeeqOcbX++WPbC8UhC6H2onSJXqtV42e8SEQh2yDOiw/Qp/JfphT3laa++dlsz1yanTEpKiKqcQhAEV5HAnGucxQQKJD59pNpNvJlXJWTGI1Dh128ZS/X3Y7kkipu7jjSzCGNrYXieiPigZpltHTacG6tFneRI+I5ATntgTj7InspLuco9G0+dInuNJuuXIiffhAB5NBqPR3TiEg2eDKzf7L2ccSgchijfsoXHLtF/em4v28L8Q4Ubp8gVHUM3KOR405ZP648/c208KHP685f4wAO8c7c1c21yermIEM5Li8qC/YaI+O6BuG5/XsSAWYHIh8ek8AHBdQWSMLHiWHMIT4iv3561WUQW71iui0tv0SHPS4V/eHmf35SIEvm9WpKzPoVVLd4jkNMemPt28y4ERHnu1XjqjJ1vbMTIaLokOfku4TxWv2Y9fNpOH8sAVb3HQBQS49Vcag35pNQhD2o53H4E5hS5eoGI+PYWrrSNZMhAVTEsvy0ntzTys9MUbNrNbmvmmuSkUkqFnIq7P27w5Z6lN2j7KcbyL2LLL9MEQX7IdyhJ/c6I+O3eVEjwi0ML/2X1Uj6iP2EdhRgPHplC1hjFISSoem+sWYSq+VQKsbSQLMX3h50feJfCDTH5/Ob8ZwUZPMCvi4jv21Scpl/GY1M4Yh5UV82Rk3kz1qmmmMQC7odZ8zeP0qxoe2Ye2kqKJZspFL9dirn5e90WHlOWbB7NdX+jKNL9nYj4lYFByw88RysEeeQOuJNVfaogVcnGIp8iJ88jMyHsqQZrxtWY4pd/Yrhlebn806U31BqzAiIGonym0NiYTGwFvTyeEDwdghC70ZClctUfi/mSK6NLhsLu5uczI4JeulTIcit8bsyauSY5qVATQmJpdBeUvxd6+Ppm+fSLE3gYrNx+aIJiI4z9kBgvwL4kXk/f8xEbvnuzIscUE2WM1BDft41IiLAF4aTkPMNjU7X0a61qKTd7+l5/z5Ls95dennDAWLx8KwHN9yBUVp7qKWO0+MbICQ4UjYpCrv1UU26LeFQ+9huFxXIXBmGcsGxVVckVsOZtJViCubFTFPohK+Tk5Vtn5CCT7Txe3zi2p8l8vOoCT30r7OVeeDCMAYQxRU4wIntLwnDkU7Xq1MZiBt0PtQ9BTAjqUvmnS5eM9+eDTJJPRUs/3tlm0t37uESu+u/tRl8YOX0doF97H5+7VeyN5bW3kp9z3nOj1sy1yAl7U3IUUj8unN4TQXj9CY9m6SSNlYCysJRMf2xE/NnEyzLRyXsayllRtr6FpyAsl2RKaJUpIxuFBqw2zxFuVvNQQw4sS2PqNkpXqeopTYhUXiX3a3XfAV+FAFnBNUZOWXjCq/GNvpUiEMYQDhTSQAJTnqV+yZsyYyFWijS9x1QaCNt7LSJKewzzDEUie6STYRayw0P2PoaI97FkbQAdqwBFxuRgyLA5Be+p3xgXDx9OZC5la8hzYvCQHwU9P9iILIsNHtE8EWHBtcqQAaAQQ2MYwucSLSvzkOC5JeNZkftJI9WsaRyaY6SfoSfy3K2um1vLQzgooKCn7tFIiAeukVF5bNsvGHcI8dJe4TnzdOPWzLXISVz4RZvSHApDIBSVe3JRQmPnTHrGiynRzKUgCuWmQkoU7FSbE2gK0mZfoYT+OLn5lBHlR8iRwVBVYfZvMWmXzj/oQ0mwkFh33GPkZD7k9LLwxLcI0xgnS5XSRMJzRSyw4uUI7yDsbElOxmSOtClyQoQUniq3fk7BhmqhPX/sGeM1GfdYPhE5+e498my8NGPKsO0YOaV8CjULd2rGad34FqE55MtzPOUIpu7xRryyobLwcxThXGWeb7GJdUkpeW7EZhQx0vpGRp5IIbRmreU8p1FqvZHVf+8YA2NGz9A3C3sL0f9SC9uT9yQnxRGInvzAcE0ubY5wz8F/6Lc3bs1cg5xYt7wAykfMfaixSlj78ghix2OexpIJfJZGdDyarLSZ2tPUf+ccOVHaFpod8f1GyfhWFq4Q4s/N7GPai5x4Qu/e9oZ1Pdcxcnr0tvCSfCkXoTD5OvPphAvKY8qKz/0l4vf9Y6ay5N8c8WDkpKbISRGLvBeFMdTevhkeLGrvkosaa3uREwsbASKX9K6nPCfly56j8GCnktM2C8QmfKygQo6QF7W2MQIQFJIjt/57qzZXmUdekAWvbWjN9MdhbPYXqWw0r/2iJkVVvEtru0tcuceRV8obd0jz3FoewoCsMpSH0gIZ5RE5WKOn5gh3q7novufGrZlrkBNLhDusfHfK0iB0lIowRIZoTpm0FEjHjPBcKOOpPU39Pixgm2ONYyisNzcmCklIzUGcc2e5IYd/GijcmOtj7b/LPfB+WITdNpVzyueyXJdVL0SJWBgSiGpqD1jiyHPoVzyldfodTXHlsUKnYo5w5BKfro1tbEOmb/IsL1oxS1rF/v71BvBZgrN8G2+k60UyBoSXvqfnLUyRU7cvVq88JTKi0HkFlHH/pIIl48tnsrxcxetWhRFLKvOUWisnF7ru55P744cbz4Txh2Csw+45fFngIArT32Sf5MQwzEjE2rWc7xf5GMo3GW8WXCl0WporniNc70V8IgO8wbVN/lG4No9YWvL7LdbMkn4WP7M3OZlsQibpPbeZNStgeCZrrJL+x2cVHOWDFC0Oben5eBlykkgeKkWfA9ukU0xOsJiy4LMfRQRLhXyu76F/hyulL9+DCLuN0oOPikEkIqTU3//j3xV/mEdzSAkIDfLEpuY0CUiotp9Ty6IVhACnczHP42kQ6JwRpG9H3Jyj6Ofmwf4eZADLrkHmO20OF0FAZpQ1K72fAxV+5XnnGM8ds0IM8syL48Fs0ZZU5tE35ESec4mMi3AImVt3quUYL13ZSbJJ8upeYZNHlyGNLGJYK1e5qffZmmHb3+LR3Uc5tjl3LeFuMRenvONoa+Z/wwV7NjkHLjDltqRs14Jk3RPIoQq3JWPvWj8SzCySqT1NQ+9kHVkAp+yFQU5yLA67HAtj6jMFXR99D+1SBRH9b13iOdmsayGm9+P75JHmNh7KtzBKzGm3VD4VxjP3jn05B3MLjdJldc8dByV3JU+1R56vj/cSzylD3Igt5Q82yL7v7S1ZD57hKSmCmTrAdem7PLe0Mo/cWINkaC5UTy54iowZFbjIzOZeYfIlYVHzas0JI3dPRF8jV2P5psQmjywSgl16I8Ic4a7BfctnD7dm9iQnJMFFpZjmBDNBZ7lYkDbqzin3qYnilgupCYmcUgFI8OS/MrG6Rigob9cDWBRThKxsmCX7PgN7tdb0d86zc+RkPhQyqEzK8+h8n/8eC3sYTxoIcOQddcNIvDXHRiG7TP77zTmYdwtRpk70yDJhuZxTvOJzsPbbJeRka4XqPko2idY8vfLEaQVT40pPSbXkFo0OmTvMFdG8SluDvmFsI2t3PIxYWwyM93HbZvusEk0PKefPf3fXV8qpmwr6p86vkas0qBjHQ+s3/x3RZ1jRt9rnmFV93W9aQrhbzMkp7zjcmtmTnHw8S40ntMRrSoAJqX0EwkinHtCZYSOl3G7MXdO/cZxznpTFIEQ2tkcqv/OUY1VOEcKx3ySBKJkdq1wTXqIsKJr07iTnhQGFXMYIOMMviEjxhLyB8JYiASFBnlf/0N5zMBfSYUwg+6km7ybsx2va81SOHFMei6NUfMhzy4S7sJJCkTz/LzeF9r3QOXkQWrQvTM5xq/1NmduRU3WGX796kELOqyuMb8n9TchFvkWOzvuQkM3tCnP6Jf+5FYCnJFSdJdPyUEPXcSyVq27EZex0mTwVwjhzzfQrMtcS7twcXurfD7dm9iKnrNQS3jq1UYbix1MXnY29mwALB5y63+LUU8OzeEA4a+qsrcTnUqeeT2Fu4fNmkJLcnvusEAXvtpv/oBgUkvBiKZjc7EyRCNNSIoyIoSs/Mjxiv4gKO8UpCgeERfQxlKs6FXPfap4VQcwZBLwSoTG5nCUHDZ8qu/3f2WNH4enfHUFOy5e4d4KF/1X2rKXnoEzZMV2Zr7I9QrgLoSH2JY2nhJwQxVbEtKTftc/kXjihuG74d8yr97yiDrqBR87gMJe8zSFZnJOrvFBREQois4blAM3NH/WuAUG8ijvkxcybxoCwPaV/5c4awl2L2RbPH27N7EVOW4B37XfwGizsNZWDLGOELBw4VTZrIXhOufBUXuraGJza/1i+ae59p2Aud6fgQ6hwyiBIw4FCU4Rxm1vejMtjOrcyTzFFvu8SmKlko/DlmLvkIjTPiELq/SPK1o7jFLla20f3+bWEe05fp/z2kGumyGn5VLJ8LBi71OcqDfOtS0N1QgJ5lP+ajXzLR3+9JzM8Yl/U0qRxjvYUzIWZ5Bd5d1P3d3lOfk/oZ+9T4PecDUSiMk95+7l3ORk370to95QIxtx350kkwpz9sy6tEcbbOZW758jV3Nin/n0Pwj1nfIdcM0VO66ZUtZE/lN+SUyu4yvYBTd3RJO8iHOZEg+4tvutGdtynp/Y3LRn1WszlAVjYU6XhlCDMFWB0izCWjOcmPbN1ybjQoLwxwtu6OZuOx4R8VNPaWGt/IONGGFO/iqIYFMKcQwUHa8a0Vq7WvLv77F6Ee+r4/O6Qa6bIad2UwktYQZMrmfJy8oIyC2nslPG8z8rBtA9bN5Qb83Tmm+QATrlIcQ3mQBH+kc8aK/tf+74bA/TAQHlKwnjnlowjI8VIwoI2d261N+qa2O4hB3sT7ql4HnLNFDmtn06WkHJ0ey4eMvFz5CTZrrhg6Pwzx+ogOgUCS0vr14/2+r9ATvJ0QqI/deJwlmIOU9a3jcxjeQmFHwoxbIjuJ61PHN4hf4ZAVNCdQkyZVxKOQkjd442EWo9cULFmMpbK1Zp33rRnD7tmipxumijVeAuBeQQQUv/usvlfzT/hlIat9kfN91ZP3NEIFDnd0dNfH39LEUBOvJ+tmxD1udV+W4+p3ndLEShyuqUTW59VCBQChcBNRqDI6SbPXo29ECgECoFbikCR0y2d2PqsQuAEBNz549ggtwn/7gm/r58UApshUOS0GZT1okLgRiOgck1Vpc26W2x0vdFg1OCvj0CR0/XnoEZQCBwBAVc5uHHWIbMOlO3f43WEMdYY7iAEipzuoMmuTy0ERhCwGfx+7ZZem6UdRvugQqsQuCYCRU7XRL/6LgSOgYCDed0t9dB2krujn65xv9Ux0KhRHAKBIqdDTEMNohC4GgJuAc5Nu3ldinPtnOhRrRC4GgJFTleDvjouBK6OQP8qh7z80H1Ebn+tVghcDYEip6tBXx0XAldHwJl5TsN3iPEjIsK9Pq6lcA+Wm6fzOvSrD7QGcOchUOR05815fXEhAAGl426HVviQV9S72TXP5Ju6cqQQLAQujkCR08Uhrg4KgUMioHTcZZgPiIhHthHmNS93i4h73/JLGA85KTWo/0OgyKmkoRC48xDIe8QeOHCj7f0j4l7tYr/bePnlnTfbN/SLi5xu6MTVsAuBExDIW2XvExH3bLcFuwjTvVZ3bbc8yzXdvV3a6N+mrro/YQj1k0JgGQJFTstwqqcKgUKgECgEdkSgyGlHsKurQqAQKAQKgWUIFDktw6meKgQKgUKgENgRgSKnHcGurgqBQqAQKASWIVDktAyneqoQKAQKgUJgRwSKnHYEu7oqBAqBQqAQWIZAkdMynOqpQqAQKAQKgR0RKHLaEezqqhAoBAqBQmAZAkVOy3CqpwqBQqAQKAR2RKDIaUewq6tCoBAoBAqBZQgUOS3DqZ4qBAqBQqAQ2BGBIqcdwa6uCoFCoBAoBJYh8D8pJiqPmzS2UwAAAABJRU5ErkJggg==\" data-latex=\"{\\Delta }^{2}V(\\gamma )=4\\pi \\rho (\\gamma )-4\\pi \\sum _{A} {{Z}_{A}}\\delta ({R}_{A}-\\gamma )\"/></p>', '62', '2017-02-12 19:04:47', '2017-02-12 19:04:47', '9', '静电势,感度', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML');
-INSERT INTO `kn_entry` VALUES ('9', '最小键级法', null, '<p>所为的最小键级法师用化合物体系中最弱键级来判定感°</p><p><br/></p>', '62', '2017-02-14 09:19:38', '2017-02-14 09:19:38', '9', '最小键级法,感度', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML');
-INSERT INTO `kn_entry` VALUES ('10', '烟火剂', '炸药', '<p>发大水</p>', '4', '2017-04-22 10:21:37', '2017-04-22 10:21:37', '9', '烟火剂', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML');
+INSERT INTO `kn_entry` VALUES ('6', '含能材料', '炸药', '\n<p>        <strong>含能材料</strong>是研究发射枪、 炮弹丸、火箭和各种炮弹装药及爆破能源的有机、<a href=\"/kn/entry/%E9%AB%98%E8%81%9A%E7%89%A9\" title=\"高聚物\">高聚物</a>材料的科学。火药、<a href=\"/kn/entry/%E5%9B%BA%E4%BD%93%E6%8E%A8%E8%BF%9B%E5%89%82\" title=\"固体推进剂\">固体推进剂</a>和炸药学科的总称。军事化学学科的分支。以无外界供氧时受到激发 能作用后，能够瞬时将物系的化学能变成热能，同时 产生大量气体的材料体系为研究对象。用以保障军事与航天事业取得优质化学能源材料与安全可靠的使用 效果。</p>\n<p>        <a href=\"/kn/entry/%E9%BB%91%E7%81%AB%E8%8D%AF\" title=\"黑火药\">黑火药</a>是中国古代四大发明之一，是第一代军用含能材料。中国在世界上最早 (10世纪) 将火炸药 作为能源材料用于军事，13世纪传入阿拉伯和欧 洲。直至19世纪末，黑火药一直是火炸药的唯一品 种，不仅作为火药用于发射枪、炮弹丸，也作为炸药 装填炮弹或用于爆破。1884年法国维埃耶 (P. Vielle) 发明了单基火药，瑞典诺贝尔 (A.Nobel) 相继发明了<a href=\"/kn/entry/%E5%8F%8C%E5%9F%BA%E7%81%AB%E8%8D%AF\" title=\"双基火药\">双基火药</a>，1937年德国创制了三基火药。1940年美国开创了一类复合火药作为大型子弹的推进剂，对导弹武器和航天事业的发展起了推进作 用。1863年德国维尔布兰德 (J.Wilbrand) 发明<a href=\"/kn/entry/%E6%A2%AF%E6%81%A9%E6%A2%AF\" title=\"梯恩梯\">梯恩梯</a>炸药。1894年托伦斯 (B.Tollens) 制出<a href=\"/kn/entry/%E5%A4%AA%E5%AE%89\" title=\"太安\">太安</a>， 1920年赫尔茨 (G.C.Herz) 提出<a href=\"/kn/entry/%E9%BB%91%E7%B4%A2%E4%BB%8A\" title=\"黑索今\">黑索今</a>为高能炸 药，1941年发现威力更大的<a href=\"/kn/entry/%E5%A5%A5%E5%85%8B%E6%89%98%E4%BB%8A\" title=\"奥克托今\">奥克托今</a>。两次世界大 战加速了火炸药学科的发展，分别形成了独立学科。 战后至今，特别是导弹武器，航天事业和高科学技术 的发展，促进了火炸药学科向高层次学科发展并形成 含能材料学科。炸药是以有机物为基材的爆炸反应物系的能源材料，火药是以高聚物为基材的燃烧反应物 系的能源材料 (也能转为爆炸反应)，固体推进剂与火药是相同物系，不同点是在高聚物体系中加入数量 可观的无机氧化剂与燃烧剂，作为推动火箭运动的能 源材料。</p>\n<p>        含能材料学科的主要研究内容：①研究探讨<a href=\"/kn/entry/%E9%AB%98%E8%81%9A%E7%89%A9\" title=\"高聚物\">高聚物</a>、有机物系能源材料的燃烧爆炸反应规律与理论， 以及<a href=\"/kn/entry/%E7%87%83%E7%83%A7%E7%90%86%E8%AE%BA\" title=\"燃烧理论\">燃烧理论</a>、<a href=\"/kn/entry/%E7%88%86%E7%82%B8%E7%90%86%E8%AE%BA\" title=\"爆炸理论\">爆炸理论</a>、<a href=\"/kn/entry/%E6%B5%81%E5%8F%98%E5%AD%A6\" title=\"流变学\">流变学</a>、爆炸物系热分解 理论;②研究探讨高能优质含能材料的结构、组成与 性能的关系、<a href=\"/kn/entry/%E5%88%86%E5%AD%90%E8%AE%BE%E8%AE%A1\" title=\"分子设计\">分子设计</a>、<a href=\"/kn/entry/%E9%85%8D%E6%96%B9%E8%AE%BE%E8%AE%A1\" title=\"配方设计\">配方设计</a>、<a href=\"/kn/entry/%E5%90%88%E6%88%90%E5%8C%96%E5%AD%A6%E4%B8%8E%E5%B7%A5%E8%89%BA\" title=\"合成化学与工艺\">合成化学与工艺</a>理论;③分子结构与性能分析技术、军事应用性能分 析技术、表界面分析技术及电子计算技术应用研究; ④含能材料生产、使用、贮运安全技术及自动化安全 技术研究。</p>', '15', '2017-04-30 11:08:47', '2017-04-30 11:08:47', '9', '黑火药,炸药,爆破能源,军事化学', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML', '2');
+INSERT INTO `kn_entry` VALUES ('7', '单质炸药', null, '\n<p>        单质炸药是只含有一种化合物的炸药，在他们的分子内含有爆炸性基团，期中最重要的是<a href=\"/kn/entry/%E7%A1%9D%E5%9F%BA\" title=\"硝基\">硝基</a>（—NO<sub>2</sub>）。根据硝基基团的连接方式可分为有C<span>—NO</span><sub>2</sub>、N<span>—NO</span><sub>2</sub>和O<span>—NO</span><sub>2</sub>，分别形成了<a href=\"/kn/entry/%E7%A1%9D%E5%9F%BA%E5%8C%96%E5%90%88%E7%89%A9\" title=\"硝基化合物\">硝基化合物</a>、<a href=\"/kn/entry/%E7%A1%9D%E9%93%B5\" title=\"硝铵\">硝铵</a>和<a href=\"/kn/entry/%E7%A1%9D%E9%85%B8%E9%85%AF\" title=\"硝酸酯\">硝酸酯</a>三类最重要的单质炸药。</p>\n<p><strong>硝基化合物炸药</strong></p>\n<p>        目前用作炸药的硝基化合物主要是芳香族多硝基化合物。最常用的是以<a href=\"/kn/entry/%E6%A2%AF%E6%81%A9%E6%A2%AF\" title=\"梯恩梯\">梯恩梯</a>（<a href=\"/kn/entry/TNT\" title=\"TNT\">TNT</a>）为代表的单碳环多硝基化合物。此类扎奥的感度和能量大多数低于<a href=\"/kn/entry/%E7%A1%9D%E9%93%B5\" title=\"硝铵\">硝铵</a>和<a href=\"/kn/entry/%E7%A1%9D%E9%85%B8%E9%85%AF\" title=\"硝酸酯\">硝酸酯</a>类炸药，但其制造工艺成熟，原料廉价易得，因而被广泛应用。可用作炸药的脂肪族多硝基化合物主要有硝防系化合物，虽然其机械<a href=\"/kn/entry/%E6%84%9F%E5%BA%A6\" title=\"感度\">感度</a>较高，但它们氧平衡较好，<a href=\"/kn/entry/%E7%88%86%E9%80%9F\" title=\"爆速\">爆速</a>和<a href=\"/kn/entry/%E7%88%86%E5%8E%8B\" title=\"爆压\">爆压</a>较高，有的已获得实际应用。</p>\n<p><br/></p>\n<p><br/></p>', '4', '2017-04-29 15:40:00', '2017-04-29 15:40:00', '9', '单质炸药,硝基化合物', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML', '4');
+INSERT INTO `kn_entry` VALUES ('8', '静电势', null, '<p>分子中心的原子核和核外电子在其周围空间某点上的静电势，取决于分子固有的结构和电荷分布，且有分子本身的性质决定，可以采用他来描述分子的性质。</p><p><img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"{\\Delta }^{2}V(\\gamma )=4\\pi \\rho (\\gamma )-4\\pi \\sum _{A} {{Z}_{A}}\\delta ({R}_{A}-\\gamma )\"/></p>', '62', '2017-02-12 19:04:47', '2017-02-12 19:04:47', '9', '静电势,感度', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML', '0');
+INSERT INTO `kn_entry` VALUES ('9', '最小键级法', null, '<p>所为的最小键级法师用化合物体系中最弱键级来判定感°</p><p><br/></p>', '62', '2017-02-14 09:19:38', '2017-02-14 09:19:38', '9', '最小键级法,感度', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML', '0');
+INSERT INTO `kn_entry` VALUES ('10', '烟火剂', '炸药', '<p>发大水</p>', '4', '2017-04-22 10:21:37', '2017-04-22 10:21:37', '9', '烟火剂', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML', '0');
+INSERT INTO `kn_entry` VALUES ('11', '起爆药', null, '<p>fdasfdafdsafd</p>', '4', '2017-04-22 19:30:38', '2017-04-22 19:30:38', '0', '炸药', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML', '0');
+INSERT INTO `kn_entry` VALUES ('12', '高聚物', null, '\n<p>        一般说来，是指分子量在10,000以上， 主要以<a href=\"/kn/entry/%E5%85%B1%E4%BB%B7%E9%94%AE\" title=\"共价键\">共价键</a>连接的化合物。</p>\n<p>        从不同角度可将高聚物分成许多类型。根据性质和用途，分为纤维、橡胶和塑料等；根据合成反应的名称，分为加成聚合物(如聚乙烯、聚丁烯等)、缩合聚合物(如聚酯、聚酰胺等)、加成缩合聚合物(如酚醛树脂等)、聚加成聚合物(如聚氨酯等)和开环聚合物(如聚醚等)等。</p>\n<p>        高聚物的最重要特点是分子量很大及分子量的不均一性，即多分散性，这是与低分子化合物的区别。它的结构主要特点是：(1)高聚物链是由很多(103～105数量级)的结构单元组成。(2)高聚物的主链有一定的内旋转自由度，可以弯曲；使高分子链具有柔性。由于分子的热运动，柔性链的形态可随时改变，呈现无数的构象。(3)高聚物结构单元间的范德华(Van der Wanls)力及分子链之间的交联结构直接影响它的聚集态结构和高聚物材料的力学性能。(4)高聚物的分子聚集态结构有晶态和非晶态。它的晶态结构比小分子晶态的有序程度低，但它的非晶态结构却比小分子液态的有序程度高。高聚物分子<a href=\"/kn/entry/%E8%81%9A%E9%9B%86%E6%80%81%E7%BB%93%E6%9E%84\" title=\"聚集态结构\">聚集态结构</a>是决定高聚物材料使用性能的主要因素。</p>\n<p>        由于高聚物有良好的物理力学性能，故高聚物材料应用广泛，例如塑料、医用材料、绝缘材料、包装材料、建筑材料、导电材料和耐热材料等。</p>\n<p><br/></p>', '15', '2017-04-30 11:14:29', '2017-04-30 11:14:29', '0', '分子量', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML', '2');
+INSERT INTO `kn_entry` VALUES ('13', '固体推进剂', '固体火药', '\n<p>        亦称“固体火箭燃料”、 “固体火箭推进剂”。固态的化学火箭推进剂。通常制成一定几何形状的药柱置于固体火箭发动机燃烧室中。由氧化剂、燃烧剂和添加剂组成。常用的氧化剂有过氯酸铵、过氯酸钾和硝酸铵、硝酸钾、硝化甘油等。常用的<a href=\"/kn/entry/%E7%87%83%E7%83%A7%E5%89%82\" title=\"燃烧剂\">燃烧剂</a>有烃及其衍生物和纤维素及其衍生物。添加剂含量少、种类多、功用各异，用于调节燃速，改善燃烧性能、贮存性能、力学性能、工艺性能等。</p>\n<p>    又称固体火箭推进剂，固体火药。固体火箭发动机的能源和工质，是 一种由<a href=\"/kn/entry/%E6%B0%A7%E5%8C%96%E5%89%82\" title=\"氧化剂\">氧化剂</a>和<a href=\"/kn/entry/%E8%BF%98%E5%8E%9F%E5%89%82\" title=\"还原剂\">还原剂</a>以化学方法或物理方 法结合在一起的固体化合物或混合物。在常 温下是稳定的，能够燃烧并产生气体的致密 材料。燃烧放热为发动提供能源，产生气体 工质将热能变成喷射流的动能。常用的组分 有粘合剂、固化剂、链增长剂、增塑剂、氧 化剂、能量添加剂、表面活性剂、固化催化 剂、燃速调节剂、防老剂、稀释剂等。有的 由于固体推进剂不同，组分可多可少。有时 同一组分兼有双重或多重作用，既是固化催 化剂，又是燃速调节剂和链增长剂; 既是氧 化剂，又是粘合剂。按其组分之间有无物相 界面，可分为均质推进剂和异质推进剂; 按 其对热的作用可分为热塑性推进剂和热固性 推进剂。作为火箭推进剂，是一种应用广泛 的理想推进剂。固体推进剂药柱因超期或受 外界环境的影响，促使其化学安定度降低，出 现分解、降解、晶析、汗析、迁移、裂纹等 现象。遇有摩擦、撞击、静电感应、高温或 明火，有着火、爆炸危险。在贮存、运输、使 用时要严禁摩擦、撞击，远离火源电源、点 火器及起爆器材。成品与残次品和废药柱不 能混存。发生火灾时应选用水和干粉、卤代烷等灭火剂，不准使用二氧化碳灭火。</p>\n<p><br/></p>', '15', '2017-04-30 11:18:41', '2017-04-30 11:18:41', '0', '火箭燃料,固态', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML', '1');
+INSERT INTO `kn_entry` VALUES ('14', '黑火药', null, '\n<p>        黑火药是我国古代的四大发明之一，距今已有1000多年的历史,黑火药是在适当的外界能量作用下，自身能进行迅速而有规律的燃烧，同时生成大量高温燃气的物质。在军事上主要用作枪弹、炮弹的<a href=\"/kn/entry/%E5%8F%91%E5%B0%84%E8%8D%AF\" title=\"发射药\">发射药</a>和火箭的<a href=\"/kn/entry/%E6%8E%A8%E8%BF%9B%E5%89%82\" title=\"推进剂\">推进剂</a>及其他驱动装置的能源，是弹药的重要组成部分。火药最初主要用于医药,这从其命名的&#34;药&#34;字即可见一斑,后来火药传至欧洲才用于军事。</p><h3>反应原理</h3>\n<p>        黑火药着火时，发生如下化学反应：</p>\n<p>2KNO<sub>3</sub>+ S + 3C ==== K<sup>2</sup>S + N<sup>2</sup> ↑+ 3CO<sup>2</sup>↑</p>\n<p>        硝酸钾分解放出的氧气，使木炭和硫磺剧烈燃烧，瞬间产生大量的热和氮气、二氧化碳等气体。由于体积急剧膨胀，压力猛烈增大，于是发生了爆炸。据测，大约每4克黑火药着火燃烧时，可以产生280升气体，体积可膨胀近万倍。在有限的空间里，气体受热迅速膨胀引起爆炸。在爆炸时，固体生成物的微粒分散在气体里，所以产生大量的烟。由于爆炸时有K2S固体产生，往往有很多浓烟冒出，因此得名黑火药。</p>\n<p>        黑火药属民用爆炸物品,爆燃瞬间温度可达1000C以上,破坏力极强。黑火药敏感性强,易燃烧,火星即可点燃。</p>\n<p>        黑火药的燃烧的产物大部分是二氧化碳和水，还有氮氧化物，还有少量CO、K2CO3、K2SO4和K2S2等，生成物中有许多固体物质残渣。 </p><h3>黑火药的发明</h3>\n<p>        中国是最早发明火药的国家，黑色火药在晚唐（9世纪末)时候正式出现。火药是由古代黑火药的应用古代黑火药的应用古代炼丹家发明的，从战国至汉初，帝王贵族们沉醉於神仙长生不老的幻想，驱使一些方士道士炼「仙丹」，在炼制过程中逐渐发明了火药的配方。</p>\n<p>        一个由30多位文物界、勘探界专家组成的“中国古代火药原料科学考察探险队”日前结束在四川绵阳江油市老君山的考察。专家们宣布，他们发现了迄今为止我国规模最大的火药原料——硝的开采提炼基地，而这一发现将有助于揭开中国火药发明的千古之谜。</p>\n<p>        据史书记载，我国古代的炼丹家在长期的炼制丹药过程中，发现硝、硫磺和木炭的混合物能够燃烧爆炸，由此诞生了中国古代四大发明之一的火药。公元808年，唐朝炼丹家清虚子撰写了《太上圣祖金丹秘诀》，其中的“伏火矾法”是世界上关于火药的最早文字记载，中国学术界由此认为火药的发明不迟于11月底，由四川省川西北地质工程勘察院、北京华城九洲文化研究所、四川省绵阳市文物局等单位组成的“中国古代火药原料科学考察探险队”，对老君山进行了为期5天的实地考察。发现老君山地区有朝阳洞、天雨洞、高官洞等十几个人工开凿的山洞，其洞深在数百米至近十公里不等。考察队在朝阳洞等山洞中，发现了排列有序的用来生产的硝池，以及堆积如山的下脚料、废弃物和生活用的灶台等。其中烟子洞宽约60米，高达50米，在长约1公里的山洞内，人为形成了4处数百平方米的工作面，每个工作 面均有几个硝池和大大小小的灶台，洞内还散落着大量破碎的明朝以前的瓷器。</p>\n<p>        专家们通过对老君山周边环境及文化的考察，发现重华镇物产有限，交通不便，却汇集了江西、广东、福建、湖北、湖南、陕西、浙江等省的会馆，有的会馆至今保存完好。专家们一致认为，极有可能是经营硝的各省客商云集在这里，并建起了各省的会馆。在这些会馆的旁边，至今还有一条名为“火炮街”的古街，当地居民说这条街古代是经营火药原料和爆竹的。</p>\n<p>        专家们还认为，四川是中国本土教道教的发祥地，两汉前后道教炼丹盛行，火药又是道教的发明，而老君山的深山密林中至今有宋代修建的4座道教教观，这其中一定有必然的联系。而作为火药基本原料的硝、木炭、硫磺，在当地也都一应俱全，具备了火药生产的基本条件。</p>\n<p>        徐向东称，国家文物局专家组组长罗哲文在看了探险队的文字考察报告和照片后，认为“这是一个重大发现，能找到火药发明的物证的话，太令人振奋了”。国家文物局文研所所长荣大为同样认为“这是重大发现，意义深远，一定要做好保护工作”。如果经过进一步考察论证，老君山就是中国火药的发明地，并且是中国历史上规模最大的火药原料开采地，那将是中国和全世界考古界的最为重大的发现之一。</p>\n<p><br/></p>', '1', '2017-04-30 11:27:57', '2017-04-30 11:27:57', '0', '发射药,火药', '5', '5', '', '', '', '0:0:0:0:0:0:0:1', '1', 'HTML', '1');
 
 -- ----------------------------
 -- Table structure for `kn_entry_history`
@@ -7020,15 +7258,12 @@ CREATE TABLE `kn_entr_mole` (
   KEY `fk_re_mole` (`mole_id`),
   CONSTRAINT `fk_re_entry` FOREIGN KEY (`entr_id`) REFERENCES `kn_entry` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_re_mole` FOREIGN KEY (`mole_id`) REFERENCES `kn_molecular` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COMMENT='词条与分子式对应关系';
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT='词条与分子式对应关系';
 
 -- ----------------------------
 -- Records of kn_entr_mole
 -- ----------------------------
-INSERT INTO `kn_entr_mole` VALUES ('13', '7', '3');
-INSERT INTO `kn_entr_mole` VALUES ('23', '6', '4');
-INSERT INTO `kn_entr_mole` VALUES ('24', '6', '3');
-INSERT INTO `kn_entr_mole` VALUES ('25', '6', '2');
+INSERT INTO `kn_entr_mole` VALUES ('41', '7', '3');
 
 -- ----------------------------
 -- Table structure for `kn_file`
@@ -7082,6 +7317,42 @@ CREATE TABLE `kn_formula` (
 -- Records of kn_formula
 -- ----------------------------
 INSERT INTO `kn_formula` VALUES ('22', '62', '<img class=\"kfformula\" src=\"data:image/png;base64,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\" data-latex=\"{\\Delta }^{2}V(\\gamma )=4\\pi \\rho (\\gamma )-4\\pi \\sum _{A} {{Z}_{A}}\\delta ({R}_{A}-\\gamma )\">', null, null, '5', null, null, '静电势', '2017-02-12 19:04:48', '静电势,感度', null, '{\\Delta }^{2}V(\\gamma )=4\\pi \\rho (\\gamma )-4\\pi \\sum _{A} {{Z}_{A}}\\delta ({R}_{A}-\\gamma )', '1486897488038.png');
+
+-- ----------------------------
+-- Table structure for `kn_graph`
+-- ----------------------------
+DROP TABLE IF EXISTS `kn_graph`;
+CREATE TABLE `kn_graph` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `kngr_node_src` varchar(255) DEFAULT NULL COMMENT '源节点，词条本身',
+  `kngr_node_des` varchar(255) DEFAULT NULL COMMENT '目标节点，词条内链接到的词条',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT='词条之间关联形成的图';
+
+-- ----------------------------
+-- Records of kn_graph
+-- ----------------------------
+INSERT INTO `kn_graph` VALUES ('21', '含能材料', '高聚物');
+INSERT INTO `kn_graph` VALUES ('22', '含能材料', '固体推进剂');
+INSERT INTO `kn_graph` VALUES ('23', '含能材料', '黑火药');
+INSERT INTO `kn_graph` VALUES ('24', '含能材料', '双基火药');
+INSERT INTO `kn_graph` VALUES ('25', '含能材料', '梯恩梯');
+INSERT INTO `kn_graph` VALUES ('26', '含能材料', '太安');
+INSERT INTO `kn_graph` VALUES ('27', '含能材料', '黑索今');
+INSERT INTO `kn_graph` VALUES ('28', '含能材料', '奥克托今');
+INSERT INTO `kn_graph` VALUES ('29', '含能材料', '燃烧理论');
+INSERT INTO `kn_graph` VALUES ('30', '含能材料', '爆炸理论');
+INSERT INTO `kn_graph` VALUES ('31', '含能材料', '流变学');
+INSERT INTO `kn_graph` VALUES ('32', '含能材料', '分子设计');
+INSERT INTO `kn_graph` VALUES ('33', '含能材料', '配方设计');
+INSERT INTO `kn_graph` VALUES ('34', '含能材料', '合成化学与工艺');
+INSERT INTO `kn_graph` VALUES ('35', '高聚物', '共价键');
+INSERT INTO `kn_graph` VALUES ('36', '高聚物', '聚集态结构');
+INSERT INTO `kn_graph` VALUES ('37', '固体推进剂', '燃烧剂');
+INSERT INTO `kn_graph` VALUES ('38', '固体推进剂', '氧化剂');
+INSERT INTO `kn_graph` VALUES ('39', '固体推进剂', '还原剂');
+INSERT INTO `kn_graph` VALUES ('40', '黑火药', '发射药');
+INSERT INTO `kn_graph` VALUES ('41', '黑火药', '推进剂');
 
 -- ----------------------------
 -- Table structure for `kn_lang`
@@ -7142,42 +7413,20 @@ CREATE TABLE `kn_tag` (
   `tag` varchar(255) DEFAULT NULL COMMENT '标签名称',
   `num` int(11) DEFAULT NULL COMMENT '使用次数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COMMENT='标签，关键词';
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COMMENT='标签，关键词';
 
 -- ----------------------------
 -- Records of kn_tag
 -- ----------------------------
-INSERT INTO `kn_tag` VALUES ('1', '活化', '1');
-INSERT INTO `kn_tag` VALUES ('2', '氧化', '1');
-INSERT INTO `kn_tag` VALUES ('3', '分类', '1');
-INSERT INTO `kn_tag` VALUES ('4', '用途', '1');
-INSERT INTO `kn_tag` VALUES ('5', '安全', '2');
-INSERT INTO `kn_tag` VALUES ('6', '废水', '1');
-INSERT INTO `kn_tag` VALUES ('7', '策略', '1');
-INSERT INTO `kn_tag` VALUES ('8', '密度', '28');
-INSERT INTO `kn_tag` VALUES ('9', '爆轰', '28');
-INSERT INTO `kn_tag` VALUES ('10', 'CL-20', '3');
-INSERT INTO `kn_tag` VALUES ('11', '第四代', '3');
-INSERT INTO `kn_tag` VALUES ('12', '炸药', '16');
-INSERT INTO `kn_tag` VALUES ('13', 'HMX', '8');
-INSERT INTO `kn_tag` VALUES ('16', 'TNT', '2');
-INSERT INTO `kn_tag` VALUES ('17', '三硝基甲苯', '2');
-INSERT INTO `kn_tag` VALUES ('18', 'C4', '2');
-INSERT INTO `kn_tag` VALUES ('19', 'FOX-7', '1');
-INSERT INTO `kn_tag` VALUES ('20', '高能', '1');
-INSERT INTO `kn_tag` VALUES ('21', '钝感', '1');
-INSERT INTO `kn_tag` VALUES ('22', '苯并三氧化呋咱', '2');
-INSERT INTO `kn_tag` VALUES ('23', 'Benzotrifuroxan', '2');
-INSERT INTO `kn_tag` VALUES ('24', 'C6N6O6', '2');
-INSERT INTO `kn_tag` VALUES ('25', '猛炸药', '13');
-INSERT INTO `kn_tag` VALUES ('26', '火药', '13');
-INSERT INTO `kn_tag` VALUES ('27', '烟火剂', '14');
-INSERT INTO `kn_tag` VALUES ('28', '起爆药', '13');
-INSERT INTO `kn_tag` VALUES ('29', '单质炸药', '1');
-INSERT INTO `kn_tag` VALUES ('30', '硝基化合物', '1');
-INSERT INTO `kn_tag` VALUES ('31', '静电势', '2');
-INSERT INTO `kn_tag` VALUES ('32', '感度', '4');
-INSERT INTO `kn_tag` VALUES ('33', '最小键级法', '2');
+INSERT INTO `kn_tag` VALUES ('34', '黑火药', '1');
+INSERT INTO `kn_tag` VALUES ('35', '炸药', '1');
+INSERT INTO `kn_tag` VALUES ('36', '爆破能源', '1');
+INSERT INTO `kn_tag` VALUES ('37', '军事化学', '1');
+INSERT INTO `kn_tag` VALUES ('38', '分子量', '1');
+INSERT INTO `kn_tag` VALUES ('39', '火箭燃料', '1');
+INSERT INTO `kn_tag` VALUES ('40', '固态', '1');
+INSERT INTO `kn_tag` VALUES ('41', '发射药', '1');
+INSERT INTO `kn_tag` VALUES ('42', '火药', '1');
 
 -- ----------------------------
 -- Table structure for `kn_tree`

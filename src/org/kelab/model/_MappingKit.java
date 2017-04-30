@@ -49,6 +49,7 @@ public class _MappingKit {
 		arp.addMapping("kn_molecular", "id", KnMolecular.class);
 		arp.addMapping("kn_tag", "id", KnTag.class);
 		arp.addMapping("kn_lang", "id", KnLang.class);
+		arp.addMapping("kn_graph", "id", KnGraph.class);
 		arp.addMapping("em_attr_type", "id", EmAttrType.class);
 	}
 }

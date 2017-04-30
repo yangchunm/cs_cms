@@ -1,6 +1,7 @@
 package org.kelab.common;
 
 import org.kelab.index.IndexController;
+import org.kelab.kn.KnGraphController;
 import org.kelab.kn.KnIndexController;
 import org.kelab.kn.KnTreeController;
 import org.kelab.login.LoginController;
@@ -20,7 +21,7 @@ public class FrontRoutes extends Routes {
 		add("/login", LoginController.class);
 		add("/kn", KnIndexController.class,"/kn");
 		add("/kn/tree", KnTreeController.class,"/kn");
-		//add("/feedback", FeedbackController.class);
+		add("/kn/graph", KnGraphController.class,"/kn");
 		//add("/project", ProjectController.class);
 		
 		//add("/reg", RegController.class);

@@ -143,5 +143,13 @@ public abstract class BaseKnEntry<M extends BaseKnEntry<M>> extends Model<M> imp
 	public java.lang.String getKnenTextType() {
 		return get("knen_text_type");
 	}
+	
+	public void setKnenHit(java.lang.Integer knenHit) {
+		set("knen_hit", knenHit);
+	}
+
+	public java.lang.Integer getKnenHit() {
+		return get("knen_hit");
+	}
 
 }

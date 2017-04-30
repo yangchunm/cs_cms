@@ -225,7 +225,6 @@ public class StringUtils {
 	 * @param formHtml
 	 * @return
 	 */
-	
 	public static String onlyimg(String formHtml){
 		String retStr = "";
 		Document doc = Jsoup.parseBodyFragment(formHtml);
@@ -236,6 +235,11 @@ public class StringUtils {
 		return retStr;
 	}
 	
+	/**
+	 * 去掉文本中的HTML标签
+	 * @param srcHtml
+	 * @return
+	 */
 	public static String delHTML(String srcHtml){
 		String regEx_script = "<script[^>]*?>[\\s\\S]*?<\\/script>"; // 定义script的正则表达式  
 	    String regEx_style = "<style[^>]*?>[\\s\\S]*?<\\/style>"; // 定义style的正则表达式  
@@ -259,4 +263,27 @@ public class StringUtils {
         return srcHtml.trim(); // 返回文本字符串  
 	}
 	
+	/**
+	 * 从文本“[[rrr]]”中找出链接文字
+	 * @param srcTxt
+	 * @return
+	 */
+	public static List<String> findWikiLinkWord(String srcTxt){
+		List<String> rt = new ArrayList<String>();
+		while(srcTxt.indexOf("[[")>=0){
+			String target = srcTxt.substring(srcTxt.indexOf("[["));
+			rt.add(target.substring(2,target.indexOf("]]")));
+			srcTxt = target.substring(target.indexOf("]]"));
+		}
+		return rt;
+		
+	}
+	
+	public static void main(String[] args){
+		String txt ="java[[圣诞节wwd]]kjf,k[[da杨春明]]就放了多久啊ces[[测hk试发gf]]动机垃圾";
+		List<String> t = findWikiLinkWord(txt);
+		System.out.println(t);
+		
+		
+	}
 }

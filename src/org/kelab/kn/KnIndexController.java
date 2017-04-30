@@ -47,6 +47,7 @@ public class KnIndexController extends Controller{
 			knWord = java.net.URLDecoder.decode(knWord,"UTF-8");
 			KnEntry knEntry = srv.findEntryByName(knWord);
 			if(knEntry != null){
+				knEntry.set("knen_hit",knEntry.getKnenHit()+1).update();
 				knEntry.put("tagL",knEntry.getKnenTag().split(","));
 				KnTree knTree = KnTree.dao.findById(knEntry.getKnenKntrId());
 				setAttr("knEntryPath",treeSrv.findParentByTree(knTree));

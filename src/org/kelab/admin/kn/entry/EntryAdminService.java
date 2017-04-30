@@ -16,6 +16,7 @@ import org.kelab.model.KnEntrMole;
 import org.kelab.model.KnEntry;
 import org.kelab.model.KnFile;
 import org.kelab.model.KnFormula;
+import org.kelab.model.KnGraph;
 import org.kelab.model.KnMolecular;
 import org.kelab.util.Base64Utils;
 import org.kelab.util.StringUtils;
@@ -86,11 +87,13 @@ public class EntryAdminService {
 		if(currId == 0){	//新增
 			knEntr.save();
 			tagSrv.saveMutil(knEntr.getKnenTag());
+			saveWikiLinkWord(knEntr.getKnenName(),knEntr.getKnenText());
 			int lastEnId = findLastOne().getId();
 			saveEntrFile(lastEnId,fileL,formT,moleL);
 		}else{	//修改
 			knEntr.update();
 			tagSrv.saveMutil(knEntr.getKnenTag());
+			saveWikiLinkWord(knEntr.getKnenName(),knEntr.getKnenText());
 			saveEntrFile(currId,fileL,formT,moleL);
 		}
 		EntryAdminService.me.clearCache();    // 清缓存
@@ -185,6 +188,18 @@ public class EntryAdminService {
 			for(String moleId : moleIds){
 				int mid = Integer.parseInt(moleId);
 				new KnEntrMole().set("entr_id",enId).set("mole_id",mid).save();
+			}
+		}
+	}
+	
+	public void saveWikiLinkWord(String entrName,String wikiTxt){
+		List<String> linkWord = StringUtils.findWikiLinkWord(StringUtils.delHTML(wikiTxt));
+		for(String word : linkWord){
+			String sql = "select * from kn_graph where kngr_node_src = ? and kngr_node_des = ?";
+			List<KnGraph> kngrL = KnGraph.dao.find(sql,entrName,word);
+			 if(kngrL.size() == 0){
+				new KnGraph().set("kngr_node_src", entrName)
+				.set("kngr_node_des", word).save();
 			}
 		}
 	}
