@@ -14,6 +14,7 @@ import org.kelab.model.KnEntrFile;
 import org.kelab.model.KnEntrForm;
 import org.kelab.model.KnEntrMole;
 import org.kelab.model.KnEntry;
+import org.kelab.model.KnEntryHistory;
 import org.kelab.model.KnFile;
 import org.kelab.model.KnFormula;
 import org.kelab.model.KnGraph;
@@ -65,7 +66,7 @@ public class EntryAdminService {
 	
 	/**
 	 * 保存信息
-	 * @param KnFormula对象
+	 * @param 
 	 * @return 结果信息
 	 */
 	@SuppressWarnings("null")
@@ -84,18 +85,30 @@ public class EntryAdminService {
 		else if(formT == null && formL != null)
 			formT.addAll(Arrays.asList(formL));
 		knEntr.setKnenTag(knEntr.getKnenTag().replace("，", ",").replace(" ",","));
+		
+		KnEntryHistory his = new KnEntryHistory();
+		his.setKnehTime(new Date());
+		his.setKnehIp(knEntr.getKnenLastIp());
+		his.setKnehText(knEntr.getKnenText());
 		if(currId == 0){	//新增
 			knEntr.save();
 			tagSrv.saveMutil(knEntr.getKnenTag());
 			saveWikiLinkWord(knEntr.getKnenName(),knEntr.getKnenText());
 			int lastEnId = findLastOne().getId();
 			saveEntrFile(lastEnId,fileL,formT,moleL);
+			his.setKnehUserId(knEntr.getKnenCreaUserId());
+			his.setKnehOpraType(0);
+			his.setKnehKnenId(lastEnId);
 		}else{	//修改
 			knEntr.update();
 			tagSrv.saveMutil(knEntr.getKnenTag());
 			saveWikiLinkWord(knEntr.getKnenName(),knEntr.getKnenText());
 			saveEntrFile(currId,fileL,formT,moleL);
+			his.setKnehUserId(knEntr.getKnenLastUserId());
+			his.setKnehOpraType(1);
+			his.setKnehKnenId(knEntr.getId());
 		}
+		his.save();
 		EntryAdminService.me.clearCache();    // 清缓存
 		return Ret.ok();
 	}

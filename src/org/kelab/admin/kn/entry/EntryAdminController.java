@@ -91,7 +91,6 @@ public class EntryAdminController extends BaseController{
 		knEntr.setKnenCreaUserId(getLoginUserId());
 		knEntr.setKnenLastUserId(getLoginUserId());
 		knEntr.setKnenLastIp(IpKit.getRealIp(getRequest()));
-		
 		String[] knFileList = getParaValues("kn_file_list");
 		String[] knFormList = getParaValues("kn_form_list");
 		String[] knMoleList = getParaValues("kn_mole_list");
