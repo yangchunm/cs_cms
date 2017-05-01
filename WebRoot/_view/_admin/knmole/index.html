@@ -50,9 +50,10 @@
 	 		</tr>
 	 	</thead>
 	 	<tbody>
+	 		#set(initNum = (knMoleP.pageNumber -1) * comQ.pageSize)
 	 		#for(x : knMoleP.list)
 	 			<tr>	         		
-	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1)</td>
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1+initNum)</td>
 	         		<td title="#(x.knmoFile)">#(x.knmoName)</td>
 	         		<td>#(x.kntrName)</td>
 	         		<td>#(x.knmoFileType)</td>

@@ -45,9 +45,10 @@
 	 		</tr>
 	 	</thead>
 	 	<tbody>
+	 		#set(initNum = (dmALgoP.pageNumber -1) * comQ.pageSize)
 	 		#for(x : dmALgoP.list)
 	 			<tr>	         		
-	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1)</td>
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1+initNum)</td>
 	         		<td>#(x.dmalName)</td>
 	         		<td>#(x.dmacName)</td>
 	         		<td>#(x.dmalCmdPath)</td>

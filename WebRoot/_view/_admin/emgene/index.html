@@ -50,10 +50,10 @@
 	 		</tr>
 	 	</thead>
 	 	<tbody>
+	 		#set(initNum = (emGeneP.pageNumber -1) * comQ.pageSize)
 	 		#for(x : emGeneP.list)
-	 			#set(indexBase = (emGeneP.pageNumber -1 )*10)
 	 			<tr>	         		
-	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1+indexBase)</td>
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1+initNum)</td>
 	         		<td><a href="#(BASE_PATH)#(mandir)/#(currCont)/edit/#(x.id)">#(x.emgeAbbrName)</a></td>
 	         		<td>#(x.emgeZhName)</td>
 	         		<td>#(x.emgeEnName)</td>

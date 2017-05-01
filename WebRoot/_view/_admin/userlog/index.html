@@ -50,9 +50,10 @@
 	 		</tr>
 	 	</thead>
 	 	<tbody>
+	 		#set(initNum = (keUserLogP.pageNumber -1) * comQ.pageSize)
 	 		#for(x : keUserLogP.list)
 	 			<tr>	         		
-	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1)</td>
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1 + initNum)</td>
 	         		<td title="#(x.roleName)【#(x.orgaName)】#(x.secuName)">#(x.userName)（#(x.userRealName)）</td>
 	         		<td>#(x.logDesc)</td>
 	         		<td>#(x.logOptTable)</td>

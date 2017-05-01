@@ -69,9 +69,10 @@
 	 		</tr>
 	 	</thead>
 	 	<tbody>
+	 		#set(initNum = (keUserP.pageNumber -1) * comQ.pageSize)
 	 		#for(x : keUserP.list)
 	 			<tr>	         		
-	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1)</td>
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1+ initNum)</td>
 	         		<td>#(x.userName)</td>
 	         		<td>#(x.userRealName)</td>
 	         		<td>#(x.roleName)</td>

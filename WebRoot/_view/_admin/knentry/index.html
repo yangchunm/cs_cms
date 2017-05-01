@@ -50,9 +50,10 @@
 	 		</tr>
 	 	</thead>
 	 	<tbody>
+	 		#set(initNum = (knEntryP.pageNumber -1) * comQ.pageSize)
 	 		#for(x : knEntryP.list)
 	 			<tr>	         		
-	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1)</td>
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" /> #(for.index+1 + initNum)</td>
 	         		<td><a href="#(BASE_PATH)#(mandir)/#(currCont)/edit/#(x.id)">#(x.knenName)</a></td>
 	         		<td>#(x.kntrName)</td>
 	         		<td>#(x.knenTag)</td>
