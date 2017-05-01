@@ -1,0 +1,86 @@
+#set(pageTitle="知识编辑历史")
+#set(btnBar = {})
+#set(opType = ["新增","编辑","审核"])
+#set(currCont = "knhistory")
+#@adminLayout()
+#define main()
+#include("/_view/_admin/common/_button_bar.html")
+	<form class="form-inline" id="search-form" name="search-form" method="post" action="#(BASE_PATH)#(mandir)/#(currCont)">
+		<div class="form-group">
+    		<label for="comm.keyWord">词条名称</label>
+    		<input type="text" class="form-control" name="comm.keyWord" id="comm.keyWord" value="#(comQ.keyWord)" placeholder="文件名/标签/知识点">
+    		<input type="hidden" id="page" name="comm.page" value="#(comQ.page ?? "1")">
+  		</div>
+  		<div class="form-group">
+    		<label for="comm.other">用户</label>
+    		<input type="text" class="form-control" name="comm.other" id="comm.other" value="#(comQ.other)" placeholder="添加用户">
+  		</div>
+  		<div class="input-group date form_datetime" id="dateStart">
+  			<input size="8" type="text" id ="comm.start" name="comm.start" class="form-control datepick" 
+             value="#(comQ.start)" placeholder="开始时间" readonly />
+              <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+         </div>
+   			 至
+    	<div class="input-group date form_datetime"  id="dateEnd">
+            <input size="8" type="text" id ="comm.end" name="comm.end" class="form-control datepick"
+             value="#(comQ.end)" placeholder="结束时间" readonly />
+              <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+         </div>
+			    <button type="submit" id="btn-search" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> 搜索</button>
+
+			    每页
+			    <select id="comm.pageSize" name="comm.pageSize" class="form-control">
+			    	<option value="#(comQ.pageSize)">#(comQ.pageSize)</option>
+			    	<option value="10">10</option>
+			    	<option value="20">20</option>
+			    	<option value="50">50</option>
+			    	<option value="100">100</option>
+			    </select>
+			    条
+			
+		</form>
+		
+	 <table class="table table-condensed .table-hover">
+	 	<thead>
+	 		<tr>
+	 			<th>序</th><th>词条名称</th><th>编辑类型</th><th>用户</th><th>时间</th><th>操作ip</th>
+	 		</tr>
+	 	</thead>
+	 	<tbody>
+	 		#for(x : knHistP.list)
+	 			<tr>	         		
+	         		<td>#(for.index+1)</td>
+	         		<td title="#(x.knenName)">#(x.knenName)</td>
+	         		<td>#(opType[x.knehOpraType])</td>
+	         		<td title="#(x.userName)">#(x.userRealName)</td>
+	         		<td>#date(x.knehTime, "yyyy-MM-dd HH:mm")</td>
+	         		<td>#(x.knehIp)</td>
+         		</tr>
+         	#end
+        </tbody>       
+     </table>
+     
+     #if(knHistP.totalRow == 0)
+		<div class="alert alert-warning" role="alert">
+		<span class="glyphicon glyphicon-info-sign"></span> 
+		   没有满足条件的记录！
+		</div>
+	#end
+    #set(pageUrl=mandir+"/"+currCont+"/")
+    #@paginate(knHistP.pageNumber, knHistP.totalPage,knHistP.totalRow, pageUrl)
+#end
+
+#define css()
+<link rel="stylesheet" href="#(BASE_PATH)/assets/css/bootstrap-datetimepicker.min.css" type="text/css" media="screen" />
+#end
+
+#define js()
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/kn.file.js"></script>
+	<script src="#(BASE_PATH)/assets/bootstrap/moment-with-locales.js" type="text/javascript"></script>
+    <script src="#(BASE_PATH)/assets/bootstrap/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <script src="#(BASE_PATH)/assets/bootstrap/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
+#end

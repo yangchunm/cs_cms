@@ -12,7 +12,6 @@ import com.jfinal.kit.Ret;
 
 
 public class HistoryAdminController extends BaseController{
-	static TreeAdminService treeSrv = TreeAdminService.me;
 	static HistoryAdminService srv = HistoryAdminService.me;
 	Prop p = PropKit.use("config.properties");
 	
@@ -23,7 +22,7 @@ public class HistoryAdminController extends BaseController{
 		if(comQ.getPageSize() == 0)
 			comQ.setPageSize(10);
 		setAttr("comQ",comQ);
-		setAttr("knTreeL",treeSrv.findAllKnTree(0));
+		setAttr("knHistP",srv.findAllKnHistory(comQ));
 		render("index.html");
 	}
 	
