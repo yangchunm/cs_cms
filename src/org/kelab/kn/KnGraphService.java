@@ -1,6 +1,7 @@
 package org.kelab.kn;
 
-import java.util.HashSet;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import info.bliki.wiki.model.WikiModel;
 import info.bliki.wiki.model.Configuration;
@@ -35,7 +36,8 @@ public class KnGraphService{
 				+ "from kn_graph group by kngr_node_des "
 				+ "ORDER BY size desc limit ?";
 			List<KnGraph> gTL = KnGraph.dao.find(sqlT,topN-aMax);
-			for(int i = 0; i< gTL.size(); i ++){
+			gL.addAll(gTL);
+			/*for(int i = 0; i< gTL.size(); i ++){
 				KnGraph des = gTL.get(i);
 				boolean flag = true;
 				for(int j =0; j < aMax; j++){
@@ -48,7 +50,23 @@ public class KnGraphService{
 				}
 				if(flag)
 					gL.add(des);
+			}*/
+		}
+		Collections.sort(gL,new Comparator<KnGraph>(){
+			public int compare(KnGraph arg0, KnGraph arg1){
+				return arg0.getStr("id").compareTo(arg1.getStr("id"));
+				}
+		});
+		int i = 0;
+		while(i<gL.size()-1){
+			int len = 1;
+			String srcId = gL.get(i).getStr("id");
+			while(i+len < gL.size() -1 && srcId.equals(gL.get(i+len).getStr("id"))){
+				//gL.get(i).set("size", gL.get(i).getLong("size") + gL.get(i+1).getLong("size"));
+				gL.remove(i+len);
+				len++;
 			}
+			i = i + 1;
 		}
 		return gL;
 	}
