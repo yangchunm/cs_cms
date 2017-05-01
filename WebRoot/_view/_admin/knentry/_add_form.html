@@ -16,6 +16,7 @@
 				</div>
 				
 				<div class="form-group">
+					<div  class="col-md-6">
 					<label for="knen_text_type">编辑词条语法   <span class="small text-danger" id="knen_text_type_msg">*（支持HTML、
 					<a href="#(BASE_PATH)/doc/Wiki_syntax.html" target="_blank">Wiki</a>和
 					<a href="#(BASE_PATH)/doc/markdown_syntax.html"  target="_blank">Markdown</a>语法编辑）</span></label>
@@ -27,11 +28,36 @@
 						<option value="Wiki">Wiki语法</option>
 						<option value="Markdown">Markdown语法</option>
 					</select>
+					</div>
+					<div  class="col-md-6">
+					<label for="knen_text_type">词条编辑历史   <span class="small text-danger" id="knen_history_msg">*（只记录了正文的编辑历史）</span></label>
+						<select name="knen_history" id="frm_knen_history"  class="form-control">
+							#if(knEntrH ??)
+								#for(h : knEntrH)
+								<option value="#(h.id)">#(h.knenName)：#date(h.knehTime, "yyyy-MM-dd HH:mm:ss")</option>
+								#end
+							#else
+								<option value="">无</option>
+							#end
+						</select>
+					</div>
 				</div>
 				<div class="form-group">
 					<label for="knen_text">词条正文  <span class="small text-danger" id="knen_text_msg">*（详细内容，词条之间的关联在正文中用  “[[起爆药]]” 标出，可以自动关联）</span></label>
-						<script id="frm_knen_text" name="en.knen_text" style="line-height: 20px;"  type="text/plain">#(knEntr.knenText ??)</script>
-						<textarea class="form-control"  id="frm_knen_text_plain" name="knen_text_plain" rows="25">#(knEntr.knenText ??)</textarea>
+						<script id="frm_knen_text" name="en.knen_text" style="line-height: 20px;"  type="text/plain">
+							#if(knEntrH??)
+								#(knEntrH.get(0).knehText)
+							#else
+								#(knEntr.knenText ??)
+							#end
+						</script>
+						<textarea class="form-control"  id="frm_knen_text_plain" name="knen_text_plain" rows="25">
+							#if(knEntrH??)
+								#(knEntrH.get(0).knehText)
+							#else
+								#(knEntr.knenText ??)
+							#end
+						</textarea>
 				</div>
 			
 		      <div class="form-group">

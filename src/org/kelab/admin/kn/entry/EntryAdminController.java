@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 
 import org.kelab.admin.kn.file.FileAdminService;
 import org.kelab.admin.kn.formula.FormulaAdminService;
+import org.kelab.admin.kn.history.HistoryAdminService;
 import org.kelab.admin.kn.lang.LangAdminService;
 import org.kelab.admin.kn.molecular.MolecularAdminService;
 import org.kelab.admin.kn.tree.TreeAdminService;
@@ -24,6 +25,7 @@ public class EntryAdminController extends BaseController{
 	static FileAdminService fileSrv = FileAdminService.me;
 	static FormulaAdminService formSrv = FormulaAdminService.me;
 	static MolecularAdminService moleSrv = MolecularAdminService.me;
+	static HistoryAdminService hisSrv = HistoryAdminService.me;
 	
 	public void index() {
 		CommQuery comQ = getBean(CommQuery.class,"comm");
@@ -49,6 +51,7 @@ public class EntryAdminController extends BaseController{
 	public void edit(){
 		int id = getParaToInt(0,0);
 		setAttr("knEntr",KnEntry.dao.findById(id));
+		setAttr("knEntrH",hisSrv.findHistoryByEnId(id));
 		setAttr("knTreeL",treeSrv.findAllKnTree(0));
 		setAttr("keSecuL",KeSecurity.dao.findAll());
 		setAttr("knEntrFile",srv.findRelaFileByEnId(id));

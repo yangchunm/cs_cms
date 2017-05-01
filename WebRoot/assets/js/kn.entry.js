@@ -36,6 +36,22 @@ $(document).ready(function() {
 		}
 	});
 	
+	//显示历史文本
+	$("#frm_knen_history").change(function(){
+		var knehId =$("#frm_knen_history option:selected").val();
+		if(knehId > 0){
+			$.get("../../knhistory/findByKnehId/"+knehId,function(ret){
+				 if(ret.isOk){
+					 var ue = UE.getEditor("frm_knen_text");
+					 ue.setContent(ret.kneh.kneh_text);
+					 //$("#frm_knen_text").empty().text(ret.kneh.kneh_text);
+					 $("#frm_knen_text_plain").empty().text(ret.kneh.kneh_text);
+					 return ;
+				 }
+				  });
+			}
+	});
+	
 	//词条表单保存
 	$("#add-form").ajaxForm({
 		dataType: "json"
