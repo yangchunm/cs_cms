@@ -1,7 +1,6 @@
 package org.kelab.admin.kn.history;
 
 
-import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
 import org.kelab.common.controller.BaseController;
 import org.kelab.model.KnEntryHistory;

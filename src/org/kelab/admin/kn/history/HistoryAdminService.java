@@ -2,8 +2,6 @@ package org.kelab.admin.kn.history;
 
 import java.util.List;
 
-import org.kelab.admin.kn.tag.TagAdminService;
-import org.kelab.admin.kn.tree.TreeAdminService;
 import org.kelab.bean.CommQuery;
 import org.kelab.model.KnEntryHistory;
 
