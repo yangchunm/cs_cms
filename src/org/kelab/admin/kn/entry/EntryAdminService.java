@@ -85,7 +85,7 @@ public class EntryAdminService {
 		else if(formT == null && formL != null)
 			formT.addAll(Arrays.asList(formL));
 		knEntr.setKnenTag(knEntr.getKnenTag().replace("，", ",").replace(" ",","));
-		
+		knEntr.setKnenStatus(9);
 		KnEntryHistory his = new KnEntryHistory();
 		his.setKnehTime(new Date());
 		his.setKnehIp(knEntr.getKnenLastIp());

@@ -44,13 +44,10 @@
 				</div>
 				<div class="form-group">
 					<label for="knen_text">词条正文  <span class="small text-danger" id="knen_text_msg">*（详细内容，词条之间的关联在正文中用  “[[起爆药]]” 标出，可以自动关联）</span></label>
-						<script id="frm_knen_text" name="en.knen_text" style="line-height: 20px;"  type="text/plain">
-							#if(knEntrH??)
-								#(knEntrH.get(0).knehText)
+						<script id="frm_knen_text" name="en.knen_text" style="line-height: 20px;"  type="text/plain">#if(knEntrH??)#(knEntrH.get(0).knehText)
 							#else
 								#(knEntr.knenText ??)
-							#end
-						</script>
+							#end</script>
 						<textarea class="form-control"  id="frm_knen_text_plain" name="knen_text_plain" rows="25">
 							#if(knEntrH??)
 								#(knEntrH.get(0).knehText)
