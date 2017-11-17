@@ -22,7 +22,7 @@ public class IndexAdminService {
 		//用户数
 		Long userNum = Db.queryLong("select count(id) from ke_user");
 		retS.put("userNum",userNum);
-		//词条
+		/*//词条
 		Long entrNum = Db.queryLong("select count(id) from kn_entry");
 		retS.put("entrNum",entrNum);
 		//知识点
@@ -48,7 +48,7 @@ public class IndexAdminService {
 		retS.put("dmalNum",dmalNum);
 		//使用次数
 		Long dmalsubNum = Db.queryLong("select count(id) from dm_submit");
-		retS.put("dmalsubNum",dmalsubNum);
+		retS.put("dmalsubNum",dmalsubNum);*/
 		
 		return retS;
 	}

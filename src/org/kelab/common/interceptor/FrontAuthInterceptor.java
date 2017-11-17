@@ -3,8 +3,12 @@ package org.kelab.common.interceptor;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
-import com.jfinal.kit.StrKit;
-import org.kelab.login.LoginService;
+import com.jfinal.core.Controller;
+
+import java.util.List;
+
+import org.kelab.common.navi.NaviService;
+import org.kelab.model.CmsNavi;
 
 /**
  * 需要登录才能授权的操作，例如文件下载
@@ -15,7 +19,12 @@ import org.kelab.login.LoginService;
  */
 public class FrontAuthInterceptor implements Interceptor {
 	public void intercept(Invocation inv) {
-		if (inv.getController().getAttr(LoginService.loginUserCacheName) != null) {
+		//获取菜单项
+		Controller c = inv.getController();
+		List<CmsNavi> naviL = NaviService.me.findAllCmsNaviByEn("");
+		c.setAttr("naviL", naviL);
+		inv.invoke();
+		/*if (inv.getController().getAttr(LoginService.loginUserCacheName) != null) {
 			inv.invoke();
 		} else {
 			String queryString = inv.getController().getRequest().getQueryString();
@@ -24,7 +33,7 @@ public class FrontAuthInterceptor implements Interceptor {
 			} else {
 				inv.getController().redirect("/login?returnUrl=" + inv.getActionKey() + "?" + queryString);
 			}
-		}
+		}*/
 	}
 }
 

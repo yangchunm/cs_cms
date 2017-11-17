@@ -1,0 +1,49 @@
+<div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-title">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> 新增</h4>
+      </div>
+      <div class="modal-body">
+     	<form class="form-horizontal" id="add-form" action="#(BASE_PATH)#(mandir)/#(currCont)/save" method="post"  enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="slid_title" class="col-sm-2 control-label">标题</label>
+				<div class="col-sm-4">
+					<input type="text" name="sl.slid_title" id="frm_slid_title" class="form-control"
+					 placeholder="图片标题">
+					 <input type="hidden"name="sl.id" value="0" id="frm_id">
+				</div>
+				<div class="col-sm-5">
+					<span class="small text-danger" id="slidTitleMsg">*</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="slid_url" class="col-sm-2 control-label">链接地址</label>
+				<div class="col-sm-5">
+					<input type="text" name="sl.slid_url" id="frm_slid_url" class="form-control"
+					 placeholder="链接地址">
+				</div>
+				<div class="col-sm-4">
+					<span class="small text-danger" id="slidUrlMsg"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="slidpic" class="col-sm-2 control-label">图片文件</label>
+				<div class="col-sm-4">
+					<input type="file" name="slidpic" id="tmp_pic" class="form-control">
+					<input type="hidden" name="sl.slid_pic" id="frm_slid_pic" value="">
+				</div>
+				<div class="col-sm-6">
+					<span class="small text-danger" id="pic_msg">幻灯图片，所有图片大小一致，上传前请作处理。</span>
+				</div>
+			</div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> 关闭</button>
+	        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save-file"></span> 保存</button>
+	      </div>
+      </form>
+      </div><!-- /.modal-body -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

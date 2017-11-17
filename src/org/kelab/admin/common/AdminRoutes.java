@@ -1,23 +1,18 @@
 package org.kelab.admin.common;
 
-import org.kelab.admin.dm.algocate.AlgoCateAdminController;
-import org.kelab.admin.dm.algorithm.AlgorithmAdminController;
-import org.kelab.admin.dm.submit.SubmitAdminController;
-import org.kelab.admin.em.attr.AttrAdminController;
-import org.kelab.admin.em.cate.CateAdminController;
-import org.kelab.admin.em.gene.GeneAdminController;
+import org.kelab.admin.cms.about.AboutAdminController;
+import org.kelab.admin.cms.file.FileAdminController;
+import org.kelab.admin.cms.link.LinkAdminController;
+import org.kelab.admin.cms.navi.NaviAdminController;
+import org.kelab.admin.cms.news.NewsAdminController;
+import org.kelab.admin.cms.slide.SlideAdminController;
+import org.kelab.admin.cms.staff.StaffAdminController;
 import org.kelab.admin.index.IndexAdminController;
 import org.kelab.admin.ke.menu.MenuAdminController;
 import org.kelab.admin.ke.organ.OrganAdminController;
 import org.kelab.admin.ke.role.RoleAdminController;
 import org.kelab.admin.ke.user.UserAdminController;
 import org.kelab.admin.ke.userlog.UserLogAdminController;
-import org.kelab.admin.kn.entry.EntryAdminController;
-import org.kelab.admin.kn.file.FileAdminController;
-import org.kelab.admin.kn.formula.FormulaAdminController;
-import org.kelab.admin.kn.history.HistoryAdminController;
-import org.kelab.admin.kn.molecular.MolecularAdminController;
-import org.kelab.admin.kn.tree.TreeAdminController;
 import org.kelab.common.interceptor.AdminAuthInterceptor;
 
 import com.jfinal.config.Routes;
@@ -43,22 +38,15 @@ public class AdminRoutes extends Routes {
 		add("/admin/organ", OrganAdminController.class, "/organ");
 		add("/admin/role", RoleAdminController.class, "/role");
 		add("/admin/user", UserAdminController.class, "/user");
-		add("/admin/userlog", UserLogAdminController.class, "/userlog");
+		add("/admin/userlog", UserLogAdminController.class, "/userlog");		
+		add("/admin/navi", NaviAdminController.class, "/cmsnavi");
+		add("/admin/news", NewsAdminController.class, "/cmsnews");
+		add("/admin/about", AboutAdminController.class, "/cmsabout");
+		add("/admin/file", FileAdminController.class, "/cmsfile");
+		add("/admin/link", LinkAdminController.class, "/cmslink");
+		add("/admin/slide", SlideAdminController.class, "/cmsslide");
+		add("/admin/staff", StaffAdminController.class, "/cmsstaff");
 		
-		add("/admin/kntree", TreeAdminController.class, "/kntree");
-		add("/admin/knfile", FileAdminController.class, "/knfile");
-		add("/admin/knform", FormulaAdminController.class, "/knform");
-		add("/admin/knmole", MolecularAdminController.class, "/knmole");
-		add("/admin/knentry", EntryAdminController.class, "/knentry");
-		add("/admin/knhistory", HistoryAdminController.class, "/knhistory");
-
-		add("/admin/emcate", CateAdminController.class, "/emcate");
-		add("/admin/emattr", AttrAdminController.class, "/emattr");
-		add("/admin/emgene", GeneAdminController.class, "/emgene");
-		
-		add("/admin/dmcate", AlgoCateAdminController.class, "/dmcate");
-		add("/admin/dmalgo", AlgorithmAdminController.class, "/dmalgo");
-		add("/admin/dmsubmit", SubmitAdminController.class, "/dmsubmit");
 	}
 
 	

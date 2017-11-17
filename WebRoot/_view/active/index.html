@@ -1,0 +1,21 @@
+#set(pageTitle="用户激活")
+#@layout()
+#define main()
+<!-- 内容容器 -->
+<!-- begin slide -->
+<div class="main container">
+#if(step == 1)
+	#include("/_view/active/_step_1.html")
+#end
+</div>
+<!-- end slide and begin mian -->
+
+#end
+
+#define css()
+#end
+
+#define js()
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/front.index.js"></script>
+	
+#end

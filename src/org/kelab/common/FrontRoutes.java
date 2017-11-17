@@ -1,10 +1,10 @@
 package org.kelab.common;
 
+import org.kelab.active.ActiveController;
+import org.kelab.common.interceptor.FrontAuthInterceptor;
 import org.kelab.index.IndexController;
-import org.kelab.kn.KnGraphController;
-import org.kelab.kn.KnIndexController;
-import org.kelab.kn.KnTreeController;
 import org.kelab.login.LoginController;
+import org.kelab.staff.StaffController;
 
 import com.jfinal.config.Routes;
 
@@ -15,13 +15,14 @@ public class FrontRoutes extends Routes {
 
 	public void config() {
 		//addInterceptor(new LoginSessionInterceptor());
+		addInterceptor(new FrontAuthInterceptor());
 		setBaseViewPath("/_view");
 		
 		add("/", IndexController.class, "/index");
+		add("/staff", StaffController.class, "/staff");
+		add("/active", ActiveController.class, "/active");
 		add("/login", LoginController.class);
-		add("/kn", KnIndexController.class,"/kn");
-		add("/kn/tree", KnTreeController.class,"/kn");
-		add("/kn/graph", KnGraphController.class,"/kn");
+
 		//add("/project", ProjectController.class);
 		
 		//add("/reg", RegController.class);

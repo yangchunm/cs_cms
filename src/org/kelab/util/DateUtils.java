@@ -5,6 +5,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.joda.time.DateTime;
+
 public class DateUtils {
 	static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	static SimpleDateFormat dateSdf = new SimpleDateFormat("yyyyMMdd");
@@ -23,7 +25,11 @@ public class DateUtils {
 
 		return sdf.format(date);
 	}
-
+	
+	public static String todayToString(){
+		DateTime dt = DateTime.now();
+		return dt.toString("yyyyMMdd");
+	}
 	/**
 	 * 统计两个日期之间包含的天数。
 	 * 

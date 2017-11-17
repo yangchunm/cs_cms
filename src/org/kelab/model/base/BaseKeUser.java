@@ -104,5 +104,37 @@ public abstract class BaseKeUser<M extends BaseKeUser<M>> extends Model<M> imple
 	public java.lang.Boolean getUserIsSuper() {
 		return get("user_is_super");
 	}
+	
+	public void setUserPinyin(java.lang.String userPinyin) {
+		set("user_pinyin", userPinyin);
+	}
+
+	public java.lang.String getUserPinyin() {
+		return get("user_pinyin");
+	}
+	
+	public void setUserIsActived(java.lang.Boolean userIsActived) {
+		set("user_is_actived", userIsActived);
+	}
+
+	public java.lang.Boolean getUserIsActived() {
+		return get("user_is_actived");
+	}
+	
+	public void setUserActiCode(java.lang.String userActiCode) {
+		set("user_acti_code", userActiCode);
+	}
+
+	public java.lang.String getUserActiCode() {
+		return get("user_acti_code");
+	}
+	
+	public void setUserEmail(java.lang.String userEmail) {
+		set("user_email", userEmail);
+	}
+
+	public java.lang.String getUserEmail() {
+		return get("user_email");
+	}
 
 }

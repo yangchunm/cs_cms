@@ -1,0 +1,48 @@
+#set(pageTitle="首页")
+#if(file.fileTitle??)
+	#set(pageTitle=file.fileTitle)
+#end
+#@layout()
+#define main()
+<!-- 内容容器 -->
+<!-- end slide and begin mian -->
+<div class="main container">
+#include("/_view/common/_location_bar.html")
+	<div class="row">
+		<div class="col-sm-3 col-md-3  hidden-xs">
+			#include("/_view/common/_side_bar.html")
+		</div>
+		<div class="col-sm-9 col-md-9">
+			<div class="well">
+				<div class="news-title">
+			 		#(file.fileTitle)
+				</div>
+				<div class="news-des">
+					<small><span class="glyphicon glyphicon-time"></span> #date(file.fileTime, "yyyy-MM-dd HH:MM:ss")
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-save-file"></span> 下载：#(file.fileHit)次
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-hdd"></span> 格式：#(file.fileExt)
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-th-large"></span> 大小：#(file.fileSize)
+						</small>
+					<span class="pull-right visible-md">#include("/_view/common/_baidu_share.html")</span>
+				</div>
+				<div class="content">
+					#(file.fileContent)
+					
+					<p>
+					<span class="glyphicon glyphicon-download-alt"></span>  点击这里下载：<a href="#(BASE)/upload#(file.fileUrl)">#(file.fileTitle)</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+#end
+
+#define css()
+#end
+
+#define js()
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/front.index.js"></script>
+	
+#end

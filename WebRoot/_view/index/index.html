@@ -2,90 +2,132 @@
 #@layout()
 #define main()
 <!-- 内容容器 -->
-<!-- begin left side -->
-<div class="jumbotron">
-	<div class="container">
-  		<div class="col-md-4 col-lg-4 pull-left">
-			<img vspace="20" class="jumbotronwidth" alt="" src="#(BASE_PATH)/assets/img/ci-logo-big.png">
-		</div>
-		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-			<h1>含能材料基础数据平台</h1>
-			<p>EMDBP ： Energetic Materials Basic Data Platform</p>
-			<p>含能材料基础知识库，含能材料基因数据库，含能材料数据挖掘工具</p>
-		</div>
+<!-- begin slide -->
+<div class="main container">
+<div id="carousel-example-generic" class="carousel slide  hidden-xs" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+  	#for(x : slide)
+  		#if(for.index == 0)
+    		<div class="item active">
+    	#else
+    		<div class="item">
+    	#end
+      <img src="#(BASE_PATH)/upload/#(x.slidPic)" alt="#(x.slidTitle)">
+      <div class="carousel-caption">
+        #(x.slidTitle)
+      </div>
+    </div>
+   #end
   </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
+</div>
+<!-- end slide and begin mian -->
 <div class="main container">
 	<div class="row">
-		<div class="col-sm-6 col-md-3 col-lg-3">
-			<div class="well text-center">
-				<div class="stat-icon">
-					<span class="glyphicon glyphicon-book"></span>
-				</div>
-				<div class="stat-number">
-					#(static.entrNum)条， #(static.treeNum)个
-				</div>
-				<div>含能材料知识词条及知识点</div>
+		<div class="col-sm-6 col-md-6">
+			<div class="page-header  news-header">
+			  学院要闻
 			</div>
+			#for(x : org.kelab.index.IndexService::findNews(2, "21,22",18,30,true))
+			  <div class="col-sm-6 col-md-6">
+			    <div class="thumbnail">
+			      <a href="#"><img src="#(BASE_PATH)/upload/#(x.newsPic)" alt="#(x.newsTitle)"></a>
+			      <div class="caption">
+			        <h4><a href="newsdetail/#(x.naviNameEn)-#(x.id)" title="#(x.newsTitle)">#(x.shortTitle)</a></h4>
+			        <p>#(x.newsContent) <small>[#date(x.newsTime, "MM-dd")]</small></p>
+			      </div>
+			    </div>
+			  </div>
+			#end
 		</div>
-		<div class="col-sm-6 col-md-3 col-lg-3">
-			<div class="well text-center">
-				<div class="stat-icon">
-					<span class="glyphicon glyphicon-filter"></span>
-				</div>
-				<div class="stat-number">
-					#(static.emgeNum)条，#(static.egatNum) 个
-				</div>
-				<div>含能材料基因数据及属性信息</div>
+		<div class="col-sm-4 col-md-4">
+			<div class="page-header news-header">
+			  学院动态 <small class="pull-right">More>></small>
 			</div>
+			<ul class="newsli">
+			#for(x : org.kelab.index.IndexService::findNews(10, "22",17,20,false))
+			  <li>
+			    <a href="newsdetail/#(x.naviNameEn)-#(x.id)" title="#(x.newsTitle)">#(x.shortTitle)</a>
+			      <small class="pull-right">[#date(x.newsTime, "MM-dd")]</small>
+			  </li>
+			 #end
+			</ul>
 		</div>
-		<div class="col-sm-6 col-md-3 col-lg-3">
-			<div class="well text-center">
-				<div class="stat-icon">
-					<span class="glyphicon glyphicon-hdd"></span>
-				</div>
-				<div class="stat-number">
-					#(static.formNum + static.fileNum + static.moleNum)个
-				</div>
-				<div>公式、数据文件、分子式</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3 col-lg-3">
-			<div class="well text-center">
-				<div class="stat-icon">
-					<span class="glyphicon glyphicon-compressed"></span>
-				</div>
-				<div class="stat-number">
-					#(static.dmalNum) 种
-				</div>
-				<div>含能材料数据挖掘算法</div>
-			</div>
+		<div class="col-sm-2 col-md-2 link  hidden-xs">
+			#for(x : org.kelab.index.IndexService::findLink(1))
+		    <a href="#(x.linkUrl)" class="thumbnail" target="_blank">
+		      <img src="#(BASE_PATH)/upload/#(x.linkPic)" alt="#(x.linkName)">
+		    </a>
+		  #end
 		</div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-	
-		<div class="panel panel-info">
-		  <div class="panel-body" id="tags-cloud" style="width: 400px;height:400px;">
-
-		  </div>
+		<div class="col-sm-4 col-md-4">
+			<div class="page-header news-header">
+			  学术动态 <small class="pull-right">More>></small>
+			</div>
+			<ul class="newsli">
+			#for(x : org.kelab.index.IndexService::findNews(7, "21,23",17,20,false))
+			  <li>
+			    <a href="newsdetail/#(x.naviNameEn)-#(x.id)"title="#(x.newsTitle)">#(x.shortTitle)</a>
+			      <small class="pull-right">[#date(x.newsTime, "MM-dd")]</small>
+			  </li>
+			 #end
+			</ul>
 		</div>
-	
-		
-	
-	</div>
-	<!-- end left side and began middle -->
-	<div class="col-md-5">
-		<div class="panel panel-info">
-		  <div class="panel-heading"><h4>#(firstEntry.knenName)</h4></div>
-		  <div class="panel-body">
-				#(firstEntry.knenText)
-		  </div>
+		<div class="col-sm-4 col-md-4">
+			<div class="page-header news-header">
+			 学生动态 <small class="pull-right">More>></small>
+			</div>
+			<ul class="newsli">
+			#for(x : org.kelab.index.IndexService::findNews(7, "55,56",17,20,false))
+			  <li>
+			    <a href="newsdetail/#(x.naviNameEn)-#(x.id)"title="#(x.newsTitle)">#(x.shortTitle)</a>
+			      <small class="pull-right">[#date(x.newsTime, "MM-dd")]</small>
+			  </li>
+			 #end
+			</ul>
+		</div>
+		<div class="col-sm-4 col-md-4">
+			<div class="page-header news-header">
+			 公告公示 <small class="pull-right">More>></small>
+			</div>
+			<ul class="newsli">
+			#for(x : org.kelab.index.IndexService::findNews(7, "23,24",17,20,false))
+			  <li>
+			    <a href="newsdetail/#(x.naviNameEn)-#(x.id)"title="#(x.newsTitle)">#(x.shortTitle)</a>
+			      <small class="pull-right">[#date(x.newsTime, "MM-dd")]</small>
+			  </li>
+			 #end
+			</ul>
 		</div>
 	</div>
-	<!-- end middle and began right -->
-	<div class="col-md-3" id="test11">
-	</div>
+	<div class="row visible-md">
+		#for(x : org.kelab.index.IndexService::findLink(2))
+	  <div class="col-xs-4 col-md-2">
+	    <a href="#(x.linkUrl)" class="thumbnail">
+	      <img src="#(BASE_PATH)/upload/#(x.linkPic)" alt="#(x.linkName)">
+	    </a>
+	  </div>
+	  #end
 	</div>
 </div>
 #end
@@ -94,8 +136,6 @@
 #end
 
 #define js()
-	<script type="text/javascript" src="#(BASE_PATH)/assets/echarts/echarts.min.js"></script>
-	<script type="text/javascript" src="#(BASE_PATH)/assets/echarts/echarts.wordcloud.min.js"></script>
 	<script type="text/javascript" src="#(BASE_PATH)/assets/js/front.index.js"></script>
 	
 #end

@@ -1,0 +1,132 @@
+#set(pageTitle="个人简历")
+#set(currCont = "staff")
+#set(btnBar = {"add":0,"mod":0,"del":0})
+#@adminLayout()
+#define main()
+	#include("/_view/_admin/common/_button_bar.html")
+	     <div class="row">
+     	<form class="" id="add-form" action="#(BASE_PATH)#(mandir)/#(currCont)/save" method="post" enctype="multipart/form-data">
+     		<div class="col-md-7">
+				<div class="form-group">
+					<label for="st.staf_news">个人简介/近况<span class="small text-danger" id="staf_news_msg">（个人简介或最新动态信息）</span></label>
+						<script id="frm_staf_news" name="st.staf_news" style="line-height: 20px;"  type="text/plain">#(cmsStaff.stafNews ??)</script>
+				</div>
+				
+				
+				
+				<div class="form-group">
+					<label for="staf_paper">代表性论著  <span class="small text-danger" id="staf_paper_msg">（个人代表性论文、著作）</span></label>
+					<textarea class="form-control" rows="10" name="st.staf_paper" id="frm_staf_paper">#(cmsStaff.stafPaper ??)</textarea>
+				</div>
+				
+				<div class="form-group">
+					<label for="staf_peoject">科研项目  <span class="small text-danger" id="staf_project_msg">（个人主持和参研的科研项目）</span></label>
+					<textarea class="form-control" rows="10" name="st.staf_project" id="frm_staf_project">#(cmsStaff.stafProject ??)</textarea>
+				</div>
+				
+				<div class="form-group">
+					<label for="staf_award">获奖情况  <span class="small text-danger" id="staf_award_msg">（个人的获奖情况）</span></label>
+					<textarea class="form-control" rows="3" name="st.staf_award" id="frm_staf_award">#(cmsStaff.stafAward ??)</textarea>
+				</div>
+				
+				<div class="form-group">
+					<label for="st.staf_resume">个人简历  <span class="small text-danger" id="staf_resume_msg">*（教育、工作简历）</span></label>
+					<textarea class="form-control" rows="3" name="st.staf_resume" id="frm_staf_resume">#(cmsStaff.stafResume ??)</textarea>
+					<input type="hidden" name="st.id" value="#(cmsStaff.id ?? '0')" id="frm_id">
+				</div>
+			
+		      <div class="form-group">
+		       	<label for="button" class="control-label"></label>
+		        	<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save-file"></span> 保存</button>
+		         	<button type="reset" class="btn btn-default"><span class="glyphicon glyphicon-remove-circle"></span> 重置</button>
+		         	<a href="javascript:history.go(-1)" class="btn btn-success"><span class="glyphicon glyphicon-circle-arrow-left"></span> 返回</a>
+		     </div>
+	     </div>
+     
+      <!--  end of left mian body -->
+      <div class="col-md-5">
+      	<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> #(loginUser.userRealName)基本信息</h3>
+		  </div>
+		  <div class="panel-body">
+    		<div class="form-group">
+				<label for="staf_name_piny">姓名拼音   <span class="small text-danger" id="staf_name_piny_msg">*（姓名拼音 或英文名）</span></label>
+					<input type="text" name="st.staf_name_piny" id="frm_staf_name_piny" class="form-control"
+					value="#(cmsStaff.stafNamePiny ??)">
+			</div>
+			<div class="form-group">
+				<label for="staf_title">职称   <span class="small text-danger" id="staf_title_msg">*（职称名称）</span></label>
+					<input type="text" name="st.staf_title" id="frm_staf_title" class="form-control"
+					value="#(cmsStaff.stafTitle ??)">
+			</div>
+			<div class="form-group">
+				<label for="staf_postion">职务   <span class="small text-danger" id="staf_postion_msg">（职务信息）</span></label>
+					<input type="text" name="st.staf_postion" id="frm_staf_postion" class="form-control"
+					value="#(cmsStaff.stafPostion ??)">
+			</div>
+			<div class="form-group">
+				<label for="staf_office">办公地址   <span class="small text-danger" id="staf_office_msg">*（办公室地址）</span></label>
+					<input type="text" name="st.staf_office" id="frm_staf_office" class="form-control"
+					value="#(cmsStaff.stafOffice ??)">
+			</div>
+			<div class="form-group">
+				<label for="staf_tel">办公电话   <span class="small text-danger" id="staf_tel_msg">（办公电话）</span></label>
+					<input type="text" name="st.staf_tel" id="frm_staf_tel" class="form-control"
+					value="#(cmsStaff.stafTel ??)">
+			</div>
+			<div class="form-group">
+				<label for="staf_email">办公电子邮件   <span class="small text-danger" id="staf_email_msg">（电子邮件地址）</span></label>
+					<input type="text" name="st.staf_email" id="frm_staf_email" class="form-control"
+					value="#(cmsStaff.stafEmail ??)">
+			</div>
+			<div class="form-group">
+				<label for="staf_course">主讲课程   <span class="small text-danger" id="staf_course_msg">（主讲的本科、研究生课程）</span></label>
+					<input type="text" name="st.staf_course" id="frm_staf_course" class="form-control"
+					value="#(cmsStaff.stafCourse ??)">
+			</div>
+			<div class="form-group">
+				<label for="staf_research">研究方向   <span class="small text-danger" id="staf_research_msg">（研究方向）</span></label>
+					<input type="text" name="st.staf_research" id="frm_staf_research" class="form-control"
+					value="#(cmsStaff.stafResearch ??)">
+			</div>
+			<div class="form-group">
+				<label for="staf_social">社会兼职   <span class="small text-danger" id="staf_social_msg">（社会兼职信息）</span></label>
+					<input type="text" name="st.staf_social" id="frm_staf_social" class="form-control"
+					value="#(cmsStaff.stafSocial ??)">
+			</div><div class="form-group">
+				<label for="staf_advisor">导师资格   <span class="small text-danger" id="staf_advisor_msg">（具有的导师资格）</span></label>
+					<input type="text" name="st.staf_advisor" id="frm_staf_advisor" class="form-control"
+					value="#(cmsStaff.stafAdvisor ??)">
+			</div>
+			<div class="form-group">
+				<label for="staf_pic" >照片 <span class="small text-danger" id="staf_pic_msg">*（个人照片）</span></label>
+				<input type="file" name="stafpic" id="frm_staf_pic" class="form-control">
+				<input type="hidden" name="st.staf_pic" value="#(cmsStaff.staf_pic)">
+				#if(cmsStaff.staf_pic ??)
+				<img src="#(BASE_PATH)/upload/#(cmsStaff.staf_pic)"  />
+				#end 
+			</div>
+			
+
+		  </div>
+		</div><!-- end tags panel-->
+		
+			
+      </div>
+       </form>
+	</div>
+	
+    
+#end
+
+#define css()
+#end
+
+#define js()
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/cms.staff.js"></script>
+		<script src="#(BASE_PATH)/assets/bootstrap/moment-with-locales.js" type="text/javascript"></script>
+    <script src="#(BASE_PATH)/assets/bootstrap/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <script src="#(BASE_PATH)/assets/bootstrap/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
+	#include("/_view/_admin/cmsstaff/_form_editor_js.html")
+#end

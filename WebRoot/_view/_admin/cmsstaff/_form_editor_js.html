@@ -1,0 +1,22 @@
+<script type="text/javascript" src="#(BASE_PATH)/assets/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="#(BASE_PATH)/assets/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript">
+	
+	// 加载 ueditor
+		var ue = UE.getEditor('frm_staf_news', {
+			initialFrameHeight:200
+			,wordCount:false
+			,toolbars: [[
+			             'bold', 'italic', 'underline',  'superscript', 'subscript',
+			             'fontborder','strikethrough','paragraph', 'fontfamily', 'fontsize','|',
+			 		     'removeformat', 'formatmatch', 'blockquote','pasteplain', '|',
+			 		    'insertorderedlist', 'insertunorderedlist',
+			 		    'justifyleft', 'justifycenter', 'justifyright','|',
+					    'link', 'unlink','kityformula','anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+					    'insertimage', 'scrawl', 'insertvideo', 'music', 'attachment','insertframe',					    
+	
+			         ]]
+	
+		});
+
+</script>

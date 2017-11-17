@@ -1,0 +1,59 @@
+#set(pageTitle="栏目管理")
+#set(btnBar = {"add":1,"mod":1,"del":1})
+#set(currCont = "navi")
+#@adminLayout()
+#define main()
+#include("/_view/_admin/common/_button_bar.html")
+	 <table class="table table-condensed .table-hover naviTree">
+	 	<thead>
+	 		<tr>
+	 			<th>名称</th><th>顺序(调整)</th>
+	 			<!-- <th>图标</th><th>地址</th> -->
+	 			<th>英文名称</th><th>编辑</th><th>类型</th><th>显示</th><th>外部链接</th>
+	 		</tr>
+	 	</thead>
+	 	<tbody>
+	 		#set(iCount = 1)
+	 		#for(x : cmsNaviList)
+	 			<tr id="node-#(x.id)" class="treegrid-#(x.id)">	         		
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" />#(iCount) #(x.naviName)</td>
+	         		<td>#(x.naviOrder)
+	         		#if(for.index < for.size-1)
+	         		&nbsp;&nbsp;
+	         		<span class="glyphicon glyphicon-triangle-bottom" value="#(x.id)-#(x.naviOrder)" title="调整顺序"></span>
+	         		#else
+		         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	         		#end
+	         		#if(for.index >0)
+	         		&nbsp;&nbsp;
+	         		<span class="glyphicon glyphicon-triangle-top"  value="#(x.id)-#(x.naviOrder)" title="调整顺序"></span></td>
+	         		#end
+	         		<td>#(x.naviNameEn)</td>
+	         		<td></td>
+	         		<td> #(x.typeName)</td>
+	         		<td>#(x.naviIsShow ? "是" : "否")
+		       			<a href="javascript:void(0);" onClick="setIsShow(#(x.id),#(x.naviIsShow))" title="设置为相反"><span class="glyphicon glyphicon-transfer"></span></a>
+		       		</td>
+		       		<td>#(x.naviIsOut ? "是" : "否")
+		       			<a href="javascript:void(0);" onClick="setIsOut(#(x.id),#(x.naviIsOut))" title="设置为相反"><span class="glyphicon glyphicon-transfer"></span></a>
+		       		</td>
+         		</tr>
+         		#@cmsnavi_tree_grid(x.subNaviL,for.index+1)
+	         	
+   				#set(iCount = iCount +1)      		
+         	#end
+        </tbody>       
+     </table>
+     
+    #include("/_view/_admin/cmsnavi/_add_form.html") 
+#end
+
+#define css()
+	<link rel="stylesheet" type="text/css" href="#(BASE_PATH)/assets/treegrid/jquery.treegrid.css">
+#end
+
+#define js()
+	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.min.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.bootstrap3.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/cms.navi.js"></script>
+#end

@@ -71,7 +71,7 @@ public class RoleAdminService {
 		if(isExists(keRole,keRole.getId())){
 			return Ret.fail("msg","改名成已经存在");
 		}
-		System.out.println("GGG"+keRole.getId());;
+		keRole.update();
 		List<KeRoleMenu> reMeL = KeRoleMenu.dao.find("select * from ke_role_menu where role_id =?",keRole.getId());
 		for(String newId: roleMenu){//检查新增
 			int newMeId = Integer.parseInt(newId);

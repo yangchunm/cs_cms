@@ -1,0 +1,41 @@
+<!-- side bar -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><span class="glyphicon glyphicon-education"></span>  #(subNavi.naviName)</h3>
+  </div>
+  <div class="panel-body">
+    <ul class="nav nav-pills nav-stacked">
+	#for(x : subNavi.subM)
+		#if(x.id == navi.Id)
+			<li role="presentation" class="active"><a href="#(BASE_PATH)/#(x.naviNameEn)">#(x.naviName)</a></li>
+		#else
+	  		<li role="presentation"><a href="#(BASE_PATH)/#(x.naviNameEn)">#(x.naviName)</a></li>
+	  	#end
+	  	#if(x.subNaviL??)
+	  		#for(y : x.subNaviL)
+	  			#if(y.id == navi.Id)
+	  				<li role="presentation" class="thirdactive"><a href="#(BASE_PATH)/#(y.naviNameEn)">#(y.naviName)</a></li>
+	  			#else
+	  				<li role="presentation" class="third"><a href="#(BASE_PATH)/#(y.naviNameEn)">#(y.naviName)</a></li>
+	  			#end
+	  		#end
+	  	#end
+	 #end
+	</ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><span class="glyphicon glyphicon-equalizer"></span>  最新消息</h3>
+  </div>
+  <div class="panel-body">
+    <ul class="newsli">
+		#for(x : org.kelab.index.IndexService::findNews(15, "21,22,23,24,55,56",12,20,false))
+		  <li>
+		    <a href="#(BASE)/newsdetail/#(x.naviNameEn)-#(x.id)" title="#(x.newsTitle)">#(x.shortTitle)</a>
+		  </li>
+		 #end
+	</ul>
+  </div>
+</div>

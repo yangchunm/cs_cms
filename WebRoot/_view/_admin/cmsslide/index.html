@@ -1,0 +1,58 @@
+#set(pageTitle="首页幻灯片管理")
+#set(btnBar = {"add":1,"mod":1,"del":1})
+#set(currCont = "slide")
+#@adminLayout()
+#define main()
+#include("/_view/_admin/common/_button_bar.html")
+	 <table class="table table-condensed .table-hover naviTree">
+	 	<thead>
+	 		<tr>
+	 			<th>序</th><th>标题</th><th>顺序(调整)</th>
+	 			<th>图片</th><th>创建时间</th>
+	 		</tr>
+	 	</thead>
+	 	<tbody>
+	 		#set(iCount = 1)
+	 		#for(x : cmsSlideL)
+	 			<tr id="node-#(x.id)" class="treegrid-#(x.id)">	         		
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" />#(iCount) </td>
+	         		<td><a href="#(x.slidUrl)">#(x.slidTitle)</a></td>
+	         		<td>#(x.slidOrder)
+	         		#if(for.index < for.size-1)
+	         		&nbsp;&nbsp;
+	         		<span class="glyphicon glyphicon-triangle-bottom" value="#(x.id)-#(x.slidOrder)" title="调整顺序"></span>
+	         		#else
+		         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	         		#end
+	         		#if(for.index >0)
+	         		&nbsp;&nbsp;
+	         		<span class="glyphicon glyphicon-triangle-top"  value="#(x.id)-#(x.slidOrder)" title="调整顺序"></span></td>
+	         		#end
+	         		<td><img src="#(BASE_PATH)/upload#(x.slidPic)" style="width:350px;height:40px;"></td>
+	         		
+	         		<td>#date(x.slidTime, "yyyy-MM-dd HH:mm")</td>
+	         		
+         		</tr>
+	         	
+   				#set(iCount = iCount +1)      		
+         	#end
+        </tbody>       
+     </table>
+     #if(!cmsSlideL??)
+		<div class="alert alert-warning" role="alert">
+		<span class="glyphicon glyphicon-info-sign"></span> 
+		   没有满足条件的记录！
+		</div>
+	#end
+    #include("/_view/_admin/cmsslide/_add_form.html") 
+#end
+
+#define css()
+	<link rel="stylesheet" type="text/css" href="#(BASE_PATH)/assets/treegrid/jquery.treegrid.css">
+#end
+
+#define js()
+	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.min.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.bootstrap3.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/cms.slide.js"></script>
+#end

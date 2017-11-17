@@ -1,0 +1,36 @@
+     <div class="row">
+     	<form class="" id="add-form" action="#(BASE_PATH)#(mandir)/#(currCont)/save" method="post">
+     		<div class="col-md-8">
+				<div class="form-group">
+					<div  class="col-md-6">
+					<label for="abou_title">标题   <span class="small text-danger" id="abou_title_msg">*（信息标题）</span></label>
+						<input type="text" name="abou_title" id="frm_abou_title" class="form-control"
+							 value="#(about.abouTitle ?? "")" placeholder="标题">
+						 <input type="hidden" name="id" value="#(about.id ?? '0')" id="frm_id">
+					</div>
+					<div  class="col-md-6">
+						<label for="abou_tags">标签   <span class="small text-danger" id="abou_tags_msg">（3~5个关于新闻的关键词）</span></label>
+						<input type="text" name="abou_tags" id="frm_abou_tags" class="form-control"
+						value="#(about.abouTags ??)" placeholder="标签，逗号隔开">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="abou_content">正文  <span class="small text-danger" id="abou_content_msg">*（详细内容）</span></label>
+						<script id="frm_abou_content" name="abou_content" style="line-height: 20px;"  type="text/plain">#(about.abouContent ??)</script>
+				</div>
+			
+		      <div class="form-group">
+		       	<label for="button" class="control-label"></label>
+		        	<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save-file"></span> 保存</button>
+		         	<button type="reset" class="btn btn-default"><span class="glyphicon glyphicon-remove-circle"></span> 重置</button>
+		         	<a href="javascript:history.go(-1)" class="btn btn-success"><span class="glyphicon glyphicon-circle-arrow-left"></span> 返回</a>
+		     </div>
+	     </div>
+     
+      <!--  end of left mian body -->
+
+			
+      </div>
+       </form>
+	</div>

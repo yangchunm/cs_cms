@@ -1,0 +1,32 @@
+#set(pageTitle="信息管理 / 编辑")
+#set(currCont = "about")
+#set(btnBar = {"add":0,"mod":0,"del":0})
+#@adminLayout()
+#define main()
+	#include("/_view/_admin/common/_button_bar.html")
+    #include("/_view/_admin/cmsabout/_add_form.html")
+#end
+
+#define css()
+#end
+
+#define js()
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/cms.about.js"></script>
+		<script src="#(BASE_PATH)/assets/bootstrap/moment-with-locales.js" type="text/javascript"></script>
+    <script src="#(BASE_PATH)/assets/bootstrap/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <script src="#(BASE_PATH)/assets/bootstrap/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	    $(document).ready(function() {
+	    	$(".datepick").datetimepicker({
+	    		language:'zh-CN',
+	    		 autoclose: 1,
+	    		format:'yyyy-mm-dd',
+	    		todayBtn: 1,
+	    		startView: 2,
+	    	     minView:2,
+	    	     pickerPosition: "bottom-left"
+	    	});
+		});
+    </script>
+	#include("/_view/_admin/cmsabout/_form_editor_js.html")
+#end

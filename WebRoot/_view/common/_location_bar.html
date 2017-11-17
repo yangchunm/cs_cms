@@ -1,22 +1,11 @@
 <!-- 当前位置 -->
-<div class="row">
-<ol class="breadcrumb col-md-7">
-  <li><a href="#(BASE_PATH)/"><span class="glyphicon glyphicon-home"> </span> 平台首页</a></li>
-  #for(loc :locBar)
-  	<li><a href="#(BASE_PATH)/#(loc.url)">#(loc.name)</a></li>
+<div class="row hidden-xs">
+<ol class="breadcrumb">
+  <li><a href="#(BASE_PATH)/"><span class="glyphicon glyphicon-home"> </span> 首页</a></li>
+  #for(loc :locpath)
+  	<li><a href="#(BASE_PATH)/#(loc.naviNameEn)">#(loc.naviName)</a></li>
   #end
   <li class="active">#(pageTitle)</li>
 </ol>
-<div class="col-md-5 text-right">
-	<form class="form-inline" action="#(BASE_PATH)/kn/entry" method="post">
-	  <div class="form-group">
-	    <label for="entryName">知识搜索</label>
-	    <input type="text" class="form-control" name="knWord" 
-	    	data-provide="typeahead" data-items="5" 
-	    	data-source='["Deluxe Bicycle", "Super Deluxe Trampoline", "Super Duper Scooter"]' 
-	    	placeholder="请输入词条">
-	  </div>
-	  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> 搜索</button>
-	</form>
-</div>
+
 </div>

@@ -1,0 +1,76 @@
+     <div class="row">
+     	<form class="" id="add-form" action="#(BASE_PATH)#(mandir)/#(currCont)/save" method="post" enctype="multipart/form-data">
+     		<div class="col-md-8">
+				<div class="form-group">
+					<div  class="col-md-12">
+					<label for="ne.news_title">新闻标题   <span class="small text-danger" id="news_title_msg">*（新闻标题）</span></label>
+						<input type="text" name="ne.news_title" id="frm_news_title" class="form-control"
+							 value="#(news.newsTitle ?? "")" placeholder="标题">
+						 <input type="hidden" name="ne.id" value="#(news.id ?? '0')" id="frm_id">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="news_content">正文  <span class="small text-danger" id="news_content_msg">*（详细内容）</span></label>
+						<script id="frm_news_content" name="ne.news_content" style="line-height: 20px;"  type="text/plain">#(news.newsContent ??)</script>
+				</div>
+			
+		      <div class="form-group">
+		       	<label for="button" class="control-label"></label>
+		        	<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save-file"></span> 保存</button>
+		         	<button type="reset" class="btn btn-default"><span class="glyphicon glyphicon-remove-circle"></span> 重置</button>
+		         	<a href="javascript:history.go(-1)" class="btn btn-success"><span class="glyphicon glyphicon-circle-arrow-left"></span> 返回</a>
+		     </div>
+	     </div>
+     
+      <!--  end of left mian body -->
+      <div class="col-md-4">
+      	<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title"><span class="glyphicon glyphicon-tags"></span> 新闻附属信息</h3>
+		  </div>
+		  <div class="panel-body">
+    		<div class="form-group">
+				<label for="news_navi_id" >所属栏目 <span class="small text-danger" id="news_navi_id_msg">*</span></label>
+				<select name="ne.news_navi_id" id="frm_news_navi_id" class="form-control">
+				 		#for(x : newsNaviL)
+				 			#if(x.id == news.newsNaviId ?? "0")
+				 				<option value="#(x.id)" selected>#(x.naviName)</option>
+				 			#else
+				 				<option value="#(x.id)">#(x.naviName)</option>
+				 			#end
+				        #end
+				 </select>
+			</div>
+			<div class="form-group">
+				<label for="news_tags">标签   <span class="small text-danger" id="news_tags_msg">（3~5个关于新闻的关键词）</span></label>
+					<input type="text" name="ne.news_tags" id="frm_news_tags" class="form-control"
+					value="#(news.newsTags ??)" placeholder="标签，逗号隔开">
+			</div>
+			
+			<div class="form-group">
+				<label for="news_pic" >要闻标题图片 <span class="small text-danger" id="news_pic_msg">（196*98，有图片则表明为要闻，显示在首页。）</span></label>
+				<input type="file" name="news_pic" id="frm_news_pic" class="form-control">
+				<input type="hidden" name="ne.news_pic" value="#(news.news_pic ??)">
+				#if(news.news_pic ??)
+				<img src="#(BASE_PATH)/upload/image/#(news.news_pic ??)" width="200" height="150" />
+				#end 
+			</div>
+			<div class="form-group">
+				<label for="news_expr_time">过期时间   <span class="small text-danger" id="news_expr_time_msg">（新闻过期时间，该时间后将不会显示。不填写将不会过期）</span></label>
+					<div class="input-group date form_datetime" id="dateStart">
+			  			<input size="8" type="text" id ="news_expr_time" name="news_expr_time" class="form-control datepick" 
+			             value="#(news.newsExprTime ??)" placeholder="过期时间"  />
+			              <span class="input-group-addon">
+			                  <span class="glyphicon glyphicon-calendar"></span>
+			              </span>
+			         </div>
+			</div>
+
+		  </div>
+		</div><!-- end tags panel-->
+		
+			
+      </div>
+       </form>
+	</div>

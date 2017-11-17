@@ -1,0 +1,97 @@
+<div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-title">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> 新增</h4>
+      </div>
+      <div class="modal-body">
+     	<form class="form-horizontal" id="add-form" action="#(BASE_PATH)#(mandir)/#(currCont)/save" method="post">
+			<div class="form-group">
+				<label for="navi_name" class="col-sm-2 control-label">栏目名称</label>
+				<div class="col-sm-4">
+					<input type="text" name="navi_name" id="frm_navi_name" class="form-control"
+					 placeholder="栏目名称">
+					 <input type="hidden"name="id" value="0" id="frm_id">
+				</div>
+				<div class="col-sm-5">
+					<span class="small text-danger" id="naviNameMsg">*</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="navi_name_en" class="col-sm-2 control-label">英文名称</label>
+				<div class="col-sm-5">
+					<input type="text" name="navi_name_en" id="frm_navi_name_en" class="form-control"
+					 placeholder="栏目英文名称">
+				</div>
+				<div class="col-sm-4">
+					<span class="small text-danger" id="naviNameEnMsg">*</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="navi_type" class="col-sm-2 control-label">栏目类型</label>
+				<div class="col-sm-4">
+					<select class="form-control" name="navi_type" id="frm_navi_type">
+				 		#for(x : naviTypeL)	
+				 			<option value="#(x.id)">#(x.natyName)</option>
+				        #end
+					</select>
+				</div>
+				<div class="col-sm-5">
+					<span class="small text-danger" id="naviParentIdMsg">*</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="navi_parent_id" class="col-sm-2 control-label">上级名称</label>
+				<div class="col-sm-4">
+					<select class="form-control" name="navi_parent_id" id="frm_navi_parent_id">
+						<option value="0">无</option>
+				 		#for(x : cmsNaviList)
+				 			<option value="#(x.id)">#(x.naviName)</option>
+				 			#@navi_tree_list(x.subNaviL,"&nbsp;&nbsp",0)
+				        #end
+					</select>
+				</div>
+				<div class="col-sm-5">
+					<span class="small text-danger" id="naviParentIdMsg">*</span>
+				</div>
+			</div>
+			<!-- <div class="form-group">
+				<label for="navi_icon" class="col-sm-2 control-label">图标</label>
+				<div class="col-sm-5">
+					<input type="text" name="navi_icon" id="frm_navi_icon" class="form-control"
+					 placeholder="bootstrap图标">
+				</div>
+				<div class="col-sm-4">
+					<span class="small text-danger" id="naviIconMsg"></span>
+				</div>
+			</div>	 -->
+			<div class="form-group">
+				<label for="navi_is_out" class="col-sm-2 control-label">外部链接</label>
+				<div class="col-sm-2">
+					<input type="radio" name="navi_is_out" id="frm_navi_is_out_1" value="0" checked> 否
+					<input type="radio" name="navi_is_out" id="frm_navi_is_out_2" value="1"> 是
+				</div>
+				<div class="col-sm-7">
+					<span class="small text-danger" id="naviIsOutMsg">*外部链接将跳转到外地址，URL地址为必填！</span>
+				</div>
+			</div>		
+			<div class="form-group">
+				<label for="navi_url" class="col-sm-2 control-label">URL地址</label>
+				<div class="col-sm-6">
+					<input type="text" name="navi_url" id="frm_navi_url" class="form-control"
+					 placeholder="访问地址">
+				</div>
+				<div class="col-sm-3">
+					<span class="small text-danger" id="naviUrlMsg"></span>
+				</div>
+			</div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> 关闭</button>
+	        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save-file"></span> 保存</button>
+	      </div>
+      </form>
+      </div><!-- /.modal-body -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

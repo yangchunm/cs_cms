@@ -38,7 +38,7 @@
 				#end			    	
 			 </select>
 			 <select name="s.user_security_id" id="s.user_security_id" class="form-control">
-					<option value="0">密级</option>
+					<option value="0">职级</option>
 					#for(x : keSecuL)
 						#if(x.id == sUser.userSecurityId)
 						<option value="#(x.id)" selected>#(x.secuName)</option>
@@ -64,7 +64,7 @@
 	 <table class="table table-condensed .table-hover">
 	 	<thead>
 	 		<tr>
-	 			<th>序</th><th>用户名</th><th>真实姓名</th><th>角色</th><th>部门</th><th>密级</th><th>加入时间</th>
+	 			<th>序</th><th>用户名</th><th>真实姓名</th><th>角色</th><th>部门</th><th>职级</th><th>加入时间</th>
 	 			<th>最后登录</th><th>有效</th><th>后台</th>
 	 		</tr>
 	 	</thead>

@@ -10,6 +10,7 @@ public class CommQuery {
 	String end;
 	String keyWord;
 	String other;
+	int naviId;
 	Map<Object, Object> map = new HashMap<Object, Object>();
 	
 	public int getPage() {
@@ -53,6 +54,12 @@ public class CommQuery {
 	}
 	public void setOther(String other) {
 		this.other = other;
+	}
+	public int getNaviId() {
+		return naviId;
+	}
+	public void setNaviId(int naviId) {
+		this.naviId = naviId;
 	}
 	
 	

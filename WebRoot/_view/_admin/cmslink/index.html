@@ -1,0 +1,59 @@
+#set(pageTitle="链接管理")
+#set(btnBar = {"add":1,"mod":1,"del":1})
+#set(currCont = "link")
+#@adminLayout()
+#define main()
+#include("/_view/_admin/common/_button_bar.html")
+	 <table class="table table-condensed .table-hover naviTree">
+	 	<thead>
+	 		<tr>
+	 			<th>序</th><th>名称</th><th>URL</th><th>顺序(调整)</th>
+	 			<th>图片</th><th>类型</th><th>创建时间</th>
+	 		</tr>
+	 	</thead>
+	 	<tbody>
+	 		#set(iCount = 1)
+	 		#for(x : cmsLinkL)
+	 			<tr id="node-#(x.id)" class="treegrid-#(x.id)">	         		
+	         		<td><input value="#(x.id)" type="checkbox" id="check-#(x.id)" />#(iCount) </td>
+	         		<td>#(x.linkName)</td>
+	         		<td>#(x.linkUrl)</td>
+	         		<td>#(x.linkOrder)
+	         		#if(for.index < for.size-1)
+	         		&nbsp;&nbsp;
+	         		<span class="glyphicon glyphicon-triangle-bottom" value="#(x.id)-#(x.linkOrder)" title="调整顺序"></span>
+	         		#else
+		         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	         		#end
+	         		#if(for.index >0)
+	         		&nbsp;&nbsp;
+	         		<span class="glyphicon glyphicon-triangle-top"  value="#(x.id)-#(x.linkOrder)" title="调整顺序"></span></td>
+	         		#end
+	         		<td><img src="#(BASE_PATH)/upload#(x.linkPic)" style="width:150px;height:30px;"></td>
+	         		<td>#(x.linkType)</td>
+	         		<td>#date(x.linkTime, "yyyy-MM-dd HH:mm")</td>
+	         		
+         		</tr>
+	         	
+   				#set(iCount = iCount +1)      		
+         	#end
+        </tbody>       
+     </table>
+     #if(!cmsLinkL??)
+		<div class="alert alert-warning" role="alert">
+		<span class="glyphicon glyphicon-info-sign"></span> 
+		   没有满足条件的记录！
+		</div>
+	#end
+    #include("/_view/_admin/cmslink/_add_form.html") 
+#end
+
+#define css()
+	<link rel="stylesheet" type="text/css" href="#(BASE_PATH)/assets/treegrid/jquery.treegrid.css">
+#end
+
+#define js()
+	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.min.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/treegrid/jquery.treegrid.bootstrap3.js"></script>
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/cms.link.js"></script>
+#end

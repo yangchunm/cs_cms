@@ -1,0 +1,36 @@
+#set(pageTitle="首页")
+#if(about.abouTitle??)
+	#set(pageTitle=about.abouTitle)
+#end
+#@layout()
+#define main()
+<!-- 内容容器 -->
+<!-- end slide and begin mian -->
+<div class="main container">
+#include("/_view/common/_location_bar.html")
+	<div class="row">
+		<div class="col-sm-3 col-md-3  hidden-xs">
+			#include("/_view/common/_side_bar.html")
+		</div>
+		<div class="col-sm-9 col-md-9">
+			<div class="well">
+				<div class="page-header">
+			 		#(about.abouTitle)
+				</div>
+				<div class="content">
+					#(about.abouContent)
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+#end
+
+#define css()
+#end
+
+#define js()
+	<script type="text/javascript" src="#(BASE_PATH)/assets/js/front.index.js"></script>
+	
+#end

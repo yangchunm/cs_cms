@@ -1,0 +1,76 @@
+<div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-title">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modal-title"><span class="glyphicon glyphicon-plus-sign"></span> 新增</h4>
+      </div>
+      <div class="modal-body">
+     	<form class="form-horizontal" id="add-form" action="#(BASE_PATH)#(mandir)/#(currCont)/save" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="file_title" class="col-sm-2 control-label">名称</label>
+				<div class="col-sm-6">
+					<input type="text" name="fi.file_title" id="frm_file_title" class="form-control"
+					 placeholder="文件名称">
+					 <input type="hidden" name="fi.id" value="0" id="frm_id">
+				</div>
+				<div class="col-sm-4">
+					<span class="small text-danger" id="file_title_msg">*</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="file_navi_id" class="col-sm-2 control-label">栏目</label>
+				<div class="col-sm-4">
+				 <select id="frm_file_navi_id" name="fi.file_navi_id" class="form-control">
+			    	#for(x : naviL)
+			    		#if(comQ.naviId == x.id)
+			 			<option value="#(x.id)" selected>#(x.naviName)</option>
+			 			#else
+			 			<option value="#(x.id)">#(x.naviName)</option>
+			 			#end
+			        #end
+			    </select>  
+				 </div>
+				<div class="col-sm-4">
+					<span class="small text-danger" id="file_navi_id_msg">*</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="file_tags" class="col-sm-2 control-label">标签</label>
+				<div class="col-sm-8">
+					<input type="text" name="fi.file_tags" id="frm_file_tags" class="form-control"
+					 placeholder="标签，逗号隔开">
+				</div>
+				<div class="col-sm-2">
+					<span class="small text-danger" id="file_tags_msg">*</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="file_content" class="col-sm-2 control-label">描述</label>
+				<div class="col-sm-8">
+					 <textarea class="form-control" rows="4" name="fi.file_content" id="frm_file_content" ></textarea>
+				</div>
+				<div class="col-sm-2">
+					<span class="small text-danger" id="file_desc_msg">*文件描述</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="file" class="col-sm-2 control-label">文件</label>
+				<div class="col-sm-4">
+					<input type="file" name="file" id="tmp_file" class="form-control">
+					<input type="hidden" name="fi.file_url"  id="frm_file_url" value="">
+				</div>
+				<div class="col-sm-6">
+					<span class="small text-danger" id="file_msg">*选择上传文件</span>
+				</div>
+			</div>
+			
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> 关闭</button>
+	        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save-file"></span> 保存</button>
+	      </div>
+      </form>
+      </div><!-- /.modal-body -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

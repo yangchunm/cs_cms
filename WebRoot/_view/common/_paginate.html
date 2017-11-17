@@ -62,17 +62,53 @@
 	#end
 #end
 
-### 知识树显示函数
-#define kntr_tree_grid(treeObj,pre)
+### 导航管理显示函数
+#define cmsnavi_tree_grid(treeObj,pre)
 	#for(y : treeObj)
-      	<tr id="node-#(y.kntrParentId)-#(y.id)" class="treegrid-#(y.id) treegrid-parent-#(y.kntrParentId)">
+      	<tr id="node-#(y.naviParentId)-#(y.id)" class="treegrid-#(y.id) treegrid-parent-#(y.naviParentId)">
       		<td>
-      			<input value="#(y.id)" type="checkbox" id="check-#(y.kntrParentId)-#(y.id)" />
-      			#(pre).#(for.index+1) #(y.kntrName)
+      			<input value="#(y.id)" type="checkbox" id="check-#(y.knaviParentId)-#(y.id)" />
+      			#(pre).#(for.index+1) #(y.naviName)
       		</td>
-      		<td>#(y.knEntrNum)</td><td>#(y.knFileNum)</td><td>#(y.knFormNum)</td><td>#(y.knMoleNum)</td>
+      		<td>#(y.naviOrder)
+       			#if(for.index < for.size-1)
+	        		&nbsp;&nbsp;
+	        		<span class="glyphicon glyphicon-triangle-bottom"  value="#(y.id)-#(y.naviOrder)" title="调整顺序"></span>
+        		#else
+        			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        		#end
+        		#if(for.index >0)
+        			&nbsp;&nbsp;
+        			<span class="glyphicon glyphicon-triangle-top"  value="#(y.id)-#(y.naviOrder)" title="调整顺序"></span></td>
+        		#end
+       		</td>
+       		<td>#(y.naviNameEn)</td>
+       		<td>
+       		#if(y.naviType == 1)
+       		<a href="#(BASE_PATH)#(mandir)/about/edit/#(y.id)"><span class="glyphicon glyphicon-edit"></span> </a></td>
+       		#end
+       		<td>#(y.typeName)</td>
+       		<td>#(y.naviIsShow ? "是" : "否")
+       			<a href="javascript:void(0);" onClick="setIsShow(#(y.id),#(y.naviIsShow))" title="设置为相反"><span class="glyphicon glyphicon-transfer"></span></a>
+       		</td>
+       		<td>#(y.naviIsOut ? "是" : "否")
+       			<a href="javascript:void(0);" onClick="setIsOut(#(y.id),#(y.naviIsOut))" title="设置为相反"><span class="glyphicon glyphicon-transfer"></span></a>
+       		</td>
      	</tr>
-     	 #@kntr_tree_grid(y.knTreeL,pre + "."+(for.index+1))
+     	 #@cmsnavi_tree_grid(y.subNaviL,pre + "."+(for.index+1))
+	#end
+#end
+
+### 栏目导航显示函数select
+#define navi_tree_list(treeObj,pre,currId)
+	#setLocal(pre = pre + "&nbsp;&nbsp;")
+	#for(y : treeObj)
+		#if(y.id == currId)
+			<option value="#(y.id)" selected>#(pre)#(y.naviName)</option>
+		#else
+			<option value="#(y.id)">#(pre)#(y.naviName)</option>
+		#end
+     	 #@navi_tree_list(y.subNaviL,pre+ "&nbsp;&nbsp;",currId)
 	#end
 #end
 
